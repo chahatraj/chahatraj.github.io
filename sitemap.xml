@@ -3,13 +3,26 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 >
-  <url><loc>https://chahatraj.github.io/</loc></url>
-  <url><loc>https://chahatraj.github.io/index.html</loc></url>
-  <url><loc>https://chahatraj.github.io/news.html</loc></url>
-  <url><loc>https://chahatraj.github.io/affiliations.html</loc></url>
-  <url><loc>https://chahatraj.github.io/publications.html</loc></url>
-  <url><loc>https://chahatraj.github.io/posters.html</loc></url>
-  <url><loc>https://chahatraj.github.io/stills.html</loc>
+  <url>
+    <loc>https://chahatraj.github.io/</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/index.html</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/news.html</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/affiliations.html</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/publications.html</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/posters.html</loc>
+  </url>
+  <url>
+    <loc>https://chahatraj.github.io/stills.html</loc>
     <image:image>
       <image:loc>https://chahatraj.github.io/stills/chahat-raj-1.jpg</image:loc>
       <image:title>Chahat Raj presenting Global Voices at EMNLP 2023</image:title>
