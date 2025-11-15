@@ -91,6 +91,65 @@
                     <h1 class="mb-4" class="theme-color" align="left">
                       <span></span><b>Doctoral Research</b><span></span>
                     </h1>
+                    <!-- Publication 11 Starts Here -->
+                    <li>
+                      <p>
+                        <a style="color: #000000">Toward Inclusive Language Models: Sparsity-Driven Calibration for Systematic and Interpretable Mitigation of Social Biases in LLMs.</a><br />
+                        Prommy Sultana Hossain, <a class="theme-color">Chahat Raj</a>, Ziwei Zhu, Jessica Lin, and Emanuela Marasco [EMNLP Findings 2025]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd5">Abstract</button>
+                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.134.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/Promzi/Unlearn-Bias-in-LLMs"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd5">BibTeX</button>
+                      </p>
+                      <div id="absd5" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        Large Language Models (LLMs) such as GPT
+                        and LLaMA excel in natural language tasks,
+                        e.g., text generation and machine translation.
+                        However, inherent biases from training on vast
+                        Internet datasets potentially amplify harmful
+                        stereotypes—widely held, oversimplified, and
+                        often inaccurate generalizations about groups
+                        of people. Our contribution introduces a novel,
+                        systematic, and architecture-aware method
+                        to identify and mitigate stereotypical bias in
+                        decoder-only transformer models. This interpretable approach operates without gradient
+                        access or retraining from scratch. We first evaluate bias and then apply a bias localization
+                        mechanism that correlates internal activations
+                        with a newly defined Context Influence (CI)
+                        Score. Our method pinpoints specific attention heads that consistently align with biased
+                        shifts in model predictions. To mitigate this,
+                        we introduce a soft pruning strategy that scales
+                        attention head parameters based on their correlation strength, followed by lightweight finetuning to maintain fluent text generation. Experiments across five models demonstrate our
+                        approach reduces bias by up to 37% on BBQ,
+                        32% on StereoSet, and 33% on CrowS-Pairs
+                        while simultaneously improving reasoning performance on MMLU by up to 10%.  <br /> <br />
+                      </div>
+                      <div id="bibd5" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @inproceedings{hossain-etal-2025-toward,
+                            title = "Toward Inclusive Language Models: Sparsity-Driven Calibration for Systematic and Interpretable Mitigation of Social Biases in {LLM}s",
+                            author = "Hossain, Prommy Sultana  and
+                              Raj, Chahat  and
+                              Zhu, Ziwei  and
+                              Lin, Jessica  and
+                              Marasco, Emanuela",
+                            editor = "Christodoulopoulos, Christos  and
+                              Chakraborty, Tanmoy  and
+                              Rose, Carolyn  and
+                              Peng, Violet",
+                            booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2025",
+                            month = nov,
+                            year = "2025",
+                            address = "Suzhou, China",
+                            publisher = "Association for Computational Linguistics",
+                            url = "https://aclanthology.org/2025.findings-emnlp.134/",
+                            doi = "10.18653/v1/2025.findings-emnlp.134",
+                            pages = "2475--2508",
+                            ISBN = "979-8-89176-335-7",
+                            abstract = "Large Language Models (LLMs) such as GPT and LLaMA excel in natural language tasks, e.g., text generation and machine translation. However, inherent biases from training on vast Internet datasets potentially amplify harmful stereotypes{---}widely held, oversimplified, and often inaccurate generalizations about groups of people. Our contribution introduces a novel, systematic, and architecture-aware method to identify and mitigate stereotypical bias in decoder-only transformer models. This interpretable approach operates without gradient access or retraining from scratch. We first evaluate bias and then apply a bias localization mechanism that correlates internal activations with a newly defined Context Influence (CI) Score. Our method pinpoints specific attention heads that consistently align with biased shifts in model predictions. To mitigate this, we introduce a soft pruning strategy that scales attention head parameters based on their correlation strength, followed by lightweight fine-tuning to maintain fluent text generation. Experiments across five models demonstrate our approach reduces bias by up to 37{\%} on BBQ, 32{\%} on StereoSet, and 33{\%} on CrowS-Pairs while simultaneously improving reasoning performance on MMLU by up to 10{\%}."
+                        }
+                      </div>                                            
+                    </li>
+                    <!-- Publication 11 Ends Here -->
                     <!-- Publication 10 Starts Here -->
                     <li>
                       <p>
@@ -171,31 +230,45 @@
                     <!-- Publication 8 Starts Here -->
                     <li>
                       <p>
-                        <a style="color: #000000">Beneath the Surface: How Large Language Models Reflect Hidden Bias.</a><br />
-                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Ziyu Yao, and Ziwei Zhu [In Submission]
+                        <a style="color: #000000">What's Not Said Still Hurts: A Description-Based Evaluation Framework for Measuring Social Bias in LLMs</a><br />
+                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Ziyu Yao, and Ziwei Zhu [EMNLP Findings 2025]
                         <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd5">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2502.19749"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/JP-25/Hidden-Bias-Benchmark"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.76.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="le at https://github.com/JP-25/Description-based-Bias-Benchmark"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
                         <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd5">BibTeX</button>
                       </p>
                       <div id="absd5" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        The exceptional performance of Large Language Models (LLMs) often comes with the
-                        unintended propagation of social biases embedded in their training data. While existing benchmarks evaluate overt bias through direct term
-                        associations between bias concept terms and demographic terms, LLMs have become increasingly adept at avoiding biased responses, creating an illusion of neutrality. However, biases
-                        persist in subtler, contextually hidden forms
-                        that traditional benchmarks fail to capture. We
-                        introduce the Hidden Bias Benchmark (HBB),
-                        a novel dataset designed to assess hidden bias
-                        that bias concepts are hidden within naturalistic, subtly framed contexts in real-world scenarios. We analyze six state-of-the-art LLMs,
-                        revealing that while models reduce bias in response to overt bias, they continue to reinforce
-                        biases in nuanced settings. <br /> <br />
+                        Large Language Models (LLMs) often exhibit social biases inherited from their training data. While existing benchmarks evaluate bias by term-based mode through direct
+                        term associations between demographic terms
+                        and bias terms, LLMs have become increasingly adept at avoiding biased responses, leading to seemingly low levels of bias. However, biases persist in subtler, contextually hidden forms that traditional benchmarks fail to
+                        capture. We introduce the Description-based
+                        Bias Benchmark (DBB), a novel dataset designed to assess bias at the semantic level
+                        that bias concepts are hidden within naturalistic, subtly framed contexts in real-world scenarios rather than superficial terms. We analyze six state-of-the-art LLMs, revealing that
+                        while models reduce bias in response at the
+                        term level, they continue to reinforce biases
+                        in nuanced settings.  <br /> <br />
                       </div>
                       <div id="bibd5" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{pan2025beneath,
-                          title={Beneath the Surface: How Large Language Models Reflect Hidden Bias},
-                          author={Pan, Jinhao and Raj, Chahat and Yao, Ziyu and Zhu, Ziwei},
-                          journal={arXiv preprint arXiv:2502.19749},
-                          year={2025}
+                        @inproceedings{pan-etal-2025-whats,
+                            title = "What{'}s Not Said Still Hurts: A Description-Based Evaluation Framework for Measuring Social Bias in {LLM}s",
+                            author = "Pan, Jinhao  and
+                              Raj, Chahat  and
+                              Yao, Ziyu  and
+                              Zhu, Ziwei",
+                            editor = "Christodoulopoulos, Christos  and
+                              Chakraborty, Tanmoy  and
+                              Rose, Carolyn  and
+                              Peng, Violet",
+                            booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2025",
+                            month = nov,
+                            year = "2025",
+                            address = "Suzhou, China",
+                            publisher = "Association for Computational Linguistics",
+                            url = "https://aclanthology.org/2025.findings-emnlp.76/",
+                            doi = "10.18653/v1/2025.findings-emnlp.76",
+                            pages = "1438--1459",
+                            ISBN = "979-8-89176-335-7",
+                            abstract = "Large Language Models (LLMs) often exhibit social biases inherited from their training data. While existing benchmarks evaluate bias by term-based mode through direct term associations between demographic terms and bias terms, LLMs have become increasingly adept at avoiding biased responses, leading to seemingly low levels of bias. However, biases persist in subtler, contextually hidden forms that traditional benchmarks fail to capture. We introduce the Description-based Bias Benchmark (DBB), a novel dataset designed to assess bias at the semantic level that bias concepts are hidden within naturalistic, subtly framed contexts in real-world scenarios rather than superficial terms. We analyze six state-of-the-art LLMs, revealing that while models reduce bias in response at the term level, they continue to reinforce biases in nuanced settings. Data, code, and results are available at \url{https://github.com/JP-25/Description-based-Bias-Benchmark}."
                         }
                       </div>                                            
                     </li>
@@ -204,7 +277,7 @@
                     <li>
                       <p>
                         <a style="color: #000000">Discovering Bias Associations through Open-Ended LLM Generations.</a><br />
-                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [In Submission]
+                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [AAAI 2026]
                         <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd5">Abstract</button>
                         <a href="https://arxiv.org/pdf/2508.01412"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                         <a href="https://github.com/JP-25/Discover-Open-Ended-Generation"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
@@ -280,7 +353,7 @@
                         <a style="color: #000000">BiasDora: Exploring Hidden Biased Associations in Vision-Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [EMNLP Findings 2024]
                         <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd5">Abstract</button>
-                        <a href="./files/d5.pdf""><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://aclanthology.org/2024.findings-emnlp.611.pdf""><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                         <a href="https://github.com/chahatraj/BiasDora"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
                         <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd5">BibTeX</button>
                       </p>
@@ -293,11 +366,25 @@
                         associations, (Dora), publicly available. <br /> <br />
                       </div>
                       <div id="bibd5" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{raj2024biasdora,
-                          title={BiasDora: Exploring Hidden Biased Associations in Vision-Language Models.},
-                          author={Raj, Chahat and Mukherjee, Anjishnu and Caliskan, Aylin and Anastasopoulos, Antonios and Zhu, Ziwei},
-                          journal={},
-                          year={2024}
+                        @inproceedings{raj-etal-2024-biasdora,
+                            title = "{B}ias{D}ora: Exploring Hidden Biased Associations in Vision-Language Models",
+                            author = "Raj, Chahat  and
+                              Mukherjee, Anjishnu  and
+                              Caliskan, Aylin  and
+                              Anastasopoulos, Antonios  and
+                              Zhu, Ziwei",
+                            editor = "Al-Onaizan, Yaser  and
+                              Bansal, Mohit  and
+                              Chen, Yun-Nung",
+                            booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+                            month = nov,
+                            year = "2024",
+                            address = "Miami, Florida, USA",
+                            publisher = "Association for Computational Linguistics",
+                            url = "https://aclanthology.org/2024.findings-emnlp.611/",
+                            doi = "10.18653/v1/2024.findings-emnlp.611",
+                            pages = "10439--10455",
+                            abstract = "Existing works examining Vision-Language Models (VLMs) for social biases predominantly focus on a limited set of documented bias associations, such as gender-profession or race-crime. This narrow scope often overlooks a vast range of unexamined implicit associations, restricting the identification and, hence, mitigation of such biases. We address this gap by probing VLMs to (1) uncover hidden, implicit associations across 9 bias dimensions. We systematically explore diverse input and output modalities and (2) demonstrate how biased associations vary in their negativity, toxicity, and extremity. Our work (3) identifies subtle and extreme biases that are typically not recognized by existing methodologies. We make the **D**ataset **o**f **r**etrieved **a**ssociations (**Dora**) publicly available."
                         }
                       </div>                                            
                     </li>
@@ -323,11 +410,17 @@
                         in 1 epoch of instruction tuning LLaMA 2 following our SCD strategy. <br /> <br />
                       </div>
                       <div id="bibd4" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{raj2024breakingbias,
-                          title={Breaking Bias, Building Bridges: Evaluation and Mitigation of Social Biases in LLMs via Contact Hypothesis.},
-                          author={Raj, Chahat and Mukherjee, Anjishnu and Caliskan, Aylin and Anastasopoulos, Antonios and Zhu, Ziwei},
-                          journal={AAAI/ACM conference on AI, Ethics, and Society},
-                          year={2024}
+                        @inproceedings{10.5555/3716662.3716766,
+                            author = {Raj, Chahat and Mukherjee, Anjishnu and Caliskan, Aylin and Anastasopoulos, Antonios and Zhu, Ziwei},
+                            title = {Breaking Bias, Building Bridges: Evaluation and Mitigation of Social Biases in LLMs via Contact Hypothesis},
+                            year = {2025},
+                            publisher = {AAAI Press},
+                            abstract = {Large Language Models (LLMs) perpetuate social biases, reflecting prejudices in their training data and reinforcing societal stereotypes and inequalities. Our work explores the potential of the Contact Hypothesis, a concept from social psychology for debiasing LLMs. We simulate various forms of social contact through LLM prompting to measure their influence on the model's biases, mirroring how intergroup interactions can reduce prejudices in social contexts. We create a dataset of 108,000 prompts following a principled approach replicating social contact to measure biases in three LLMs (LLaMA 2, Tulu, and NousHermes) across 13 social bias dimensions. We propose a unique debiasing technique, Social Contact Debiasing (SCD), that instruction-tunes these models with unbiased responses to prompts. Our research demonstrates that LLM responses exhibit social biases when subject to contact probing, but more importantly, these biases can be significantly reduced by up to 40\% in 1 epoch of instruction tuning LLaMA 2 following our SCD strategy.},
+                            booktitle = {Proceedings of the 2024 AAAI/ACM Conference on AI, Ethics, and Society},
+                            pages = {1180–1189},
+                            numpages = {10},
+                            location = {San Jose, California, USA},
+                            series = {AIES '24}
                         }
                       </div>                                            
                     </li>
@@ -372,7 +465,7 @@
                         <a style="color: #000000">Global Voices, Local Biases: Socio-Cultural Prejudices across Languages.</a><br />
                         Anjishnu Mukherjee*, <a class="theme-color">Chahat Raj*</a>, Ziwei Zhu, and Antonios Anastasopoulos [EMNLP 2023]
                         <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd2">Abstract</button>
-                        <a href="./files/d2.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
+                        <a href="https://aclanthology.org/2023.emnlp-main.981.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
                         <a href="https://github.com/iamshnoo/weathub"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
                         <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd2">BibTeX</button>
                       </p>
@@ -389,18 +482,24 @@
                       </div>
                       <div id="bibd2" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
                         @inproceedings{mukherjee-etal-2023-global,
-                          title = "{G}lobal {V}oices, Local Biases: Socio-Cultural Prejudices across Languages",
-                          author = "Mukherjee, Anjishnu  and Raj, Chahat  and Zhu, Ziwei  and Anastasopoulos, Antonios",
-                          editor = "Bouamor, Houda  and Pino, Juan  and Bali, Kalika",
-                          booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
-                          month = dec,
-                          year = "2023",
-                          address = "Singapore",
-                          publisher = "Association for Computational Linguistics",
-                          url = "https://aclanthology.org/2023.emnlp-main.981",
-                          doi = "10.18653/v1/2023.emnlp-main.981",
-                          pages = "15828--15845",
-                      }
+                            title = "{G}lobal {V}oices, Local Biases: Socio-Cultural Prejudices across Languages",
+                            author = "Mukherjee, Anjishnu  and
+                              Raj, Chahat  and
+                              Zhu, Ziwei  and
+                              Anastasopoulos, Antonios",
+                            editor = "Bouamor, Houda  and
+                              Pino, Juan  and
+                              Bali, Kalika",
+                            booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+                            month = dec,
+                            year = "2023",
+                            address = "Singapore",
+                            publisher = "Association for Computational Linguistics",
+                            url = "https://aclanthology.org/2023.emnlp-main.981/",
+                            doi = "10.18653/v1/2023.emnlp-main.981",
+                            pages = "15828--15845",
+                            abstract = "Human biases are ubiquitous but not uniform: disparities exist across linguistic, cultural, and societal borders. As large amounts of recent literature suggest, language models (LMs) trained on human data can reflect and often amplify the effects of these social biases. However, the vast majority of existing studies on bias are heavily skewed towards Western and European languages. In this work, we scale the Word Embedding Association Test (WEAT) to 24 languages, enabling broader studies and yielding interesting findings about LM bias. We additionally enhance this data with culturally relevant information for each language, capturing local contexts on a global scale. Further, to encompass more widely prevalent societal biases, we examine new bias dimensions across toxicity, ableism, and more. Moreover, we delve deeper into the Indian linguistic landscape, conducting a comprehensive regional bias analysis across six prevalent Indian languages. Finally, we highlight the significance of these social biases and the new dimensions through an extensive comparison of embedding methods, reinforcing the need to address them in pursuit of more equitable language models."
+                        }
                       </div>                                            
                     </li>
                     <!-- Publication 2 Ends Here -->
@@ -452,7 +551,7 @@
                     <li>
                       <p>
                         <a style="color: #000000">Bitcoin Price Prediction using LSTM Autoencoder and False Nearest Neighbor Loss.</a><br />
-                        <a class="theme-color">Chahat Raj</a> and Manojit Chattopadhyay [Under Review 2024]
+                        <a class="theme-color">Chahat Raj</a> and Manojit Chattopadhyay [Soft Computing, 2024]
                         <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm15">Abstract</button>
                         <a href="./files/m15.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                         <a href="https://github.com/chahatraj/LSTM-Autoencoder-FNN"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
@@ -465,10 +564,16 @@
                         robust algorithm that accurately determines the fluctuation directions in bitcoin prices and results in values closer to the actual prices. <br /> <br />
                       </div>
                       <div id="bibm15" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{rajbitcoin,
-                          title={Bitcoin Price Prediction using LSTM Autoencoder Regularized by False Nearest Neighbor Loss},
-                          author={Raj, Chahat and Chattopadhyay, Manojit}
-                        } <!-- TODO update bib -->
+                        @article{raj2024bitcoin,
+                          title={Bitcoin price prediction using LSTM autoencoder regularized by false nearest neighbor loss},
+                          author={Raj, Chahat and Chattopadhyay, Manojit},
+                          journal={Soft Computing},
+                          volume={28},
+                          number={21},
+                          pages={12827--12834},
+                          year={2024},
+                          publisher={Springer}
+                        }
                       </div>                                            
                     </li>           
                     <!-- Publication 15 ends here -->
@@ -682,7 +787,7 @@
                   <li>
                     <p>
                       <a style="color: #000000">A Review of Web Infodemic Analysis and Detection Trends across Multi-modalities using Deep Neural Networks.</a><br />
-                      <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Arxiv Preprint 2021]
+                      Priyanka Meel, <a class="theme-color">Chahat Raj</a>, and Bhawna [International Journal of Data Science and Analytics]
                       <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm8">Abstract</button>
                       <a href="./files/m8.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                       <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
@@ -700,12 +805,14 @@
                       researchers to further advance this domain. <br /> <br />
                     </div>
                     <div id="bibm8" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                      @article{raj2021review,
-                        title={A Review of Web Infodemic Analysis and Detection Trends across Multi-modalities using Deep Neural Networks},
-                        author={Raj, Chahat and Meel, Priyanka},
-                        journal={arXiv preprint arXiv:2112.00803},
-                        year={2021}
-                      } <!-- TODO update bib -->
+                      @article{meel2025review,
+                          title={A review of web infodemic analysis and detection trends across multi-modalities using deep neural network},
+                          author={Meel, Priyanka and Raj, Chahat and Bhawna},
+                          journal={International Journal of Data Science and Analytics},
+                          pages={1--28},
+                          year={2025},
+                          publisher={Springer}
+                      }
                     </div>                                            
                   </li>           
                   <!-- Publication 8 ends here -->
