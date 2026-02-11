@@ -130,8 +130,9 @@
               </p>
               <script>
                 function speakName() {
-                    const utterance = new SpeechSynthesisUtterance("Chahat");
-                    utterance.lang = "en-US";  // Hindi Indian voice
+                    const utterance = new SpeechSynthesisUtterance("Chaahut");
+                    utterance.lang = "en-US";
+                    utterance.rate = 0.85;
                     speechSynthesis.speak(utterance);
                 }
                 </script>
