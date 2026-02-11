@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css"/>
   <link rel="stylesheet" href="css/animate.css"/>
   <link rel="stylesheet" href="css/owl.carousel.min.css"/>
@@ -116,7 +117,10 @@
               <span class="subheading">Hey! I'm</span>
               <h1 class="big-letter">Chahat Raj</h1>
               <h1 class="mb-4" class="theme-color"><span></span>Chahat Raj<span></span></h1>
-              <p class="mb-4"><a class="theme-color"></a>My first name is pronounced as <span class="theme-color">/ˈtʃaː.ɦət/</span><button onclick="speakName()" style="border:none; background:none; cursor:pointer; font-size:18px;">🔊</button></p>
+              <p class="mb-4"><a class="theme-color"></a>My first name is pronounced as <span class="theme-color">/ˈtʃaː.ɦət/</span><button onclick="speakName()" 
+                      style="border:none; background:none; cursor:pointer; font-size:18px;">
+                  <i class="fa-solid fa-volume-high"></i>
+              </button></p>
               <script>
                 function speakName() {
                     const utterance = new SpeechSynthesisUtterance("Chahat");
