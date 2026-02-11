@@ -117,10 +117,17 @@
               <span class="subheading">Hey! I'm</span>
               <h1 class="big-letter">Chahat Raj</h1>
               <h1 class="mb-4" class="theme-color"><span></span>Chahat Raj<span></span></h1>
-              <p class="mb-4"><a class="theme-color"></a>My first name is pronounced as <span class="theme-color">/ˈtʃaː.ɦət/</span><button onclick="speakName()" 
+              <!-- <p class="mb-4"><a class="theme-color"></a>My first name is pronounced as <span class="theme-color">/ˈtʃaː.ɦət/</span><button onclick="speakName()" 
                       style="border:none; background:none; cursor:pointer; font-size:18px;">
                   <i class="fa-solid fa-headphones"></i>
-              </button></p>
+              </button></p> -->
+              <p class="mb-4"><a class="theme-color"></a>My first name is pronounced as <span class="theme-color">/ˈtʃaː.ɦət/</span><button onclick="speakName()" 
+                      style="border:none; background:none; cursor:pointer;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 10v4h4l5 5V5L7 10H3z"/>
+                </svg>
+              </button>
+              </p>
               <script>
                 function speakName() {
                     const utterance = new SpeechSynthesisUtterance("Chahat");
