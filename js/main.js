@@ -44,12 +44,12 @@
 		} catch (error) {
 			storedTheme = null;
 		}
-		var isDark = storedTheme === 'dark';
+		var isDark = storedTheme !== 'light';
 		var $toggle = $(
 			'<div class="theme-toggle-wrap">' +
-				'<button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">' +
-					'<span class="theme-toggle-icon" aria-hidden="true">☾</span>' +
-					'<span class="theme-toggle-text">Dark</span>' +
+				'<button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="true">' +
+					'<span class="theme-toggle-icon" aria-hidden="true">☀</span>' +
+					'<span class="theme-toggle-text">Light</span>' +
 				'</button>' +
 			'</div>'
 		);

@@ -36,6 +36,100 @@
       .ftco-social a span {
         color: var(--theme-color) !important; /* Apply theme color to icons */
       }
+
+      .affiliations-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .affiliation-item {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .affiliation-logo {
+        width: 54px;
+        height: 54px;
+        border-radius: 8px;
+        object-fit: contain;
+        padding: 8px;
+        background: #ffffff;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      .affiliation-title {
+        display: inline-block;
+        margin-bottom: 0.2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--theme-color) !important;
+      }
+
+      .affiliation-role {
+        margin: 0;
+        color: rgba(0, 0, 0, 0.74);
+        font-size: 0.95rem;
+      }
+
+      .affiliation-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        flex-wrap: wrap;
+      }
+
+      .affiliation-date {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
+        border-left: 3px solid var(--theme-color);
+        border-radius: 5px;
+        padding: 0.16rem 0.46rem;
+        background: color-mix(in srgb, var(--theme-color) 10%, transparent);
+        color: var(--theme-color);
+        font-family: "Montserrat", Arial, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      body.dark-theme .affiliation-item {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+
+      body.dark-theme .affiliation-logo {
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+      }
+
+      body.dark-theme .affiliation-role {
+        color: #d8d2c8;
+      }
+
+      body.dark-theme .affiliation-date {
+        border-color: color-mix(in srgb, var(--theme-color) 32%, transparent);
+        border-left-color: var(--theme-color);
+        background: color-mix(in srgb, var(--theme-color) 14%, transparent);
+        color: var(--theme-color);
+      }
+
+      @media (max-width: 575.98px) {
+        .affiliation-item {
+          grid-template-columns: 50px 1fr;
+          gap: 0.85rem;
+        }
+
+        .affiliation-logo {
+          width: 44px;
+          height: 44px;
+          padding: 6px;
+        }
+      }
     </style> 
     <script>
       (function() {
@@ -87,50 +181,98 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1 class="mb-4" class="theme-color"><span></span><b>AFFILIATIONS</b><span></span></h1>
-                        <h5 href="https://www.gmu.edu/" class="theme-color">
-                          <b>George Mason University</b>
-                        </h5>
-                        <a style="color: #000000">Doctor of Philosophy, Computer Science</a> [2022 - Present]
-                        <br> <br>
-                        <h5 href="https://www.washington.edu/" class="theme-color">
-                          <b>University of Washington</b>
-                        </h5>
-                        <a style="color: #000000">Visiting Researcher</a> [2024]
-                        <br> <br>
-                        <h5 href="https://www.gmu.edu/" class="theme-color">
-                          <b>George Mason University</b>
-                        </h5>
-                        <a style="color: #000000">Master of Science, Computer Science</a> [2022 - 2025]
-                        <br> <br>
-                        <h5 href="https://www.uts.edu.au/" class="theme-color">
-                          <b>University of Technology Sydney</b>
-                        </h5>
-                        <a style="color: #000000">Visiting Scholar</a> [2021-2022]
-                        <br> <br>
-                        <h5 href="https://iimraipur.ac.in/" class="theme-color">
-                          <b>Indian Institute of Management Raipur</b>
-                        </h5>
-                        <a style="color: #000000">Visiting Researcher</a> [2021]
-                        <br> <br>
-                        <h5 href="http://dtu.ac.in/" class="theme-color">
-                          <b>Delhi Technological University</b>
-                        </h5>
-                        <a style="color: #000000">Master of Technology, Information Systems</a> [2019-2021]
-                        <br> <br>
-                        <h5 href="https://cris.org.in/crisweb/design1/index.jsp" class="theme-color">
-                          <b>Centre for Railway Information Systems</b>
-                        </h5>
-                        <a style="color: #000000">Information Security Intern</a> [2018]
-                        <br> <br>
-                        <h5 href="https://www.igdtuw.ac.in/" class="theme-color">
-                          <b>Indira Gandhi Delhi Technical University for Women</b>
-                        </h5>
-                        <a style="color: #000000">Bachelor of Technology, Computer Science and Engineering</a> [2015-2019]
-                        <br> <br>
-                        <h5 href="https://www.mountolivetschool.in/" class="theme-color">
-                          <b>Mount Olivet School</b>
-                        </h5>
-                        <a style="color: #000000">Senior Secondary and Secondary, CBSE</a> [2015]
+                        <div class="affiliations-list">
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://logos-world.net/wp-content/uploads/2024/06/George-Mason-University-Symbol.png" alt="George Mason University logo">
+                            <div>
+                              <a href="https://www.gmu.edu/" class="affiliation-title">George Mason University</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2022 - Present</span>
+                                <p class="affiliation-role">Doctor of Philosophy, Computer Science</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4rGq2HFDibPpXmNbQdC2kivpRcE3KJmghOg&s" alt="University of Washington logo">
+                            <div>
+                              <a href="https://www.washington.edu/" class="affiliation-title">University of Washington</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2024</span>
+                                <p class="affiliation-role">Visiting Researcher</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://logos-world.net/wp-content/uploads/2024/06/George-Mason-University-Symbol.png" alt="George Mason University logo">
+                            <div>
+                              <a href="https://www.gmu.edu/" class="affiliation-title">George Mason University</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2022 - 2025</span>
+                                <p class="affiliation-role">Master of Science, Computer Science</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/64/University_of_Technology_Sydney_emblem.svg/960px-University_of_Technology_Sydney_emblem.svg.png" alt="University of Technology Sydney logo">
+                            <div>
+                              <a href="https://www.uts.edu.au/" class="affiliation-title">University of Technology Sydney</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2021 - 2022</span>
+                                <p class="affiliation-role">Visiting Scholar</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://upload.wikimedia.org/wikipedia/en/2/20/Indian_Institute_of_Management_Raipur_logo.png" alt="Indian Institute of Management Raipur logo">
+                            <div>
+                              <a href="https://iimraipur.ac.in/" class="affiliation-title">Indian Institute of Management Raipur</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2021</span>
+                                <p class="affiliation-role">Visiting Researcher</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://upload.wikimedia.org/wikipedia/en/b/b5/DTU%2C_Delhi_official_logo.png" alt="Delhi Technological University logo">
+                            <div>
+                              <a href="http://dtu.ac.in/" class="affiliation-title">Delhi Technological University</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2019 - 2021</span>
+                                <p class="affiliation-role">Master of Technology, Information Systems</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://media.licdn.com/dms/image/v2/C510BAQEJNV9ET3zHBg/company-logo_200_200/company-logo_200_200/0/1630625101210?e=2147483647&v=beta&t=RDDmYkssgc72jqkkA63iF1eoCGgU721VBSTjbEEHX9Y" alt="Centre for Railway Information Systems logo">
+                            <div>
+                              <a href="https://cris.org.in/crisweb/design1/index.jsp" class="affiliation-title">Centre for Railway Information Systems</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2018</span>
+                                <p class="affiliation-role">Information Security Intern</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://www.igdtuw.ac.in/IGDTUW/uploads/2041938450.png" alt="Indira Gandhi Delhi Technical University for Women logo">
+                            <div>
+                              <a href="https://www.igdtuw.ac.in/" class="affiliation-title">Indira Gandhi Delhi Technical University for Women</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2015 - 2019</span>
+                                <p class="affiliation-role">Bachelor of Technology, Computer Science and Engineering</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="affiliation-item">
+                            <img class="affiliation-logo" src="https://www.mountolivetschool.in/assets/img/logo.png" alt="Mount Olivet School logo">
+                            <div>
+                              <a href="https://www.mountolivetschool.in/" class="affiliation-title">Mount Olivet School</a>
+                              <div class="affiliation-meta">
+                                <span class="affiliation-date">2015</span>
+                                <p class="affiliation-role">Senior Secondary and Secondary</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <br>     
                       <br />
                       <script src="js/jquery.min.js"></script>

@@ -36,6 +36,107 @@
   .ftco-social a span {
     color: var(--theme-color) !important; /* Apply theme color to icons */
   }
+
+  .news-list {
+    display: grid;
+    gap: 0.18rem;
+    margin-top: 1.25rem;
+    position: relative;
+  }
+
+  .news-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    padding: 0.05rem 0;
+  }
+
+  .news-year {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 1.15rem 0 0.35rem;
+    color: var(--theme-color);
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .news-year:first-child {
+    margin-top: 0;
+  }
+
+  .news-year::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--theme-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--theme-color) 14%, transparent);
+  }
+
+  .news-year::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: color-mix(in srgb, var(--theme-color) 22%, transparent);
+  }
+
+  .news-date {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
+    border-left: 3px solid var(--theme-color);
+    border-radius: 5px;
+    padding: 0.1rem 0.38rem;
+    background: color-mix(in srgb, var(--theme-color) 10%, transparent);
+    color: var(--theme-color);
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .news-text {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.55);
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .news-text.news-highlight {
+    color: var(--theme-color);
+  }
+
+  body.dark-theme .news-date {
+    border-color: color-mix(in srgb, var(--theme-color) 32%, transparent);
+    border-left-color: var(--theme-color);
+    background: color-mix(in srgb, var(--theme-color) 14%, transparent);
+    color: var(--theme-color);
+  }
+
+  body.dark-theme .news-text {
+    color: rgba(216, 210, 200, 0.5);
+  }
+
+  body.dark-theme .news-text.news-highlight {
+    color: var(--theme-color);
+  }
+
+  body.dark-theme .news-year::after {
+    background: color-mix(in srgb, var(--theme-color) 30%, transparent);
+  }
+
+  @media (max-width: 575.98px) {
+    .news-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.18rem;
+      padding: 0.18rem 0;
+    }
+  }
 </style> 
 <script>
   (function() {
@@ -85,171 +186,69 @@
 <div class="row">
 <div class="col-md-12">
 <h1 class="mb-4" class="theme-color"><span></span><b>NEWS</b><span></span></h1>
-                      <a class="theme-color">April 24, 2026</a>
-                      <a style="color: #000000">I'm a PhD Candidate now!</a>
-                      <br />
-                      <a class="theme-color">April 06, 2026</a>
-                      <a style="color: #000000">VIGNETTE accepted to ACL Main (top 15% of accepted papers)!</a>
-                      <br />
-                      <a class="theme-color">April 06, 2026</a>
-                      <a style="color: #000000">Talent or Luck accepted to ACL Findings!</a>
-                      <br />
-                      <a class="theme-color">November 07, 2025</a>
-                      <a style="color: #000000">A paper, led by Jinhao, accepted to AAAI!</a>
-                      <br />
-                      <a class="theme-color">November 03, 2025</a>
-                      <a style="color: #000000">Congratulations to Rinki for defending her MS CS Thesis!</a>
-                      <br />
-                      <a class="theme-color">August 20, 2025</a>
-                      <a style="color: #000000">Two papers accepted to EMNLP Findings, led by Jinhao and Prommy!</a>
-                      <br />
-                      <a class="theme-color">April 26, 2025</a>
-                      <a>Attended the Mentorship Research Showcase Event at TJ High School with my advisor, Ziwei, and mentee, Mahika!</a>
-                      <br />
-                      <a class="theme-color">April 5, 2025</a>
-                      <a>Presented two posters at MASC-SLL in Penn State!</a>
-                      <br />
-                      <a class="theme-color">January 14, 2025</a>
-                      <a style="color: #000000">Received the OpenAI Researcher Access Program Award!</a>
-                      <br />
-                      <a class="theme-color">December 21, 2024</a>
-                      <a>Chennai!</a>
-                      <br />
-                      <a class="theme-color">December, 2024</a>
-                      <a>India Trip in winter!</a>
-                      <br />
-                      <a class="theme-color">November 12-16, 2024</a>
-                      <a>Attended EMNLP in Miami and presented BiasDora!</a>
-                      <br />
-                      <a class="theme-color">November 6, 2024</a>
-                      <a>Passed the Comprehensive Exam!</a>
-                      <br />
-                      <a class="theme-color">October 21-23, 2024</a>
-                      <a>Attended AIES in San Jose and gave a talk on the Contact Hypothesis paper + visited Stanford!</a>
-                      <br />
-                      <a class="theme-color">September 19, 2024</a>
-                      <a style="color: #000000">The 'BiasDora' paper accepted at EMNLP Findings!</a>
-                      <br />
-                      <a class="theme-color">July 24, 2024</a>
-                      <a>Attended the Ethics Workshop at UW organized by Aylin.</a>
-                      <br />
-                      <a class="theme-color">July 16, 2024</a>
-                      <a style="color: #000000">The 'Contact Hypothesis' paper accepted at AIES!</a>
-                      <br />
-                      <a class="theme-color">May 18, 2024</a>
-                      <a>Moved to Seattle for the summer to work with Aylin at the University of Washington.</a>
-                      <br />
-                      <a class="theme-color">May 10, 2024</a>
-                      <a>Completed my breadth requirements for the PhD!</a>
-                      <br />
-                      <a class="theme-color">May 9, 2024</a>
-                      <a>Attended Charith's graduation playing his parent.</a>
-                      <br />
-                      <a class="theme-color">May 3, 2024</a>
-                      <a style="color: #000000">Received Best Paper Award at MASC-SLL, Johns Hopkins, Maryland for the 'Contact Hypothesis' paper!</a>
-                      <br />
-                      <a class="theme-color">April 23, 2024</a>
-                      <a style="color: #000000">Received the CAHMP award for Summer 2024!</a>
-                      <br />
-                      <a class="theme-color">April 5-6, 2024</a>
-                      <a style="color: #000000">Gave a talk at SouthNLP + roadtrip to Emory University, Georgia + Kings Dominion!</a>
-                      <br />
-                      <a class="theme-color">March 24-30, 2024</a>
-                      <a>Went to Scotland to present the paper 'SALSA' at ECIR, visited Glasgow, 'Edinbruh', Sterling, and 'Fawkirk'!</a>
-                      <br />
-                      <a class="theme-color">March 22, 2024</a>
-                      <a>Visited my cousins in London, went to Kings Cross, and the Warner Bros Studio Tour!</a>
-                      <br />
-                      <a class="theme-color">March 17, 2024</a>
-                      <a>Attended Zakir Khan's show at Madison Square Garden, New York!</a>
-                      <br />
-                      <a class="theme-color">March 1-3, 2024</a>
-                      <a>New York yet again!</a>
-                      <br />
-                      <a class="theme-color">January 28, 2024</a>
-                      <a>Attended Piyush Mishra's show in DC, got the signed copy of his book!</a>
-                      <br />
-                      <a class="theme-color">January 24, 2024</a>
-                      <a>Took the AIEPS course in the spring semester at Arlington campus.</a>
-                      <br />
-                      <a class="theme-color">December 12-22, 2023</a>
-                      <a>Stayed in India for the winter, landed on a snow covered DC on the 22nd!</a>
-                      <br />
-                      <a class="theme-color">December 15, 2024</a>
-                      <a style="color: #000000">The 'SALSA' paper accepted at ECIR!</a>
-                      <br />
-                      <a class="theme-color">December 3-11, 2023</a>
-                      <a>Went to Singapore to present 'Global Voices, Local Biases' at EMNLP; did a lot of things there + Universal Studios!</a>
-                      <br />
-                      <a class="theme-color">November 4, 2023</a>
-                      <a>A day trip to Shenandoah.</a>
-                      <br />
-                      <a class="theme-color">October 7, 2023</a>
-                      <a style="color: #000000">The 'Global Voices, Local Biases' paper accepted at EMNLP!</a>
-                      <br />
-                      <a class="theme-color">September 1, 2023</a>
-                      <a>Joined the GMNLP group at Mason!</a>
-                      <br />
-                      <a class="theme-color">August 14, 2023</a>
-                      <a>Semester beginning dinner with Ziwei and the lab.</a>
-                      <br />
-                      <a class="theme-color">August 7-10, 2023</a>
-                      <a>Visited Montreal, Canada! Presented the paper 'True and Fair' at AIES.</a>
-                      <br />
-                      <a class="theme-color">June 9, 2023</a>
-                      <a>Saw the sunrise on Brooklyn, New York again, with Angel!</a>
-                      <br />
-                      <a class="theme-color">June 3-8, 2023</a>
-                      <a>Attended MTMA and LT4CPR at Mason.</a>
-                      <br />
-                      <a class="theme-color">May 27, 2023</a>
-                      <a style="color: #000000">The 'True and Fair' paper accepted at AIES!</a>
-                      <br />
-                      <a class="theme-color">May 25-29, 2023</a>
-                      <a>Visited Baltimore!</a>
-                      <br />
-                      <a class="theme-color">April 22, 2023</a>
-                      <a>Attended MASC-SLL'23 at the Arlington Campus.</a>
-                      <br />                      
-                      <a class="theme-color">April 13, 2023</a>
-                      <a style="color: #000000">Received the Summer Graduate Research Award 2023 at Mason!</a>
-                      <br />
-                      <a class="theme-color">April 6, 2023</a>
-                      <a style="color: #000000">Received two Research Excellence Awards at DTU!</a>
-                      <br />
-                      <a class="theme-color">March 14-19, 2023</a>
-                      <a>Visited New York (Also Columbia, PACE & CUNY in addition to the touristy places)!</a>
-                      <br />
-                      <a class="theme-color">February 14, 2023</a>
-                      <a>Attended Preslav Nakov's talk at Mason on Misinformation!</a>
-                      <br />
-                      <a class="theme-color">January 12, 2023</a>
-                      <a>Returned to Fairfax and began my second semester.</a>
-                      <br />
-                      <a class="theme-color">December 19, 2022</a>
-                      <a>Flew to India to stay with my family and my dog, Jim!</a>
-                      <br />
-                      <a class="theme-color">December 16, 2022</a>
-                      <a>Had a Winter Lunch at Mosaic with the NLP Lab!</a>
-                      <br />
-                      <a class="theme-color">November 5, 2022</a>
-                      <a>Had a Fall Break Lunch with the Human Info Lab at Mason!</a>
-                      <br />
-                      <a class="theme-color">September 28, 2022</a>
-                      <a>Started working with Prof. Ziwei Zhu!</a>
-                      <br />
-                      <a class="theme-color">August 22, 2022</a>
-                      <a>Joined the Human Info Lab at Mason!</a>
-                      <br />
-                      <a class="theme-color">August 19, 2022</a>
-                      <a>Moved into my new Apartment!</a>
-                      <br />
-                      <a class="theme-color">August 12, 2022</a>
-                      <a>Arrived in the States!</a>
-                      <br />
-                      <a class="theme-color">February 14, 2022</a>
-                      <a style="color: #000000">Received an admit letter from Mason!</a>
-                      <br />
+                      <div class="news-list">
+                      <div class="news-year">2026</div>
+                      <div class="news-item"><span class="news-date">April 29, 2026</span><p class="news-text news-highlight">Rinki's paper accepted to TrustNLP @ ACL 2026!</p></div>
+                      <div class="news-item"><span class="news-date">April 24, 2026</span><p class="news-text news-highlight">I'm a PhD Candidate now!</p></div>
+                      <div class="news-item"><span class="news-date">April 06, 2026</span><p class="news-text news-highlight">VIGNETTE accepted to ACL Main (top 15% of accepted papers)!</p></div>
+                      <div class="news-item"><span class="news-date">April 06, 2026</span><p class="news-text news-highlight">Talent or Luck accepted to ACL Findings!</p></div>
+                      <div class="news-year">2025</div>
+                      <div class="news-item"><span class="news-date">November 07, 2025</span><p class="news-text news-highlight">A paper, led by Jinhao, accepted to AAAI!</p></div>
+                      <div class="news-item"><span class="news-date">November 03, 2025</span><p class="news-text news-highlight">Congratulations to Rinki for defending her MS CS Thesis!</p></div>
+                      <div class="news-item"><span class="news-date">August 20, 2025</span><p class="news-text news-highlight">Two papers accepted to EMNLP Findings, led by Jinhao and Prommy!</p></div>
+                      <div class="news-item"><span class="news-date">April 26, 2025</span><p class="news-text">Attended the Mentorship Research Showcase Event at TJ High School with my advisor, Ziwei, and mentee, Mahika!</p></div>
+                      <div class="news-item"><span class="news-date">April 5, 2025</span><p class="news-text">Presented two posters at MASC-SLL in Penn State!</p></div>
+                      <div class="news-item"><span class="news-date">January 14, 2025</span><p class="news-text news-highlight">Received the OpenAI Researcher Access Program Award!</p></div>
+                      <div class="news-year">2024</div>
+                      <div class="news-item"><span class="news-date">December 21, 2024</span><p class="news-text">Chennai!</p></div>
+                      <div class="news-item"><span class="news-date">December, 2024</span><p class="news-text">India Trip in winter!</p></div>
+                      <div class="news-item"><span class="news-date">November 12-16, 2024</span><p class="news-text">Attended EMNLP in Miami and presented BiasDora!</p></div>
+                      <div class="news-item"><span class="news-date">November 6, 2024</span><p class="news-text">Passed the Comprehensive Exam!</p></div>
+                      <div class="news-item"><span class="news-date">October 21-23, 2024</span><p class="news-text">Attended AIES in San Jose and gave a talk on the Contact Hypothesis paper + visited Stanford!</p></div>
+                      <div class="news-item"><span class="news-date">September 19, 2024</span><p class="news-text news-highlight">The 'BiasDora' paper accepted at EMNLP Findings!</p></div>
+                      <div class="news-item"><span class="news-date">July 24, 2024</span><p class="news-text">Attended the Ethics Workshop at UW organized by Aylin.</p></div>
+                      <div class="news-item"><span class="news-date">July 16, 2024</span><p class="news-text news-highlight">The 'Contact Hypothesis' paper accepted at AIES!</p></div>
+                      <div class="news-item"><span class="news-date">May 18, 2024</span><p class="news-text">Moved to Seattle for the summer to work with Aylin at the University of Washington.</p></div>
+                      <div class="news-item"><span class="news-date">May 10, 2024</span><p class="news-text">Completed my breadth requirements for the PhD!</p></div>
+                      <div class="news-item"><span class="news-date">May 9, 2024</span><p class="news-text">Attended Charith's graduation playing his parent.</p></div>
+                      <div class="news-item"><span class="news-date">May 3, 2024</span><p class="news-text news-highlight">Received Best Paper Award at MASC-SLL, Johns Hopkins, Maryland for the 'Contact Hypothesis' paper!</p></div>
+                      <div class="news-item"><span class="news-date">April 23, 2024</span><p class="news-text news-highlight">Received the CAHMP award for Summer 2024!</p></div>
+                      <div class="news-item"><span class="news-date">April 5-6, 2024</span><p class="news-text news-highlight">Gave a talk at SouthNLP + roadtrip to Emory University, Georgia + Kings Dominion!</p></div>
+                      <div class="news-item"><span class="news-date">March 24-30, 2024</span><p class="news-text">Went to Scotland to present the paper 'SALSA' at ECIR, visited Glasgow, 'Edinbruh', Sterling, and 'Fawkirk'!</p></div>
+                      <div class="news-item"><span class="news-date">March 22, 2024</span><p class="news-text">Visited my cousins in London, went to Kings Cross, and the Warner Bros Studio Tour!</p></div>
+                      <div class="news-item"><span class="news-date">March 17, 2024</span><p class="news-text">Attended Zakir Khan's show at Madison Square Garden, New York!</p></div>
+                      <div class="news-item"><span class="news-date">March 1-3, 2024</span><p class="news-text">New York yet again!</p></div>
+                      <div class="news-item"><span class="news-date">January 28, 2024</span><p class="news-text">Attended Piyush Mishra's show in DC, got the signed copy of his book!</p></div>
+                      <div class="news-item"><span class="news-date">January 24, 2024</span><p class="news-text">Took the AIEPS course in the spring semester at Arlington campus.</p></div>
+                      <div class="news-item"><span class="news-date">December 12-22, 2023</span><p class="news-text">Stayed in India for the winter, landed on a snow covered DC on the 22nd!</p></div>
+                      <div class="news-item"><span class="news-date">December 15, 2024</span><p class="news-text news-highlight">The 'SALSA' paper accepted at ECIR!</p></div>
+                      <div class="news-year">2023</div>
+                      <div class="news-item"><span class="news-date">December 3-11, 2023</span><p class="news-text">Went to Singapore to present 'Global Voices, Local Biases' at EMNLP; did a lot of things there + Universal Studios!</p></div>
+                      <div class="news-item"><span class="news-date">November 4, 2023</span><p class="news-text">A day trip to Shenandoah.</p></div>
+                      <div class="news-item"><span class="news-date">October 7, 2023</span><p class="news-text news-highlight">The 'Global Voices, Local Biases' paper accepted at EMNLP!</p></div>
+                      <div class="news-item"><span class="news-date">September 1, 2023</span><p class="news-text">Joined the GMNLP group at Mason!</p></div>
+                      <div class="news-item"><span class="news-date">August 14, 2023</span><p class="news-text">Semester beginning dinner with Ziwei and the lab.</p></div>
+                      <div class="news-item"><span class="news-date">August 7-10, 2023</span><p class="news-text">Visited Montreal, Canada! Presented the paper 'True and Fair' at AIES.</p></div>
+                      <div class="news-item"><span class="news-date">June 9, 2023</span><p class="news-text">Saw the sunrise on Brooklyn, New York again, with Angel!</p></div>
+                      <div class="news-item"><span class="news-date">June 3-8, 2023</span><p class="news-text">Attended MTMA and LT4CPR at Mason.</p></div>
+                      <div class="news-item"><span class="news-date">May 27, 2023</span><p class="news-text news-highlight">The 'True and Fair' paper accepted at AIES!</p></div>
+                      <div class="news-item"><span class="news-date">May 25-29, 2023</span><p class="news-text">Visited Baltimore!</p></div>
+                      <div class="news-item"><span class="news-date">April 22, 2023</span><p class="news-text">Attended MASC-SLL'23 at the Arlington Campus.</p></div>
+                      <div class="news-item"><span class="news-date">April 13, 2023</span><p class="news-text news-highlight">Received the Summer Graduate Research Award 2023 at Mason!</p></div>
+                      <div class="news-item"><span class="news-date">April 6, 2023</span><p class="news-text news-highlight">Received two Research Excellence Awards at DTU!</p></div>
+                      <div class="news-item"><span class="news-date">March 14-19, 2023</span><p class="news-text">Visited New York (Also Columbia, PACE & CUNY in addition to the touristy places)!</p></div>
+                      <div class="news-item"><span class="news-date">February 14, 2023</span><p class="news-text">Attended Preslav Nakov's talk at Mason on Misinformation!</p></div>
+                      <div class="news-item"><span class="news-date">January 12, 2023</span><p class="news-text">Returned to Fairfax and began my second semester.</p></div>
+                      <div class="news-year">2022</div>
+                      <div class="news-item"><span class="news-date">December 19, 2022</span><p class="news-text">Flew to India to stay with my family and my dog, Jim!</p></div>
+                      <div class="news-item"><span class="news-date">December 16, 2022</span><p class="news-text">Had a Winter Lunch at Mosaic with the NLP Lab!</p></div>
+                      <div class="news-item"><span class="news-date">November 5, 2022</span><p class="news-text">Had a Fall Break Lunch with the Human Info Lab at Mason!</p></div>
+                      <div class="news-item"><span class="news-date">September 28, 2022</span><p class="news-text">Started working with Prof. Ziwei Zhu!</p></div>
+                      <div class="news-item"><span class="news-date">August 22, 2022</span><p class="news-text">Joined the Human Info Lab at Mason!</p></div>
+                      <div class="news-item"><span class="news-date">August 19, 2022</span><p class="news-text">Moved into my new Apartment!</p></div>
+                      <div class="news-item"><span class="news-date">August 12, 2022</span><p class="news-text">Arrived in the States!</p></div>
+                      <div class="news-item"><span class="news-date">February 14, 2022</span><p class="news-text news-highlight">Received an admit letter from Mason!</p></div>
+                      </div>
                       <br />
                       <script src="js/jquery.min.js"></script>
                       <script src="js/jquery-migrate-3.0.1.min.js"></script>
