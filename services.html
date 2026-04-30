@@ -37,6 +37,98 @@
       color: var(--theme-color) !important; /* Apply theme color to icons */
     }
   </style>
+  <style>
+    .services-list {
+      display: grid;
+      gap: 1.15rem;
+      max-width: 980px;
+    }
+
+    .service-section {
+      padding-left: 0;
+    }
+
+    .service-section h5 {
+      margin-bottom: 0.78rem;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .service-items {
+      display: grid;
+      gap: 0.38rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.58rem;
+      line-height: 1.45;
+    }
+
+    .service-date {
+      flex: 0 0 auto;
+      min-width: 5.9rem;
+      border: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
+      border-left: 3px solid var(--theme-color);
+      border-radius: 5px;
+      padding: 0.12rem 0.42rem;
+      background: color-mix(in srgb, var(--theme-color) 10%, transparent);
+      color: var(--theme-color);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .service-main {
+      color: #222;
+      font-weight: 500;
+    }
+
+    .service-detail {
+      color: rgba(0, 0, 0, 0.56);
+    }
+
+    .service-text {
+      min-width: 0;
+    }
+
+    body.dark-theme .service-date {
+      border-color: color-mix(in srgb, var(--theme-color) 32%, transparent);
+      border-left-color: var(--theme-color);
+      background: color-mix(in srgb, var(--theme-color) 14%, transparent);
+      color: var(--theme-color);
+    }
+
+    body.dark-theme .service-main {
+      color: var(--theme-color);
+    }
+
+    body.dark-theme .service-detail {
+      color: rgba(216, 210, 200, 0.68);
+    }
+
+    @media (max-width: 575.98px) {
+      .service-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.28rem;
+      }
+
+      .service-date {
+        min-width: 0;
+      }
+    }
+
+  </style>
   <script>
     (function() {
         const colors = ['#9582c4', '#ce5c5c', '#949efb', '#81a55f', '#de5d83', '#75c6d9', '#008080'];
@@ -86,39 +178,59 @@
               <div class="row">
                 <div class="col-md-12">
                   <h1 class="mb-4" class="theme-color"><span></span><b>SERVICES</b><span></span></h1>
-                  <h5 class="theme-color"><b>Student Mentoring</b></h5>
-                  <a style="color: #000000">Angela Liu</a> [Thomas Jefferson High School]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">Daksha Rajagopal</a> [Thomas Jefferson High School]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">Mamnuya Rinki</a> [M.S. Thesis, George Mason University]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">Mahika Banerjee</a> [Thomas Jefferson High School]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">Diwita Banerjee</a> [M.S., George Mason University]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">Rinki, Sharanya, and Aksh</a> [Advanced NLP Course Project, George Mason University]<a href="" target="_blank"></a><br/></p>
-                  <h5 class="theme-color"><b>Graduate Research Assistant</b></h5>
-                  <a style="color: #000000">George Mason University</a> [September 2024 - August 2025]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">George Mason University</a> [June-August, 2024]<a href="" target="_blank"></a><br/>
-                  <a style="color: #000000">George Mason University</a> [June-August, 2023]<a href="" target="_blank"></a><br/>
-                  <p><a style="color: #000000">Delhi Technological University</a> [August 2019-August 2021]<a href="" target="_blank"></a><br/></p>
-                  <h5 class="theme-color"><b>Graduate Teaching Assistant</b></h5>
-                  <a style="color: #000000">CS 484 Theory/Application Data Mining</a> [Spring 2025]<br/>
-                  <a style="color: #000000">CS 584 Theory/Application Data Mining</a> [Fall 2025]<br/>
-                  <a style="color: #000000">CS 108 Introduction to Computer Programming</a> [Spring 2024]<br/>
-                  <a style="color: #000000">CS 478 Natural Language Processing</a> [Fall 2023]<br/>
-                  <a style="color: #000000">COMP 502 Mathematical Foundations of Computing</a> [Fall 2023]<br/>
-                  <p><a style="color: #000000">CS 112 Introduction to Python Programming</a> [Fall 2022, Spring 2023]<br/></p>
-                  <!-- <h5 class="theme-color"><b>Mentoring @ DTU</b></h5>
-                  <p><a style="color: #000000">Delhi Technological University</a> [2020-2021]<a href="" target="_blank"></a><br/></p> -->
-                  <h5 class="theme-color"><b>Reviewer</b></h5>
-                  <p><a style="color: #000000">ARR'23-25, CHI'26, AAAI'26, IASEAI'26, COLM'25, TrustNLP'24-25, LTEDI @ EACL'24, CSCW'24, NeurIPS'23, ACM TIST</a> <a href="" target="_blank"></a></p>
-                  <h5 class="theme-color"><b>Talks</b></h5>
-                  <p><a style="color: #000000">LLM Ethics - Bias and Mitigation</a>: Invited Lecture - CS 678 Advanced NLP, 2024.<br/>
-                  <a style="color: #000000">Breaking Bias, Building Bridges</a>: AAAI/ACM AIES, San Jose, 2024.<br/>
-                  <a style="color: #000000">A Psychological View to Social Biases in LLMs</a>: SouthNLP @ Emory University, Georgia, 2024.<br/>
-                  <a style="color: #000000">Cyberbully Monitoring</a>: Represented University of Technology Sydney at ML4AU Research showcase event, 2021.<br/>
-                  <a style="color: #000000">Fake News on OSNs</a>: ICPCCAI, JECRC University, 2020.<br/></p>
-                  <!-- <h5 class="theme-color"><b>Tutor</b></h5>
-                  <p><a style="color: #000000">Raj Tutorials</a> [2015-2022]<a href="" target="_blank"></a><br/></p> -->
-                  <!-- <h5 class="theme-color"><b>Head Coordinator</b></h5>
-                  <p><a style="color: #000000">Cyber Cell, IGDTUW</a> [2017-2019]<a href="" target="_blank"></a><br/><br/> -->
+                  <div class="services-list">
+                    <section class="service-section">
+                      <h5 class="theme-color"><b>Student Mentoring</b></h5>
+                      <ul class="service-items">
+                        <li class="service-item"><span class="service-date">2025-2026</span><span class="service-text"><span class="service-main">Angela Liu</span> <span class="service-detail">Thomas Jefferson High School</span></span></li>
+                        <li class="service-item"><span class="service-date">2025-2026</span><span class="service-text"><span class="service-main">Daksha Rajagopal</span> <span class="service-detail">Thomas Jefferson High School</span></span></li>
+                        <li class="service-item"><span class="service-date">2024-2025</span><span class="service-text"><span class="service-main">Mamnuya Rinki</span> <span class="service-detail">George Mason University</span></span></li>
+                        <li class="service-item"><span class="service-date">2024-2025</span><span class="service-text"><span class="service-main">Mahika Banerjee</span> <span class="service-detail">Thomas Jefferson High School</span></span></li>
+                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">Diwita Banerjee</span> <span class="service-detail">George Mason University</span></span></li>
+                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">Rinki, Sharanya, and Aksh</span> <span class="service-detail">Advanced NLP Course Project, George Mason University</span></span></li>
+                      </ul>
+                    </section>
+
+                    <section class="service-section">
+                      <h5 class="theme-color"><b>Graduate Research Assistant</b></h5>
+                      <ul class="service-items">
+                        <li class="service-item"><span class="service-date">Sep 2024 - Aug 2025</span><span class="service-text"><span class="service-main">George Mason University</span></span></li>
+                        <li class="service-item"><span class="service-date">Jun - Aug 2024</span><span class="service-text"><span class="service-main">George Mason University</span></span></li>
+                        <li class="service-item"><span class="service-date">Jun - Aug 2023</span><span class="service-text"><span class="service-main">George Mason University</span></span></li>
+                        <li class="service-item"><span class="service-date">Aug 2019 - Aug 2021</span><span class="service-text"><span class="service-main">Delhi Technological University</span></span></li>
+                      </ul>
+                    </section>
+
+                    <section class="service-section">
+                      <h5 class="theme-color"><b>Graduate Teaching Assistant</b></h5>
+                      <ul class="service-items">
+                        <li class="service-item"><span class="service-date">Spring 2025</span><span class="service-text"><span class="service-main">CS 484 Theory/Application Data Mining</span></span></li>
+                        <li class="service-item"><span class="service-date">Fall 2025</span><span class="service-text"><span class="service-main">CS 584 Theory/Application Data Mining</span></span></li>
+                        <li class="service-item"><span class="service-date">Spring 2024</span><span class="service-text"><span class="service-main">CS 108 Introduction to Computer Programming</span></span></li>
+                        <li class="service-item"><span class="service-date">Fall 2023</span><span class="service-text"><span class="service-main">CS 478 Natural Language Processing</span></span></li>
+                        <li class="service-item"><span class="service-date">Fall 2023</span><span class="service-text"><span class="service-main">COMP 502 Mathematical Foundations of Computing</span></span></li>
+                        <li class="service-item"><span class="service-date">Fall 2022, Spring 2023</span><span class="service-text"><span class="service-main">CS 112 Introduction to Python Programming</span></span></li>
+                      </ul>
+                    </section>
+
+                    <section class="service-section">
+                      <h5 class="theme-color"><b>Reviewer</b></h5>
+                      <ul class="service-items">
+                        <li class="service-item"><span class="service-date">2023 - 2026</span><span class="service-text"><span class="service-main">ARR'23-25, CHI'26, AAAI'26, IASEAI'26, COLM'25, TrustNLP'24-25, LTEDI @ EACL'24, CSCW'24, NeurIPS'23, ACM TIST</span></span></li>
+                      </ul>
+                    </section>
+
+                    <section class="service-section">
+                      <h5 class="theme-color"><b>Talks</b></h5>
+                      <ul class="service-items">
+                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">LLM Ethics - Bias and Mitigation</span>: <span class="service-detail">Invited Lecture - CS 678 Advanced NLP</span></span></li>
+                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">Breaking Bias, Building Bridges</span>: <span class="service-detail">AAAI/ACM AIES, San Jose</span></span></li>
+                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">A Psychological View to Social Biases in LLMs</span>: <span class="service-detail">SouthNLP @ Emory University, Georgia</span></span></li>
+                        <li class="service-item"><span class="service-date">2021</span><span class="service-text"><span class="service-main">Cyberbully Monitoring</span>: <span class="service-detail">Represented University of Technology Sydney at ML4AU Research showcase event</span></span></li>
+                        <li class="service-item"><span class="service-date">2020</span><span class="service-text"><span class="service-main">Fake News on OSNs</span>: <span class="service-detail">ICPCCAI, JECRC University</span></span></li>
+                      </ul>
+                    </section>
+                  </div>
                     <script src="js/jquery.min.js"></script>
                     <script src="js/jquery-migrate-3.0.1.min.js"></script>
                     <script src="js/popper.min.js"></script>
@@ -136,7 +248,6 @@
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                     <script src="js/google-map.js"></script>
                     <script src="js/main.js"></script>
-                  </p>
                 </div>
               </div>
             </div>

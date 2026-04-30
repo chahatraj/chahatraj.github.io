@@ -85,6 +85,22 @@
 	};
 	themeToggle();
 
+	var siteFooter = function() {
+		var $main = $('#colorlib-main');
+		if (!$main.length || $('.site-footer-note').length) return;
+		var pageName = window.location.pathname.split('/').pop();
+		if (!pageName || pageName === 'index.html') return;
+
+		$main.append(
+			'<footer class="site-footer-note">' +
+				'<span>Last updated on April 30, 2026</span>' +
+				'<span class="site-footer-separator">·</span>' +
+				'<span>Made with <span class="site-footer-heart" aria-label="heart"></span></span>' +
+			'</footer>'
+		);
+	};
+	$(siteFooter);
+
 	// loader
 	var loader = function() {
 		setTimeout(function() { 

@@ -38,10 +38,74 @@
     }
   </style>
   <style>
-    .gallery { display: flex; flex-wrap: wrap; justify-content: space-around; }
-    .tile { margin: 20px; text-align: center; width: 30%; }
-    .tile img { width: 100%; height: auto; }
-    .caption { margin-top: 10px; font-size: 16px; color: #333; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .tile {
+      text-align: center;
+      padding: 0.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tile:hover,
+    .tile:focus-within {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--theme-color) 38%, transparent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .tile a {
+      display: block;
+      border: 0 !important;
+    }
+
+    .tile img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 5px;
+    }
+
+    .caption {
+      margin-top: 0.75rem;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: rgba(0, 0, 0, 0.62);
+    }
+
+    .caption .venue {
+      color: var(--theme-color);
+    }
+
+    body.dark-theme .tile {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-theme .tile:hover,
+    body.dark-theme .tile:focus-within {
+      border-color: color-mix(in srgb, var(--theme-color) 46%, transparent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+    }
+
+    body.dark-theme .caption {
+      color: rgba(216, 210, 200, 0.72) !important;
+    }
+
+    body.dark-theme .caption .venue {
+      color: var(--theme-color);
+    }
   </style>
   <script>
     (function() {
@@ -93,12 +157,30 @@
                 <div class="col-md-12">
                   <h1 class="mb-4" class="theme-color"><span></span><b>POSTERS</b><span></span></h1>
                   <div class="gallery">
-                    <div class="tile"><img src="./posters/p7.png" alt="Poster 7"><div class="caption">MASC-SLL 2025 @ Penn State</div></div>
-                    <div class="tile"><img src="./posters/p6.png" alt="Poster 6"><div class="caption">MASC-SLL 2025 @ Penn State</div></div>
-                    <div class="tile"><img src="./posters/p5.png" alt="Poster 5"><div class="caption">EMNLP 2024 @ Miami</div></div>
-                    <div class="tile"><img src="./posters/p4.png" alt="Poster 4"><div class="caption">MASC-SLL 2024 @ Johns Hopkins</div></div>
-                    <div class="tile"><img src="./posters/p3.png" alt="Poster 3"><div class="caption">ECIR 2024 @ Glasgow</div></div>
-                    <div class="tile"><img src="./posters/p2.png" alt="Poster 2"><div class="caption">EMNLP 2023 @  Singapore</div></div>
+                    <div class="tile">
+                      <a href="./posters/p7.png" target="_blank" rel="noopener"><img src="./posters/p7.png" alt="Poster 7"></a>
+                      <div class="caption"><span class="venue">MASC-SLL 2025</span> @ Penn State</div>
+                    </div>
+                    <div class="tile">
+                      <a href="./posters/p6.png" target="_blank" rel="noopener"><img src="./posters/p6.png" alt="Poster 6"></a>
+                      <div class="caption"><span class="venue">MASC-SLL 2025</span> @ Penn State</div>
+                    </div>
+                    <div class="tile">
+                      <a href="./posters/p5.png" target="_blank" rel="noopener"><img src="./posters/p5.png" alt="Poster 5"></a>
+                      <div class="caption"><span class="venue">EMNLP 2024</span> @ Miami</div>
+                    </div>
+                    <div class="tile">
+                      <a href="./posters/p4.png" target="_blank" rel="noopener"><img src="./posters/p4.png" alt="Poster 4"></a>
+                      <div class="caption"><span class="venue">MASC-SLL 2024</span> @ Johns Hopkins</div>
+                    </div>
+                    <div class="tile">
+                      <a href="./posters/p3.png" target="_blank" rel="noopener"><img src="./posters/p3.png" alt="Poster 3"></a>
+                      <div class="caption"><span class="venue">ECIR 2024</span> @ Glasgow</div>
+                    </div>
+                    <div class="tile">
+                      <a href="./posters/p2.png" target="_blank" rel="noopener"><img src="./posters/p2.png" alt="Poster 2"></a>
+                      <div class="caption"><span class="venue">EMNLP 2023</span> @ Singapore</div>
+                    </div>
                     <!-- <div class="tile"><img src="./posters/p1.png" alt="Poster 1"><div class="caption">AIES 2023 @ Montreal</div></div> -->
                 </div>
                   <script src="js/jquery.min.js"></script>

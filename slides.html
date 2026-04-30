@@ -39,25 +39,142 @@
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    .gallery { display: flex; flex-wrap: wrap; justify-content: space-around; }
-    .tile { margin: 5px; text-align: center; width: 30%; }
-    .tile iframe { width: 100%; height: 183px; border: none; }
-    .caption { margin-top: 5px; font-size: 16px; color: #333; }
-    .btn {
-        background-color: #ffffff;
-        /* color: #ffffff; */
-        color: "theme-color";
-        padding: 0px;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 30px;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.25rem;
+    }
+
+    .slides-container {
+      max-width: 100%;
+    }
+
+    .tile {
+      text-align: center;
+      padding: 0.55rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tile:hover,
+    .tile:focus-within {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--theme-color) 38%, transparent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .slide-preview {
+      display: flex;
+      aspect-ratio: 16 / 9;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--theme-color);
+      text-decoration: none !important;
+    }
+
+    .slide-preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-preview i {
+      font-size: 2.6rem;
+      opacity: 0.9;
+    }
+
+    .caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      margin-top: 0.55rem;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: rgba(0, 0, 0, 0.62);
+      text-align: left;
+    }
+
+    .slide-actions {
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 0.25rem;
+    }
+
+    .slide-action {
+      display: inline-flex;
+      width: 1.65rem;
+      height: 1.55rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent) !important;
+      border-radius: 5px;
+      background: color-mix(in srgb, var(--theme-color) 7%, transparent);
+      color: var(--theme-color) !important;
+      text-decoration: none !important;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .slide-action:hover,
+    .slide-action:focus {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--theme-color) 42%, transparent) !important;
+      background: color-mix(in srgb, var(--theme-color) 13%, transparent);
+    }
+
+    body.dark-theme .tile {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-theme .tile:hover,
+    body.dark-theme .tile:focus-within {
+      border-color: color-mix(in srgb, var(--theme-color) 46%, transparent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+    }
+
+    body.dark-theme .slide-preview {
+      border-color: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    body.dark-theme .caption {
+      color: rgba(216, 210, 200, 0.72) !important;
+    }
+
+    body.dark-theme .slide-action {
+      border-color: color-mix(in srgb, var(--theme-color) 34%, transparent) !important;
+      background: color-mix(in srgb, var(--theme-color) 12%, transparent);
+    }
+
+    @media (max-width: 1199.98px) {
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
   <script>
@@ -103,30 +220,66 @@
   <div id="colorlib-main">
     <div class="author-info text p-3 p-md-5">
       <section class="desc">
-        <div class="container">
+        <div class="container slides-container">
           <div class="row d-flex">
             <div class="col-lg-32">
               <div class="row">
                 <div class="col-md-12">
                   <h1 class="mb-4" class="theme-color"><span></span><b>SLIDES</b><span></span></h1>
                 <div class="gallery">
-                    <div class="tile"><iframe src="slides/s1.pdf"></iframe><div class="caption">EMNLP 2023 &nbsp;
-                        <a href="slides/s1.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <div class="tile">
+                      <a class="slide-preview" href="slides/s1.pdf" target="_blank" rel="noopener" aria-label="Open EMNLP 2023 slides"><img src="slides/previews/s1.pdf.png" alt="EMNLP 2023 slide preview"></a>
+                      <div class="caption"><span>EMNLP 2023</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s1.pdf" target="_blank" rel="noopener" aria-label="Open EMNLP 2023 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s1.pdf" download aria-label="Download EMNLP 2023 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div>
-                    <div class="tile"><iframe src="slides/s2.pdf"></iframe><div class="caption">SouthNLP 2024 &nbsp;
-                        <a href="slides/s2.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <div class="tile">
+                      <a class="slide-preview" href="slides/s2.pdf" target="_blank" rel="noopener" aria-label="Open SouthNLP 2024 slides"><img src="slides/previews/s2.pdf.png" alt="SouthNLP 2024 slide preview"></a>
+                      <div class="caption"><span>SouthNLP 2024</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s2.pdf" target="_blank" rel="noopener" aria-label="Open SouthNLP 2024 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s2.pdf" download aria-label="Download SouthNLP 2024 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div>
-                    <div class="tile"><iframe src="slides/s3.pdf"></iframe><div class="caption">Reading Groups Spring 2024 &nbsp;
-                        <a href="slides/s3.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <div class="tile">
+                      <a class="slide-preview" href="slides/s3.pdf" target="_blank" rel="noopener" aria-label="Open Reading Groups Spring 2024 slides"><img src="slides/previews/s3.pdf.png" alt="Reading Groups Spring 2024 slide preview"></a>
+                      <div class="caption"><span>Reading Groups Spring 2024</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s3.pdf" target="_blank" rel="noopener" aria-label="Open Reading Groups Spring 2024 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s3.pdf" download aria-label="Download Reading Groups Spring 2024 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div>
-                    <div class="tile"><iframe src="slides/s4.pdf"></iframe><div class="caption">GMNLP Spring 2024 &nbsp;
-                        <a href="slides/s4.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <div class="tile">
+                      <a class="slide-preview" href="slides/s4.pdf" target="_blank" rel="noopener" aria-label="Open GMNLP Spring 2024 slides"><img src="slides/previews/s4.pdf.png" alt="GMNLP Spring 2024 slide preview"></a>
+                      <div class="caption"><span>GMNLP Spring 2024</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s4.pdf" target="_blank" rel="noopener" aria-label="Open GMNLP Spring 2024 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s4.pdf" download aria-label="Download GMNLP Spring 2024 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div>
-                    <!-- <div class="tile"><iframe src="slides/s5.pdf"></iframe><div class="caption">AIES 2024 &nbsp;
-                      <a href="slides/s5.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <!-- <div class="tile">
+                      <a class="slide-preview" href="slides/s5.pdf" target="_blank" rel="noopener" aria-label="Open AIES 2024 slides"><i class="fas fa-file-pdf" aria-hidden="true"></i></a>
+                      <div class="caption"><span>AIES 2024</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s5.pdf" target="_blank" rel="noopener" aria-label="Open AIES 2024 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s5.pdf" download aria-label="Download AIES 2024 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div>
-                    <div class="tile"><iframe src="slides/s6.pdf"></iframe><div class="caption">EMNLP 2024 &nbsp;
-                      <a href="slides/s6.pdf" download><button type="button" class="btn"><i class="fas fa-download theme-color"></i></button></a></div>
+                    <div class="tile">
+                      <a class="slide-preview" href="slides/s6.pdf" target="_blank" rel="noopener" aria-label="Open EMNLP 2024 slides"><i class="fas fa-file-pdf" aria-hidden="true"></i></a>
+                      <div class="caption"><span>EMNLP 2024</span>
+                        <span class="slide-actions">
+                          <a class="slide-action" href="slides/s6.pdf" target="_blank" rel="noopener" aria-label="Open EMNLP 2024 slides"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                          <a class="slide-action" href="slides/s6.pdf" download aria-label="Download EMNLP 2024 slides"><i class="fas fa-download" aria-hidden="true"></i></a>
+                        </span>
+                      </div>
                     </div> -->
                 </div>
                   <script src="js/jquery.min.js"></script>
