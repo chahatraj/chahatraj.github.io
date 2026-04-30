@@ -27,6 +27,64 @@
 	};
 	fullHeight();
 
+	var unlinkContactNav = function() {
+		$('#colorlib-main-menu a[href$="contact.html"]').closest('li').remove();
+	};
+	unlinkContactNav();
+
+	var themeToggle = function() {
+		var storageKey = 'site-theme';
+		var $aside = $('#colorlib-aside');
+
+		if (!$aside.length || $('.theme-toggle').length) return;
+
+		var storedTheme = null;
+		try {
+			storedTheme = localStorage.getItem(storageKey);
+		} catch (error) {
+			storedTheme = null;
+		}
+		var isDark = storedTheme === 'dark';
+		var $toggle = $(
+			'<div class="theme-toggle-wrap">' +
+				'<button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">' +
+					'<span class="theme-toggle-icon" aria-hidden="true">☾</span>' +
+					'<span class="theme-toggle-text">Dark</span>' +
+				'</button>' +
+			'</div>'
+		);
+		var $button = $toggle.find('.theme-toggle');
+		var $icon = $toggle.find('.theme-toggle-icon');
+		var $text = $toggle.find('.theme-toggle-text');
+
+		var applyTheme = function(dark) {
+			$('body').toggleClass('dark-theme', dark);
+			$button.attr({
+				'aria-pressed': dark ? 'true' : 'false',
+				'aria-label': dark ? 'Switch to light theme' : 'Switch to dark theme'
+			});
+			$icon.text(dark ? '☀' : '☾');
+			$text.text(dark ? 'Light' : 'Dark');
+		};
+
+		var $logo = $aside.find('#colorlib-logo');
+		if ($logo.length) {
+			$logo.after($toggle);
+		} else {
+			$aside.prepend($toggle);
+		}
+		applyTheme(isDark);
+
+		$button.on('click', function() {
+			isDark = !$('body').hasClass('dark-theme');
+			try {
+				localStorage.setItem(storageKey, isDark ? 'dark' : 'light');
+			} catch (error) {}
+			applyTheme(isDark);
+		});
+	};
+	themeToggle();
+
 	// loader
 	var loader = function() {
 		setTimeout(function() { 
@@ -236,4 +294,3 @@
 
 
 })(jQuery);
-
