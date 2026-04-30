@@ -35,11 +35,47 @@
 
 
 
-    .doctoral-paper,
-    .masters-paper {
+    .publication-year {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      list-style: none;
+      margin: 1.15rem 0 0.45rem;
+      color: var(--theme-color);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .publication-year:first-child {
+      margin-top: 0;
+    }
+
+    .publication-year::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--theme-color);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--theme-color) 14%, transparent);
+    }
+
+    .publication-year::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: color-mix(in srgb, var(--theme-color) 22%, transparent);
+    }
+
+    body.dark-theme .publication-year::after {
+      background: color-mix(in srgb, var(--theme-color) 30%, transparent);
+    }
+
+    .publication-paper {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 210px;
-      column-gap: 1.35rem;
+      grid-template-columns: minmax(0, 1fr) 130px;
+      column-gap: 2rem;
       align-items: start;
       position: relative;
       list-style-position: outside;
@@ -48,8 +84,7 @@
       padding-left: 0.15rem;
     }
 
-    .doctoral-paper::before,
-    .masters-paper::before {
+    .publication-paper::before {
       content: "";
       position: absolute;
       left: -1.1rem;
@@ -60,12 +95,9 @@
       background: var(--theme-color);
     }
 
-    .doctoral-paper > p,
-    .doctoral-paper > .popup-abs,
-    .doctoral-paper > .popup-bib,
-    .masters-paper > p,
-    .masters-paper > .popup-abs,
-    .masters-paper > .popup-bib {
+    .publication-paper > p,
+    .publication-paper > .popup-abs,
+    .publication-paper > .popup-bib {
       grid-column: 1;
     }
 
@@ -73,29 +105,30 @@
       grid-column: 2;
       grid-row: 1 / span 3;
       align-self: start;
-      border: 0;
       border-radius: 5px;
       overflow: hidden;
+      border: 1px solid #ffffff;
       background: var(--theme-color);
-      box-shadow: 0 8px 20px color-mix(in srgb, var(--theme-color) 24%, transparent);
+      box-shadow: none;
     }
 
     .publication-venue {
       display: block;
-      padding: 0.48rem 0.75rem;
+      padding: 0.36rem 0.42rem;
       color: #ffffff;
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.035em;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0;
       line-height: 1.35;
       text-align: center;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     body.dark-theme .publication-visual {
+      border-color: #ffffff;
       background: var(--theme-color);
-      box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-color) 22%, transparent);
+      box-shadow: none;
     }
 
     body.dark-theme .publication-venue {
@@ -103,8 +136,7 @@
     }
 
     @media (max-width: 767.98px) {
-      .doctoral-paper,
-      .masters-paper {
+      .publication-paper {
         grid-template-columns: 1fr;
       }
 
@@ -169,16 +201,10 @@
               <div class="row">
                 <div class="col-md-12">
                   <h1 class="mb-4" class="theme-color"><span></span><b>PUBLICATIONS</b><span></span></h1>
-                  <p align="center">
-                    <a href="https://scholar.google.com/citations?user=K8EKC4gAAAAJ&hl=en&oi=ao" target="_blank" class="btn-round btn-primary btn" style="background-color: #ffffff">Google Scholar</a>
-                  </p>
-                  <br/>
                   <ul>
-                    <h1 class="mb-4" class="theme-color" align="left">
-                      <span></span><b>Doctoral Research</b><span></span>
-                    </h1>
+                    <li class="publication-year">2026</li>
                     <!-- Publication 11 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Bowen Wei, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Main 2026 (top 15% of accepted papers)]
@@ -224,7 +250,7 @@
                     </li>
                     <!-- Publication 11 Ends Here -->
                     <!-- Publication 10 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Talent or Luck? Evaluating Attribution Bias in Large Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Mahika Banerjee, Jinhao Pan, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Findings 2026]
@@ -260,8 +286,45 @@
                       </aside>
                     </li>
                     <!-- Publication 10 Ends Here -->
+                    <!-- Publication 7 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">Discovering Bias Associations through Open-Ended LLM Generations.</a><br />
+                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [AAAI 2026]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd7">Abstract</button>
+                        <a href="https://arxiv.org/pdf/2508.01412"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd7">BibTeX</button>
+                      </p>
+                      <div id="absd7" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        Social biases embedded in Large Language
+                        Models (LLMs) raise critical concerns, resulting in representational harms - unfair or distorted portrayals of demographic groups - that
+                        may be expressed in subtle ways through generated language. Existing evaluation methods
+                        often depend on predefined identity-concept associations, limiting their ability to surface new
+                        or unexpected forms of bias. In this work, we
+                        present the Bias Association Discovery Framework (BADF), a systematic approach for extracting both known and previously unrecognized associations between demographic identities and descriptive concepts from open-ended
+                        LLM outputs. Through comprehensive experiments spanning multiple models and diverse
+                        real-world contexts, BADF enables robust mapping and analysis of the varied concepts that
+                        characterize demographic identities. Our findings advance the understanding of biases in
+                        open-ended generation and provide a scalable
+                        tool for identifying and analyzing bias associations in LLMs. <br /> <br />
+                      </div>
+                      <div id="bibd7" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{pan2025discovering,
+                          title={Discovering Bias Associations through Open-Ended LLM Generations},
+                          author={Pan, Jinhao and Raj, Chahat and Zhu, Ziwei},
+                          journal={arXiv preprint arXiv:2508.01412},
+                          year={2025}
+                        }
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">AAAI</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 7 Ends Here -->
+                    <li class="publication-year">2025</li>
                     <!-- Publication 9 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Toward Inclusive Language Models: Sparsity-Driven Calibration for Systematic and Interpretable Mitigation of Social Biases in LLMs.</a><br />
                         Prommy Sultana Hossain, <a class="theme-color">Chahat Raj</a>, Ziwei Zhu, Jessica Lin, and Emanuela Marasco [EMNLP Findings 2025]
@@ -323,7 +386,7 @@
                     </li>
                     <!-- Publication 9 Ends Here -->
                     <!-- Publication 8 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">What's Not Said Still Hurts: A Description-Based Evaluation Framework for Measuring Social Bias in LLMs</a><br />
                         Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Ziyu Yao, and Ziwei Zhu [EMNLP Findings 2025]
@@ -371,44 +434,8 @@
                       </aside>
                     </li>
                     <!-- Publication 8 Ends Here -->
-                    <!-- Publication 7 Starts Here -->
-                    <li class="doctoral-paper">
-                      <p>
-                        <a style="color: #000000">Discovering Bias Associations through Open-Ended LLM Generations.</a><br />
-                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [AAAI 2026]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd7">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2508.01412"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd7">BibTeX</button>
-                      </p>
-                      <div id="absd7" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        Social biases embedded in Large Language
-                        Models (LLMs) raise critical concerns, resulting in representational harms - unfair or distorted portrayals of demographic groups - that
-                        may be expressed in subtle ways through generated language. Existing evaluation methods
-                        often depend on predefined identity-concept associations, limiting their ability to surface new
-                        or unexpected forms of bias. In this work, we
-                        present the Bias Association Discovery Framework (BADF), a systematic approach for extracting both known and previously unrecognized associations between demographic identities and descriptive concepts from open-ended
-                        LLM outputs. Through comprehensive experiments spanning multiple models and diverse
-                        real-world contexts, BADF enables robust mapping and analysis of the varied concepts that
-                        characterize demographic identities. Our findings advance the understanding of biases in
-                        open-ended generation and provide a scalable
-                        tool for identifying and analyzing bias associations in LLMs. <br /> <br />
-                      </div>
-                      <div id="bibd7" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{pan2025discovering,
-                          title={Discovering Bias Associations through Open-Ended LLM Generations},
-                          author={Pan, Jinhao and Raj, Chahat and Zhu, Ziwei},
-                          journal={arXiv preprint arXiv:2508.01412},
-                          year={2025}
-                        }
-                      </div>
-                      <aside class="publication-visual">
-                        <span class="publication-venue">AAAI</span>
-                      </aside>
-                    </li>
-                    <!-- Publication 7 Ends Here -->
                     <!-- Publication 6 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Measuring South Asian Biases in Large Language Models.</a><br />
                         Mamnuya Rinki, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, and Ziwei Zhu [In Submission]
@@ -451,8 +478,9 @@
                       </aside>
                     </li>
                     <!-- Publication 6 Ends Here -->
+                    <li class="publication-year">2024</li>
                     <!-- Publication 5 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">BiasDora: Exploring Hidden Biased Associations in Vision-Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [EMNLP Findings 2024]
@@ -497,7 +525,7 @@
                     </li>
                     <!-- Publication 5 Ends Here -->
                     <!-- Publication 4 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Breaking Bias, Building Bridges: Evaluation and Mitigation of Social Biases in LLMs via Contact Hypothesis.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [AIES 2024]
@@ -536,7 +564,7 @@
                     </li>
                     <!-- Publication 4 Ends Here -->
                     <!-- Publication 3 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">SALSA: Salience-Based Switching Attack for Adversarial Perturbations in Fake News Detection Models.</a><br />
                         <a class="theme-color">Chahat Raj*</a>, Anjishnu Mukherjee*, Hemant Purohit, Antonios Anastasopoulos, and Ziwei Zhu [ECIR 2024]
@@ -572,8 +600,126 @@
                       </aside>
                     </li>
                     <!-- Publication 3 Ends Here -->
+                    <!-- Publication 15 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">Bitcoin Price Prediction using LSTM Autoencoder and False Nearest Neighbor Loss.</a><br />
+                        <a class="theme-color">Chahat Raj</a> and Manojit Chattopadhyay [Soft Computing, 2024]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm15">Abstract</button>
+                        <a href="./files/m15.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/chahatraj/LSTM-Autoencoder-FNN"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm15">BibTeX</button>
+                      </p>
+                      <div id="absm15" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        We implement deep learning for predicting bitcoin closing prices. Identifying two new determiners, we propose a novel LSTM Autoencoder
+                        using Mean Squared Error (MSE) loss which is regularized by False Nearest Neighbor (FNN) algorithm. The method results in reduced error
+                        rates when compared to traditional forecasting algorithms and is statistically validated. This research contributes by developing a
+                        robust algorithm that accurately determines the fluctuation directions in bitcoin prices and results in values closer to the actual prices. <br /> <br />
+                      </div>
+                      <div id="bibm15" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{raj2024bitcoin,
+                          title={Bitcoin price prediction using LSTM autoencoder regularized by false nearest neighbor loss},
+                          author={Raj, Chahat and Chattopadhyay, Manojit},
+                          journal={Soft Computing},
+                          volume={28},
+                          number={21},
+                          pages={12827--12834},
+                          year={2024},
+                          publisher={Springer}
+                        }
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">Soft Computing</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 15 ends here -->
+
+                    <!-- Publication 14 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">Machine Learning Models help Differentiate between Causes of Recurrent Spontaneous Vertigo.</a><br />
+                        Chao Wang, Allison S Young, <a class="theme-color">Chahat Raj</a>, Andrew P Bradshaw, Benjamin Nham, Sally M Rosengren, Zeljka Calic, David Burke,
+                        G Michael Halmagyi, Gnana K Bharathy, Mukesh Prasad, and Miriam S Welgampola [Journal of Neurology 2024]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm14">Abstract</button>
+                        <a href="./files/m14.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm14">BibTeX</button>
+                      </p>
+                      <div id="absm14" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        Vestibular migraine (VM) and Menière's disease (MD) are two common causes of recurrent spontaneous vertigo. Using history, video-nystagmography
+                        and audiovestibular tests, we developed machine learning models to separate these two disorders. We recruited patients with VM or MD from a
+                        neurology outpatient facility. One hundred features from six “feature subsets”: history, acute video-nystagmography and four laboratory tests
+                        (video head impulse test, vestibular-evoked myogenic potentials, caloric testing and audiogram) were used. We applied ten machine learning
+                        algorithms to develop classification models. Modelling was performed using three “tiers” of data availability to simulate three clinical settings.
+                        “Tier 1” used all available data to simulate the neuro-otology clinic, “Tier 2” used only history, audiogram and caloric test data, representing
+                        the general neurology clinic, and “Tier 3” used history alone as occurs in primary care. Model performance was evaluated using tenfold
+                        cross-validation. Data from 160 patients with VM and 114 with MD were used for model development. All models effectively separated the two disorders
+                        for all three tiers, with accuracies of 85.77-97.81%. The best performing algorithms (AdaBoost and Random Forest) yielded accuracies of 97.81%
+                        (95% CI 95.24-99.60), 94.53% (91.09-99.52%) and 92.34% (92.28-96.76%) for tiers 1, 2 and 3. The best feature subset combination was history, acute
+                        video-nystagmography, video head impulse test and caloric testing, and the best single feature subset was history. Machine learning models can accurately
+                        differentiate between VM and MD and are promising tools to assist diagnosis by medical practitioners with diverse levels of expertise and resources. <br /> <br />
+                      </div>
+                      <div id="bibm14" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{wang2024machine,
+                          title={Machine learning models help differentiate between causes of recurrent spontaneous vertigo},
+                          author={Wang, Chao and Young, Allison S and Raj, Chahat and Bradshaw, Andrew P and Nham, Benjamin and Rosengren, Sally M and Calic, Zeljka and Burke, David and Halmagyi, G Michael and Bharathy, Gnana K and others},
+                          journal={Journal of Neurology},
+                          volume={271},
+                          number={6},
+                          pages={3426--3438},
+                          year={2024},
+                          publisher={Springer}
+                        }
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">Journal of Neurology</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 14 ends here -->
+
+                    <!-- Publication 13 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">Analyzing Sentiments Towards E-Levy Policy Implementation in Ghana using Twitter Data.</a><br />
+                        Peter Appiahene, Stephen Afrifa, Emmanuel Kyei Akwah, Arjun Choudhry, Inder Khatri, <a class="theme-color">Chahat Raj</a> and Mukesh Prasad [International Journal of Information Technology 2024]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm13">Abstract</button>
+                        <a href="./files/m13.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm13">BibTeX</button>
+                      </p>
+                      <div id="absm13" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        A newly proposed or implemented government policy often encounters challenges. Ghanaian citizens have always look down negatively upon their government's
+                        policies, hence those are rarely appreciated. This paper ponders over the Ghanaian government's proposal of electronic levy on mobile money transactions
+                        which was announced in the 2022 budget on November 17, 2021. We have scrutinized this governmental policy through the ordinary citizen's perspective using
+                        lexicon-based sentiment analysis on Twitter data. Lexicons are collections of words that express specific emotions, and deals with interpreting emotions like
+                        happiness, frustration, anger, and sadness. Twitter, serving as a means for people to share their views, provides enormous user generated content, beneficial
+                        for research purposes. We collected e-levy specific Twitter data in five phases, namely; policy introduction, popularity, discussion, feeble, and debate phases.
+                        The policy introduction phase recorded the least volume of data containing 1400 tweets, among which our sentiment analyzer classifies 8.93% as positive, 89.29%
+                        as neutral, and 1.78% as negative. The debate phase recorded the highest amount of data containing 18.423 tweets, among which 24.43% tweets are classified as
+                        positive, 59.29% as neutral, and 16.28% as negative. An analysis on the entire data containing 38,771 tweets reports 25.50% positive, 59.02% neutral, and 15.48%
+                        negative tweets. Our study determines that people are not largely unhappy established by the stable positive sentiment percentage, however, there is a high neutral
+                        score in all the phases. <br /> <br />
+                      </div>
+                      <div id="bibm13" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{appiahene2024analyzing,
+                          title={Analyzing sentiments towards e-levy policy implementation in Ghana using twitter data},
+                          author={Appiahene, Peter and Afrifa, Stephen and Akwah, Emmanuel Kyei and Choudhry, Arjun and Khatri, Inder and Raj, Chahat and Prasad, Mukesh},
+                          journal={International Journal of Information Technology},
+                          volume={16},
+                          number={4},
+                          pages={2199--2214},
+                          year={2024},
+                          publisher={Springer}
+                        } <!-- TODO update bib -->
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">IJIT</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 13 ends here -->
+                    <li class="publication-year">2023</li>
                     <!-- Publication 2 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Global Voices, Local Biases: Socio-Cultural Prejudices across Languages.</a><br />
                         Anjishnu Mukherjee*, <a class="theme-color">Chahat Raj*</a>, Ziwei Zhu, and Antonios Anastasopoulos [EMNLP 2023]
@@ -620,7 +766,7 @@
                     </li>
                     <!-- Publication 2 Ends Here -->
                     <!-- Publication 1 Starts Here -->
-                    <li class="doctoral-paper">
+                    <li class="publication-paper">
                       <p>
                         <a style="color: #000000">True and Fair: Robust and Unbiased Fake News Detection via Interpretable Machine Learning.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee and Ziwei Zhu [AIES 2023]
@@ -662,130 +808,10 @@
                       </aside>
                     </li>
                     <!-- Publication 1 Ends Here -->
-
-                    <h1 class="mb-4" class="theme-color" align="left">
-                      <span></span><b>Master's Research</b><span></span>
-                    </h1>
-                    <!-- Publication 15 Starts Here -->
-                    <li class="masters-paper">
-                      <p>
-                        <a style="color: #000000">Bitcoin Price Prediction using LSTM Autoencoder and False Nearest Neighbor Loss.</a><br />
-                        <a class="theme-color">Chahat Raj</a> and Manojit Chattopadhyay [Soft Computing, 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm15">Abstract</button>
-                        <a href="./files/m15.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/LSTM-Autoencoder-FNN"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm15">BibTeX</button>
-                      </p>
-                      <div id="absm15" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        We implement deep learning for predicting bitcoin closing prices. Identifying two new determiners, we propose a novel LSTM Autoencoder
-                        using Mean Squared Error (MSE) loss which is regularized by False Nearest Neighbor (FNN) algorithm. The method results in reduced error
-                        rates when compared to traditional forecasting algorithms and is statistically validated. This research contributes by developing a
-                        robust algorithm that accurately determines the fluctuation directions in bitcoin prices and results in values closer to the actual prices. <br /> <br />
-                      </div>
-                      <div id="bibm15" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{raj2024bitcoin,
-                          title={Bitcoin price prediction using LSTM autoencoder regularized by false nearest neighbor loss},
-                          author={Raj, Chahat and Chattopadhyay, Manojit},
-                          journal={Soft Computing},
-                          volume={28},
-                          number={21},
-                          pages={12827--12834},
-                          year={2024},
-                          publisher={Springer}
-                        }
-                      </div>
-                      <aside class="publication-visual">
-                        <span class="publication-venue">Soft Computing</span>
-                      </aside>
-                    </li>
-                    <!-- Publication 15 ends here -->
-
-                    <!-- Publication 14 Starts Here -->
-                    <li class="masters-paper">
-                      <p>
-                        <a style="color: #000000">Machine Learning Models help Differentiate between Causes of Recurrent Spontaneous Vertigo.</a><br />
-                        Chao Wang, Allison S Young, <a class="theme-color">Chahat Raj</a>, Andrew P Bradshaw, Benjamin Nham, Sally M Rosengren, Zeljka Calic, David Burke,
-                        G Michael Halmagyi, Gnana K Bharathy, Mukesh Prasad, and Miriam S Welgampola [Journal of Neurology 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm14">Abstract</button>
-                        <a href="./files/m14.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm14">BibTeX</button>
-                      </p>
-                      <div id="absm14" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        Vestibular migraine (VM) and Menière's disease (MD) are two common causes of recurrent spontaneous vertigo. Using history, video-nystagmography
-                        and audiovestibular tests, we developed machine learning models to separate these two disorders. We recruited patients with VM or MD from a
-                        neurology outpatient facility. One hundred features from six “feature subsets”: history, acute video-nystagmography and four laboratory tests
-                        (video head impulse test, vestibular-evoked myogenic potentials, caloric testing and audiogram) were used. We applied ten machine learning
-                        algorithms to develop classification models. Modelling was performed using three “tiers” of data availability to simulate three clinical settings.
-                        “Tier 1” used all available data to simulate the neuro-otology clinic, “Tier 2” used only history, audiogram and caloric test data, representing
-                        the general neurology clinic, and “Tier 3” used history alone as occurs in primary care. Model performance was evaluated using tenfold
-                        cross-validation. Data from 160 patients with VM and 114 with MD were used for model development. All models effectively separated the two disorders
-                        for all three tiers, with accuracies of 85.77-97.81%. The best performing algorithms (AdaBoost and Random Forest) yielded accuracies of 97.81%
-                        (95% CI 95.24-99.60), 94.53% (91.09-99.52%) and 92.34% (92.28-96.76%) for tiers 1, 2 and 3. The best feature subset combination was history, acute
-                        video-nystagmography, video head impulse test and caloric testing, and the best single feature subset was history. Machine learning models can accurately
-                        differentiate between VM and MD and are promising tools to assist diagnosis by medical practitioners with diverse levels of expertise and resources. <br /> <br />
-                      </div>
-                      <div id="bibm14" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{wang2024machine,
-                          title={Machine learning models help differentiate between causes of recurrent spontaneous vertigo},
-                          author={Wang, Chao and Young, Allison S and Raj, Chahat and Bradshaw, Andrew P and Nham, Benjamin and Rosengren, Sally M and Calic, Zeljka and Burke, David and Halmagyi, G Michael and Bharathy, Gnana K and others},
-                          journal={Journal of Neurology},
-                          volume={271},
-                          number={6},
-                          pages={3426--3438},
-                          year={2024},
-                          publisher={Springer}
-                        }
-                      </div>
-                      <aside class="publication-visual">
-                        <span class="publication-venue">Journal of Neurology</span>
-                      </aside>
-                    </li>
-                    <!-- Publication 14 ends here -->
-
-                    <!-- Publication 13 Starts Here -->
-                    <li class="masters-paper">
-                      <p>
-                        <a style="color: #000000">Analyzing Sentiments Towards E-Levy Policy Implementation in Ghana using Twitter Data.</a><br />
-                        Peter Appiahene, Stephen Afrifa, Emmanuel Kyei Akwah, Arjun Choudhry, Inder Khatri, <a class="theme-color">Chahat Raj</a> and Mukesh Prasad [International Journal of Information Technology 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm13">Abstract</button>
-                        <a href="./files/m13.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm13">BibTeX</button>
-                      </p>
-                      <div id="absm13" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        A newly proposed or implemented government policy often encounters challenges. Ghanaian citizens have always look down negatively upon their government's
-                        policies, hence those are rarely appreciated. This paper ponders over the Ghanaian government's proposal of electronic levy on mobile money transactions
-                        which was announced in the 2022 budget on November 17, 2021. We have scrutinized this governmental policy through the ordinary citizen's perspective using
-                        lexicon-based sentiment analysis on Twitter data. Lexicons are collections of words that express specific emotions, and deals with interpreting emotions like
-                        happiness, frustration, anger, and sadness. Twitter, serving as a means for people to share their views, provides enormous user generated content, beneficial
-                        for research purposes. We collected e-levy specific Twitter data in five phases, namely; policy introduction, popularity, discussion, feeble, and debate phases.
-                        The policy introduction phase recorded the least volume of data containing 1400 tweets, among which our sentiment analyzer classifies 8.93% as positive, 89.29%
-                        as neutral, and 1.78% as negative. The debate phase recorded the highest amount of data containing 18.423 tweets, among which 24.43% tweets are classified as
-                        positive, 59.29% as neutral, and 16.28% as negative. An analysis on the entire data containing 38,771 tweets reports 25.50% positive, 59.02% neutral, and 15.48%
-                        negative tweets. Our study determines that people are not largely unhappy established by the stable positive sentiment percentage, however, there is a high neutral
-                        score in all the phases. <br /> <br />
-                      </div>
-                      <div id="bibm13" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{appiahene2024analyzing,
-                          title={Analyzing sentiments towards e-levy policy implementation in Ghana using twitter data},
-                          author={Appiahene, Peter and Afrifa, Stephen and Akwah, Emmanuel Kyei and Choudhry, Arjun and Khatri, Inder and Raj, Chahat and Prasad, Mukesh},
-                          journal={International Journal of Information Technology},
-                          volume={16},
-                          number={4},
-                          pages={2199--2214},
-                          year={2024},
-                          publisher={Springer}
-                        } <!-- TODO update bib -->
-                      </div>
-                      <aside class="publication-visual">
-                        <span class="publication-venue">IJIT</span>
-                      </aside>
-                    </li>
-                    <!-- Publication 13 ends here -->
+                    <li class="publication-year">2022</li>
 
                   <!-- Publication 12 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Understanding Social Media Engagement in Response to Disaster Fundraising Attempts During Australian Bushfires.</a><br />
                       Yohei Nii, <a class="theme-color">Chahat Raj</a>, Muhammad Salman Tiwana, Mahendra Samarawickrama, Simeon Simoff, Tony Jan, and Mukesh Prasad [International Conference on Intelligent Vision and Computing 2022]
@@ -820,7 +846,7 @@
                   <!-- Publication 12 ends here -->
 
                   <!-- Publication 11 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">The Effectiveness of Social Media Engagement Strategy on Disaster Fundraising.</a><br />
                       Vivek Velivela, <a class="theme-color">Chahat Raj</a>, Muhammad Salman Tiwana, Raj Prasanna, Mahendra Samarawickrama, and Mukesh Prasad [International Conference on Information Systems for Crisis Response and Management 2022]
@@ -852,7 +878,7 @@
                   <!-- Publication 11 ends here -->
 
                   <!-- Publication 10 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">People Lie, Actions Don't! Modeling Infodemic Proliferation Predictors among Social Media Users.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Technology in Society 2022]
@@ -888,9 +914,10 @@
                       </aside>
                   </li>
                   <!-- Publication 10 ends here -->
+                    <li class="publication-year">2021</li>
 
                   <!-- Publication 9 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Is Dynamic Rumor Detection on Social Media Viable? An Unsupervised Perspective.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Arxiv Preprint 2021]
@@ -924,7 +951,7 @@
                   <!-- Publication 9 ends here -->
 
                   <!-- Publication 8 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">A Review of Web Infodemic Analysis and Detection Trends across Multi-modalities using Deep Neural Networks.</a><br />
                       Priyanka Meel, <a class="theme-color">Chahat Raj</a>, and Bhawna [International Journal of Data Science and Analytics]
@@ -961,7 +988,7 @@
                   <!-- Publication 8 ends here -->
 
                   <!-- Publication 7 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Cyberbullying Detection: Hybrid Models based on Machine Learning and Natural Language Processing Techniques.</a><br />
                       <a class="theme-color">Chahat Raj</a>, Ayush Agarwal, Gnana Bharathy, Bhuva Narayan, and Mukesh Prasad [Electronics 2021]
@@ -1003,7 +1030,7 @@
                   <!-- Publication 7 ends here -->
 
                   <!-- Publication 6 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Machine Learning Techniques for Differential Diagnosis of Vertigo and Dizziness: A Review.</a><br />
                       Varad Kabade, Ritika Hooda, <a class="theme-color">Chahat Raj</a>, Zainab Awan, Allison S Young, Miriam S Welgampola, and Mukesh Prasad [Sensors 2021]
@@ -1041,7 +1068,7 @@
                   <!-- Publication 6 ends here -->
 
                   <!-- Publication 5 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">ARCNN Framework for Multimodal Infodemic Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Neural Networks 2021]
@@ -1080,7 +1107,7 @@
                   <!-- Publication 5 ends here -->
 
                   <!-- Publication 4 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">ConvNet Frameworks for Multi-Modal Fake News Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Applied Intelligence 2021]
@@ -1120,7 +1147,7 @@
                   <!-- Publication 4 ends here -->
 
                   <!-- Publication 3 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Microblogs Deception Detection using BERT and Multiscale CNNs.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Global Conference for Advancement in Technology 2021]
@@ -1154,9 +1181,10 @@
                       </aside>
                   </li>
                   <!-- Publication 3 ends here -->
+                    <li class="publication-year">2020</li>
 
                   <!-- Publication 2 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">MediaEval 2020: An Ensemble-based Multimodal Approach for Coronavirus and 5G Conspiracy Tweet Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Mihir P Mehta [MediaEval 2020]
@@ -1187,7 +1215,7 @@
                   <!-- Publication 2 ends here -->
 
                   <!-- Publication 1 Starts Here -->
-                  <li class="masters-paper">
+                  <li class="publication-paper">
                     <p>
                       <a style="color: #000000">Fake News on Multiple Online Social Networks.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [ICPCCAI 2020]
@@ -1216,7 +1244,7 @@
                       </aside>
                   </li>
                   <!-- Publication 1 ends here -->
-
+                  </ul>
                       <br />
                       <script src="js/jquery.min.js"></script>
                       <script src="js/jquery-migrate-3.0.1.min.js"></script>
