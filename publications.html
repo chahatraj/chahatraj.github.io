@@ -203,7 +203,89 @@
                   <h1 class="mb-4" class="theme-color"><span></span><b>PUBLICATIONS</b><span></span></h1>
                   <ul>
                     <li class="publication-year">2026</li>
+                    <!-- Publication 12 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">KnowBias: Mitigating Social Bias in LLMs via Know-Bias Neuron Enhancement.</a><br />
+                        Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Sina Mansouri, Bowen Wei, Shloka Yada, Ziwei Zhu [ICML 2026]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd6">Abstract</button>
+                        <a href="https://arxiv.org/pdf/2601.21864"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd6">BibTeX</button>
+                      </p>
+                      <div id="absd6" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        Large language models (LLMs) exhibit social biases that reinforce harmful stereotypes, 
+                        limiting their safe deployment. Most existing debiasing methods adopt a suppressive 
+                        paradigm by modifying parameters, prompts, or neurons associated with biased behavior; 
+                        however, such approaches are often brittle, weakly generalizable, data-inefficient, 
+                        and prone to degrading general capability. We propose \textbf{KnowBias}, a lightweight 
+                        and conceptually distinct framework that mitigates bias by strengthening, rather than 
+                        suppressing, neurons encoding bias-knowledge. KnowBias identifies neurons encoding bias 
+                        knowledge using a small set of bias-knowledge questions via attribution-based analysis, 
+                        and selectively enhances them at inference time. This design enables strong debiasing 
+                        while preserving general capabilities, generalizes across bias types and demographics, 
+                        and is highly data efficient, requiring only a handful of simple yes/no questions and 
+                        no retraining. Experiments across multiple benchmarks and LLMs demonstrate consistent 
+                        state-of-the-art debiasing performance with minimal utility degradation.  <br /> <br />
+                      </div>
+                      <div id="bibd6" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{pan2026knowbias,
+                          title={KnowBias: Mitigating Social Bias in LLMs via Know-Bias Neuron Enhancement},
+                          author={Pan, Jinhao and Raj, Chahat and Mukherjee, Anjishnu and Mansouri, Sina and Wei, Bowen and Yada, Shloka and Zhu, Ziwei},
+                          journal={arXiv preprint arXiv:2601.21864},
+                          year={2026}
+                        }
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">ICML</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 12 Ends Here -->
                     <!-- Publication 11 Starts Here -->
+                    <li class="publication-paper">
+                      <p>
+                        <a style="color: #000000">Measuring South Asian Biases in Large Language Models.</a><br />
+                        Mamnuya Rinki, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, and Ziwei Zhu [In Submission]
+                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd6">Abstract</button>
+                        <a href="https://arxiv.org/pdf/2505.18466?"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd6">BibTeX</button>
+                      </p>
+                      <div id="absd6" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
+                        Evaluations of Large Language Models (LLMs)
+                        often overlook intersectional and culturally specific biases, particularly in underrepresented
+                        multilingual regions like South Asia. This work
+                        addresses these gaps by conducting a multilingual and intersectional analysis of LLM outputs
+                        across 10 Indo-Aryan and Dravidian languages,
+                        identifying how cultural stigmas influenced by
+                        purdah and patriarchy are reinforced in generative tasks. We construct a culturally grounded
+                        bias lexicon capturing previously unexplored
+                        intersectional dimensions including gender, religion, marital status, and number of children.
+                        We use our lexicon to quantify intersectional
+                        bias and the effectiveness of self-debiasing in
+                        open-ended generations (e.g., storytelling, hobbies, and to-do lists), where bias manifests subtly and remains largely unexamined in multilingual contexts. Finally, we evaluate two
+                        self-debiasing strategies (simple and complex
+                        prompts) to measure their effectiveness in reducing culturally specific bias in Indo-Aryan
+                        and Dravidian languages. Our approach offers
+                        a nuanced lens into cultural bias by introducing
+                        a novel bias lexicon and evaluation framework
+                        that extends beyond Eurocentric or small-scale
+                        multilingual settings. <br /> <br />
+                      </div>
+                      <div id="bibd6" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
+                        @article{rinki2025measuring,
+                          title={Measuring South Asian Biases in Large Language Models},
+                          author={Rinki, Mamnuya and Raj, Chahat and Mukherjee, Anjishnu and Zhu, Ziwei},
+                          journal={arXiv preprint arXiv:2505.18466},
+                          year={2025}
+                        }
+                      </div>
+                      <aside class="publication-visual">
+                        <span class="publication-venue">In Submission</span>
+                      </aside>
+                    </li>
+                    <!-- Publication 11 Ends Here -->
+                    <!-- Publication 10 Starts Here -->
                     <li class="publication-paper">
                       <p>
                         <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><br />
@@ -248,8 +330,8 @@
                         <span class="publication-venue">ACL Main</span>
                       </aside>
                     </li>
-                    <!-- Publication 11 Ends Here -->
-                    <!-- Publication 10 Starts Here -->
+                    <!-- Publication 10 Ends Here -->
+                    <!-- Publication 9 Starts Here -->
                     <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Talent or Luck? Evaluating Attribution Bias in Large Language Models.</a><br />
@@ -285,8 +367,8 @@
                         <span class="publication-venue">ACL Findings</span>
                       </aside>
                     </li>
-                    <!-- Publication 10 Ends Here -->
-                    <!-- Publication 7 Starts Here -->
+                    <!-- Publication 9 Ends Here -->
+                    <!-- Publication 8 Starts Here -->
                     <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Discovering Bias Associations through Open-Ended LLM Generations.</a><br />
@@ -321,9 +403,9 @@
                         <span class="publication-venue">AAAI</span>
                       </aside>
                     </li>
-                    <!-- Publication 7 Ends Here -->
+                    <!-- Publication 8 Ends Here -->
                     <li class="publication-year">2025</li>
-                    <!-- Publication 9 Starts Here -->
+                    <!-- Publication 7 Starts Here -->
                     <li class="publication-paper">
                       <p>
                         <a style="color: #000000">Toward Inclusive Language Models: Sparsity-Driven Calibration for Systematic and Interpretable Mitigation of Social Biases in LLMs.</a><br />
@@ -384,8 +466,8 @@
                         <span class="publication-venue">EMNLP Findings</span>
                       </aside>
                     </li>
-                    <!-- Publication 9 Ends Here -->
-                    <!-- Publication 8 Starts Here -->
+                    <!-- Publication 7 Ends Here -->
+                    <!-- Publication 6 Starts Here -->
                     <li class="publication-paper">
                       <p>
                         <a style="color: #000000">What's Not Said Still Hurts: A Description-Based Evaluation Framework for Measuring Social Bias in LLMs</a><br />
@@ -433,51 +515,8 @@
                         <span class="publication-venue">EMNLP Findings</span>
                       </aside>
                     </li>
-                    <!-- Publication 8 Ends Here -->
-                    <!-- Publication 6 Starts Here -->
-                    <li class="publication-paper">
-                      <p>
-                        <a style="color: #000000">Measuring South Asian Biases in Large Language Models.</a><br />
-                        Mamnuya Rinki, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, and Ziwei Zhu [In Submission]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd6">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2505.18466?"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd6">BibTeX</button>
-                      </p>
-                      <div id="absd6" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
-                        Evaluations of Large Language Models (LLMs)
-                        often overlook intersectional and culturally specific biases, particularly in underrepresented
-                        multilingual regions like South Asia. This work
-                        addresses these gaps by conducting a multilingual and intersectional analysis of LLM outputs
-                        across 10 Indo-Aryan and Dravidian languages,
-                        identifying how cultural stigmas influenced by
-                        purdah and patriarchy are reinforced in generative tasks. We construct a culturally grounded
-                        bias lexicon capturing previously unexplored
-                        intersectional dimensions including gender, religion, marital status, and number of children.
-                        We use our lexicon to quantify intersectional
-                        bias and the effectiveness of self-debiasing in
-                        open-ended generations (e.g., storytelling, hobbies, and to-do lists), where bias manifests subtly and remains largely unexamined in multilingual contexts. Finally, we evaluate two
-                        self-debiasing strategies (simple and complex
-                        prompts) to measure their effectiveness in reducing culturally specific bias in Indo-Aryan
-                        and Dravidian languages. Our approach offers
-                        a nuanced lens into cultural bias by introducing
-                        a novel bias lexicon and evaluation framework
-                        that extends beyond Eurocentric or small-scale
-                        multilingual settings. <br /> <br />
-                      </div>
-                      <div id="bibd6" class="popup-bib" style="display: none; font-size: 12px; text-align: left; white-space: pre; padding-top: -20px !important">
-                        @article{rinki2025measuring,
-                          title={Measuring South Asian Biases in Large Language Models},
-                          author={Rinki, Mamnuya and Raj, Chahat and Mukherjee, Anjishnu and Zhu, Ziwei},
-                          journal={arXiv preprint arXiv:2505.18466},
-                          year={2025}
-                        }
-                      </div>
-                      <aside class="publication-visual">
-                        <span class="publication-venue">In Submission</span>
-                      </aside>
-                    </li>
                     <!-- Publication 6 Ends Here -->
+                    
                     <li class="publication-year">2024</li>
                     <!-- Publication 5 Starts Here -->
                     <li class="publication-paper">
