@@ -85,39 +85,45 @@
 	};
 	themeToggle();
 
+	var backToTop = function() {
+		var pageName = window.location.pathname.split('/').pop();
+		if (pageName !== 'news.html' && pageName !== 'publications.html') return;
+		if ($('.back-to-top').length) return;
+		var $button = $('<button class="back-to-top" type="button" aria-label="Back to top"><span class="back-to-top-arrow" aria-hidden="true"></span></button>');
+		$('body').append($button);
+
+		var updateButton = function() {
+			$button.toggleClass('is-visible', $(window).scrollTop() > 180);
+		};
+
+		$button.on('click', function() {
+			$('html, body').animate({ scrollTop: 0 }, 450);
+		});
+		$(window).on('scroll resize', updateButton);
+		updateButton();
+	};
+	backToTop();
+
 	var siteFooter = function() {
 		var $main = $('#colorlib-main');
 		if (!$main.length || $('.site-footer-note').length) return;
 		var pageName = window.location.pathname.split('/').pop();
 		if (!pageName || pageName === 'index.html') return;
 		var fallbackDate = 'May 2, 2026';
+		var lastModified = new Date(document.lastModified);
+		var updatedDate = isNaN(lastModified.getTime()) ? fallbackDate : lastModified.toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		});
 
 		$main.append(
 			'<footer class="site-footer-note">' +
-				'<span>Last updated on <span class="site-footer-date">' + fallbackDate + '</span></span>' +
+				'<span>Last updated on <span class="site-footer-date">' + updatedDate + '</span></span>' +
 				'<span class="site-footer-separator">·</span>' +
 				'<span>Made with <span class="site-footer-heart" aria-label="heart"></span></span>' +
 			'</footer>'
 		);
-
-		if (!window.fetch) return;
-
-		fetch('https://api.github.com/repos/chahatraj/chahatraj.github.io/commits?per_page=1')
-			.then(function(response) {
-				if (!response.ok) throw new Error('Commit date unavailable');
-				return response.json();
-			})
-			.then(function(commits) {
-				var commitDate = commits && commits[0] && commits[0].commit && commits[0].commit.committer && commits[0].commit.committer.date;
-				if (!commitDate) return;
-				var formattedDate = new Date(commitDate).toLocaleDateString('en-US', {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric'
-				});
-				$('.site-footer-date').text(formattedDate);
-			})
-			.catch(function() {});
 	};
 	$(siteFooter);
 

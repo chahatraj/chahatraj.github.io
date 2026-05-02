@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="css/jquery.timepicker.css"/>
   <link rel="stylesheet" href="css/flaticon.css"/>
   <link rel="stylesheet" href="css/icomoon.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css?v=20260502f"/>
   <style>
     :root {
       --theme-color: #8E4585; /* Default theme color */
@@ -72,6 +72,62 @@
       background: color-mix(in srgb, var(--theme-color) 30%, transparent);
     }
 
+    .publication-search {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      justify-content: flex-end;
+      margin: -1.35rem 0 0.9rem;
+    }
+
+    .publication-search-input {
+      width: min(100%, 22rem);
+      border: 1px solid color-mix(in srgb, var(--theme-color) 26%, transparent);
+      border-left: 3px solid var(--theme-color);
+      border-radius: 5px;
+      padding: 0.46rem 0.7rem;
+      background: color-mix(in srgb, var(--theme-color) 7%, transparent);
+      color: inherit;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.25;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .publication-search-input:focus {
+      border-color: color-mix(in srgb, var(--theme-color) 48%, transparent);
+      border-left-color: var(--theme-color);
+      background: color-mix(in srgb, var(--theme-color) 11%, transparent);
+    }
+
+    .publication-search-count {
+      color: rgba(0, 0, 0, 0.45);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .publication-empty {
+      display: none;
+      margin: 0.4rem 0 1rem;
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 0.92rem;
+    }
+
+    body.dark-theme .publication-search-input {
+      border-color: color-mix(in srgb, var(--theme-color) 32%, transparent);
+      border-left-color: var(--theme-color);
+      background: color-mix(in srgb, var(--theme-color) 12%, transparent);
+      color: #eee8dc;
+    }
+
+    body.dark-theme .publication-search-count,
+    body.dark-theme .publication-empty {
+      color: rgba(216, 210, 200, 0.58);
+    }
+
     .publication-paper {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 130px;
@@ -80,15 +136,15 @@
       position: relative;
       list-style-position: outside;
       list-style-type: disc;
-      margin-bottom: 0.25rem;
-      padding-left: 0.15rem;
+      margin: 0 0 0.55rem;
+      padding: 0.38rem 0 0.28rem 0.15rem;
     }
 
     .publication-paper::before {
       content: "";
       position: absolute;
-      left: -1.1rem;
-      top: 0.68rem;
+      left: -1.45rem;
+      top: 1.05rem;
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -99,6 +155,72 @@
     .publication-paper > .popup-abs,
     .publication-paper > .popup-bib {
       grid-column: 1;
+    }
+
+    .publication-paper > p {
+      color: rgba(0, 0, 0, 0.58);
+      font-size: 0.82rem;
+      line-height: 1.48;
+      margin-bottom: 0.25rem;
+    }
+
+    .publication-paper > p > a[style*="color: #000000"] {
+      color: rgba(0, 0, 0, 0.86) !important;
+      font-size: 0.96rem;
+      line-height: 1.42;
+    }
+
+    .publication-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.34rem;
+    }
+
+    .publication-actions .btn.badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 1.55rem;
+      margin: 0;
+      border: 1px solid color-mix(in srgb, var(--action-color, var(--theme-color)) 48%, transparent) !important;
+      padding: 0.24rem 0.58rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--action-color, var(--theme-color)) 24%, rgba(255, 255, 255, 0.7)) !important;
+      color: var(--action-text-color, color-mix(in srgb, var(--action-color, var(--theme-color)) 58%, #111111)) !important;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1;
+      vertical-align: middle;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    }
+
+    .publication-actions .btn.badge:hover {
+      border-color: color-mix(in srgb, var(--action-color, var(--theme-color)) 70%, transparent) !important;
+      background: color-mix(in srgb, var(--action-color, var(--theme-color)) 32%, rgba(255, 255, 255, 0.72)) !important;
+    }
+
+    body.dark-theme .publication-actions .btn.badge {
+      border-color: color-mix(in srgb, var(--action-color, var(--theme-color)) 54%, transparent) !important;
+      background: color-mix(in srgb, var(--action-color, var(--theme-color)) 25%, rgba(32, 33, 36, 0.72)) !important;
+      color: var(--action-color, #eee8dc) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    body.dark-theme .publication-actions .btn.badge:hover {
+      border-color: color-mix(in srgb, var(--action-color, var(--theme-color)) 78%, transparent) !important;
+      background: color-mix(in srgb, var(--action-color, var(--theme-color)) 34%, rgba(32, 33, 36, 0.7)) !important;
+    }
+
+    body.dark-theme .publication-paper > p {
+      color: rgba(216, 210, 200, 0.58);
+    }
+
+    body.dark-theme .publication-paper > p > a[style*="color: #000000"] {
+      color: #eee8dc !important;
     }
 
     .publication-visual {
@@ -136,6 +258,12 @@
     }
 
     @media (max-width: 767.98px) {
+      .publication-search {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
       .publication-paper {
         grid-template-columns: 1fr;
       }
@@ -201,6 +329,11 @@
               <div class="row">
                 <div class="col-md-12">
                   <h1 class="mb-4" class="theme-color"><span></span><b>PUBLICATIONS</b><span></span></h1>
+                  <div class="publication-search">
+                    <input id="publication-search" class="publication-search-input" type="search" placeholder="Search publications" aria-label="Search publications" autocomplete="off" />
+                    <span class="publication-search-count" aria-live="polite"></span>
+                  </div>
+                  <p class="publication-empty">No publications match your search.</p>
                   <ul>
                     <li class="publication-year">2026</li>
                     <!-- Publication 12 Starts Here -->
@@ -208,10 +341,10 @@
                       <p>
                         <a style="color: #000000">KnowBias: Mitigating Social Bias in LLMs via Know-Bias Neuron Enhancement.</a><br />
                         Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Sina Mansouri, Bowen Wei, Shloka Yada, Ziwei Zhu [ICML 2026]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd12">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2601.21864"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd12">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2601.21864" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd12" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Large language models (LLMs) exhibit social biases that reinforce harmful stereotypes, 
@@ -246,10 +379,10 @@
                       <p>
                         <a style="color: #000000">Measuring South Asian Biases in Large Language Models.</a><br />
                         Mamnuya Rinki, <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, and Ziwei Zhu [TrustNLP @ ACL 2026]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd6">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2505.18466?"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd6">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2505.18466?" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd6" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Evaluations of Large Language Models (LLMs)
@@ -290,10 +423,10 @@
                       <p>
                         <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Bowen Wei, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Main 2026 (top 15% of accepted papers)]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd9">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2505.22897?"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/Vignette"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd9">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2505.22897?" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/chahatraj/Vignette" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd9" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         While bias in large language models (LLMs) is
@@ -336,10 +469,10 @@
                       <p>
                         <a style="color: #000000">Talent or Luck? Evaluating Attribution Bias in Large Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Mahika Banerjee, Jinhao Pan, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Findings 2026]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd10">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2505.22910?"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/TalentorLuck"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd10">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2505.22910?" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/chahatraj/TalentorLuck" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd10" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         When a student fails an exam, do we tend to
@@ -373,10 +506,10 @@
                       <p>
                         <a style="color: #000000">Bias Association Discovery Framework for Open-Ended LLM Generations.</a><br />
                         Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [AAAI 2026]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd13">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2508.01412"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd13">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2508.01412" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd13" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Social biases embedded in Large Language
@@ -411,10 +544,10 @@
                       <p>
                         <a style="color: #000000">Discovering Bias Associations through Open-Ended LLM Generations.</a><br />
                         Jinhao Pan, <a class="theme-color">Chahat Raj</a>, and Ziwei Zhu [arXiv Preprint 2025]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd7">Abstract</button>
-                        <a href="https://arxiv.org/pdf/2508.01412"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd7">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://arxiv.org/pdf/2508.01412" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/JP-25/Discover-Open-Ended-Generation" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd7" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Social biases embedded in Large Language
@@ -447,10 +580,10 @@
                     <p>
                       <a style="color: #000000">A Review of Web Infodemic Analysis and Detection Trends across Multi-modalities using Deep Neural Networks.</a><br />
                       Priyanka Meel, <a class="theme-color">Chahat Raj</a>, and Bhawna [International Journal of Data Science and Analytics]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm8">Abstract</button>
-                      <a href="./files/m8.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm8">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m8.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm8" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Fake news and misinformation is a matter of concern for people around the globe. Users of the internet and social media sites encounter content with false
@@ -483,10 +616,10 @@
                       <p>
                         <a style="color: #000000">Toward Inclusive Language Models: Sparsity-Driven Calibration for Systematic and Interpretable Mitigation of Social Biases in LLMs.</a><br />
                         Prommy Sultana Hossain, <a class="theme-color">Chahat Raj</a>, Ziwei Zhu, Jessica Lin, and Emanuela Marasco [EMNLP Findings 2025]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd11">Abstract</button>
-                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.134.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/Promzi/Unlearn-Bias-in-LLMs"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd11">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.134.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/Promzi/Unlearn-Bias-in-LLMs" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd11" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Large Language Models (LLMs) such as GPT
@@ -545,10 +678,10 @@
                       <p>
                         <a style="color: #000000">What's Not Said Still Hurts: A Description-Based Evaluation Framework for Measuring Social Bias in LLMs</a><br />
                         Jinhao Pan, <a class="theme-color">Chahat Raj</a>, Ziyu Yao, and Ziwei Zhu [EMNLP Findings 2025]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd8">Abstract</button>
-                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.76.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="le at https://github.com/JP-25/Description-based-Bias-Benchmark"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd8">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://aclanthology.org/anthology-files/anthology-files/pdf/findings/2025.findings-emnlp.76.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="le at https://github.com/JP-25/Description-based-Bias-Benchmark" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd8" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Large Language Models (LLMs) often exhibit social biases inherited from their training data. While existing benchmarks evaluate bias by term-based mode through direct
@@ -596,10 +729,10 @@
                       <p>
                         <a style="color: #000000">BiasDora: Exploring Hidden Biased Associations in Vision-Language Models.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [EMNLP Findings 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd5">Abstract</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
                         <a href="https://aclanthology.org/2024.findings-emnlp.611.pdf""><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/BiasDora"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd5">BibTeX</button>
+                        <a href="https://github.com/chahatraj/BiasDora" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd5" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Existing works examining Vision Language Models (VLMs) for social biases predominantly focus on a limited set of documented bias associations,
@@ -641,10 +774,10 @@
                       <p>
                         <a style="color: #000000">Breaking Bias, Building Bridges: Evaluation and Mitigation of Social Biases in LLMs via Contact Hypothesis.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [AIES 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd4">Abstract</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
                         <a href="./files/d4.pdf""><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/breakingbias"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd4">BibTeX</button>
+                        <a href="https://github.com/chahatraj/breakingbias" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd4" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Large Language Models (LLMs) perpetuate social biases, reflecting prejudices in their training data and reinforcing societal stereotypes
@@ -680,10 +813,10 @@
                       <p>
                         <a style="color: #000000">SALSA: Salience-Based Switching Attack for Adversarial Perturbations in Fake News Detection Models.</a><br />
                         <a class="theme-color">Chahat Raj*</a>, Anjishnu Mukherjee*, Hemant Purohit, Antonios Anastasopoulos, and Ziwei Zhu [ECIR 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd3">Abstract</button>
-                        <a href="./files/d3.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
-                        <a href="https://github.com/iamshnoo/salsa"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd3">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="./files/d3.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
+                        <a href="https://github.com/iamshnoo/salsa" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd3" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Despite advances in fake news detection algorithms, recent research reveals that machine learning-based fake news detection models are still
@@ -717,10 +850,10 @@
                       <p>
                         <a style="color: #000000">Bitcoin Price Prediction using LSTM Autoencoder and False Nearest Neighbor Loss.</a><br />
                         <a class="theme-color">Chahat Raj</a> and Manojit Chattopadhyay [Soft Computing, 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm15">Abstract</button>
-                        <a href="./files/m15.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href="https://github.com/chahatraj/LSTM-Autoencoder-FNN"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm15">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="./files/m15.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="https://github.com/chahatraj/LSTM-Autoencoder-FNN" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absm15" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         We implement deep learning for predicting bitcoin closing prices. Identifying two new determiners, we propose a novel LSTM Autoencoder
@@ -752,10 +885,10 @@
                         <a style="color: #000000">Machine Learning Models help Differentiate between Causes of Recurrent Spontaneous Vertigo.</a><br />
                         Chao Wang, Allison S Young, <a class="theme-color">Chahat Raj</a>, Andrew P Bradshaw, Benjamin Nham, Sally M Rosengren, Zeljka Calic, David Burke,
                         G Michael Halmagyi, Gnana K Bharathy, Mukesh Prasad, and Miriam S Welgampola [Journal of Neurology 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm14">Abstract</button>
-                        <a href="./files/m14.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm14">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="./files/m14.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absm14" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Vestibular migraine (VM) and Menière's disease (MD) are two common causes of recurrent spontaneous vertigo. Using history, video-nystagmography
@@ -794,10 +927,10 @@
                       <p>
                         <a style="color: #000000">Analyzing Sentiments Towards E-Levy Policy Implementation in Ghana using Twitter Data.</a><br />
                         Peter Appiahene, Stephen Afrifa, Emmanuel Kyei Akwah, Arjun Choudhry, Inder Khatri, <a class="theme-color">Chahat Raj</a> and Mukesh Prasad [International Journal of Information Technology 2024]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm13">Abstract</button>
-                        <a href="./files/m13.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                        <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm13">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="./files/m13.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                        <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absm13" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         A newly proposed or implemented government policy often encounters challenges. Ghanaian citizens have always look down negatively upon their government's
@@ -835,10 +968,10 @@
                       <p>
                         <a style="color: #000000">Global Voices, Local Biases: Socio-Cultural Prejudices across Languages.</a><br />
                         Anjishnu Mukherjee*, <a class="theme-color">Chahat Raj*</a>, Ziwei Zhu, and Antonios Anastasopoulos [EMNLP 2023]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd2">Abstract</button>
-                        <a href="https://aclanthology.org/2023.emnlp-main.981.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
-                        <a href="https://github.com/iamshnoo/weathub"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd2">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="https://aclanthology.org/2023.emnlp-main.981.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
+                        <a href="https://github.com/iamshnoo/weathub" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd2" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         Human biases are ubiquitous but not uniform: disparities exist across linguistic, cultural, and societal borders. As large amounts of recent
@@ -882,10 +1015,10 @@
                       <p>
                         <a style="color: #000000">True and Fair: Robust and Unbiased Fake News Detection via Interpretable Machine Learning.</a><br />
                         <a class="theme-color">Chahat Raj</a>, Anjishnu Mukherjee and Ziwei Zhu [AIES 2023]
-                        <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absd1">Abstract</button>
-                        <a href="./files/d1.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
-                        <a href="https://github.com/chahatraj/true-and-fair"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
-                        <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibd1">BibTeX</button>
+                        <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                        <a href="./files/d1.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a>
+                        <a href="https://github.com/chahatraj/true-and-fair" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a>
+                        <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                       </p>
                       <div id="absd1" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                         The dissemination of information, and consequently, misinformation, occurs at an unprecedented speed, making it increasingly difficult to
@@ -927,10 +1060,10 @@
                     <p>
                       <a style="color: #000000">Understanding Social Media Engagement in Response to Disaster Fundraising Attempts During Australian Bushfires.</a><br />
                       Yohei Nii, <a class="theme-color">Chahat Raj</a>, Muhammad Salman Tiwana, Mahendra Samarawickrama, Simeon Simoff, Tony Jan, and Mukesh Prasad [International Conference on Intelligent Vision and Computing 2022]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm12">Abstract</button>
-                      <a href="./files/m12.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm12">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m12.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm12" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       This article studies the impact of social media posts specific to a disaster incident - the Australian bushfires of 2019-2020. We analyse the social media
@@ -962,10 +1095,10 @@
                     <p>
                       <a style="color: #000000">The Effectiveness of Social Media Engagement Strategy on Disaster Fundraising.</a><br />
                       Vivek Velivela, <a class="theme-color">Chahat Raj</a>, Muhammad Salman Tiwana, Raj Prasanna, Mahendra Samarawickrama, and Mukesh Prasad [International Conference on Information Systems for Crisis Response and Management 2022]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm11">Abstract</button>
-                      <a href="./files/m11.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm11">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m11.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm11" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Social media has been a powerful tool and integral part of communication, especially during natural disasters. Social media platforms help nonprofits in
@@ -994,10 +1127,10 @@
                     <p>
                       <a style="color: #000000">People Lie, Actions Don't! Modeling Infodemic Proliferation Predictors among Social Media Users.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Technology in Society 2022]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm10">Abstract</button>
-                      <a href="./files/m10.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm10">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m10.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm10" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Social media is interactive, and interaction brings misinformation. With the growing amount of user-generated data, fake news on online platforms has become
@@ -1033,10 +1166,10 @@
                     <p>
                       <a style="color: #000000">Is Dynamic Rumor Detection on Social Media Viable? An Unsupervised Perspective.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Arxiv Preprint 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm9">Abstract</button>
-                      <a href="./files/m9.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href="https://github.com/chahatraj/Unsupervised-Rumor-Detection"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm9">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m9.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="https://github.com/chahatraj/Unsupervised-Rumor-Detection" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm9" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       With the growing popularity and ease of access to the internet, the problem of online rumors is escalating. People are relying on social media to gain information
@@ -1068,10 +1201,10 @@
                     <p>
                       <a style="color: #000000">Cyberbullying Detection: Hybrid Models based on Machine Learning and Natural Language Processing Techniques.</a><br />
                       <a class="theme-color">Chahat Raj</a>, Ayush Agarwal, Gnana Bharathy, Bhuva Narayan, and Mukesh Prasad [Electronics 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm7">Abstract</button>
-                      <a href="./files/m7.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm7">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m7.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm7" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       The rise in web and social media interactions has resulted in the efortless proliferation of offensive language and hate speech. Such online harassment, insults,
@@ -1110,10 +1243,10 @@
                     <p>
                       <a style="color: #000000">Machine Learning Techniques for Differential Diagnosis of Vertigo and Dizziness: A Review.</a><br />
                       Varad Kabade, Ritika Hooda, <a class="theme-color">Chahat Raj</a>, Zainab Awan, Allison S Young, Miriam S Welgampola, and Mukesh Prasad [Sensors 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm6">Abstract</button>
-                      <a href="./files/m6.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm6">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m6.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm6" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Vertigo is a sensation of movement that results from disorders of the inner ear balance organs and their central connections, with aetiologies that are often
@@ -1148,10 +1281,10 @@
                     <p>
                       <a style="color: #000000">ARCNN Framework for Multimodal Infodemic Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Neural Networks 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm5">Abstract</button>
-                      <a href="./files/m5.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href="https://github.com/chahatraj/TIPNet-Infodemic-Detection"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm5">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m5.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="https://github.com/chahatraj/TIPNet-Infodemic-Detection" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm5" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Fake news and misinformation have adopted various propagation media over time, nowadays spreading predominantly through online social networks. During the
@@ -1187,10 +1320,10 @@
                     <p>
                       <a style="color: #000000">ConvNet Frameworks for Multi-Modal Fake News Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Applied Intelligence 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm4">Abstract</button>
-                      <a href="./files/m4.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href="https://github.com/chahatraj/ConvNets-for-Multimodal-Fake-News-Detection"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm4">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m4.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="https://github.com/chahatraj/ConvNets-for-Multimodal-Fake-News-Detection" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm4" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       An upsurge of false information revolves around the internet. Social media and websites are flooded with unverified news posts. These posts are comprised of text,
@@ -1227,10 +1360,10 @@
                     <p>
                       <a style="color: #000000">Microblogs Deception Detection using BERT and Multiscale CNNs.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [Global Conference for Advancement in Technology 2021]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm3">Abstract</button>
-                      <a href="./files/m3.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href="https://github.com/chahatraj/Multiscale-CNNs"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm3">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m3.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="https://github.com/chahatraj/Multiscale-CNNs" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm3" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       Online news consumption has rapidly increased, and so has the proliferation of false information. People worldwide have mainly become dependent on social media
@@ -1264,10 +1397,10 @@
                     <p>
                       <a style="color: #000000">MediaEval 2020: An Ensemble-based Multimodal Approach for Coronavirus and 5G Conspiracy Tweet Detection.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Mihir P Mehta [MediaEval 2020]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm2">Abstract</button>
-                      <a href="./files/m2.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm2">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m2.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm2" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       In the wake of ongoing COVID-19 pandemic, a parallel stream of misinformation and conspiracies rises on the internet. People around the world are being flooded
@@ -1295,10 +1428,10 @@
                     <p>
                       <a style="color: #000000">Fake News on Multiple Online Social Networks.</a><br />
                       <a class="theme-color">Chahat Raj</a>, and Priyanka Meel [ICPCCAI 2020]
-                      <button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff" data-popup="absm1">Abstract</button>
-                      <a href="./files/m1.pdf"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
-                      <a href=""><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
-                      <button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff" data-popup="bibm1">BibTeX</button>
+                      <a href="posters.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">Poster</button></a>
+                      <a href="./files/m1.pdf" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ec949c; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
+                      <a href="" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #ebce77; color: #ffffff">Code</button></a> <!-- TODO: add code -->
+                      <a href="slides.html" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #b8d8be; color: #ffffff">Slides</button></a>
                     </p>
                     <div id="absm1" class="popup-abs" style="display: none; font-size: 12px; text-align: justify;">
                       In the present decade, social media is taking over as a large ubiquitous platform to access and disseminate news. While some are official news sources, a
@@ -1338,7 +1471,7 @@
                       <script src="js/scrollax.min.js"></script>
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                       <script src="js/google-map.js"></script>
-                      <script src="js/main.js?v=20260502"></script>
+                      <script src="js/main.js?v=20260502j"></script>
                     </div>
                   </div>
                 </div>
@@ -1350,6 +1483,49 @@
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.publication-paper > p').forEach(function(publicationMeta) {
+          if (publicationMeta.querySelector('.publication-actions')) return;
+
+          var firstButton = publicationMeta.querySelector('.btn.badge');
+          if (!firstButton) return;
+
+          var actions = document.createElement('span');
+          actions.className = 'publication-actions';
+
+          var firstAction = firstButton.parentElement && firstButton.parentElement.tagName === 'A' && firstButton.parentElement.parentElement === publicationMeta
+            ? firstButton.parentElement
+            : firstButton;
+          var node = firstAction;
+          while (node) {
+            var next = node.nextSibling;
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              var button = node.matches && node.matches('.btn.badge') ? node : node.querySelector && node.querySelector('.btn.badge');
+              if (button) {
+                var buttonColor = button.style.backgroundColor;
+                if (buttonColor) {
+                  button.style.setProperty('--action-color', buttonColor);
+
+                  var channels = buttonColor.match(/\d+/g);
+                  if (channels && channels.length >= 3) {
+                    button.style.setProperty(
+                      '--action-text-color',
+                      'rgb(' +
+                        Math.round(Number(channels[0]) * 0.52) + ', ' +
+                        Math.round(Number(channels[1]) * 0.52) + ', ' +
+                        Math.round(Number(channels[2]) * 0.52) +
+                      ')'
+                    );
+                  }
+                }
+              }
+            }
+            actions.appendChild(node);
+            node = next;
+          }
+
+          publicationMeta.appendChild(actions);
+        });
+
         var badges = document.querySelectorAll("[data-popup]");
         badges.forEach(function(badge) {
           var popup = document.getElementById(badge.dataset.popup);
@@ -1361,6 +1537,57 @@
             }
           });
         });
+
+        var searchInput = document.getElementById('publication-search');
+        var papers = Array.prototype.slice.call(document.querySelectorAll('.publication-paper'));
+        var years = Array.prototype.slice.call(document.querySelectorAll('.publication-year'));
+        var count = document.querySelector('.publication-search-count');
+        var empty = document.querySelector('.publication-empty');
+
+        if (searchInput && papers.length) {
+          papers.forEach(function(paper) {
+            var summary = paper.querySelector('p');
+            var venue = paper.querySelector('.publication-venue');
+            paper.dataset.searchText = [
+              summary ? summary.textContent : '',
+              venue ? venue.textContent : ''
+            ].join(' ').toLowerCase();
+          });
+
+          var updateSearch = function() {
+            var query = searchInput.value.trim().toLowerCase();
+            var visibleCount = 0;
+
+            papers.forEach(function(paper) {
+              var isVisible = !query || paper.dataset.searchText.indexOf(query) !== -1;
+              paper.style.display = isVisible ? '' : 'none';
+              if (isVisible) visibleCount += 1;
+            });
+
+            years.forEach(function(year) {
+              var hasVisiblePaper = false;
+              var next = year.nextElementSibling;
+              while (next && !next.classList.contains('publication-year')) {
+                if (next.classList.contains('publication-paper') && next.style.display !== 'none') {
+                  hasVisiblePaper = true;
+                  break;
+                }
+                next = next.nextElementSibling;
+              }
+              year.style.display = hasVisiblePaper ? '' : 'none';
+            });
+
+            if (count) {
+              count.textContent = visibleCount + ' of ' + papers.length;
+            }
+            if (empty) {
+              empty.style.display = visibleCount ? 'none' : 'block';
+            }
+          };
+
+          searchInput.addEventListener('input', updateSearch);
+          updateSearch();
+        }
       });
     </script>
   </body>
