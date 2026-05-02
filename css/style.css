@@ -8771,7 +8771,7 @@ p a {
 
 body.dark-theme {
   color: #d8d2c8;
-  background: #1c1d20;
+  background: #202124;
 }
 
 body.dark-theme #colorlib-page,
@@ -8784,17 +8784,17 @@ body.dark-theme .bg-light,
 body.dark-theme .services,
 body.dark-theme .search-form,
 body.dark-theme .sidebar-box {
-  background: #1c1d20 !important;
+  background: #202124 !important;
 }
 
 body.dark-theme #colorlib-aside {
-  background: #242529;
+  background: #26272b;
   box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 991.98px) {
   body.dark-theme #colorlib-aside {
-    background: #242529;
+    background: #26272b;
   }
 }
 
@@ -8829,7 +8829,7 @@ body.dark-theme [style*="color:black"] {
 }
 
 body.dark-theme .hero-wrap .text .desc h1.big-letter {
-  color: rgba(238, 232, 220, 0.035) !important;
+  color: rgba(238, 232, 220, 0.024) !important;
 }
 
 body.dark-theme .theme-color,
