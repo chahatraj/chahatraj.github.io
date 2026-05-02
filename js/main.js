@@ -90,7 +90,7 @@
 		if (!$main.length || $('.site-footer-note').length) return;
 		var pageName = window.location.pathname.split('/').pop();
 		if (!pageName || pageName === 'index.html') return;
-		var fallbackDate = 'April 30, 2026';
+		var fallbackDate = 'May 2, 2026';
 
 		$main.append(
 			'<footer class="site-footer-note">' +
