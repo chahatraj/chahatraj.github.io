@@ -90,14 +90,34 @@
 		if (!$main.length || $('.site-footer-note').length) return;
 		var pageName = window.location.pathname.split('/').pop();
 		if (!pageName || pageName === 'index.html') return;
+		var fallbackDate = 'April 30, 2026';
 
 		$main.append(
 			'<footer class="site-footer-note">' +
-				'<span>Last updated on April 30, 2026</span>' +
+				'<span>Last updated on <span class="site-footer-date">' + fallbackDate + '</span></span>' +
 				'<span class="site-footer-separator">·</span>' +
 				'<span>Made with <span class="site-footer-heart" aria-label="heart"></span></span>' +
 			'</footer>'
 		);
+
+		if (!window.fetch) return;
+
+		fetch('https://api.github.com/repos/chahatraj/chahatraj.github.io/commits?per_page=1')
+			.then(function(response) {
+				if (!response.ok) throw new Error('Commit date unavailable');
+				return response.json();
+			})
+			.then(function(commits) {
+				var commitDate = commits && commits[0] && commits[0].commit && commits[0].commit.committer && commits[0].commit.committer.date;
+				if (!commitDate) return;
+				var formattedDate = new Date(commitDate).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
+				$('.site-footer-date').text(formattedDate);
+			})
+			.catch(function() {});
 	};
 	$(siteFooter);
 
