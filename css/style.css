@@ -8324,6 +8324,18 @@ textarea.form-control {
   height: 30px;
 }
 
+#colorlib-aside #colorlib-main-menu .ftco-social li a {
+  text-decoration: none !important;
+}
+
+#colorlib-aside #colorlib-main-menu .ftco-social li a:after,
+#colorlib-aside #colorlib-main-menu .ftco-social li a:hover:after,
+#colorlib-aside #colorlib-main-menu .ftco-social li a:focus:after,
+#colorlib-aside #colorlib-main-menu .ftco-social li a:active:after {
+  display: none !important;
+  content: none !important;
+}
+
 #map {
   width: 100%; }
   @media (max-width: 991.98px) {
