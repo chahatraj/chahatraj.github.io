@@ -45,11 +45,23 @@
       border: 1px solid var(--theme-color);
       border-left: 4px solid rgba(255, 255, 255, 0.7);
       border-radius: 12px;
-      background: var(--theme-color);
+      background: color-mix(in srgb, var(--theme-color) 88%, rgba(255, 255, 255, 0.18));
       color: #ffffff;
       font-size: 14px;
       line-height: 1.7;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .job-market-focus {
+      display: inline-block;
+      margin: 0 0.08rem;
+      padding: 0.02rem 0.38rem;
+      border-radius: 6px;
+      background: rgba(32, 33, 36, 0.28);
+      color: #eaf6f7;
+      font-weight: 500;
+      line-height: 1.45;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
   </style>
   <script>
@@ -145,7 +157,7 @@
                 </button>
               </p>
               <div class="job-market-box">
-                I am currently on the 2027 job market for academic roles, including postdoctoral and tenure-track positions.
+                I am currently on the 2027 job market for academic roles, including <span class="job-market-focus">postdoctoral</span> and <span class="job-market-focus">tenure-track</span> positions.
               </div>
               <script>
                 function speakName() {
