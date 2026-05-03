@@ -7621,6 +7621,9 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (max-width: 991.98px) {
     .colorlib-nav-toggle {
+      left: auto;
+      right: 0;
+      top: 0;
       opacity: 1;
       visibility: visible; } }
 

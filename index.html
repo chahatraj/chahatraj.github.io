@@ -69,8 +69,12 @@
     }
 
     @media (max-width: 767.98px) {
-      .hero-wrap .author-image {
+      .hero-wrap .author-image,
+      .hero-wrap .home-slider {
         display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        visibility: hidden;
       }
 
       .hero-wrap .author-info {
