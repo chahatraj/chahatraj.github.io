@@ -170,6 +170,29 @@
       line-height: 1.42;
     }
 
+    .publication-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      margin-left: 0.42rem;
+      border: 1px solid rgba(190, 132, 20, 0.38);
+      border-radius: 999px;
+      padding: 0.16rem 0.48rem;
+      background: rgba(255, 214, 102, 0.18);
+      color: #8a5a00;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1.15;
+      vertical-align: 0.12rem;
+      white-space: nowrap;
+    }
+
+    .publication-award-icon {
+      font-size: 0.82rem;
+      line-height: 1;
+    }
+
     .publication-actions {
       display: flex;
       flex-wrap: wrap;
@@ -221,6 +244,12 @@
 
     body.dark-theme .publication-paper > p > a[style*="color: #000000"] {
       color: #eee8dc !important;
+    }
+
+    body.dark-theme .publication-award {
+      border-color: rgba(255, 203, 85, 0.42);
+      background: rgba(255, 203, 85, 0.12);
+      color: #f4c95d;
     }
 
     .publication-visual {
@@ -343,7 +372,7 @@
                     <!-- Publication 10 Starts Here -->
                     <li class="publication-paper">
                       <p>
-                        <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><br />
+                        <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><span class="publication-award" title="SAC Highlight Award"><span class="publication-award-icon" aria-hidden="true">🏆</span>SAC Highlight Award</span><br />
                         <a class="theme-color">Chahat Raj</a>, Bowen Wei, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Main 2026 (top 15% of accepted papers)]
                         <a href="https://arxiv.org/pdf/2505.22897?" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                         <a href="https://github.com/chahatraj/Vignette" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #d8c690; color: #ffffff">Code</button></a> <!-- TODO: add code -->
