@@ -111,6 +111,44 @@
     color: rgba(0, 0, 0, 0.78);
   }
 
+  .news-award-icon {
+    position: relative;
+    display: inline-block;
+    width: 0.9rem;
+    height: 1.06rem;
+    margin-left: 0.34rem;
+    vertical-align: -0.24rem;
+  }
+
+  .news-award-icon::before {
+    content: "";
+    position: absolute;
+    left: 0.08rem;
+    top: 0;
+    width: 0.74rem;
+    height: 0.64rem;
+    clip-path: polygon(0 0, 34% 0, 50% 78%, 66% 0, 100% 0, 67% 100%, 33% 100%);
+    background:
+      linear-gradient(90deg, #4f6f32 0 46%, transparent 46% 54%, #4f6f32 54% 100%),
+      linear-gradient(90deg, #6f8f42, #839f4f);
+    border-radius: 0.03rem 0.03rem 0 0;
+  }
+
+  .news-award-icon::after {
+    content: "";
+    position: absolute;
+    left: 0.16rem;
+    bottom: 0;
+    width: 0.58rem;
+    height: 0.58rem;
+    border: 1px solid rgba(137, 89, 12, 0.58);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.78) 0 10%, transparent 11%),
+      linear-gradient(135deg, #f6d36d, #b78014 70%, #7d560d);
+    box-shadow: inset 0 -1px 0 rgba(80, 48, 0, 0.25);
+  }
+
   body.dark-theme .news-date {
     border-color: color-mix(in srgb, var(--theme-color) 32%, transparent);
     border-left-color: var(--theme-color);
@@ -190,16 +228,16 @@
 <h1 class="mb-4" class="theme-color"><span></span><b>NEWS</b><span></span></h1>
                       <div class="news-list">
                       <div class="news-year">2026</div>
-                      <div class="news-item"><span class="news-date">July 7, 2026</span><p class="news-text news-highlight">Vignette received an SAC Highlight Award at ACL 2026!</p></div>
+                      <div class="news-item"><span class="news-date">July 7, 2026</span><p class="news-text news-highlight">Vignette received an SAC Highlight Award at ACL 2026!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-item"><span class="news-date">July 03, 2026</span><p class="news-text">I will be presenting two papers at ACL 2026 in San Diego.</p></div>
                       <div class="news-item"><span class="news-date">May 15, 2026</span><p class="news-text news-highlight">I will be interning at Amazon this summer in Seattle!</p></div>
-                      <div class="news-item"><span class="news-date">May 13, 2026</span><p class="news-text news-highlight">Also received the Outstanding Academic Achievement Award!</p></div>
-                      <div class="news-item"><span class="news-date">May 13, 2026</span><p class="news-text news-highlight">Received an Outstanding GTA Award at George Mason University!</p></div>
-                      <div class="news-item"><span class="news-date">May 5, 2026</span><p class="news-text news-highlight">Received an Outstanding Reviewer Award at EACL 2026!</p></div>
+                      <div class="news-item"><span class="news-date">May 13, 2026</span><p class="news-text news-highlight">Also received the Outstanding Academic Achievement Award!<span class="news-award-icon" aria-hidden="true"></span></p></div>
+                      <div class="news-item"><span class="news-date">May 13, 2026</span><p class="news-text news-highlight">Received an Outstanding GTA Award at George Mason University!<span class="news-award-icon" aria-hidden="true"></span></p></div>
+                      <div class="news-item"><span class="news-date">May 5, 2026</span><p class="news-text news-highlight">Received an Outstanding Reviewer Award at EACL 2026!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-item"><span class="news-date">April 30, 2026</span><p class="news-text news-highlight">Jinhao's paper accepted to ICML 2026!</p></div>
                       <div class="news-item"><span class="news-date">April 29, 2026</span><p class="news-text news-highlight">Rinki's paper accepted to TrustNLP @ ACL 2026!</p></div>
                       <div class="news-item"><span class="news-date">April 24, 2026</span><p class="news-text news-highlight">Passed my Ph.D. proposal defense and advanced to candidacy!</p></div>
-                      <div class="news-item"><span class="news-date">April 06, 2026</span><p class="news-text news-highlight">VIGNETTE accepted to ACL Main (top 15% of accepted papers, nominated for a Best Paper Award)!</p></div>
+                      <div class="news-item"><span class="news-date">April 06, 2026</span><p class="news-text news-highlight">VIGNETTE accepted to ACL Main (top 15% of accepted papers, nominated for a Best Paper Award)!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-item"><span class="news-date">April 06, 2026</span><p class="news-text news-highlight">Talent or Luck accepted to ACL Findings!</p></div>
                       <div class="news-year">2025</div>
                       <div class="news-item"><span class="news-date">November 07, 2025</span><p class="news-text news-highlight">A paper, led by Jinhao, accepted to AAAI!</p></div>
@@ -207,7 +245,7 @@
                       <div class="news-item"><span class="news-date">August 20, 2025</span><p class="news-text news-highlight">Two papers accepted to EMNLP Findings, led by Jinhao and Prommy!</p></div>
                       <div class="news-item"><span class="news-date">April 26, 2025</span><p class="news-text">Attended the Mentorship Research Showcase Event at TJ High School with my advisor, Ziwei, and mentee, Mahika!</p></div>
                       <div class="news-item"><span class="news-date">April 5, 2025</span><p class="news-text">Presented two posters at MASC-SLL in Penn State!</p></div>
-                      <div class="news-item"><span class="news-date">January 14, 2025</span><p class="news-text news-highlight">Received the OpenAI Researcher Access Program Award!</p></div>
+                      <div class="news-item"><span class="news-date">January 14, 2025</span><p class="news-text news-highlight">Received the OpenAI Researcher Access Program Award!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-year">2024</div>
                       <div class="news-item"><span class="news-date">December 21, 2024</span><p class="news-text">Chennai!</p></div>
                       <div class="news-item"><span class="news-date">December, 2024</span><p class="news-text">India Trip in winter!</p></div>
@@ -220,8 +258,8 @@
                       <div class="news-item"><span class="news-date">May 18, 2024</span><p class="news-text">Moved to Seattle for the summer to work with Aylin at the University of Washington.</p></div>
                       <div class="news-item"><span class="news-date">May 10, 2024</span><p class="news-text">Completed my breadth requirements for the PhD!</p></div>
                       <div class="news-item"><span class="news-date">May 9, 2024</span><p class="news-text">Attended Charith's graduation playing his parent.</p></div>
-                      <div class="news-item"><span class="news-date">May 3, 2024</span><p class="news-text news-highlight">Received Best Paper Award at MASC-SLL, Johns Hopkins, Maryland for the 'Contact Hypothesis' paper!</p></div>
-                      <div class="news-item"><span class="news-date">April 23, 2024</span><p class="news-text news-highlight">Received the CAHMP award for Summer 2024!</p></div>
+                      <div class="news-item"><span class="news-date">May 3, 2024</span><p class="news-text news-highlight">Received Best Paper Award at MASC-SLL, Johns Hopkins, Maryland for the 'Contact Hypothesis' paper!<span class="news-award-icon" aria-hidden="true"></span></p></div>
+                      <div class="news-item"><span class="news-date">April 23, 2024</span><p class="news-text news-highlight">Received the CAHMP award for Summer 2024!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-item"><span class="news-date">April 5-6, 2024</span><p class="news-text news-highlight">Gave a talk at SouthNLP + roadtrip to Emory University, Georgia + Kings Dominion!</p></div>
                       <div class="news-item"><span class="news-date">March 24-30, 2024</span><p class="news-text">Went to Scotland to present the paper 'SALSA' at ECIR, visited Glasgow, 'Edinbruh', Sterling, and 'Fawkirk'!</p></div>
                       <div class="news-item"><span class="news-date">March 22, 2024</span><p class="news-text">Visited my cousins in London, went to Kings Cross, and the Warner Bros Studio Tour!</p></div>
@@ -243,8 +281,8 @@
                       <div class="news-item"><span class="news-date">May 27, 2023</span><p class="news-text news-highlight">The 'True and Fair' paper accepted at AIES!</p></div>
                       <div class="news-item"><span class="news-date">May 25-29, 2023</span><p class="news-text">Visited Baltimore!</p></div>
                       <div class="news-item"><span class="news-date">April 22, 2023</span><p class="news-text">Attended MASC-SLL'23 at the Arlington Campus.</p></div>
-                      <div class="news-item"><span class="news-date">April 13, 2023</span><p class="news-text news-highlight">Received the Summer Graduate Research Award 2023 at Mason!</p></div>
-                      <div class="news-item"><span class="news-date">April 6, 2023</span><p class="news-text news-highlight">Received two Research Excellence Awards at DTU!</p></div>
+                      <div class="news-item"><span class="news-date">April 13, 2023</span><p class="news-text news-highlight">Received the Summer Graduate Research Award 2023 at Mason!<span class="news-award-icon" aria-hidden="true"></span></p></div>
+                      <div class="news-item"><span class="news-date">April 6, 2023</span><p class="news-text news-highlight">Received two Research Excellence Awards at DTU!<span class="news-award-icon" aria-hidden="true"></span></p></div>
                       <div class="news-item"><span class="news-date">March 14-19, 2023</span><p class="news-text">Visited New York (Also Columbia, PACE & CUNY in addition to the touristy places)!</p></div>
                       <div class="news-item"><span class="news-date">February 14, 2023</span><p class="news-text">Attended Preslav Nakov's talk at Mason on Misinformation!</p></div>
                       <div class="news-item"><span class="news-date">January 12, 2023</span><p class="news-text">Returned to Fairfax and began my second semester.</p></div>

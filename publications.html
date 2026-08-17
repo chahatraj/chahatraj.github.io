@@ -173,7 +173,7 @@
     .publication-award {
       display: inline-flex;
       align-items: center;
-      gap: 0.28rem;
+      gap: 0.32rem;
       margin-left: 0.42rem;
       border: 1px solid rgba(190, 132, 20, 0.38);
       border-radius: 999px;
@@ -189,8 +189,40 @@
     }
 
     .publication-award-icon {
-      font-size: 0.82rem;
-      line-height: 1;
+      position: relative;
+      display: inline-block;
+      width: 0.9rem;
+      height: 1.06rem;
+      flex: 0 0 auto;
+    }
+
+    .publication-award-icon::before {
+      content: "";
+      position: absolute;
+      left: 0.08rem;
+      top: 0;
+      width: 0.74rem;
+      height: 0.64rem;
+      clip-path: polygon(0 0, 34% 0, 50% 78%, 66% 0, 100% 0, 67% 100%, 33% 100%);
+      background:
+        linear-gradient(90deg, #4f6f32 0 46%, transparent 46% 54%, #4f6f32 54% 100%),
+        linear-gradient(90deg, #6f8f42, #839f4f);
+      border-radius: 0.03rem 0.03rem 0 0;
+    }
+
+    .publication-award-icon::after {
+      content: "";
+      position: absolute;
+      left: 0.16rem;
+      bottom: 0;
+      width: 0.58rem;
+      height: 0.58rem;
+      border: 1px solid rgba(137, 89, 12, 0.58);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.78) 0 10%, transparent 11%),
+        linear-gradient(135deg, #f6d36d, #b78014 70%, #7d560d);
+      box-shadow: inset 0 -1px 0 rgba(80, 48, 0, 0.25);
     }
 
     .publication-actions {
@@ -372,7 +404,7 @@
                     <!-- Publication 10 Starts Here -->
                     <li class="publication-paper">
                       <p>
-                        <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><span class="publication-award" title="SAC Highlight Award"><span class="publication-award-icon" aria-hidden="true">🏆</span>SAC Highlight Award</span><br />
+                        <a style="color: #000000">VIGNETTE: Socially Grounded Bias Evaluation for Vision-Language Models.</a><span class="publication-award" title="SAC Highlight Award"><span class="publication-award-icon" aria-hidden="true"></span>SAC Highlight Award</span><br />
                         <a class="theme-color">Chahat Raj</a>, Bowen Wei, Aylin Caliskan, Antonios Anastasopoulos, and Ziwei Zhu [ACL Main 2026 (top 15% of accepted papers)]
                         <a href="https://arxiv.org/pdf/2505.22897?" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #a7c7e7; color: #ffffff">PDF</button></a> <!-- TODO: add pdf -->
                         <a href="https://github.com/chahatraj/Vignette" target="_blank" rel="noopener noreferrer"><button type="button" class="btn badge" style="background-color: #d8c690; color: #ffffff">Code</button></a> <!-- TODO: add code -->
