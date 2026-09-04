@@ -9148,3 +9148,71 @@ body.dark-theme #ftco-loader.fullscreen {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Shared horizontal navigation layout */
+#colorlib-aside {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0.65rem 4.5rem !important;
+  -webkit-transform: none !important;
+  -ms-transform: none !important;
+  transform: none !important;
+}
+
+#colorlib-aside #colorlib-logo,
+#colorlib-aside #colorlib-main-menu > ul > .ftco-social {
+  display: none;
+}
+
+#colorlib-aside #colorlib-main-menu > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+}
+
+#colorlib-aside #colorlib-main-menu > ul > li {
+  margin: 0;
+}
+
+#colorlib-aside #colorlib-main-menu > ul > li > a {
+  display: block;
+  padding: 0.55rem 0;
+}
+
+#colorlib-main,
+body.offcanvas #colorlib-main {
+  width: 100% !important;
+  float: none;
+  -webkit-transform: none !important;
+  -ms-transform: none !important;
+  transform: none !important;
+}
+
+.colorlib-nav-toggle {
+  display: none !important;
+}
+
+@media (max-width: 767.98px) {
+  #colorlib-aside {
+    padding: 0.5rem 2.75rem 0.5rem 0.75rem !important;
+  }
+
+  #colorlib-aside #colorlib-main-menu > ul {
+    gap: 0 0.85rem;
+  }
+
+  #colorlib-aside #colorlib-main-menu > ul > li > a {
+    font-size: 13px;
+  }
+}
