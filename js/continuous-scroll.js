@@ -154,24 +154,44 @@
     var years = Array.prototype.slice.call(root.querySelectorAll('.publication-year'));
     var count = root.querySelector('.publication-search-count');
     var empty = root.querySelector('.publication-empty');
+    var selectedTitlePrefixes = [
+      'vignette: socially grounded bias evaluation',
+      'talent or luck? evaluating attribution bias',
+      'knowbias: mitigating social bias',
+      'measuring south asian biases',
+      'bias association discovery framework',
+      'toward inclusive language models',
+      "what's not said still hurts",
+      'biasdora: exploring hidden biased associations',
+      'breaking bias, building bridges',
+      'global voices, local biases'
+    ];
 
     if (!searchInput || !papers.length) return;
 
     papers.forEach(function(paper) {
       var summary = paper.querySelector('p');
       var venue = paper.querySelector('.publication-venue');
+      var title = paper.querySelector('p > a[style*="color: #000000"]');
+      var normalizedTitle = title ? title.textContent.trim().toLowerCase().replace(/\s+/g, ' ') : '';
+      paper.dataset.selectedPublication = selectedTitlePrefixes.some(function(prefix) {
+        return normalizedTitle.indexOf(prefix) === 0;
+      }) ? 'true' : 'false';
       paper.dataset.searchText = [
         summary ? summary.textContent : '',
         venue ? venue.textContent : ''
       ].join(' ').toLowerCase();
     });
 
+    var search = searchInput.closest('.publication-search');
+    if (search) search.style.display = 'none';
+
     var updateSearch = function() {
       var query = searchInput.value.trim().toLowerCase();
       var visibleCount = 0;
 
       papers.forEach(function(paper) {
-        var isVisible = !query || paper.dataset.searchText.indexOf(query) !== -1;
+        var isVisible = paper.dataset.selectedPublication === 'true' && (!query || paper.dataset.searchText.indexOf(query) !== -1);
         paper.style.display = isVisible ? '' : 'none';
         if (isVisible) visibleCount += 1;
       });
@@ -190,11 +210,19 @@
       });
 
       if (count) count.textContent = visibleCount + ' of ' + papers.length;
-      if (empty) empty.style.display = visibleCount ? 'none' : 'block';
+      if (empty) empty.style.display = 'none';
     };
 
     searchInput.addEventListener('input', updateSearch);
     updateSearch();
+
+    var publicationList = papers[0].parentElement;
+    if (publicationList) {
+      var footer = document.createElement('div');
+      footer.className = 'home-archive-footer';
+      footer.innerHTML = '<a class="home-archive-link" href="publications.html">View all publications <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
+      publicationList.insertAdjacentElement('afterend', footer);
+    }
   };
 
   var initializeNews = function(root) {
@@ -218,8 +246,8 @@
     });
 
     var footer = document.createElement('div');
-    footer.className = 'home-news-footer';
-    footer.innerHTML = '<a class="home-news-link" href="news.html">View all news <span class="home-news-link-arrow" aria-hidden="true">→</span></a>';
+    footer.className = 'home-archive-footer';
+    footer.innerHTML = '<a class="home-archive-link" href="news.html">View all news <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
     list.insertAdjacentElement('afterend', footer);
   };
 
