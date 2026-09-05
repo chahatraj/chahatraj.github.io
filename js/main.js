@@ -39,7 +39,6 @@
 			'index.html': 'about',
 			'news.html': 'news',
 			'publications.html': 'publications',
-			'affiliations.html': 'affiliations',
 			'posters.html': 'posters',
 			'slides.html': 'slides',
 			'stills.html': 'stills',
