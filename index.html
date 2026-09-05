@@ -255,9 +255,9 @@
     }
 
     .hero-wrap .text p.home-pronunciation {
-      margin: 0 0 1rem;
+      margin: -0.2rem 0 1rem;
       color: #80756d;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       line-height: 1.5;
     }
@@ -273,7 +273,7 @@
       text-align: left;
     }
 
-    .home-bio-copy .home-bio + .home-bio {
+    .hero-wrap .text .home-bio-copy p.home-bio + p.home-bio {
       margin-top: 1.375rem;
     }
 
@@ -313,7 +313,7 @@
     .hero-wrap > .d-flex {
       display: grid !important;
       grid-template-columns: 250px minmax(0, 900px);
-      gap: 3rem;
+      gap: 2.25rem;
       justify-content: center;
       align-items: start;
       height: auto !important;
@@ -373,11 +373,22 @@
     .home-profile .ftco-social li a {
       width: 44px;
       height: 44px;
-      border: 1px solid rgba(64, 56, 50, 0.12);
+      border: none;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
-    body.dark-theme .home-profile .ftco-social li a {
-      border-color: rgba(238, 232, 220, 0.16);
+    .home-profile .ftco-social li a span {
+      color: #574b44 !important;
+    }
+
+    body.dark-theme .home-profile .ftco-social li a span {
+      color: #d8d2c8 !important;
+    }
+
+    .home-profile .ftco-social li a:hover span,
+    .home-profile .ftco-social li a:focus-visible span {
+      color: var(--theme-color) !important;
     }
 
     .home-profile .ftco-social li a span {
@@ -522,9 +533,10 @@
                 <span class="theme-color">/ˈtʃaː.ɦət/</span>
 
                 <button onclick="speakName()"
+                        aria-label="Hear Chahat pronounced"
                         class="theme-color"
                         style="border:none; background:none; padding:0; border-radius:16px;
-                              margin-left:6px; cursor:pointer; color:inherit;">
+                              margin-left:4px; font-size:12px; cursor:pointer; color:inherit;">
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
               </p>
