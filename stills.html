@@ -48,14 +48,22 @@
   </style> -->
   <style>
 .gallery {
-  column-count: 3;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
   padding: 1rem;
 }
 
+.gallery-column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .tile {
-  break-inside: avoid;
-  margin-bottom: 1rem;
+  margin: 0;
   padding: 0.55rem;
   border: 1px solid rgba(0, 0, 0, 0.07);
   border-radius: 8px;
@@ -112,11 +120,11 @@ body.dark-theme .caption {
 }
 
 @media (max-width: 992px) {
-  .gallery { column-count: 2; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 576px) {
-  .gallery { column-count: 1; }
+  .gallery { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -366,6 +374,7 @@ body.dark-theme .caption {
                   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                   <script src="js/google-map.js"></script>
                   <script src="js/main.js?v=20260904b"></script>
+                  <script src="js/stills-layout.js?v=20260905a"></script>
                 </div>
               </div>
             </div>
