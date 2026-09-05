@@ -8976,8 +8976,10 @@ body.dark-theme .back-to-top {
 }
 
 .site-footer-note--homepage {
-  padding-top: 0;
+  margin: 0;
+  padding: 2.5rem 1.5rem 1.5rem;
   border-top: 0;
+  background: #f8f9fa;
 }
 
 .site-footer-separator {
@@ -9018,6 +9020,10 @@ body.dark-theme .back-to-top {
 body.dark-theme .site-footer-note {
   border-top-color: rgba(255, 255, 255, 0.1);
   color: rgba(216, 210, 200, 0.58);
+}
+
+body.dark-theme .site-footer-note--homepage {
+  background: #202124;
 }
 
 body.dark-theme .site-footer-heart {
