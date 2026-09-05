@@ -8975,6 +8975,11 @@ body.dark-theme .back-to-top {
   letter-spacing: 0.02em;
 }
 
+.site-footer-note--homepage {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .site-footer-separator {
   color: var(--theme-color);
 }

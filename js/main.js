@@ -140,7 +140,7 @@
 		var $main = $('#colorlib-main');
 		if (!$main.length || $('.site-footer-note').length) return;
 		var pageName = window.location.pathname.split('/').pop();
-		if (!pageName || pageName === 'index.html') return;
+		var isHomepage = !pageName || pageName === 'index.html';
 		var fallbackDate = 'May 2, 2026';
 		var lastModified = new Date(document.lastModified);
 		var updatedDate = isNaN(lastModified.getTime()) ? fallbackDate : lastModified.toLocaleDateString('en-US', {
@@ -150,7 +150,7 @@
 		});
 
 		$main.append(
-			'<footer class="site-footer-note">' +
+			'<footer class="site-footer-note' + (isHomepage ? ' site-footer-note--homepage' : '') + '">' +
 				'<span>Last updated on <span class="site-footer-date">' + updatedDate + '</span></span>' +
 				'<span class="site-footer-separator">·</span>' +
 				'<span>Made with <span class="site-footer-heart" aria-label="heart"></span></span>' +
