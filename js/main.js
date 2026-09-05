@@ -32,6 +32,14 @@
 	};
 	unlinkContactNav();
 
+	var openProfileLinksInNewTabs = function() {
+		$('a[aria-label="LinkedIn"], a[aria-label="Twitter"], a[aria-label="GitHub"], a[aria-label="Google Scholar"], a[aria-label="CV"]').attr({
+			'target': '_blank',
+			'rel': 'noopener noreferrer'
+		});
+	};
+	openProfileLinksInNewTabs();
+
 	var configureContinuousNavigation = function() {
 		var pageName = window.location.pathname.split('/').pop();
 		var isHomepage = !pageName || pageName === 'index.html';
