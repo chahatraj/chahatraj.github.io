@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Unbounded:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /*!
  * Bootstrap v4.1.0 (https://getbootstrap.com/)
@@ -7311,7 +7311,7 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 400;
-  font-family: "Unbounded", "Figtree", Arial, sans-serif; }
+  font-family: "Poppins", Arial, sans-serif; }
 
 #colorlib-page {
   width: 100%;
@@ -9277,7 +9277,7 @@ body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > 
   margin-bottom: 1.35rem !important;
   padding-top: 1.05rem;
   color: #403832 !important;
-  font-family: "Unbounded", "Figtree", Arial, sans-serif !important;
+  font-family: "Poppins", Arial, sans-serif !important;
   font-size: 1.7rem !important;
   font-weight: 600;
   line-height: 1.15;
