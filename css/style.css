@@ -8713,6 +8713,12 @@ textarea.form-control {
   --theme-color: #8E4585; /* Default color, will be overridden by JavaScript */
 }
 
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
+
 .theme-color,
 .theme-color a,
 #colorlib-logo a,

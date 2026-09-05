@@ -88,8 +88,13 @@
 		var $button = $toggle.find('.theme-toggle');
 		var $icon = $toggle.find('.theme-toggle-icon');
 		var $text = $toggle.find('.theme-toggle-text');
+		var transitionResetFrame = null;
 
 		var applyTheme = function(dark) {
+			document.documentElement.classList.add('theme-switching');
+			if (transitionResetFrame !== null) {
+				window.cancelAnimationFrame(transitionResetFrame);
+			}
 			$('body').toggleClass('dark-theme', dark);
 			$button.attr({
 				'aria-pressed': dark ? 'true' : 'false',
@@ -97,6 +102,12 @@
 			});
 			$icon.text(dark ? '☀' : '☾');
 			$text.text(dark ? 'Light' : 'Dark');
+			transitionResetFrame = window.requestAnimationFrame(function() {
+				transitionResetFrame = window.requestAnimationFrame(function() {
+					document.documentElement.classList.remove('theme-switching');
+					transitionResetFrame = null;
+				});
+			});
 		};
 
 		var $logo = $aside.find('#colorlib-logo');
