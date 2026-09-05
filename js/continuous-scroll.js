@@ -220,7 +220,7 @@
     if (publicationList) {
       var footer = document.createElement('div');
       footer.className = 'home-archive-footer';
-      footer.innerHTML = '<a class="home-archive-link" href="publications.html">View all publications <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
+      footer.innerHTML = '<a class="home-archive-link" href="publications.html" target="_blank" rel="noopener noreferrer">View all publications <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
       publicationList.insertAdjacentElement('afterend', footer);
     }
   };
@@ -247,7 +247,7 @@
 
     var footer = document.createElement('div');
     footer.className = 'home-archive-footer';
-    footer.innerHTML = '<a class="home-archive-link" href="news.html">View all news <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
+    footer.innerHTML = '<a class="home-archive-link" href="news.html" target="_blank" rel="noopener noreferrer">View all news <span class="home-archive-link-arrow" aria-hidden="true">→</span></a>';
     list.insertAdjacentElement('afterend', footer);
   };
 
