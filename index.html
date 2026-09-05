@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="css/jquery.timepicker.css"/>
   <link rel="stylesheet" href="css/flaticon.css"/>
   <link rel="stylesheet" href="css/icomoon.css"/>
-  <link rel="stylesheet" href="css/style.css?v=20260904a"/>
+  <link rel="stylesheet" href="css/style.css?v=20260904b"/>
   <style>
     :root {
       --theme-color: #8E4585; /* Default theme color */
@@ -40,7 +40,12 @@
     }
 
     #colorlib-aside {
-      position: relative !important;
+      position: -webkit-sticky !important;
+      position: sticky !important;
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: auto;
       z-index: 1000;
       width: 100% !important;
       height: auto !important;
@@ -65,11 +70,17 @@
 
     #colorlib-aside #colorlib-main-menu > ul > li {
       margin: 0;
+      font-weight: 400;
     }
 
     #colorlib-aside #colorlib-main-menu > ul > li > a {
       display: block;
       padding: 0.55rem 0;
+      font-weight: 400;
+    }
+
+    #colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > a {
+      font-weight: 700;
     }
 
     #colorlib-main {

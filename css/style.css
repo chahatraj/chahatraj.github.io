@@ -9150,8 +9150,18 @@ body.dark-theme #ftco-loader.fullscreen {
     stroke-dashoffset: -136px; } }
 
 /* Shared horizontal navigation layout */
+#colorlib-page {
+  overflow: visible;
+}
+
 #colorlib-aside {
-  position: relative !important;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1001;
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
@@ -9183,11 +9193,17 @@ body.dark-theme #ftco-loader.fullscreen {
 
 #colorlib-aside #colorlib-main-menu > ul > li {
   margin: 0;
+  font-weight: 400;
 }
 
 #colorlib-aside #colorlib-main-menu > ul > li > a {
   display: block;
   padding: 0.55rem 0;
+  font-weight: 400;
+}
+
+#colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > a {
+  font-weight: 700;
 }
 
 #colorlib-main,
