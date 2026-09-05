@@ -80,7 +80,7 @@
       padding: 1rem 1.25rem;
       border: 1px solid var(--theme-color);
       border-radius: 12px;
-      background: color-mix(in srgb, var(--theme-color) 88%, rgba(255, 255, 255, 0.18));
+      background: color-mix(in srgb, var(--theme-color) 16%, transparent);
       color: #202124 !important;
       font-size: 16px;
       font-weight: 600;
@@ -98,6 +98,31 @@
       font-weight: 700;
       line-height: inherit;
       box-shadow: none;
+    }
+
+    .hero-wrap .text h1.home-name {
+      margin: 0 0 0.35rem;
+      color: #2f2c2a;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-wrap .text p.home-title {
+      margin: 0 0 1.75rem;
+      color: #6f6863;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    body.dark-theme .hero-wrap .text h1.home-name,
+    body.dark-theme .hero-wrap .text p.home-title,
+    body.dark-theme .job-market-box,
+    body.dark-theme .job-market-focus {
+      color: #eee8dc !important;
     }
 
     .home-slider .slider-item {
@@ -192,6 +217,10 @@
         width: 220px;
         height: 220px;
       }
+
+      .hero-wrap .text h1.home-name {
+        font-size: 38px;
+      }
     }
   </style>
   <script>
@@ -256,9 +285,8 @@
           </div>
           <div class="author-info text p-3 p-md-5">
             <div class="desc">
-              <span class="subheading">Hey! I'm</span>
-              <h1 class="big-letter">Chahat Raj</h1>
-              <h1 class="mb-4" class="theme-color"><span></span>Chahat Raj<span></span></h1>
+              <h1 class="home-name">Chahat Raj</h1>
+              <p class="home-title">Ph.D. Candidate in Computer Science, George Mason University</p>
               <p class="mb-4">
                 My first name is pronounced as
                 <span class="theme-color">/ˈtʃaː.ɦət/</span>
@@ -340,7 +368,7 @@
     <script src="js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
-    <script src="js/main.js?v=20260502j"></script>
+    <script src="js/main.js?v=20260904a"></script>
   </div>
 </div>
 </body>

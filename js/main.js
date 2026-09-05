@@ -44,7 +44,7 @@
 		} catch (error) {
 			storedTheme = null;
 		}
-		var isDark = storedTheme !== 'light';
+		var isDark = storedTheme === 'dark';
 		var $toggle = $(
 			'<div class="theme-toggle-wrap">' +
 				'<button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="true">' +
