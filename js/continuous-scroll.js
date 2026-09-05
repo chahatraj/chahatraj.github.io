@@ -169,6 +169,8 @@
 
     if (!searchInput || !papers.length) return;
 
+    years.forEach(function(year) { year.remove(); });
+
     papers.forEach(function(paper) {
       var summary = paper.querySelector('p');
       var venue = paper.querySelector('.publication-venue');
@@ -194,19 +196,6 @@
         var isVisible = paper.dataset.selectedPublication === 'true' && (!query || paper.dataset.searchText.indexOf(query) !== -1);
         paper.style.display = isVisible ? '' : 'none';
         if (isVisible) visibleCount += 1;
-      });
-
-      years.forEach(function(year) {
-        var hasVisiblePaper = false;
-        var next = year.nextElementSibling;
-        while (next && !next.classList.contains('publication-year')) {
-          if (next.classList.contains('publication-paper') && next.style.display !== 'none') {
-            hasVisiblePaper = true;
-            break;
-          }
-          next = next.nextElementSibling;
-        }
-        year.style.display = hasVisiblePaper ? '' : 'none';
       });
 
       if (count) count.textContent = visibleCount + ' of ' + papers.length;
@@ -238,9 +227,11 @@
     }) ? currentYear : years[0].textContent.trim();
     var showEntries = false;
 
-    Array.prototype.forEach.call(list.children, function(entry) {
+    Array.prototype.slice.call(list.children).forEach(function(entry) {
       if (entry.classList.contains('news-year')) {
         showEntries = entry.textContent.trim() === displayYear;
+        entry.remove();
+        return;
       }
       entry.style.display = showEntries ? '' : 'none';
     });
