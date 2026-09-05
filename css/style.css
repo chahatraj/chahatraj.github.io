@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Unbounded:wght@600;700&display=swap');
+
 /*!
  * Bootstrap v4.1.0 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -31,7 +33,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans-serif: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -56,7 +58,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -4494,7 +4496,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -4579,7 +4581,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7268,12 +7270,12 @@ a.text-dark:hover, a.text-dark:focus {
     border: 1px solid #dee2e6 !important; } }
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Figtree", Arial, sans-serif;
   background: #fff;
   font-size: 15px;
   line-height: 1.8;
   font-weight: 500;
-  color: #999999; }
+  color: #403832; }
   body.offcanvas {
     overflow-x: hidden; }
     body.offcanvas #colorlib-aside {
@@ -7309,7 +7311,7 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 400;
-  font-family: "Poppins", Arial, sans-serif; }
+  font-family: "Unbounded", "Figtree", Arial, sans-serif; }
 
 #colorlib-page {
   width: 100%;
@@ -7385,7 +7387,7 @@ h1, h2, h3, h4, h5,
         text-decoration: none;
         position: relative;
         padding: 10px 0;
-        font-family: "Montserrat", Arial, sans-serif;
+        font-family: "Figtree", Arial, sans-serif;
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         -webkit-transition: all 0.3s ease;
@@ -8766,7 +8768,7 @@ p a {
   height: 36px;
   padding: 0;
   cursor: pointer;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Figtree", Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
@@ -8993,7 +8995,7 @@ body.dark-theme .back-to-top {
   padding-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.07);
   color: rgba(0, 0, 0, 0.45);
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Figtree", Arial, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -9201,7 +9203,7 @@ body.dark-theme #ftco-loader.fullscreen {
   height: auto !important;
   min-height: 0 !important;
   padding: 0.65rem 4.5rem !important;
-  background: #f8f9fa !important;
+  background: #fff !important;
   border-bottom: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
   box-shadow: none;
   -webkit-transform: none !important;
@@ -9237,7 +9239,14 @@ body.dark-theme #ftco-loader.fullscreen {
 #colorlib-aside #colorlib-main-menu > ul > li > a {
   display: block;
   padding: 0.55rem 0;
+  color: #574b44 !important;
   font-weight: 400;
+}
+
+#colorlib-aside #colorlib-main-menu > ul > li > a:hover,
+#colorlib-aside #colorlib-main-menu > ul > li > a:focus-visible {
+  color: var(--theme-color) !important;
+  font-weight: 600;
 }
 
 #colorlib-aside #colorlib-main-menu > ul > li > a:after {
@@ -9246,7 +9255,60 @@ body.dark-theme #ftco-loader.fullscreen {
 }
 
 #colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > a {
+  color: #403832 !important;
   font-weight: 700;
+}
+
+body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li > a {
+  color: #d8d2c8 !important;
+}
+
+body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li > a:hover,
+body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li > a:focus-visible {
+  color: var(--theme-color) !important;
+}
+
+body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > a {
+  color: #eee8dc !important;
+}
+
+.desc h1.mb-4 {
+  position: relative;
+  margin-bottom: 1.35rem !important;
+  padding-top: 1.05rem;
+  color: #403832 !important;
+  font-family: "Unbounded", "Figtree", Arial, sans-serif !important;
+  font-size: 1.7rem !important;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.desc h1.mb-4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 0.32rem;
+  border-radius: 999px;
+  background: var(--theme-color);
+}
+
+.desc h1.mb-4 > span {
+  display: none;
+}
+
+.desc h1.mb-4 > b {
+  font-weight: 600;
+}
+
+body.dark-theme .desc h1.mb-4 {
+  color: #eee8dc !important;
+}
+
+.site-footer-note--homepage {
+  background: #fff;
 }
 
 #colorlib-main,
@@ -9263,15 +9325,23 @@ body.offcanvas #colorlib-main {
 }
 
 @media (max-width: 767.98px) {
+  html,
+  body,
+  #colorlib-page,
+  #colorlib-main {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   #colorlib-aside {
     padding: 0.5rem 2.75rem 0.5rem 0.75rem !important;
   }
 
   #colorlib-aside #colorlib-main-menu > ul {
-    gap: 0 0.85rem;
+    gap: 0 0.55rem;
   }
 
   #colorlib-aside #colorlib-main-menu > ul > li > a {
-    font-size: 13px;
+    font-size: 12px;
   }
 }

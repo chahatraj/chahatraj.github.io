@@ -274,6 +274,10 @@
         main.classList.add('continuous-section-main');
         host.innerHTML = '';
         host.appendChild(main);
+        if (source === 'publications.html') {
+          var publicationHeading = host.querySelector('.desc h1.mb-4 b');
+          if (publicationHeading) publicationHeading.textContent = 'Selected Publications';
+        }
         initializeLazyImages(host);
         if (source === 'news.html') initializeNews(host);
         if (source === 'publications.html') initializePublications(host);
