@@ -80,13 +80,17 @@
       padding: 1rem 1.25rem;
       border: none;
       border-radius: 12px;
-      background: color-mix(in srgb, var(--theme-color) 16%, transparent);
+      background-color: color-mix(in srgb, var(--theme-color) 16%, #f8f9fa);
+      background-image: none;
       color: #202124 !important;
       font-size: 16px;
       font-weight: 600;
       line-height: 1.6;
       text-align: center;
-      box-shadow: none;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      filter: none;
+      outline: none;
     }
 
     .job-market-focus {
@@ -123,6 +127,10 @@
     body.dark-theme .job-market-box,
     body.dark-theme .job-market-focus {
       color: #eee8dc !important;
+    }
+
+    body.dark-theme .job-market-box {
+      background-color: color-mix(in srgb, var(--theme-color) 16%, #202124);
     }
 
     .home-slider .slider-item {
