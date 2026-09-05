@@ -190,7 +190,7 @@
     }
 
     .job-market-box {
-      margin: -0.5rem 0 1.5rem;
+      margin: 1.5rem 0 0;
       padding: 0.8rem 1.25rem;
       border: none;
       border-radius: 12px;
@@ -238,15 +238,35 @@
     }
 
     .hero-wrap .text p.home-title {
-      margin: 0 0 1.75rem;
+      margin: 0 0 0.65rem;
       color: #6f6863;
       font-size: 18px;
       font-weight: 400;
       line-height: 1.45;
     }
 
+    .hero-wrap .text p.home-pronunciation {
+      margin: 0 0 1.35rem;
+      color: #756f6a;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .hero-wrap .text p.home-bio {
+      max-width: 850px;
+      margin: 0;
+      color: #4f4b48;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+      text-align: left;
+    }
+
     body.dark-theme .hero-wrap .text h1.home-name,
     body.dark-theme .hero-wrap .text p.home-title,
+    body.dark-theme .hero-wrap .text p.home-pronunciation,
+    body.dark-theme .hero-wrap .text p.home-bio,
     body.dark-theme .job-market-box,
     body.dark-theme .job-market-focus,
     body.dark-theme .job-market-contact {
@@ -450,7 +470,7 @@
             <div class="desc">
               <h1 class="home-name">Chahat Raj</h1>
               <p class="home-title">Ph.D. Candidate in Computer Science, George Mason University</p>
-              <p class="mb-4">
+              <p class="home-pronunciation">
                 My first name is pronounced as
                 <span class="theme-color">/ˈtʃaː.ɦət/</span>
 
@@ -461,10 +481,6 @@
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
               </p>
-              <div class="job-market-box">
-                I am on the 2027 job market for <span class="job-market-focus">postdoctoral</span> and <span class="job-market-focus">tenure-track</span> positions.
-                <span class="job-market-contact">For positions or collaborations, email me at craj at gmu dot edu.</span>
-              </div>
               <script>
                 function speakName() {
                     const utterance = new SpeechSynthesisUtterance("Chaahut");
@@ -473,7 +489,7 @@
                     speechSynthesis.speak(utterance);
                 }
                 </script>
-              <p style="font-size: 14px" align="justify">
+              <p class="home-bio">
                 I am a final year Ph.D. candidate, majoring in Computer Science at George Mason University. I'm advised by <a href="https://zziwei.github.io/" class="theme-color">Prof. Ziwei Zhu</a>
                 and <a href="https://antonisa.github.io/" class="theme-color">Prof. Antonios Anastasopoulos</a>. I am also advised by
                 <a href="https://faculty.washington.edu/aylin/" class="theme-color">Prof. Aylin Caliskan</a>
@@ -484,6 +500,10 @@
                 <br /><br />
                 <a class="theme-color">The times when I'm not a Researcher, I'm a Poet!</a>
               </p>
+              <div class="job-market-box">
+                I am on the 2027 job market for <span class="job-market-focus">postdoctoral</span> and <span class="job-market-focus">tenure-track</span> positions.
+                <span class="job-market-contact">For positions or collaborations, email me at craj at gmu dot edu.</span>
+              </div>
               <!-- <h3 class="signature h1" align="center">Chahat Raj</h3> --> <!-- style="position:relative; -->
               <!-- <h3 class="signature h1" align="center">சாஹத்</h3> -->
               <!-- <h3 class="signature h1" align="center">Chahat · <span lang="ta">சாஹத்</span> · <span lang="hi">चाहत</span> · <span lang="ur" dir="rtl">چاہت</span></h3> -->
