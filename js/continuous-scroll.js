@@ -197,6 +197,32 @@
     updateSearch();
   };
 
+  var initializeNews = function(root) {
+    var list = root.querySelector('.news-list');
+    if (!list) return;
+
+    var years = Array.prototype.slice.call(list.querySelectorAll('.news-year'));
+    if (!years.length) return;
+
+    var currentYear = String(new Date().getFullYear());
+    var displayYear = years.some(function(year) {
+      return year.textContent.trim() === currentYear;
+    }) ? currentYear : years[0].textContent.trim();
+    var showEntries = false;
+
+    Array.prototype.forEach.call(list.children, function(entry) {
+      if (entry.classList.contains('news-year')) {
+        showEntries = entry.textContent.trim() === displayYear;
+      }
+      entry.style.display = showEntries ? '' : 'none';
+    });
+
+    var footer = document.createElement('div');
+    footer.className = 'home-news-footer';
+    footer.innerHTML = '<a class="home-news-link" href="news.html">View all news <span class="home-news-link-arrow" aria-hidden="true">→</span></a>';
+    list.insertAdjacentElement('afterend', footer);
+  };
+
   var loadSection = function(host) {
     var source = host.dataset.sectionSource;
     var title = host.dataset.sectionTitle;
@@ -221,6 +247,7 @@
         host.innerHTML = '';
         host.appendChild(main);
         initializeLazyImages(host);
+        if (source === 'news.html') initializeNews(host);
         if (source === 'publications.html') initializePublications(host);
         host.classList.add('is-loaded');
       })

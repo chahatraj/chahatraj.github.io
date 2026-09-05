@@ -139,43 +139,30 @@
       color: #d8d2c8;
     }
 
-    #news .continuous-section-main .news-list {
-      max-height: 520px;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      scrollbar-gutter: stable;
-      padding-right: 0.9rem;
-      scrollbar-color: var(--theme-color) rgba(0, 0, 0, 0.08);
-      scrollbar-width: thin;
+    #news .home-news-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.25rem;
     }
 
-    #news .continuous-section-main .news-list::-webkit-scrollbar {
-      width: 8px;
+    #news .home-news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--theme-color) !important;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    #news .continuous-section-main .news-list::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.06);
-      border-radius: 999px;
+    #news .home-news-link-arrow {
+      transition: transform 160ms ease;
     }
 
-    #news .continuous-section-main .news-list::-webkit-scrollbar-thumb {
-      background: var(--theme-color);
-      border-radius: 999px;
-    }
-
-    body.dark-theme #news .continuous-section-main .news-list {
-      scrollbar-color: var(--theme-color) rgba(255, 255, 255, 0.09);
-    }
-
-    body.dark-theme #news .continuous-section-main .news-list::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    @media (max-width: 575.98px) {
-      #news .continuous-section-main .news-list {
-        max-height: 430px;
-        padding-right: 0.55rem;
-      }
+    #news .home-news-link:hover .home-news-link-arrow,
+    #news .home-news-link:focus .home-news-link-arrow {
+      transform: translateX(3px);
     }
 
     .ftco-social a span {
@@ -545,7 +532,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js?v=20260904b"></script>
-    <script src="js/continuous-scroll.js?v=20260904b"></script>
+    <script src="js/continuous-scroll.js?v=20260905a"></script>
   </div>
 </div>
 </body>
