@@ -7,9 +7,6 @@
   var scopeSelector = function(selector, scope) {
     var scopedSelector = selector.trim().replace(/#colorlib-main/g, '.continuous-section-main');
 
-    if (scopedSelector.indexOf(':root') !== -1) {
-      return scopedSelector.replace(/:root/g, scope);
-    }
     if (scopedSelector.indexOf('body.dark-theme') === 0) {
       return 'body.dark-theme ' + scope + scopedSelector.slice('body.dark-theme'.length);
     }
@@ -26,9 +23,16 @@
   var serializeScopedRules = function(rules, scope) {
     return Array.prototype.map.call(rules, function(rule) {
       if (rule.type === CSSRule.STYLE_RULE) {
-        var selectors = rule.selectorText.split(',').map(function(selector) {
+        var selectors = rule.selectorText.split(',').filter(function(selector) {
+          return selector.trim().indexOf(':root') === -1;
+        }).map(function(selector) {
           return scopeSelector(selector, scope);
         });
+
+        if (!selectors.length) {
+          return '';
+        }
+
         return selectors.join(', ') + ' {' + rule.style.cssText + '}';
       }
 
