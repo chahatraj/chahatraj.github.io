@@ -32,6 +32,31 @@
 	};
 	unlinkContactNav();
 
+	var configureContinuousNavigation = function() {
+		var pageName = window.location.pathname.split('/').pop();
+		var isHomepage = !pageName || pageName === 'index.html';
+		var sectionRoutes = {
+			'index.html': 'about',
+			'news.html': 'news',
+			'publications.html': 'publications',
+			'affiliations.html': 'affiliations',
+			'posters.html': 'posters',
+			'slides.html': 'slides',
+			'stills.html': 'stills',
+			'services.html': 'service'
+		};
+
+		$('#colorlib-main-menu a').each(function() {
+			var $link = $(this);
+			var href = ($link.attr('href') || '').split(/[?#]/)[0].replace(/^\.\//, '');
+			var sectionId = sectionRoutes[href];
+			if (!sectionId) return;
+
+			$link.attr('href', (isHomepage ? '' : 'index.html') + '#' + sectionId);
+		});
+	};
+	configureContinuousNavigation();
+
 	var themeToggle = function() {
 		var storageKey = 'site-theme';
 		var $aside = $('#colorlib-aside');
@@ -87,7 +112,7 @@
 
 	var backToTop = function() {
 		var pageName = window.location.pathname.split('/').pop();
-		if (pageName !== 'news.html' && pageName !== 'publications.html') return;
+		if (pageName && pageName !== 'index.html' && pageName !== 'news.html' && pageName !== 'publications.html') return;
 		if ($('.back-to-top').length) return;
 		var $button = $('<button class="back-to-top" type="button" aria-label="Back to top"><span class="back-to-top-arrow" aria-hidden="true"></span></button>');
 		$('body').append($button);

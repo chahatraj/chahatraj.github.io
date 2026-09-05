@@ -29,6 +29,10 @@
       --theme-color: #8E4585; /* Default theme color */
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     #colorlib-aside a {
       text-decoration: none !important;
       border: none !important;
@@ -37,10 +41,12 @@
 
     #colorlib-aside {
       position: relative !important;
+      z-index: 1000;
       width: 100% !important;
       height: auto !important;
       min-height: 0 !important;
       padding: 0.65rem 4.5rem !important;
+      background: #f8f9fa !important;
       transform: none !important;
     }
 
@@ -69,6 +75,52 @@
     #colorlib-main {
       width: 100% !important;
       float: none;
+    }
+
+    #about,
+    .continuous-section {
+      scroll-margin-top: 74px;
+    }
+
+    .continuous-section {
+      display: block;
+      min-height: 180px;
+      background: #f8f9fa;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .continuous-section-main,
+    .continuous-section .author-info {
+      width: 100% !important;
+      height: auto !important;
+      float: none !important;
+      overflow: visible !important;
+      transform: none !important;
+    }
+
+    .continuous-section-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      color: #8c8c8c;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .continuous-section-error {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 3rem 15px;
+    }
+
+    body.dark-theme .continuous-section {
+      background: #202124;
+      border-top-color: rgba(255, 255, 255, 0.08);
+    }
+
+    body.dark-theme .continuous-section-loading {
+      color: #d8d2c8;
     }
 
     .ftco-social a span {
@@ -280,7 +332,7 @@
     </nav>
   </aside>
   <div id="colorlib-main">
-    <section class="ftco-section-no-padding bg-light">
+    <section id="about" class="ftco-section-no-padding bg-light">
       <div class="hero-wrap">
         <div class="overlay"></div>
         <div class="d-flex align-items-right">
@@ -356,6 +408,27 @@
         </div>
       </div>
     </section>
+    <section id="news" class="continuous-section" data-section-source="news.html" data-section-title="News">
+      <div class="continuous-section-loading">Loading News</div>
+    </section>
+    <section id="publications" class="continuous-section" data-section-source="publications.html" data-section-title="Publications">
+      <div class="continuous-section-loading">Loading Publications</div>
+    </section>
+    <section id="affiliations" class="continuous-section" data-section-source="affiliations.html" data-section-title="Affiliations">
+      <div class="continuous-section-loading">Loading Affiliations</div>
+    </section>
+    <section id="posters" class="continuous-section" data-section-source="posters.html" data-section-title="Posters">
+      <div class="continuous-section-loading">Loading Posters</div>
+    </section>
+    <section id="slides" class="continuous-section" data-section-source="slides.html" data-section-title="Slides">
+      <div class="continuous-section-loading">Loading Slides</div>
+    </section>
+    <section id="stills" class="continuous-section" data-section-source="stills.html" data-section-title="Stills">
+      <div class="continuous-section-loading">Loading Stills</div>
+    </section>
+    <section id="service" class="continuous-section" data-section-source="services.html" data-section-title="Service">
+      <div class="continuous-section-loading">Loading Service</div>
+    </section>
     <div id="ftco-loader" class="show fullscreen">
       <svg class="circular" width="48px" height="48px">
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
@@ -378,7 +451,8 @@
     <script src="js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
-    <script src="js/main.js?v=20260904a"></script>
+    <script src="js/main.js?v=20260904b"></script>
+    <script src="js/continuous-scroll.js?v=20260904a"></script>
   </div>
 </div>
 </body>
