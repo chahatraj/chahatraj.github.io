@@ -39,10 +39,10 @@
 			'index.html': 'about',
 			'news.html': 'news',
 			'publications.html': 'publications',
+			'services.html': 'service',
 			'posters.html': 'posters',
 			'slides.html': 'slides',
-			'stills.html': 'stills',
-			'services.html': 'service'
+			'stills.html': 'stills'
 		};
 
 		$('#colorlib-main-menu a').each(function() {
