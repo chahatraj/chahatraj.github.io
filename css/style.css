@@ -8733,7 +8733,7 @@ p a {
 
 .theme-toggle-wrap {
   position: absolute;
-  top: 14px;
+  top: 5px;
   right: 14px;
   z-index: 2;
 }
@@ -9202,7 +9202,7 @@ body.dark-theme #ftco-loader.fullscreen {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
-  padding: 0.65rem 4.5rem !important;
+  padding: 0.25rem 4.5rem !important;
   background: #fff !important;
   border-bottom: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
   box-shadow: none;
@@ -9238,7 +9238,7 @@ body.dark-theme #ftco-loader.fullscreen {
 
 #colorlib-aside #colorlib-main-menu > ul > li > a {
   display: block;
-  padding: 0.55rem 0;
+  padding: 0.3rem 0;
   color: #574b44 !important;
   font-weight: 400;
 }
@@ -9334,7 +9334,7 @@ body.offcanvas #colorlib-main {
   }
 
   #colorlib-aside {
-    padding: 0.5rem 2.75rem 0.5rem 0.75rem !important;
+    padding: 0.25rem 2.75rem 0.25rem 0.75rem !important;
   }
 
   #colorlib-aside #colorlib-main-menu > ul {
