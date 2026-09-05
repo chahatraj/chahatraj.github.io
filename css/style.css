@@ -8896,13 +8896,13 @@ body.dark-theme .sidebar-box {
 }
 
 body.dark-theme #colorlib-aside {
-  background: #202124 !important;
+  background: rgba(32, 33, 36, 0.86) !important;
   box-shadow: none;
 }
 
 @media (max-width: 991.98px) {
   body.dark-theme #colorlib-aside {
-    background: #202124 !important;
+    background: rgba(32, 33, 36, 0.86) !important;
   }
 }
 
@@ -9203,7 +9203,9 @@ body.dark-theme #ftco-loader.fullscreen {
   height: auto !important;
   min-height: 0 !important;
   padding: 0.25rem 4.5rem !important;
-  background: #fff !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid color-mix(in srgb, var(--theme-color) 24%, transparent);
   box-shadow: none;
   -webkit-transform: none !important;
