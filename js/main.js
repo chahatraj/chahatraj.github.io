@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var pageName = window.location.pathname.split('/').pop();
 		if (pageName && pageName !== 'index.html' && pageName !== 'news.html' && pageName !== 'publications.html') return;
 		if ($('.back-to-top').length) return;
-		var $button = $('<button class="back-to-top" type="button" aria-label="Back to top" tabindex="-1"><span class="back-to-top-label" aria-hidden="true">Back to top</span><svg class="back-to-top-doodle" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 38c11 2 19-6 19-16 0-5-1-10 0-15"/><path d="M21 16c3-3 6-6 9-9 2 3 5 6 9 9"/><path d="m7 31-2-3m2 14-3 1" opacity=".55"/></svg></button>');
+		var $button = $('<button class="back-to-top" type="button" aria-label="Back to top" tabindex="-1"><span class="back-to-top-label" aria-hidden="true">Back to top</span><svg class="back-to-top-doodle" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 38c11 2 19-6 19-16 0-5-1-10 0-15"/><path d="M21 16c3-3 6-6 9-9 2 3 5 6 9 9"/></svg></button>');
 		$('body').append($button);
 
 		var updateButton = function() {
