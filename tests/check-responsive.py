@@ -48,6 +48,13 @@ audit = '''(() => {
  const visible = e => e && rect(e).width && rect(e).height && getComputedStyle(e).visibility !== 'hidden';
  const overlaps = (a,b) => a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1;
  if (document.documentElement.scrollWidth > width + 1) errors.push('horizontal page overflow');
+ const header = document.querySelector('#colorlib-aside');
+ if (header) {
+   const style = getComputedStyle(header);
+   if (style.overflowX !== 'visible' || style.overflowY !== 'visible')
+     errors.push('navigation retains scroll-container styles');
+   if (header.scrollWidth > header.clientWidth + 1) errors.push('horizontal navigation overflow');
+ }
  const selectors = '.author-info,.home-name,.home-title,.home-pronunciation,.home-bio,.job-market-box,.news-item,.publication-paper,.service-item,.tile,.site-footer-note';
  document.querySelectorAll(selectors).forEach(e => {
    if (!visible(e) || e.closest('[hidden]')) return;

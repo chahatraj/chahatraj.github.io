@@ -9430,6 +9430,8 @@ body.offcanvas #colorlib-main {
 
 /* Fluid page gutters and a navigation row that reserves space for its controls. */
 html #colorlib-aside {
+  /* Reset the old sidebar overflow on both axes: the header is not a scroller. */
+  overflow: visible;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 44px;
   align-items: center;
