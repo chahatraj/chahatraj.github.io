@@ -327,6 +327,49 @@
       color: #eee8dc;
     }
 
+    /* Plain bibliographic hierarchy, shared by the archive and homepage. */
+    .publication-paper {
+      grid-template-columns: minmax(0, 1fr);
+      margin-bottom: 1.15rem;
+    }
+
+    .publication-paper > p { color: #80756d; }
+    .publication-paper > p > a.theme-color {
+      color: #403832 !important;
+      font-weight: 600;
+    }
+    body.dark-theme .publication-paper > p { color: #b5aea5; }
+    body.dark-theme .publication-paper > p > a.theme-color { color: #eee8dc !important; }
+
+    .publication-context {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.85rem;
+      margin-top: 0.15rem;
+    }
+    .publication-context .publication-venue {
+      padding: 0;
+      text-align: left;
+      color: var(--theme-color);
+    }
+    .publication-context .publication-award {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      color: #403832;
+      line-height: 1.4;
+      white-space: normal;
+    }
+    body.dark-theme .publication-context .publication-award { color: #eee8dc; }
+    .publication-actions > [hidden], .publication-visual[hidden] { display: none !important; }
+    .publication-actions > a + a::before,
+    .publication-actions > button::before { content: none; }
+    .publication-actions { gap: 0.8rem; margin-top: 0.2rem; }
+
     @media (max-width: 767.98px) {
       .publication-search {
         align-items: flex-start;
@@ -1497,7 +1540,7 @@
                       <script src="js/scrollax.min.js"></script>
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                       <script src="js/google-map.js"></script>
-                      <script src="js/main.js?v=20260905i"></script>
+                      <script src="js/main.js?v=20260905pub1"></script>
                     </div>
                   </div>
                 </div>

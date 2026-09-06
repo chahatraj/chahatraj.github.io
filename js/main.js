@@ -1,4 +1,45 @@
 window.initializeDoodles = function(root) {
+  root.querySelectorAll('.publication-paper').forEach(function(paper) {
+    if (paper.dataset.layoutReady) return;
+    paper.dataset.layoutReady = 'true';
+    var meta = paper.querySelector(':scope > p');
+    if (!meta) return;
+    var actions = meta.querySelector('.publication-actions');
+    if (!actions) {
+      actions = document.createElement('span');
+      actions.className = 'publication-actions';
+      meta.querySelectorAll('.btn.badge').forEach(function(button) {
+        actions.appendChild(button.parentElement.tagName === 'A' ? button.parentElement : button);
+      });
+      meta.appendChild(actions);
+    }
+    actions.querySelectorAll('.btn.badge').forEach(function(button) {
+      if (/^(Poster|Slides)$/i.test(button.textContent.trim())) {
+        (button.parentElement.tagName === 'A' ? button.parentElement : button).hidden = true;
+      }
+    });
+    var venueText = '';
+    Array.from(meta.childNodes).forEach(function(node) {
+      if (node.nodeType !== Node.TEXT_NODE) return;
+      var match = node.textContent.match(/\[([^\]]+)\]/);
+      if (match) {
+        venueText = match[1];
+        node.textContent = node.textContent.replace(match[0], '');
+      }
+    });
+    var venue = paper.querySelector('.publication-venue');
+    var line = document.createElement('span');
+    line.className = 'publication-context';
+    var venueLabel = document.createElement('span');
+    venueLabel.className = 'publication-venue';
+    venueLabel.textContent = venueText || (venue ? venue.textContent : '');
+    line.appendChild(venueLabel);
+    var award = paper.querySelector('.publication-award');
+    if (award) line.appendChild(award);
+    meta.insertBefore(line, actions);
+    var visual = paper.querySelector('.publication-visual');
+    if (visual) visual.hidden = true;
+  });
   var drawings = {
     quill: 'M7 25C9 14 16 5 27 4c1 11-6 19-16 18M7 25l14-14m-8 8 1-6m3 2 6-1M4 28q5-2 10 0m14-5v4m-2-2h4',
     news: 'm5 6 23 1-1 21-22-1Zm5 5h12m-12 5h5m3 0h5m-13 5h5m3 0h5',
