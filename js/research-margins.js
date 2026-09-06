@@ -8,10 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
     { src: 'images/research-story-languages.png', width: 733, height: 2146, breaks: [0, 750, 1510, 2146] },
     { src: 'images/research-story-perspectives.png', width: 724, height: 2172, breaks: [0, 1560, 2172] }
   ];
-  // Interleave both rounds of artwork, then give every passage equal space.
+  // Interleave every round of artwork, then give every passage equal space.
   var additions = [
-    ['images/research-addition-translation.png', 'images/research-addition-generation.png'],
-    ['images/research-addition-agents.png']
+    [
+      ['images/research-addition-translation.png', 'images/research-addition-speech.png'],
+      ['images/research-addition-generation.png']
+    ],
+    [
+      ['images/research-addition-story-roles.png', 'images/research-addition-agents.png', 'images/research-addition-cooperation.png']
+    ]
   ];
   function element(tag, attributes) {
     var node = document.createElementNS(ns, tag);
@@ -30,25 +35,34 @@ document.addEventListener('DOMContentLoaded', function () {
     for (var i = 0; i < count; i++) {
       var cropHeight = story.breaks[i+1] - story.breaks[i];
       blocks.push({ top:story.breaks[i], cropHeight:cropHeight, height:cropHeight*scale });
-      if (additions[side][i]) blocks.push({ source:additions[side][i], height:width*2 });
+      (additions[side][i] || []).forEach(function (source) {
+        blocks.push({ source:source, height:width*2 });
+      });
     }
     var artHeight = blocks.reduce(function (total, block) { return total + block.height; }, 0);
     var gap = Math.max(0, (height - artHeight) / (blocks.length - 1));
     var svg = element('svg', { viewBox: '0 0 '+width+' '+height, width:'100%', height:'100%', 'aria-hidden':'true' });
     var defs = element('defs', {});
     var ink = element('filter', {id:'translation-ink-'+side, 'color-interpolation-filters':'sRGB'});
-    // The translation source has a light preview backing. Render only its dark
+    // Refined sources can have a light preview backing. Render only their dark
     // pen lines as alpha so it works on both backgrounds without a rectangle.
     ink.appendChild(element('feColorMatrix', {type:'matrix', values:'0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.27638 -.92976 -.09386 0 1'}));
     ink.appendChild(element('feComposite', {in2:'SourceAlpha', operator:'in'}));
     defs.appendChild(ink);
+    var cooperationInk = ink.cloneNode(true);
+    cooperationInk.setAttribute('id', 'cooperation-ink-'+side);
+    cooperationInk.firstElementChild.setAttribute('values', '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.82914 -2.78928 -.28158 0 3');
+    defs.appendChild(cooperationInk);
     svg.appendChild(defs);
     var y = 0;
     blocks.forEach(function (block, index) {
       if (block.source) {
         var extra = element('image', {href:block.source, x:0, y:y, width:width, height:block.height, preserveAspectRatio:'xMidYMid meet', 'data-research-addition':'true'});
-        if (block.source.indexOf('translation') !== -1) extra.setAttribute('filter','url(#translation-ink-'+side+')');
+        if (/translation/.test(block.source)) extra.setAttribute('filter','url(#translation-ink-'+side+')');
+        if (/cooperation/.test(block.source)) extra.setAttribute('filter','url(#cooperation-ink-'+side+')');
         extra.setAttribute('opacity',side ? '.85' : '.6');
+        if (/speech/.test(block.source)) extra.setAttribute('opacity', '.4');
+        if (/story-roles/.test(block.source)) extra.setAttribute('opacity', '.65');
         svg.appendChild(extra);
       } else {
         var slice = element('svg', {x:0, y:y, width:width, height:block.height, viewBox:'0 '+block.top+' '+story.width+' '+block.cropHeight, overflow:'hidden'});
