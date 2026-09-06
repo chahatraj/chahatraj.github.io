@@ -49,6 +49,14 @@ window.initializeDoodles = function(root) {
       }
       meta.insertBefore(recognition, actions);
     }
+    var venueYear = venueLabel.textContent.match(/^(.*?)(\b(?:19|20)\d{2})\s*$/);
+    if (venueYear) {
+      venueLabel.textContent = venueYear[1];
+      var year = document.createElement('span');
+      year.className = 'publication-venue-year';
+      year.textContent = venueYear[2];
+      venueLabel.appendChild(year);
+    }
     line.appendChild(actions);
     paper.appendChild(line);
     var visual = paper.querySelector('.publication-visual');
