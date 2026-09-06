@@ -8762,7 +8762,7 @@ p a {
   justify-content: center;
   border: none;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--theme-color) 9%, transparent);
+  background: transparent;
   color: rgba(0, 0, 0, 0.72);
   width: 36px;
   height: 36px;
@@ -8789,8 +8789,8 @@ p a {
 }
 
 .theme-toggle-icon svg {
-  width: 21px;
-  height: 21px;
+  width: 29px;
+  height: 29px;
   overflow: visible;
 }
 
@@ -8801,7 +8801,7 @@ p a {
   width: 1em;
   height: 1em;
   background: transparent;
-  color: var(--theme-color);
+  color: #403832;
   font-family: Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -8975,12 +8975,17 @@ body.dark-theme .ftco-social li a {
 }
 
 body.dark-theme .theme-toggle {
-  background: color-mix(in srgb, var(--theme-color) 12%, transparent);
+  background: transparent;
   border-color: rgba(238, 232, 220, 0.24);
   color: var(--theme-color);
 }
 
 body.dark-theme .theme-toggle-icon {
+  color: #eee8dc;
+}
+
+.theme-toggle:hover .theme-toggle-icon,
+body.dark-theme .theme-toggle:hover .theme-toggle-icon {
   color: var(--theme-color);
 }
 
