@@ -328,14 +328,27 @@
     }
 
     /* Plain bibliographic hierarchy, shared by the archive and homepage. */
+    .publication-list {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      list-style: none;
+    }
     .publication-paper {
       grid-template-columns: minmax(0, 1fr) minmax(190px, 25%);
       margin-bottom: 0.65rem;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .publication-paper::before { content: none; }
 
-    .publication-paper > p { color: #80756d; }
+    .publication-paper > p {
+      color: #80756d;
+      min-width: 0;
+      text-align: left;
+      text-align-last: auto;
+    }
     .publication-paper > p > a.theme-color {
       color: var(--theme-color) !important;
       font-weight: 600;
@@ -380,6 +393,9 @@
       align-items: flex-end;
       gap: 0.15rem;
       margin-top: 0.1rem;
+      min-width: 0;
+      width: 100%;
+      text-align: right;
     }
     .publication-sidebar .publication-venue {
       text-align: right;
@@ -476,7 +492,7 @@
                     <span class="publication-search-count" aria-live="polite"></span>
                   </div>
                   <p class="publication-empty">No publications match your search.</p>
-                  <ul>
+                  <ul class="publication-list">
                     <li class="publication-year">2026</li>
                     <!-- Publication 10 Starts Here -->
                     <li class="publication-paper">
