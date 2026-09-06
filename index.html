@@ -257,7 +257,7 @@
     .community-doodle {
       position: absolute;
       top: calc(-1rem + 8px);
-      right: 24px;
+      right: 0;
       width: 210px;
       height: auto;
       mix-blend-mode: multiply;
@@ -312,6 +312,14 @@
       font-weight: 400;
       line-height: 1.62;
       text-align: left;
+      text-wrap: pretty;
+    }
+
+    @media (min-width: 768px) {
+      .hero-wrap .text p.home-bio:not(.home-personal-note) {
+        text-align: justify;
+        text-align-last: left;
+      }
     }
 
     .hero-wrap .text .home-bio-copy p.home-bio + p.home-bio {
