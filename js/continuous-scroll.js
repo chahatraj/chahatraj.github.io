@@ -277,6 +277,12 @@
         if (source === 'publications.html') {
           var publicationHeading = host.querySelector('.desc h1.mb-4 b');
           if (publicationHeading) publicationHeading.textContent = 'Selected Publications';
+          if (publicationHeading) {
+            var scholarLink = document.createElement('p');
+            scholarLink.className = 'publication-scholar-link';
+            scholarLink.innerHTML = '<a href="https://scholar.google.com/citations?user=K8EKC4gAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Full list on Google Scholar <span aria-hidden="true">→</span></a>';
+            publicationHeading.closest('h1').insertAdjacentElement('afterend', scholarLink);
+          }
         }
         initializeLazyImages(host);
         if (source === 'news.html') initializeNews(host);
