@@ -8778,8 +8778,13 @@ p a {
 
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
-  background: color-mix(in srgb, var(--theme-color) 18%, transparent);
+  background: transparent;
   opacity: 1;
+  box-shadow: none;
+}
+
+.theme-toggle:focus:not(:focus-visible) {
+  outline: none;
   box-shadow: none;
 }
 
@@ -8991,7 +8996,7 @@ body.dark-theme .theme-toggle:hover .theme-toggle-icon {
 
 body.dark-theme .theme-toggle:hover,
 body.dark-theme .theme-toggle:focus-visible {
-  background: color-mix(in srgb, var(--theme-color) 22%, transparent);
+  background: transparent;
   box-shadow: none;
 }
 
