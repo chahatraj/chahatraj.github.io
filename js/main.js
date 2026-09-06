@@ -272,6 +272,56 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 	themeToggle();
 
+	var responsiveNavigation = function() {
+		var aside = document.getElementById('colorlib-aside');
+		var menu = document.getElementById('colorlib-main-menu');
+		if (!aside || !menu) return;
+		var button = document.createElement('button');
+		button.type = 'button';
+		button.className = 'site-menu-toggle';
+		button.setAttribute('aria-controls', menu.id);
+		button.setAttribute('aria-expanded', 'false');
+		button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 6q8-1 18 0M3 12q9 1 18 0M3 18q8-1 18 0"/></svg><span>Menu</span>';
+		aside.prepend(button);
+		aside.classList.add('has-compact-nav');
+		var compact = window.matchMedia('(max-width: 767.98px)');
+		function setOpen(open) {
+			aside.classList.toggle('is-nav-open', open);
+			button.setAttribute('aria-expanded', String(open));
+			measure();
+		}
+		button.addEventListener('click', function() {
+			setOpen(button.getAttribute('aria-expanded') !== 'true');
+		});
+		menu.addEventListener('click', function(event) {
+			var link = event.target.closest('a');
+			if (!link) return;
+			if (compact.matches) setOpen(false);
+			var href = link.getAttribute('href');
+			var target = href && href.charAt(0) === '#' ? document.getElementById(href.slice(1)) : null;
+			if (!target) return;
+			event.preventDefault();
+			window.history.pushState(null, '', href);
+			window.requestAnimationFrame(function() {
+				target.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+			});
+		});
+		aside.addEventListener('keydown', function(event) {
+			if (event.key === 'Escape' && aside.classList.contains('is-nav-open')) {
+				setOpen(false);
+				button.focus();
+			}
+		});
+		compact.addEventListener('change', function() { setOpen(false); });
+		function measure() {
+			document.documentElement.style.setProperty('--site-nav-height', aside.offsetHeight + 'px');
+		}
+		if ('ResizeObserver' in window) new ResizeObserver(measure).observe(aside);
+		window.addEventListener('resize', measure);
+		measure();
+	};
+	responsiveNavigation();
+
 	var backToTop = function() {
 		var pageName = window.location.pathname.split('/').pop();
 		if (pageName && pageName !== 'index.html' && pageName !== 'news.html' && pageName !== 'publications.html') return;

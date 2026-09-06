@@ -43,11 +43,11 @@
       });
     };
 
-    var resizeTimer = null;
-    window.addEventListener('resize', function() {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(render, 120);
+    // Reflow at the same breakpoints as the CSS, without a delayed column count.
+    ['(max-width: 576px)', '(max-width: 992px)'].forEach(function(query) {
+      window.matchMedia(query).addEventListener('change', render);
     });
+    window.addEventListener('resize', render);
 
     render();
   };

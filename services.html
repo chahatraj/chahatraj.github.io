@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/jquery.timepicker.css"/>
   <link rel="stylesheet" href="css/flaticon.css"/>
   <link rel="stylesheet" href="css/icomoon.css"/>
-  <link rel="stylesheet" href="css/style.css?v=20260906award1"/>
+  <link rel="stylesheet" href="css/style.css?v=20260906responsive1"/>
   <style>
     :root {
       --theme-color: #8E4585; /* Default theme color */
@@ -160,6 +160,15 @@
       [data-service-group="mentoring"] .service-items {
         gap: 0.65rem;
       }
+
+      [data-service-group="mentoring"] .service-item,
+      [data-service-group="teaching"] .service-item {
+        row-gap: 0.15rem;
+      }
+
+      [data-service-group="teaching"] .service-items {
+        gap: 0.9rem;
+      }
     }
 
     [data-service-group="talks"] .service-items {
@@ -207,7 +216,7 @@
       color: #d8d2c8;
     }
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 767.98px) {
       [data-service-group="talks"] .service-text {
         grid-template-columns: 1fr;
         row-gap: 0.05rem;
@@ -253,6 +262,25 @@
 
     @media (max-width: 991.98px) {
       .service-reviewers {
+        grid-template-columns: 1fr;
+      }
+
+      [data-service-group="mentoring"] .service-item {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+        column-gap: 1rem;
+      }
+
+      [data-service-group="mentoring"] .service-item > .service-detail {
+        grid-column: 1 / -1;
+      }
+
+      [data-service-group="mentoring"] .service-items {
+        gap: 0.85rem;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      [data-service-group="mentoring"] .service-item {
         grid-template-columns: 1fr;
       }
     }
@@ -388,7 +416,7 @@
                     <script src="js/scrollax.min.js"></script>
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                     <script src="js/google-map.js"></script>
-                    <script src="js/main.js?v=20260906venue1"></script>
+                    <script src="js/main.js?v=20260906responsive1"></script>
                 </div>
               </div>
             </div>

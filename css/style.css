@@ -9413,7 +9413,6 @@ body.offcanvas #colorlib-main {
   #colorlib-page,
   #colorlib-main {
     max-width: 100%;
-    overflow-x: hidden;
   }
 
   #colorlib-aside {
@@ -9426,5 +9425,146 @@ body.offcanvas #colorlib-main {
 
   #colorlib-aside #colorlib-main-menu > ul > li > a {
     font-size: 12px;
+  }
+}
+
+/* Fluid page gutters and a navigation row that reserves space for its controls. */
+html #colorlib-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  column-gap: 0.75rem;
+  padding: 0.15rem max(1.5rem, calc((100% - 1140px) / 2)) !important;
+}
+
+#colorlib-main-menu {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+html #colorlib-aside #colorlib-main-menu > ul {
+  margin: 0;
+  padding: 0;
+  transform: none;
+  gap: 0 clamp(0.7rem, 1.8vw, 1.5rem);
+}
+
+html #colorlib-aside #colorlib-main-menu > ul > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+#colorlib-aside .theme-toggle-wrap {
+  position: static;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+}
+
+#colorlib-aside .theme-toggle {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+.site-menu-toggle { display: none; }
+
+#colorlib-main > .author-info,
+.continuous-section-main > .author-info {
+  padding-left: clamp(1.25rem, 4vw, 3rem) !important;
+  padding-right: clamp(1.25rem, 4vw, 3rem) !important;
+}
+
+.author-info > .desc > .container {
+  width: 100%;
+  max-width: 1140px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* These legacy wrappers are full-width sections, not nested Bootstrap columns. */
+.author-info > .desc > .container > .row,
+.author-info .col-lg-32 > .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.author-info .col-lg-32 {
+  width: 100%;
+  min-width: 0;
+}
+
+.author-info .col-lg-32 > .row > .col-md-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.author-info,
+.author-info .desc,
+.service-item > *,
+.publication-paper > * {
+  min-width: 0;
+}
+
+.service-item,
+.publication-paper,
+.news-text,
+.caption {
+  overflow-wrap: anywhere;
+}
+
+.site-footer-note { flex-wrap: wrap; }
+
+@media (max-width: 767.98px) {
+  html #colorlib-aside {
+    padding: 0.2rem 1.25rem !important;
+  }
+
+  #colorlib-aside.has-compact-nav .site-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #403832;
+    font-family: "Figtree", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  body.dark-theme #colorlib-aside .site-menu-toggle { color: #eee8dc; }
+  .site-menu-toggle svg { width: 22px; height: 22px; }
+  .site-menu-toggle:focus-visible { outline: 2px dashed var(--theme-color); outline-offset: 4px; }
+
+  #colorlib-aside.has-compact-nav #colorlib-main-menu {
+    display: none;
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  #colorlib-aside.is-nav-open #colorlib-main-menu { display: block; }
+
+  html #colorlib-aside #colorlib-main-menu > ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1rem;
+    padding: 0.25rem 0;
+  }
+
+  html #colorlib-aside #colorlib-main-menu > ul > li > a {
+    justify-content: flex-start;
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .back-to-top {
+    right: max(0.5rem, env(safe-area-inset-right));
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
   }
 }

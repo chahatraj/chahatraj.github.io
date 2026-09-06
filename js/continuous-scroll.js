@@ -3,6 +3,7 @@
 
   var sectionHosts = Array.prototype.slice.call(document.querySelectorAll('[data-section-source]'));
   if (!sectionHosts.length) return;
+  var initialHash = window.location.hash;
 
   var scopeSelector = function(selector, scope) {
     var scopedSelector = selector.trim().replace(/#colorlib-main/g, '.continuous-section-main');
@@ -318,7 +319,8 @@
   };
 
   var scrollToCurrentHash = function() {
-    if (!window.location.hash) return;
+    // Initial loading corrections must not undo a later navigation click.
+    if (!initialHash || window.location.hash !== initialHash) return;
 
     var target = document.getElementById(window.location.hash.slice(1));
     var navigation = document.getElementById('colorlib-aside');
