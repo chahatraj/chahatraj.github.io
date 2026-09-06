@@ -117,6 +117,50 @@
       min-width: 0;
     }
 
+    [data-service-group="talks"] .service-items {
+      gap: 0.75rem;
+    }
+
+    [data-service-group="talks"] .service-item {
+      grid-template-columns: 70px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    [data-service-group="talks"] .service-date {
+      min-width: 0;
+      padding-top: 0.2rem;
+    }
+
+    [data-service-group="talks"] .service-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    [data-service-group="talks"] .service-detail {
+      order: -1;
+      color: #403832;
+      font-weight: 600;
+    }
+
+    [data-service-group="talks"] .service-detail::before {
+      content: none;
+    }
+
+    [data-service-group="talks"] .service-main {
+      color: #574b44;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+
+    body.dark-theme [data-service-group="talks"] .service-detail {
+      color: #eee8dc;
+    }
+
+    body.dark-theme [data-service-group="talks"] .service-main {
+      color: #d8d2c8;
+    }
+
     .service-detail::before {
       content: "·";
       margin: 0 0.3rem;
