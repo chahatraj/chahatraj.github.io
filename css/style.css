@@ -8760,9 +8760,9 @@ p a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 50%;
-  background: transparent;
+  border: none;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--theme-color) 9%, transparent);
   color: rgba(0, 0, 0, 0.72);
   width: 36px;
   height: 36px;
@@ -8772,16 +8772,26 @@ p a {
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
-  opacity: 0.78;
+  opacity: 1;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
 .theme-toggle:hover,
-.theme-toggle:focus {
-  outline: none;
-  border-color: var(--theme-color);
+.theme-toggle:focus-visible {
+  background: color-mix(in srgb, var(--theme-color) 18%, transparent);
   opacity: 1;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--theme-color);
+  outline-offset: 3px;
+}
+
+.theme-toggle-icon svg {
+  width: 21px;
+  height: 21px;
+  overflow: visible;
 }
 
 .theme-toggle-icon {
@@ -8965,7 +8975,7 @@ body.dark-theme .ftco-social li a {
 }
 
 body.dark-theme .theme-toggle {
-  background: transparent;
+  background: color-mix(in srgb, var(--theme-color) 12%, transparent);
   border-color: rgba(238, 232, 220, 0.24);
   color: var(--theme-color);
 }
@@ -8975,9 +8985,9 @@ body.dark-theme .theme-toggle-icon {
 }
 
 body.dark-theme .theme-toggle:hover,
-body.dark-theme .theme-toggle:focus {
-  border-color: var(--theme-color);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+body.dark-theme .theme-toggle:focus-visible {
+  background: color-mix(in srgb, var(--theme-color) 22%, transparent);
+  box-shadow: none;
 }
 
 body.dark-theme .back-to-top {
