@@ -72,6 +72,10 @@ window.initializeDoodles = function(root) {
     svg.setAttribute('class', 'personal-doodle');
     svg.setAttribute('aria-hidden', 'true');
     svg.setAttribute('focusable', 'false');
+    if (kind === 'medal') {
+      svg.innerHTML = '<g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 6 .5 4 11-6 2Z" fill="currentColor" fill-opacity=".3"/><path d="m20 2 6 .5-6 13-6-2Z" fill="currentColor" fill-opacity=".3"/><path d="M26 22c.5 12-19 12-19 0-.5-12 19-12 19 0Z" fill="currentColor"/><path class="medal-star" d="m16.5 16 1.8 3.8 4.2.6-3 3 .7 4.2-3.7-2-3.8 2 .7-4.2-3-3 4.3-.6Z" stroke="none"/></g>';
+      return svg;
+    }
     svg.innerHTML = '<path d="' + drawings[kind] + '" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>';
     return svg;
   }

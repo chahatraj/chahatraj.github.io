@@ -8815,20 +8815,28 @@ p a {
 }
 
 .doodle-award {
-  width: 20px !important;
-  height: 22px !important;
+  width: 24px !important;
+  height: 26px !important;
   vertical-align: middle !important;
 }
 
 .doodle-award .personal-doodle {
-  width: 20px;
-  height: 22px;
+  width: 24px;
+  height: 26px;
   margin: 0;
   vertical-align: middle;
 }
 
 .doodle-award .personal-doodle path {
   stroke-width: 2;
+}
+
+.doodle-award .medal-star {
+  fill: #fff;
+}
+
+body.dark-theme .doodle-award .medal-star {
+  fill: #202124;
 }
 
 .job-market-box .personal-doodle {
