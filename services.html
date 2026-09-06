@@ -233,6 +233,11 @@
       grid-template-columns: 190px minmax(0, 1fr);
     }
 
+    .service-reviewers .review-venue,
+    body.dark-theme .service-reviewers .review-venue {
+      color: var(--theme-color);
+    }
+
     body.dark-theme .service-date {
       background: transparent;
       color: var(--theme-color);
@@ -346,10 +351,10 @@
                     <section class="service-section" data-service-group="reviewing">
                       <h5 class="theme-color"><b>Program Committee</b></h5>
                       <ul class="service-items service-reviewers">
-                        <li class="service-item"><span class="service-main">Conference reviewer</span><span class="service-text">NeurIPS (2023, 2026) · CHI (2026) · AAAI (2026) · IASEAI (2026) · COLM (2025-2026) · AIES (2023-2026) · CSCW (2024)</span></li>
-                        <li class="service-item"><span class="service-main">ACL Rolling Review</span><span class="service-text">2023-2026</span></li>
-                        <li class="service-item"><span class="service-main">Workshop/demo reviewer</span><span class="service-text">TrustNLP (2024-2026) · LTEDI @ EACL (2024)</span></li>
-                        <li class="service-item"><span class="service-main">Journal reviewer</span><span class="service-text">ACM TIST</span></li>
+                        <li class="service-item"><span class="service-main">Conference Reviewer</span><span class="service-text"><span class="review-venue">NeurIPS</span> (2023, 2026) · <span class="review-venue">CHI</span> (2026) · <span class="review-venue">AAAI</span> (2026) · <span class="review-venue">IASEAI</span> (2026) · <span class="review-venue">COLM</span> (2025-2026) · <span class="review-venue">AIES</span> (2023-2026) · <span class="review-venue">CSCW</span> (2024)</span></li>
+                        <li class="service-item"><span class="service-main review-venue">ACL Rolling Review</span><span class="service-text">2023-2026</span></li>
+                        <li class="service-item"><span class="service-main">Workshop/demo Reviewer</span><span class="service-text"><span class="review-venue">TrustNLP</span> (2024-2026) · <span class="review-venue">LTEDI @ EACL</span> (2024) · <span class="review-venue">EACL Demo</span> · <span class="review-venue">DravidianLangTech @ ACL</span> · <span class="review-venue">LT-EDI @ ACL</span> · <span class="review-venue">ACL Demo</span></span></li>
+                        <li class="service-item"><span class="service-main">Journal Reviewer</span><span class="service-text"><span class="review-venue">ACM TIST</span></span></li>
                       </ul>
                     </section>
 
