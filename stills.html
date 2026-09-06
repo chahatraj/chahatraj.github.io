@@ -62,19 +62,38 @@
 }
 
 .tile {
+  position: relative;
   margin: 0;
   padding: 0.55rem;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  border: 1px solid transparent;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.64);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  background: #574b44;
+  opacity: 0.65;
+  -webkit-mask: url("images/doodle-photo-frame.svg") center / 100% 100% no-repeat;
+  mask: url("images/doodle-photo-frame.svg") center / 100% 100% no-repeat;
+}
+
+.tile:nth-child(even)::after { transform: scaleX(-1); }
+.tile:hover::after,
+.tile:focus-within::after { background: var(--theme-color); opacity: 1; }
+body.dark-theme .tile::after { background: #d8d2c8; }
+body.dark-theme .tile:hover::after,
+body.dark-theme .tile:focus-within::after { background: var(--theme-color); }
+
 .tile:hover,
 .tile:focus-within {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--theme-color) 34%, transparent);
+  border-color: transparent;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
@@ -103,14 +122,14 @@
 }
 
 body.dark-theme .tile {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
   background: rgba(255, 255, 255, 0.045);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-theme .tile:hover,
 body.dark-theme .tile:focus-within {
-  border-color: color-mix(in srgb, var(--theme-color) 42%, transparent);
+  border-color: transparent;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
 }
 
