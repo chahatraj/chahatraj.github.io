@@ -9408,16 +9408,3 @@ body.offcanvas #colorlib-main {
     font-size: 12px;
   }
 }
-
-.mentoring-arrow,
-.home-archive-link-arrow {
-  display: inline-block;
-  width: 1.5em;
-  height: 1em;
-  vertical-align: middle;
-  overflow: hidden;
-  text-indent: -9999px;
-  background: currentColor;
-  -webkit-mask: url("../images/doodle-arrow.svg") center / contain no-repeat;
-  mask: url("../images/doodle-arrow.svg") center / contain no-repeat;
-}
