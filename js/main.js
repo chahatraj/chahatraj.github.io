@@ -1,3 +1,55 @@
+window.initializeDoodles = function(root) {
+  var drawings = {
+    quill: 'M7 25C9 14 16 5 27 4c1 11-6 19-16 18M7 25l14-14m-8 8 1-6m3 2 6-1M4 28q5-2 10 0m14-5v4m-2-2h4',
+    news: 'm5 6 23 1-1 21-22-1Zm5 5h12m-12 5h5m3 0h5m-13 5h5m3 0h5',
+    paper: 'm8 3 13 1 6 6-1 19-19-1Zm13 1v7h6M12 16h10m-10 5h8',
+    service: 'M6 17q3-5 7-1l3 2 5-5 6 5-9 9-12-8M4 13l-2 7 5 3m21-10 2 7-4 3M12 8q4-6 7 0',
+    poster: 'M5 4h23v20H5Zm11 20-4 6m5-6 5 6M10 9h13m-13 5 4-2 5 6 4-3',
+    slides: 'M4 5h25M6 5v18h21V5M16 23v6m-5 0h10M11 17l4-4 4 2 4-6',
+    code: 'm11 9-7 7 7 6m11-13 7 7-7 6M19 5l-5 23',
+    medal: 'm8 3 4 10m12-10-4 10M8 3h6l3 7 3-7h4M23 20c0 10-16 10-16 0s16-10 16 0Zm-8-5 1 3 3 1-2 2v3l-3-2-3 1 1-3-2-2 3-1Z',
+    market: 'm4 14 19-7v17L4 19Zm3 6 3 8 5-1-3-6M27 8l3-3m-3 10h4m-4 7 3 3',
+    camera: 'm4 10 7-.5 2-4 9 .5 2 4 7 1 .5 16L4 28ZM22 17c3 6-5 10-8 5-4-6 5-11 8-5ZM7 14h3m16 0h2M5 6 3 4'
+  };
+  function icon(kind) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 34 34');
+    svg.setAttribute('class', 'personal-doodle');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    svg.innerHTML = '<path d="' + drawings[kind] + '" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>';
+    return svg;
+  }
+  root.querySelectorAll('.home-personal-note').forEach(function(el) {
+    var old = el.querySelector('.personal-doodle');
+    if (old) old.remove();
+    el.appendChild(icon('quill'));
+  });
+  root.querySelectorAll('.desc h1.mb-4').forEach(function(el) {
+    if (el.querySelector('.personal-doodle')) return;
+    var title = el.textContent.toLowerCase();
+    var kind = /news/.test(title) ? 'news' : /publication/.test(title) ? 'paper' : /service/.test(title) ? 'service' : /poster/.test(title) ? 'poster' : /slide/.test(title) ? 'slides' : null;
+    if (kind) el.appendChild(icon(kind));
+  });
+  root.querySelectorAll('.job-market-box').forEach(function(el) {
+    var line = el;
+    if (!line.querySelector('.personal-doodle')) line.prepend(icon('market'));
+  });
+  root.querySelectorAll('.news-award-icon, .publication-award-icon').forEach(function(el) {
+    el.classList.add('doodle-award');
+    if (!el.querySelector('svg')) el.appendChild(icon('medal'));
+  });
+  root.querySelectorAll('.publication-paper .btn.badge').forEach(function(el) {
+    if (el.querySelector('svg')) return;
+    var label = el.textContent.trim().toLowerCase();
+    var kind = {pdf: 'paper', paper: 'paper', code: 'code', poster: 'poster', slides: 'slides'}[label];
+    if (!kind) return;
+    if (label === 'pdf') el.textContent = 'Paper';
+    el.appendChild(icon(kind));
+  });
+};
+document.addEventListener('DOMContentLoaded', function() { window.initializeDoodles(document); });
+
  AOS.init({
  	duration: 800,
  	easing: 'slide'

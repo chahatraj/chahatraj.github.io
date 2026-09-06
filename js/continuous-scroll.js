@@ -272,6 +272,7 @@
         initializeLazyImages(host);
         if (source === 'news.html') initializeNews(host);
         if (source === 'publications.html') initializePublications(host);
+        if (window.initializeDoodles) window.initializeDoodles(host);
         if (source === 'stills.html' && window.initializeStillsGallery) window.initializeStillsGallery(host);
         host.classList.add('is-loaded');
       })
