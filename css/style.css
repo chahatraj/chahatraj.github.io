@@ -8835,6 +8835,11 @@ body.dark-theme .personal-doodle {
   color: #eee8dc;
 }
 
+.doodle-award .personal-doodle,
+body.dark-theme .doodle-award .personal-doodle {
+  color: var(--theme-color);
+}
+
 .personal-doodle:hover,
 body.dark-theme .personal-doodle:hover {
   color: var(--theme-color);
