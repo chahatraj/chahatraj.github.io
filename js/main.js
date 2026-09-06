@@ -50,6 +50,26 @@ window.initializeDoodles = function(root) {
 };
 document.addEventListener('DOMContentLoaded', function() { window.initializeDoodles(document); });
 
+// Use the page's daily accent for the outlined Devanagari favicon.
+document.addEventListener('DOMContentLoaded', function() {
+  var link = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+  if (!link) return;
+  var color = getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim();
+  if (!color) return;
+  fetch(link.href)
+    .then(function(response) {
+      if (!response.ok) throw new Error('Favicon unavailable');
+      return response.text();
+    })
+    .then(function(source) {
+      var svg = new DOMParser().parseFromString(source, 'image/svg+xml');
+      if (svg.querySelector('parsererror')) return;
+      svg.querySelectorAll('path').forEach(function(path) { path.setAttribute('fill', color); });
+      link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(svg.documentElement));
+    })
+    .catch(function() { /* Keep the static favicon if loading fails. */ });
+});
+
  AOS.init({
  	duration: 800,
  	easing: 'slide'
