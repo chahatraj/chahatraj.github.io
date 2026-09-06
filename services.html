@@ -123,12 +123,12 @@
     }
 
     .service-reviewers {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: 1.25rem;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
     }
 
     .service-reviewers .service-item {
-      grid-template-columns: 90px minmax(0, 1fr);
+      grid-template-columns: 190px minmax(0, 1fr);
     }
 
     body.dark-theme .service-date {
@@ -154,12 +154,15 @@
 
     @media (max-width: 991.98px) {
       .service-reviewers {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 575.98px) {
       .service-reviewers {
+        grid-template-columns: 1fr;
+      }
+      .service-reviewers .service-item {
         grid-template-columns: 1fr;
       }
       .service-item {
@@ -260,17 +263,10 @@
                     <section class="service-section">
                       <h5 class="theme-color"><b>Program Committee &amp; Reviewing</b></h5>
                       <ul class="service-items service-reviewers">
-                        <li class="service-item"><span class="service-date">2023, 2026</span><span class="service-text"><span class="service-main">NeurIPS</span></span></li>
-                        <li class="service-item"><span class="service-date">2023-2026</span><span class="service-text"><span class="service-main">ARR</span></span></li>
-                        <li class="service-item"><span class="service-date">2026</span><span class="service-text"><span class="service-main">CHI</span></span></li>
-                        <li class="service-item"><span class="service-date">2026</span><span class="service-text"><span class="service-main">AAAI</span></span></li>
-                        <li class="service-item"><span class="service-date">2026</span><span class="service-text"><span class="service-main">IASEAI</span></span></li>
-                        <li class="service-item"><span class="service-date">2025-2026</span><span class="service-text"><span class="service-main">COLM</span></span></li>
-                        <li class="service-item"><span class="service-date">2024-2026</span><span class="service-text"><span class="service-main">TrustNLP</span></span></li>
-                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">LTEDI @ EACL</span></span></li>
-                        <li class="service-item"><span class="service-date">2023-2026</span><span class="service-text"><span class="service-main">AIES</span></span></li>
-                        <li class="service-item"><span class="service-date">2024</span><span class="service-text"><span class="service-main">CSCW</span></span></li>
-                        <li class="service-item"><span class="service-date"></span><span class="service-text"><span class="service-main">ACM TIST</span></span></li>
+                        <li class="service-item"><span class="service-main">Conference reviewer</span><span class="service-text">NeurIPS (2023, 2026) · CHI (2026) · AAAI (2026) · IASEAI (2026) · COLM (2025-2026) · AIES (2023-2026) · CSCW (2024)</span></li>
+                        <li class="service-item"><span class="service-main">ACL Rolling Review</span><span class="service-text">2023-2026</span></li>
+                        <li class="service-item"><span class="service-main">Workshop/demo reviewer</span><span class="service-text">TrustNLP (2024-2026) · LTEDI @ EACL (2024)</span></li>
+                        <li class="service-item"><span class="service-main">Journal reviewer</span><span class="service-text">ACM TIST</span></li>
                       </ul>
                     </section>
 
