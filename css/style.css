@@ -8827,6 +8827,10 @@ p a {
   vertical-align: middle;
 }
 
+.doodle-award .personal-doodle path {
+  stroke-width: 2;
+}
+
 .job-market-box .personal-doodle {
   margin: 0 0.4rem 0 0;
 }
