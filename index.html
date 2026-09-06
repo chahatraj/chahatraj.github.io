@@ -267,8 +267,8 @@
 
     body.dark-theme .community-doodle {
       color: #eee8dc;
-      filter: invert(1);
-      mix-blend-mode: screen;
+      filter: url(#community-doodle-transparent);
+      mix-blend-mode: normal;
     }
 
     .community-doodle:hover {
@@ -577,6 +577,13 @@
           <div class="author-info text p-3 p-md-5">
             <div class="desc">
               <h1 class="home-name">Chahat Raj
+                <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none">
+                  <defs>
+                    <filter id="community-doodle-transparent" color-interpolation-filters="sRGB">
+                      <feColorMatrix type="matrix" values="0 0 0 0 .933  0 0 0 0 .910  0 0 0 0 .863  -.22323 -.75096 -.07581 0 1"/>
+                    </filter>
+                  </defs>
+                </svg>
                 <img class="community-doodle" src="images/community-doodle.png" width="1536" height="1024" alt="Line drawing of eight people with varied hairstyles, head coverings, and glasses"/>
               </h1>
               <p class="home-title">Ph.D. Candidate in Computer Science, George Mason University</p>
