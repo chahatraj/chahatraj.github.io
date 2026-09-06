@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { src: 'images/research-story-languages.png', width: 733, height: 2146, breaks: [0, 750, 1510, 2146] },
     { src: 'images/research-story-perspectives.png', width: 724, height: 2172, breaks: [0, 1560, 2172] }
   ];
-  // Additions live only inside the existing empty passages. Original art and
-  // all original segment positions stay unchanged.
+  // Interleave both rounds of artwork, then give every passage equal space.
   var additions = [
     ['images/research-addition-translation.png', 'images/research-addition-generation.png'],
     ['images/research-addition-agents.png']
@@ -26,9 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
     trail.replaceChildren();
     var story = stories[side];
     var scale = width / story.width;
-    var artHeight = story.height * scale;
     var count = story.breaks.length - 1;
-    var gap = Math.max(20, (height - artHeight) / (count - 1));
+    var blocks = [];
+    for (var i = 0; i < count; i++) {
+      var cropHeight = story.breaks[i+1] - story.breaks[i];
+      blocks.push({ top:story.breaks[i], cropHeight:cropHeight, height:cropHeight*scale });
+      if (additions[side][i]) blocks.push({ source:additions[side][i], height:width*2 });
+    }
+    var artHeight = blocks.reduce(function (total, block) { return total + block.height; }, 0);
+    var gap = Math.max(0, (height - artHeight) / (blocks.length - 1));
     var svg = element('svg', { viewBox: '0 0 '+width+' '+height, width:'100%', height:'100%', 'aria-hidden':'true' });
     var defs = element('defs', {});
     var ink = element('filter', {id:'translation-ink-'+side, 'color-interpolation-filters':'sRGB'});
@@ -39,38 +44,31 @@ document.addEventListener('DOMContentLoaded', function () {
     defs.appendChild(ink);
     svg.appendChild(defs);
     var y = 0;
-    for (var i = 0; i < count; i++) {
-      var cropHeight = story.breaks[i+1] - story.breaks[i];
-      var visibleHeight = cropHeight * scale;
-      var slice = element('svg', {x:0, y:y, width:width, height:visibleHeight, viewBox:'0 '+story.breaks[i]+' '+story.width+' '+cropHeight, overflow:'hidden'});
-      slice.appendChild(element('image', {href:story.src, width:story.width, height:story.height}));
-      svg.appendChild(slice);
-      y += visibleHeight;
-      if (i < count - 1) {
+    blocks.forEach(function (block, index) {
+      if (block.source) {
+        var extra = element('image', {href:block.source, x:0, y:y, width:width, height:block.height, preserveAspectRatio:'xMidYMid meet', 'data-research-addition':'true'});
+        if (block.source.indexOf('translation') !== -1) extra.setAttribute('filter','url(#translation-ink-'+side+')');
+        extra.setAttribute('opacity',side ? '.85' : '.6');
+        svg.appendChild(extra);
+      } else {
+        var slice = element('svg', {x:0, y:y, width:width, height:block.height, viewBox:'0 '+block.top+' '+story.width+' '+block.cropHeight, overflow:'hidden'});
+        slice.appendChild(element('image', {href:story.src, width:story.width, height:story.height}));
+        svg.appendChild(slice);
+      }
+      y += block.height;
+      if (index < blocks.length - 1) {
         var x = width * (side ? .6 : .48);
-        var source = additions[side][i];
-        var illustrationHeight = width * 2;
-        function connector(from, to, startX, endX) {
+        var from = y + 8;
+        var to = y + gap - 8;
+        if (to > from) {
           svg.appendChild(element('path', {
-            d:'M'+startX+' '+from+' C'+(width*.1)+' '+(from+(to-from)*.3)+' '+(width*.92)+' '+(from+(to-from)*.65)+' '+endX+' '+to,
+            d:'M'+x+' '+from+' C'+(width*.1)+' '+(from+(to-from)*.3)+' '+(width*.92)+' '+(from+(to-from)*.65)+' '+(width*.52)+' '+to,
             fill:'none', stroke:'currentColor', opacity:'.35', 'stroke-width':1.1, 'stroke-dasharray':'2 8', 'stroke-linecap':'round'
           }));
         }
-        if (source && gap > illustrationHeight + 80) {
-          var imageTop = y + (gap-illustrationHeight)/2;
-          connector(y, imageTop-8, x, width*.5);
-          var extra = element('image', {href:source, x:0, y:imageTop, width:width, height:illustrationHeight, preserveAspectRatio:'xMidYMid meet', 'data-research-addition':'true'});
-          if (source.indexOf('translation') !== -1) extra.setAttribute('filter','url(#translation-ink-'+side+')');
-          // Keep the additions quiet without changing the original drawing ink.
-          extra.setAttribute('opacity',side ? '.85' : '.6');
-          svg.appendChild(extra);
-          connector(imageTop+illustrationHeight+8, y+gap, width*.5, width*.52);
-        } else {
-          connector(y, y+gap, x, width*.52);
-        }
         y += gap;
       }
-    }
+    });
     trail.appendChild(svg);
   }
   function layout() {
