@@ -120,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			'news.html': 'news',
 			'publications.html': 'publications',
 			'services.html': 'service',
-			'posters.html': 'posters',
 			'slides.html': 'slides',
 			'stills.html': 'stills'
 		};
