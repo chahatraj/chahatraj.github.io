@@ -238,6 +238,10 @@
     }
 
     .hero-wrap .text h1.home-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
       margin: 0 0 0.35rem;
       color: #403832;
       font-family: "Poppins", Arial, sans-serif;
@@ -245,6 +249,28 @@
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.03em;
+    }
+
+    .community-doodle {
+      width: 100px;
+      height: 58px;
+      flex: 0 0 auto;
+      color: #403832;
+    }
+
+    body.dark-theme .community-doodle {
+      color: #eee8dc;
+    }
+
+    .community-doodle:hover {
+      color: var(--theme-color);
+    }
+
+    @media (max-width: 575.98px) {
+      .community-doodle {
+        width: 68px;
+        height: 42px;
+      }
     }
 
     .hero-wrap .text p.home-title {
@@ -529,7 +555,20 @@
           </div>
           <div class="author-info text p-3 p-md-5">
             <div class="desc">
-              <h1 class="home-name">Chahat Raj</h1>
+              <h1 class="home-name">Chahat Raj
+                <svg class="community-doodle" viewBox="0 0 112 66" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A doodle of a diverse group of people">
+                  <g fill="var(--theme-color)" fill-opacity="0.12" stroke="none">
+                    <path d="M13 33q0-10 13-10t13 10v14H13Zm26 0q0-10 13-10t13 10v14H39Zm26 0q0-10 13-10t13 10v14H65Z"/>
+                  </g>
+                  <path d="M18 13q-1-10 9-10t9 11l-3-4-5 1-5-2-5 4m2 0v7q6 9 12 0v-7M16 33q0-8 10-8t12 8M23 16h.2m6 0h.2m-5 5q2 1 4-1"/>
+                  <path d="M43 14Q38 3 50 2q13 0 10 13M43 10l13-6m-14 3 16 5m-13 3v6q5 7 11-1v-5m-10 7q5 8 10-1M41 33q0-8 10-8t12 8m-15-16h.2m6 0h.2"/>
+                  <path d="M70 22q-7-2-4-8-4-5 3-8 1-6 8-3 8-4 9 3 7 2 3 8 3 6-4 9M71 12q6 2 10-4l2 9q0 8-6 8t-7-9m4 0h.2m5 0h.2m-5 5q2 2 4 0M65 34q0-7 10-8m6 0q9 0 10 8"/>
+                  <path d="M4 62V50q0-7 12-8m7 0q11 1 11 9v11M10 32q-1-8 8-8t9 9M10 30l13-5m-11 8v6q6 8 12 0v-7m-10 3h.2m6 0h.2m-5 5q2 1 4 0"/>
+                  <path d="M32 62V51q0-8 12-9m6 0q12 1 12 10v10M36 44q-1-21 11-21t12 22l-11 4-12-5Zm5-12q6 2 12-2v9q-6 8-12 0Zm3 3h.2m5 0h.2m-5 5q2 1 4 0"/>
+                  <path d="M61 62V51q0-8 11-9m7 0q11 0 11 9v11M67 32q-2-10 10-9l7 4-3 5-10-3-4 3Zm2 1v6q5 8 12 0v-7m-10 3h.2m6 0h.2m-5 5q2 1 4 0"/>
+                  <path d="M89 62V51q0-7 9-9m6 0q7 2 7 9v11M93 32q-4-10 7-10t10 10m-14-8-1 7m5-8 1 7m3-6 4 7m-13 1v7q5 7 11 0v-7m-9 3h.2m5 0h.2m-5 5q2 1 4 0"/>
+                </svg>
+              </h1>
               <p class="home-title">Ph.D. Candidate in Computer Science, George Mason University</p>
               <p class="home-pronunciation">
                 My first name is pronounced as
