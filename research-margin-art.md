@@ -1,6 +1,10 @@
 # Research margin illustrations
 
-## Current version
+## Current version: character narrative
+
+The homepage now uses generated transparent line-art character stories in `images/research-story-languages.png` and `images/research-story-perspectives.png`. Recurring characters converse, explore perspectives, examine outcomes, and cooperate. The browser preserves their proportions, extending only the quiet dotted passages between story portions. The margins remain document-positioned, staggered, nearer the content, and stop before Stills. Built-in image generation was used; earlier icon-only and filled-scene variants are inactive.
+
+## Previous outline experiment
 
 The homepage now uses outline-only SVG marginalia defined in `js/research-margins.js`, not the original PNG strips below. The trails are absolutely positioned in document space, start at staggered points in About, and end 70 pixels before Stills. Sparse people, language, image, attribution, and cooperation motifs are joined by dotted curves. All motifs use `fill="none"`; light-gray strokes remain deliberately quiet in both themes. Content widths are unchanged. The generated PNGs below are retained as unused earlier artwork.
 
