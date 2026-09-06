@@ -39,6 +39,14 @@ window.initializeDoodles = function(root) {
       var recognition = document.createElement('span');
       recognition.className = 'publication-context';
       recognition.appendChild(award);
+      var selectivity = venueLabel.textContent.match(/\s*\(top 15% of accepted papers\)/i);
+      if (selectivity) {
+        venueLabel.textContent = venueLabel.textContent.replace(selectivity[0], '');
+        var note = document.createElement('span');
+        note.className = 'publication-selectivity';
+        note.textContent = '· Top 15% of accepted papers';
+        recognition.appendChild(note);
+      }
       meta.insertBefore(recognition, actions);
     }
     line.appendChild(actions);
