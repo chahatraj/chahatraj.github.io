@@ -9347,11 +9347,11 @@ body.dark-theme #colorlib-aside #colorlib-main-menu > ul > li.colorlib-active > 
   position: absolute;
   top: 0;
   left: 0;
-  width: 3.5rem;
-  height: 1.2rem;
+  width: 6rem;
+  height: 1.4rem;
   background: var(--theme-color);
-  -webkit-mask: url('../images/maple-twig.svg') center / contain no-repeat;
-  mask: url('../images/maple-twig.svg') center / contain no-repeat;
+  -webkit-mask: url('../images/maple-twig.svg?v=2') center / contain no-repeat;
+  mask: url('../images/maple-twig.svg?v=2') center / contain no-repeat;
 }
 
 .desc h1.mb-4 > .personal-doodle {
