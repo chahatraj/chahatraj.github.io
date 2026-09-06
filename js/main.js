@@ -119,13 +119,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			'index.html': 'about',
 			'news.html': 'news',
 			'publications.html': 'publications',
-			'services.html': 'service',
 			'slides.html': 'slides',
 			'stills.html': 'stills'
 		};
 
 		$('#colorlib-main-menu a').each(function() {
 			var $link = $(this);
+			var directSection = $link.attr('data-home-section');
+			if (directSection) {
+				$link.attr('href', (isHomepage ? '' : 'index.html') + '#' + directSection);
+				return;
+			}
 			var href = ($link.attr('href') || '').split(/[?#]/)[0].replace(/^\.\//, '');
 			var sectionId = sectionRoutes[href];
 			if (!sectionId) return;

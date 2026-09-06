@@ -256,6 +256,15 @@
         var main = sourceDocument.querySelector('#colorlib-main');
         if (!main) throw new Error('Missing page content in ' + source);
 
+        if (host.dataset.sectionSubset) {
+          main.querySelectorAll('.service-section').forEach(function(section) {
+            if (section.dataset.serviceGroup !== host.dataset.sectionSubset) section.remove();
+            else section.querySelector('h5').remove();
+          });
+          var heading = main.querySelector('.desc h1.mb-4 b');
+          if (heading) heading.textContent = title;
+        }
+
         main.querySelectorAll('script, #ftco-loader, .site-footer-note').forEach(function(element) {
           element.remove();
         });
