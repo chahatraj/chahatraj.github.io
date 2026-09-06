@@ -394,6 +394,23 @@
       white-space: normal;
     }
     body.dark-theme .publication-context .publication-award { color: #eee8dc; }
+    .publication-context.publication-recognition {
+      display: inline-flex;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-top: 0.45rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 7px 10px 8px 6px;
+      background: color-mix(in srgb, var(--theme-color) 26%, #fff);
+      color: #403832;
+    }
+    body.dark-theme .publication-context.publication-recognition {
+      background: color-mix(in srgb, var(--theme-color) 30%, #202124);
+      color: #eee8dc;
+    }
+    body.dark-theme .publication-recognition .publication-award {
+      background: none;
+    }
     .publication-actions > [hidden], .publication-visual[hidden] { display: none !important; }
     .publication-actions > a + a::before,
     .publication-actions > button::before { content: none; }
@@ -1607,7 +1624,7 @@
                       <script src="js/scrollax.min.js"></script>
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                       <script src="js/google-map.js"></script>
-                      <script src="js/main.js?v=20260906arrow2"></script>
+                      <script src="js/main.js?v=20260906recognition1"></script>
                     </div>
                   </div>
                 </div>

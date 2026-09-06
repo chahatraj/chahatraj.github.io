@@ -37,7 +37,7 @@ window.initializeDoodles = function(root) {
     var award = paper.querySelector('.publication-award');
     if (award) {
       var recognition = document.createElement('span');
-      recognition.className = 'publication-context';
+      recognition.className = 'publication-context publication-recognition';
       recognition.appendChild(award);
       var selectivity = venueLabel.textContent.match(/\s*\(top 15% of accepted papers\)/i);
       if (selectivity) {
