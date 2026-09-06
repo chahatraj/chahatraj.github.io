@@ -117,6 +117,40 @@
       min-width: 0;
     }
 
+    [data-service-group="mentoring"] .service-item {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      column-gap: 1.5rem;
+      row-gap: 0.15rem;
+    }
+
+    [data-service-group="mentoring"] .service-detail::before {
+      content: none;
+    }
+
+    .mentoring-affiliation,
+    .mentoring-next {
+      color: #574b44;
+    }
+
+    .mentoring-arrow {
+      color: var(--theme-color);
+    }
+
+    body.dark-theme .mentoring-affiliation,
+    body.dark-theme .mentoring-next {
+      color: #d8d2c8;
+    }
+
+    @media (max-width: 767.98px) {
+      [data-service-group="mentoring"] .service-item {
+        grid-template-columns: 1fr;
+      }
+
+      [data-service-group="mentoring"] .service-items {
+        gap: 0.65rem;
+      }
+    }
+
     [data-service-group="talks"] .service-items {
       gap: 0.75rem;
     }
@@ -260,17 +294,17 @@
                     <section class="service-section" data-service-group="mentoring">
                       <h5 class="theme-color"><b>Student Mentoring</b></h5>
                       <ul class="service-items">
-                        <li class="service-item"><span class="service-date">TJHSST</span><span class="service-text"><span class="service-main">Daksha Rajagopal</span> <span class="service-detail">Purdue CS · Modeling normative ethics and cross-cultural moral reasoning</span></span></li>
-                        <li class="service-item"><span class="service-date">TJHSST</span><span class="service-text"><span class="service-main">Angela Liu</span> <span class="service-detail">Bryn Mawr College · Assessing moral attributional biases in ambiguous contexts in LLMs</span></span></li>
-                        <li class="service-item"><span class="service-date">TJHSST</span><span class="service-text"><span class="service-main">Mahika Banerjee</span> <span class="service-detail">KU Leuven · Measuring attribution bias, coauthor on the ACL Findings '26 paper</span></span></li>
-                        <li class="service-item"><span class="service-date">MS Thesis, GMU</span><span class="service-text"><span class="service-main">Mamnuya Rinki</span> <span class="service-detail">IntraFi · Mitigating South Asian biases, coauthor on the TrustNLP @ ACL '26 paper</span></span></li>
-                        <li class="service-item"><span class="service-date">MS, UW</span><span class="service-text"><span class="service-main">Yongxu Sun</span> <span class="service-detail">PhD, UW · Inoculation prompting by in-context learning to debias LLM decisions</span></span></li>
-                        <li class="service-item"><span class="service-date">MS, GMU</span><span class="service-text"><span class="service-main">Diwita Banerjee</span> <span class="service-detail">DoorDash · Assessing cuisine biases and scientific figure hallucination detection</span></span></li>
-                        <li class="service-item"><span class="service-date">MS, GMU</span><span class="service-text"><span class="service-main">Sina Mansouri</span> <span class="service-detail">Long-context memory information retrieval in LLM agents</span></span></li>
-                        <li class="service-item"><span class="service-date">CS 678</span><span class="service-text"><span class="service-main">Sharanya Garika</span> <span class="service-detail">Identifying intersectional bias in LLMs across Indo-Aryan languages</span></span></li>
-                        <li class="service-item"><span class="service-date">CS 678</span><span class="service-text"><span class="service-main">Aksh Patel</span> <span class="service-detail">Identifying intersectional bias in LLMs across Indo-Aryan languages</span></span></li>
-                        <li class="service-item"><span class="service-date">CS 795</span><span class="service-text"><span class="service-main">Samruddhi Deshmukh</span> <span class="service-detail">Auditing text-to-image generation models for social representation</span></span></li>
-                        <li class="service-item"><span class="service-date">CS 795</span><span class="service-text"><span class="service-main">Abhi Krishna</span> <span class="service-detail">Auditing text-to-image generation models for social representation</span></span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Daksha Rajagopal</span> <span class="mentoring-affiliation">[TJHSST]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> Purdue CS</span></span><span class="service-detail">Modeling normative ethics and cross-cultural moral reasoning</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Angela Liu</span> <span class="mentoring-affiliation">[TJHSST]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> Bryn Mawr College</span></span><span class="service-detail">Assessing moral attributional biases in ambiguous contexts in LLMs</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Mahika Banerjee</span> <span class="mentoring-affiliation">[TJHSST]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> KU Leuven</span></span><span class="service-detail">Measuring attribution bias, coauthor on the ACL Findings '26 paper</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Mamnuya Rinki</span> <span class="mentoring-affiliation">[MS Thesis, GMU]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> IntraFi</span></span><span class="service-detail">Mitigating South Asian biases, coauthor on the TrustNLP @ ACL '26 paper</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Yongxu Sun</span> <span class="mentoring-affiliation">[MS, UW]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> PhD, UW</span></span><span class="service-detail">Inoculation prompting by in-context learning to debias LLM decisions</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Diwita Banerjee</span> <span class="mentoring-affiliation">[MS, GMU]</span> <span class="mentoring-next"><span class="mentoring-arrow">→</span> DoorDash</span></span><span class="service-detail">Assessing cuisine biases and scientific figure hallucination detection</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Sina Mansouri</span> <span class="mentoring-affiliation">[MS, GMU]</span></span><span class="service-detail">Long-context memory information retrieval in LLM agents</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Sharanya Garika</span> <span class="mentoring-affiliation">[CS 678, GMU]</span></span><span class="service-detail">Identifying intersectional bias in LLMs across Indo-Aryan languages</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Aksh Patel</span> <span class="mentoring-affiliation">[CS 678, GMU]</span></span><span class="service-detail">Identifying intersectional bias in LLMs across Indo-Aryan languages</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Samruddhi Deshmukh</span> <span class="mentoring-affiliation">[CS 795, GMU]</span></span><span class="service-detail">Auditing text-to-image generation models for social representation</span></li>
+                        <li class="service-item"><span class="service-text"><span class="service-main">Abhi Krishna</span> <span class="mentoring-affiliation">[CS 795, GMU]</span></span><span class="service-detail">Auditing text-to-image generation models for social representation</span></li>
                       </ul>
                     </section>
 
