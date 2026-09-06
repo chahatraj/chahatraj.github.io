@@ -67,7 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
     var artHeight = blocks.reduce(function (total, block) { return total + block.height; }, 0);
-    var gap = Math.max(0, (height - artHeight) / (blocks.length - 1));
+    // A single, small closing scene on the right leads into the photo section.
+    // Reserve its space inside the existing boundary, never alongside Stills.
+    var closingSize = side === 1 ? Math.min(100, width * .56) : 0;
+    var closingSpace = closingSize ? closingSize + 30 : 0;
+    var gap = Math.max(0, (height - artHeight - closingSpace) / (blocks.length - 1));
     var svg = element('svg', { viewBox: '0 0 '+width+' '+height, width:'100%', height:'100%', 'aria-hidden':'true' });
     var defs = element('defs', {});
     var ink = element('filter', {id:'translation-ink-'+side, 'color-interpolation-filters':'sRGB'});
@@ -118,6 +122,20 @@ document.addEventListener('DOMContentLoaded', function () {
         y += gap;
       }
     });
+    if (closingSize) {
+      var closingX = (width - closingSize) / 2;
+      var closingY = height - closingSize;
+      svg.appendChild(element('path', {
+        d:'M'+(width*.52)+' '+(y+2)+' Q'+(width*.38)+' '+(y+18)+' '+(width*.5)+' '+closingY,
+        fill:'none', stroke:'currentColor', opacity:'.3', 'stroke-width':1.1,
+        'stroke-dasharray':'2 8', 'stroke-linecap':'round'
+      }));
+      svg.appendChild(element('image', {
+        href:'images/research-closing-camera.png', x:closingX, y:closingY,
+        width:closingSize, height:closingSize, preserveAspectRatio:'xMidYMid meet',
+        opacity:'.75', 'data-research-closing':'true'
+      }));
+    }
     trail.appendChild(svg);
   }
   function layout() {
