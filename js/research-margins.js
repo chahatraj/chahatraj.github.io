@@ -44,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
     svg.querySelector('defs').appendChild(mask);
     connector.setAttribute('mask', 'url(#'+maskId+')');
     svg.appendChild(element('image', {
-      href:'images/research-gap-'+scene+'.png', x:x, y:y, width:size, height:size,
+      href:'images/research-gap-'+scene+'-v2.png', x:x, y:y, width:size, height:size,
       preserveAspectRatio:'xMidYMid meet', opacity:side ? '.75' : '.35',
+      filter:'url(#'+(scene === 'chat' ? 'gap-light-ink-' : 'cooperation-ink-')+side+')',
       'data-research-gap-scene':scene
     }));
   }
@@ -79,6 +80,12 @@ document.addEventListener('DOMContentLoaded', function () {
     cooperationInk.setAttribute('id', 'cooperation-ink-'+side);
     cooperationInk.firstElementChild.setAttribute('values', '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.82914 -2.78928 -.28158 0 3');
     defs.appendChild(cooperationInk);
+    // The label-free chat edit has light pen lines on a black preview backing;
+    // extract those lines as alpha. Other edits use dark ink extraction above.
+    var lightInk = ink.cloneNode(true);
+    lightInk.setAttribute('id', 'gap-light-ink-'+side);
+    lightInk.firstElementChild.setAttribute('values', '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .6378 2.1456 .2166 0 -.06');
+    defs.appendChild(lightInk);
     svg.appendChild(defs);
     var y = 0;
     blocks.forEach(function (block, index) {
