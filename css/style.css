@@ -8793,6 +8793,24 @@ p a {
   outline-offset: 3px;
 }
 
+.personal-doodle {
+  display: inline-block;
+  width: 32px;
+  height: 29px;
+  margin-left: 0.3rem;
+  vertical-align: -0.3em;
+  color: #403832;
+}
+
+body.dark-theme .personal-doodle {
+  color: #eee8dc;
+}
+
+.personal-doodle:hover,
+body.dark-theme .personal-doodle:hover {
+  color: var(--theme-color);
+}
+
 .theme-toggle-icon svg {
   width: 29px;
   height: 29px;
