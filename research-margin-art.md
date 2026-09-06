@@ -1,5 +1,9 @@
 # Research margin illustrations
 
+## Current version
+
+The homepage now uses outline-only SVG marginalia defined in `js/research-margins.js`, not the original PNG strips below. The trails are absolutely positioned in document space, start at staggered points in About, and end 70 pixels before Stills. Sparse people, language, image, attribution, and cooperation motifs are joined by dotted curves. All motifs use `fill="none"`; light-gray strokes remain deliberately quiet in both themes. Content widths are unchanged. The generated PNGs below are retained as unused earlier artwork.
+
 Created with the built-in image-generation tool. Transparent PNG originals are preserved in `images/research-margin-languages.png` and `images/research-margin-bias.png`. These are illustrative metaphors, not diagrams of experimental findings. The DIY paper has not yet been identified and is not represented specifically.
 
 ## Research grounding

@@ -144,19 +144,18 @@
     }
 
     .research-margin {
-      position: fixed;
-      top: 120px;
+      position: absolute;
       height: auto;
       z-index: 2;
       pointer-events: none;
       user-select: none;
-      opacity: 0.72;
-      filter: brightness(0) sepia(1) saturate(0.4);
+      opacity: 0.28;
+      color: #80756d;
     }
     .research-margin[hidden] { display: none; }
     .research-margin-left { left: var(--gutter-offset, 12px); }
     .research-margin-right { right: var(--gutter-offset, 12px); }
-    body.dark-theme .research-margin { filter: brightness(0) invert(0.88); }
+    body.dark-theme .research-margin { color: #d8d2c8; opacity: 0.22; }
 
     .continuous-section-loading {
       display: flex;
@@ -560,8 +559,8 @@
     </script> -->
 </head>
 <body>
-  <img class="research-margin research-margin-left" src="images/research-margin-languages.png" alt="" aria-hidden="true" hidden decoding="async"/>
-  <img class="research-margin research-margin-right" src="images/research-margin-bias.png" alt="" aria-hidden="true" hidden decoding="async"/>
+  <div class="research-margin research-margin-left" aria-hidden="true" hidden></div>
+  <div class="research-margin research-margin-right" aria-hidden="true" hidden></div>
 <div id="colorlib-page">
   <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
   <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
@@ -716,7 +715,7 @@
     <script src="js/main.js?v=20260905pub3"></script>
     <script src="js/stills-layout.js?v=20260905a"></script>
     <script src="js/continuous-scroll.js?v=20260905scholar1"></script>
-    <script src="js/research-margins.js?v=1"></script>
+    <script src="js/research-margins.js?v=2"></script>
   </div>
 </div>
 </body>
