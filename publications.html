@@ -329,7 +329,7 @@
 
     /* Plain bibliographic hierarchy, shared by the archive and homepage. */
     .publication-paper {
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(190px, 25%);
       margin-bottom: 1.15rem;
     }
 
@@ -370,6 +370,18 @@
     .publication-actions > button::before { content: none; }
     .publication-actions { gap: 0.8rem; margin-top: 0.2rem; }
 
+    .publication-sidebar {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.45rem;
+      margin-top: 0.1rem;
+    }
+    .publication-sidebar .publication-venue { text-align: right; }
+    .publication-sidebar .publication-actions { justify-content: flex-end; }
+
     @media (max-width: 767.98px) {
       .publication-search {
         align-items: flex-start;
@@ -380,6 +392,14 @@
       .publication-paper {
         grid-template-columns: 1fr;
       }
+
+      .publication-sidebar {
+        grid-column: 1;
+        grid-row: 2;
+        align-items: flex-start;
+      }
+      .publication-sidebar .publication-venue { text-align: left; }
+      .publication-sidebar .publication-actions { justify-content: flex-start; }
 
       .publication-visual {
         grid-column: 1;
@@ -1540,7 +1560,7 @@
                       <script src="js/scrollax.min.js"></script>
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
                       <script src="js/google-map.js"></script>
-                      <script src="js/main.js?v=20260905pub1"></script>
+                      <script src="js/main.js?v=20260905pub2"></script>
                     </div>
                   </div>
                 </div>

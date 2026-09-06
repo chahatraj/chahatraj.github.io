@@ -29,14 +29,20 @@ window.initializeDoodles = function(root) {
     });
     var venue = paper.querySelector('.publication-venue');
     var line = document.createElement('span');
-    line.className = 'publication-context';
+    line.className = 'publication-context publication-sidebar';
     var venueLabel = document.createElement('span');
     venueLabel.className = 'publication-venue';
     venueLabel.textContent = venueText || (venue ? venue.textContent : '');
     line.appendChild(venueLabel);
     var award = paper.querySelector('.publication-award');
-    if (award) line.appendChild(award);
-    meta.insertBefore(line, actions);
+    if (award) {
+      var recognition = document.createElement('span');
+      recognition.className = 'publication-context';
+      recognition.appendChild(award);
+      meta.insertBefore(recognition, actions);
+    }
+    line.appendChild(actions);
+    paper.appendChild(line);
     var visual = paper.querySelector('.publication-visual');
     if (visual) visual.hidden = true;
   });
