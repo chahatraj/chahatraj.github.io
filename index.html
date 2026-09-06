@@ -253,13 +253,16 @@
 
     .community-doodle {
       width: 190px;
-      height: 70px;
+      height: auto;
+      mix-blend-mode: multiply;
       flex: 0 0 auto;
       color: #403832;
     }
 
     body.dark-theme .community-doodle {
       color: #eee8dc;
+      filter: invert(1);
+      mix-blend-mode: screen;
     }
 
     .community-doodle:hover {
@@ -269,7 +272,7 @@
     @media (max-width: 575.98px) {
       .community-doodle {
         width: 120px;
-        height: 45px;
+        height: auto;
       }
     }
 
@@ -556,13 +559,7 @@
           <div class="author-info text p-3 p-md-5">
             <div class="desc">
               <h1 class="home-name">Chahat Raj
-                <svg class="community-doodle" viewBox="0 0 194 70" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Community portrait with varied hair textures, head coverings, glasses, and ages">
-                  <g transform="translate(2 0)"><path d="M6 29C0 27 1 22 3 20c-4-4-1-9 3-9-1-5 4-8 8-6 3-5 9-4 11 0 6-1 9 4 7 8 5 3 5 9 1 11 3 4 0 8-4 8M8 20q6 1 9-6 3 6 11 6"/><path d="M8 24v11q1 11 10 11t10-11V24M12 29h1m10 0h1m-7 2-1 4h3m-6 3q5 3 9-1M12 46v5Q1 51 1 65m23-19v5q11 0 11 14M12 51q6 6 12 0"/></g>
-                  <g transform="translate(40 0)"><path d="M5 23C0 11 9 5 18 5s17 7 13 18M5 18 24 7M6 12l23 9M12 8l18 9M7 23q11-4 22 0M9 35q9 16 18 0"/><path d="M8 24v11q1 11 10 11t10-11V24M12 29h1m10 0h1m-7 2-1 4h3m-6 3q5 3 9-1M12 46v5Q1 51 1 65m23-19v5q11 0 11 14M12 51q6 6 12 0"/></g>
-                  <g transform="translate(78 0)"><path d="M2 52C1 29 3 8 18 7s17 24 16 44l-15 8-17-7ZM9 23q7-3 11-9l7 10M9 43l17 12M27 42 13 53"/><path d="M8 24v11q1 11 10 11t10-11V24M12 29h1m10 0h1m-7 2-1 4h3m-6 3q5 3 9-1M12 46v5Q1 51 1 65m23-19v5q11 0 11 14M12 51q6 6 12 0"/></g>
-                  <g transform="translate(116 0)"><path d="M6 23Q3 9 16 8q15-3 16 13M8 19l5-3m10-1 5 3M7 27h-3m26 0h3M17 28h3M9 36l2 1m15-1 2-1"/><path d="M8 24v11q1 11 10 11t10-11V24M12 29h1m10 0h1m-7 2-1 4h3m-6 3q5 3 9-1M12 46v5Q1 51 1 65m23-19v5q11 0 11 14M12 51q6 6 12 0"/><circle cx="12" cy="28" r="5"/><circle cx="25" cy="28" r="5"/></g>
-                  <g transform="translate(154 0)"><path d="M5 26C2 11 10 6 21 9q13 3 10 17M7 22q12-2 17-9m-8-3-9 10m15-9-7 10m12-6-5 8"/><path d="M8 24v11q1 11 10 11t10-11V24M12 29h1m10 0h1m-7 2-1 4h3m-6 3q5 3 9-1M12 46v5Q1 51 1 65m23-19v5q11 0 11 14M12 51q6 6 12 0"/><circle cx="7" cy="37" r="2"/><circle cx="29" cy="37" r="2"/></g>
-                </svg>
+                <img class="community-doodle" src="images/community-doodle.png" width="1536" height="1024" alt="Line drawing of eight people with varied hairstyles, head coverings, and glasses"/>
               </h1>
               <p class="home-title">Ph.D. Candidate in Computer Science, George Mason University</p>
               <p class="home-pronunciation">
