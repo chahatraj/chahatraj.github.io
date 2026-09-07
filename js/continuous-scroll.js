@@ -173,8 +173,8 @@
     var selectedTitlePrefixes = [
       'vignette: socially grounded bias evaluation',
       'talent or luck? evaluating attribution bias',
-      'knowbias: mitigating social bias',
-      'measuring south asian biases',
+      'knowing bias, doing better',
+      'purdah and patriarchy',
       'bias association discovery framework',
       'toward inclusive language models',
       "what's not said still hurts",
