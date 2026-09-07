@@ -5,6 +5,21 @@
   if (!sectionHosts.length) return;
   var initialHash = window.location.hash;
 
+  // Apply to homepage content, including sections fetched after the initial load.
+  // Keep in-page controls and non-web links (email, telephone, etc.) unchanged.
+  var openContentLinksInNewTabs = function(root) {
+    if (!root) return;
+    root.querySelectorAll('a[href]').forEach(function(link) {
+      var href = link.getAttribute('href').trim();
+      if (!href || href.charAt(0) === '#' ||
+          (/^[a-z][a-z0-9+.-]*:/i.test(href) && !/^https?:/i.test(href))) return;
+      link.setAttribute('target', '_blank');
+      link.relList.add('noopener', 'noreferrer');
+    });
+  };
+
+  openContentLinksInNewTabs(document.getElementById('colorlib-main'));
+
   var scopeSelector = function(selector, scope) {
     var scopedSelector = selector.trim().replace(/#colorlib-main/g, '.continuous-section-main');
 
@@ -290,6 +305,7 @@
         if (source === 'publications.html') initializePublications(host);
         if (window.initializeDoodles) window.initializeDoodles(host);
         if (source === 'stills.html' && window.initializeStillsGallery) window.initializeStillsGallery(host);
+        openContentLinksInNewTabs(host);
         host.classList.add('is-loaded');
       })
       .catch(function() {
@@ -298,6 +314,7 @@
         fallback.className = 'continuous-section-error';
         fallback.innerHTML = '<h2>' + title + '</h2><p>This section could not load. <a href="' + source + '">Open the standalone page</a>.</p>';
         host.appendChild(fallback);
+        openContentLinksInNewTabs(host);
       });
   };
 
