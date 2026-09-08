@@ -13,6 +13,28 @@
   <meta property="og:image" content="https://chahatraj.github.io/images/author.jpg"/>
   <meta property="og:image:alt" content="Chahat Raj"/>
   <meta name="twitter:card" content="summary"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://chahatraj.github.io/#profile",
+    "url": "https://chahatraj.github.io/",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://chahatraj.github.io/#person",
+      "name": "Chahat Raj",
+      "url": "https://chahatraj.github.io/",
+      "image": "https://chahatraj.github.io/images/author.jpg",
+      "description": "Computer Science Ph.D. candidate at George Mason University researching social bias, multilingual NLP, and responsible and trustworthy AI.",
+      "affiliation": {"@type": "CollegeOrUniversity", "name": "George Mason University"},
+      "sameAs": [
+        "https://scholar.google.com/citations?user=K8EKC4gAAAAJ",
+        "https://linkedin.com/in/chahatraj",
+        "https://github.com/chahatraj"
+      ]
+    }
+  }
+  </script>
   <meta charset="utf-8"/>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -456,9 +478,8 @@
       aspect-ratio: 1;
       height: auto;
       border-radius: 18px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      object-position: center;
+      object-fit: cover;
     }
 
     .home-profile .ftco-social {
@@ -632,7 +653,7 @@
         <div class="overlay"></div>
         <div class="d-flex align-items-right">
           <div class="author-image home-profile text d-flex">
-            <span class="home-profile-image" style="background-image: url(images/author.jpg)" aria-label="Portrait of Chahat Raj" role="img"></span>
+            <img class="home-profile-image" src="images/author.jpg" width="2600" height="2600" alt="Portrait of Chahat Raj, Computer Science Ph.D. candidate at George Mason University" loading="eager" fetchpriority="high"/>
             <ul class="ftco-social mt-3">
               <li><a href="https://linkedin.com/in/chahatraj" class="theme-color" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><span class="icon-linkedin"></span></a></li>
               <li><a href="https://twitter.com/chahatsaidit" class="theme-color" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><span class="icon-twitter"></span></a></li>
