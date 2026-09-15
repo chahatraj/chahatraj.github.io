@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var stills = document.getElementById('stills');
     if (!about || !stills) return;
     var a = about.getBoundingClientRect();
-    var stop = stills.getBoundingClientRect().top + window.scrollY - 70;
+    var stop = stills.getBoundingClientRect().top + window.scrollY;
     var gutter = window.innerWidth / 2;
     document.querySelectorAll('.hero-wrap > .d-flex, .continuous-section:not(#stills) .container').forEach(function (node) {
       var box = node.getBoundingClientRect();
