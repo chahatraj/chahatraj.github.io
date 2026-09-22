@@ -1,7 +1,7 @@
 # Responsive layout checks
 
 `check-responsive.py` drives a separate local Chrome debugging session. It checks
-the homepage, news archive, publication archive, service page, and photo gallery
+the homepage, news archive, publication archive, service page, photo gallery, and experiments page
 at 17 viewport sizes (320–2560 px, including landscape and desktop → mobile →
 desktop resizing) in both themes. It checks overflow, overlapping navigation and
 social controls, the About illustration, photo preservation/column counts, and
