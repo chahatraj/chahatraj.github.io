@@ -402,6 +402,20 @@
       font-weight: 500;
     }
 
+    .home-bio a.home-research-inline {
+      border-bottom: 0;
+      color: var(--theme-color) !important;
+      font-weight: 600;
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
+
+    .home-bio a.home-research-inline:hover,
+    .home-bio a.home-research-inline:focus-visible {
+      opacity: 0.8;
+      text-decoration: none !important;
+    }
+
     .home-bio .research-emphasis {
       color: var(--theme-color);
       font-weight: 600;
@@ -488,7 +502,6 @@
       justify-content: center;
       gap: 0.4rem;
       margin-top: 1rem !important;
-      margin-bottom: 0;
       padding: 0;
     }
 
@@ -531,33 +544,6 @@
       font-family: "Figtree", Arial, sans-serif;
       font-size: 16px;
       font-weight: 700;
-    }
-
-    .home-research-slides {
-      display: inline-block;
-      margin-top: 0.35rem;
-      padding: 0.35rem 0.7rem;
-      border: 1px solid color-mix(in srgb, var(--theme-color) 65%, transparent);
-      border-radius: 8px;
-      color: var(--theme-color) !important;
-      font-family: "Figtree", Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.45;
-      text-align: center;
-      text-decoration: none !important;
-    }
-
-    .home-research-slides:hover,
-    .home-research-slides:focus-visible {
-      color: var(--theme-color) !important;
-      text-decoration: none !important;
-      background-color: color-mix(in srgb, var(--theme-color) 10%, transparent);
-    }
-
-    .home-research-slides:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 3px;
     }
 
     .colorlib-nav-toggle {
@@ -689,7 +675,6 @@
               <li><a href="https://scholar.google.com/citations?user=K8EKC4gAAAAJ&hl=en&oi=ao" class="theme-color" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><span class="social-svg social-scholar" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3 1.5 8.25 12 13.5l8.5-4.25V16h2V8.25L12 3Zm-6 9.28v3.5c0 1.55 2.69 3.22 6 3.22s6-1.67 6-3.22v-3.5l-6 3-6-3Z"/></svg></span></a></li>
               <li><a href="./files/chahat_cv.pdf" class="theme-color" target="_blank" rel="noopener noreferrer" aria-label="CV"><span class="home-cv-text">CV</span></a></li>
             </ul>
-            <a class="home-research-slides" href="./files/research_in_4_slides.pdf" target="_blank" rel="noopener noreferrer">My Research in 4 Slides</a>
           </div>
           <div class="author-info text p-3 p-md-5">
             <div class="desc">
@@ -737,7 +722,7 @@
                   I specialize in <strong class="research-emphasis">sociocultural biases, ethics, and fairness</strong> in multimodal and multilingual NLP. My current work examines how biases are perpetuated and reinforced in large vision-language models, and explores mitigation approaches informed by <strong class="research-emphasis">social psychology and cognitive sciences</strong>.
                 </p>
                 <p class="home-bio">
-                  My broader goal is to develop <strong class="research-emphasis">responsible and trustworthy AI</strong> that accounts for how language, culture, and social context shape model behavior.
+                  My broader goal is to develop <strong class="research-emphasis">responsible and trustworthy AI</strong> that accounts for how language, culture, and social context shape model behavior. <a class="home-research-inline" href="./files/research_in_4_slides.pdf" target="_blank" rel="noopener noreferrer">My Research in 4 Slides</a>
                 </p>
                 <p class="home-bio home-personal-note">The times when I'm not a Researcher, I'm a Poet! <svg class="personal-doodle" viewBox="0 0 36 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 23 3-8L27 3q2-1 4 2t0 4L19 21l-7 2Zm3-8 4 6m5-15 5 5M12 23l5-5"/><path d="M5 27c3-3 8 3 12 0s6 2 10 0"/></svg></p>
               </div>
