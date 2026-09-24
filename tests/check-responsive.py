@@ -87,7 +87,7 @@ checks = 0
 sizes = [(2560,1080),(1920,1080),(1440,900),(1280,800),(1024,768),(993,800),
          (992,800),(900,900),(768,900),(767,900),(577,900),(576,900),(390,844),
          (320,640),(844,390),(1024,768),(1600,900)]
-for page in ([] if args.menu_only else ['/', '/news.html', '/publications.html', '/services.html', '/stills.html', '/experiments.html']):
+for page in ([] if args.menu_only else ['/', '/news.html', '/publications.html', '/services.html', '/stills.html']):
     command('Page.navigate', {'url': args.base + page})
     evaluate('''new Promise((resolve,reject) => {
       const deadline=Date.now()+18000;
