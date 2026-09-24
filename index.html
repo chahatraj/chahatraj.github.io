@@ -488,6 +488,7 @@
       justify-content: center;
       gap: 0.4rem;
       margin-top: 1rem !important;
+      margin-bottom: 0;
       padding: 0;
     }
 
@@ -535,6 +536,9 @@
     .home-research-slides {
       display: inline-block;
       margin-top: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid color-mix(in srgb, var(--theme-color) 65%, transparent);
+      border-radius: 8px;
       color: var(--theme-color) !important;
       font-family: "Figtree", Arial, sans-serif;
       font-size: 16px;
@@ -548,7 +552,7 @@
     .home-research-slides:focus-visible {
       color: var(--theme-color) !important;
       text-decoration: none !important;
-      opacity: 0.8;
+      background-color: color-mix(in srgb, var(--theme-color) 10%, transparent);
     }
 
     .home-research-slides:focus-visible {
