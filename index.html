@@ -533,37 +533,22 @@
     }
 
     .home-research-slides {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
+      display: inline-block;
       margin-top: 0.35rem;
-      padding: 0.65rem 1rem;
-      border-radius: 12px;
-      background-color: color-mix(in srgb, var(--theme-color) 36%, #fff);
-      color: #403832 !important;
+      color: var(--theme-color) !important;
       font-family: "Figtree", Arial, sans-serif;
       font-size: 16px;
       font-weight: 600;
       line-height: 1.45;
       text-align: center;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     .home-research-slides:hover,
     .home-research-slides:focus-visible {
-      color: #403832 !important;
-      text-decoration: underline;
-    }
-
-    body.dark-theme .home-research-slides {
-      background-color: color-mix(in srgb, var(--theme-color) 36%, #202124);
-      color: #eee8dc !important;
-    }
-
-    body.dark-theme .home-research-slides:hover,
-    body.dark-theme .home-research-slides:focus-visible {
-      color: #eee8dc !important;
+      color: var(--theme-color) !important;
+      text-decoration: none !important;
+      opacity: 0.8;
     }
 
     .home-research-slides:focus-visible {
@@ -634,10 +619,6 @@
 
       .home-profile .ftco-social li a .home-cv-text {
         font-size: 15px;
-      }
-
-      .home-research-slides {
-        max-width: 220px;
       }
 
       .hero-wrap .text h1.home-name {
