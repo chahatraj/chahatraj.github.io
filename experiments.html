@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css">
+  <link rel="stylesheet" href="css/experiments.css?v=20260924-biasdora1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -74,6 +74,28 @@
           <button class="play-link" id="play-button" disabled>Play</button>
         </div>
       </article>
+      <article class="experiment-row biasdora-row">
+        <div class="experiment-info">
+          <h2>BiasDora</h2>
+          <a class="paper-link" href="https://aclanthology.org/2024.findings-emnlp.611/" target="_blank" rel="noopener noreferrer">Read the paper</a>
+        </div>
+        <div class="experiment-controls biasdora-controls">
+          <label class="picker">Text-to-text · complete the word that comes to mind. <select id="biasdora-dimension" aria-label="BiasDora dimension">
+            <option value="all">All nine dimensions</option>
+            <option value="age">Age</option>
+            <option value="disability">Disability</option>
+            <option value="gender">Gender</option>
+            <option value="nationality">Nationality</option>
+            <option value="physical-appearance">Physical appearance</option>
+            <option value="race-color">Race / color</option>
+            <option value="religion">Religion</option>
+            <option value="sexual-orientation">Sexual orientation</option>
+            <option value="socioeconomic">Socioeconomic status</option>
+          </select></label>
+          <button class="play-link" id="biasdora-play" disabled>Play</button>
+        </div>
+        <p class="biasdora-content-note" hidden role="status"></p>
+      </article>
       <p class="load-status" role="status" hidden></p>
     </section>
 
@@ -114,7 +136,42 @@
     </div>
   </dialog>
 
-  <script src="js/experiments.js" defer></script>
-  <script src="js/experiments-theme.js" defer></script>
+  <dialog id="biasdora-dialog" aria-labelledby="biasdora-title">
+    <div class="dialog-page">
+      <button class="close-button biasdora-close" aria-label="Close experiment">×</button>
+      <section class="screen biasdora-game" id="biasdora-title">
+        <div class="game-progress"><span class="biasdora-progress-count"></span><i class="biasdora-progress-bar"></i></div>
+        <div class="biasdora-entry-step">
+          <p class="biasdora-context">Text to text</p>
+          <div class="biasdora-sentence"><span class="biasdora-template"></span> <span class="biasdora-stub"></span>.</div>
+          <p class="prompt biasdora-instruction"></p>
+          <form class="biasdora-form" novalidate>
+            <label class="sr-only" for="biasdora-word">Your one-word completion</label>
+            <input id="biasdora-word" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" placeholder="Type a word, then press Enter" aria-describedby="biasdora-error">
+          </form>
+          <p class="biasdora-error" id="biasdora-error" role="alert"></p>
+        </div>
+        <div class="biasdora-navigation">
+          <button class="stop-button biasdora-skip" type="button">Skip</button>
+          <button class="stop-button biasdora-stop" type="button">Stop here · see results</button>
+        </div>
+      </section>
+      <section class="screen biasdora-results" hidden>
+        <p class="step-label">Your completions</p>
+        <h2>The words you chose.</h2>
+        <p class="biasdora-result-summary"></p>
+        <div class="biasdora-result-chart"></div>
+        <p class="privacy-note">These are your completions, not a bias score. Nothing is saved or sent.</p>
+        <div class="result-actions">
+          <button class="action-button biasdora-again" type="button">Play again</button>
+          <button class="plain-button biasdora-finish" type="button">Back to experiments</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="js/experiments.js?v=20260924-biasdora1" defer></script>
+  <script src="js/experiments-biasdora.js?v=20260924-biasdora1" defer></script>
+  <script src="js/experiments-theme.js?v=20260924-biasdora1" defer></script>
 </body>
 </html>

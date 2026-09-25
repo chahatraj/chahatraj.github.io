@@ -1,10 +1,13 @@
 "use strict";
 
 const themeToggle = document.querySelector(".theme-toggle");
-const dialogToggle = themeToggle.cloneNode(true);
-dialogToggle.classList.add("dialog-theme-toggle");
-document.querySelector(".dialog-page").append(dialogToggle);
-const themeToggles = [themeToggle, dialogToggle];
+const dialogToggles = [...document.querySelectorAll(".dialog-page")].map((page) => {
+  const button = themeToggle.cloneNode(true);
+  button.classList.add("dialog-theme-toggle");
+  page.append(button);
+  return button;
+});
+const themeToggles = [themeToggle, ...dialogToggles];
 
 function updateThemeToggle() {
   const dark = document.documentElement.classList.contains("dark-theme");

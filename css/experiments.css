@@ -26,6 +26,7 @@
 }
 
 * { box-sizing: border-box; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--body); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 button, select { font: inherit; }
@@ -58,15 +59,20 @@ h1, h2, h3 { margin: 0; color: var(--ink); font-family: var(--display); }
 h1 { margin-bottom: .7rem; font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -.03em; }
 .subtitle { margin: 0; color: var(--muted); font-size: 18px; font-weight: 400; line-height: 1.45; }
 .experiment-row { display: grid; grid-template-columns: 1fr; gap: 1.9rem; padding: 1.9rem 0 2.2rem; }
+.biasdora-row { margin-top: 2rem; }
+.experiment-controls.biasdora-controls { grid-template-columns: minmax(0, 420px) 114px; }
+.biasdora-controls .picker { white-space: nowrap; }
+.biasdora-controls .picker select { max-width: 320px; }
+.biasdora-content-note { margin: -.8rem 0 0; color: var(--muted); font-size: 13px; }
 .experiment-row h2 { color: var(--theme-color); font-size: 1.7rem; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; }
 .experiment-info { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 .paper-link { flex: none; color: var(--theme-color); font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--theme-color) 45%, transparent); }
 .paper-link:hover, .paper-link:focus-visible { border-color: var(--theme-color); color: var(--ink); }
-.experiment-controls { display: grid; grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) auto; gap: 1.2rem; align-items: end; }
+.experiment-controls { display: grid; grid-template-columns: minmax(120px, 190px) minmax(220px, 540px) 114px; justify-content: space-between; gap: 1.2rem; align-items: end; }
 .picker { display: grid; gap: .45rem; color: var(--muted); font-size: 14px; font-weight: 400; }
 .picker select { width: 100%; min-height: 42px; padding: .45rem .3rem .45rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: var(--control-paper); color: var(--ink); font-size: 16px; font-weight: 400; }
 .picker select:focus-visible { outline: 2px solid var(--theme-color); outline-offset: 2px; }
-.play-link { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; min-width: 114px; padding: .5rem 1rem; border: 1px solid var(--theme-color); background: var(--theme-color); color: var(--theme-contrast, #fff); cursor: pointer; font-size: 16px; font-weight: 600; white-space: nowrap; }
+.play-link { display: inline-flex; align-items: center; justify-content: center; width: 114px; min-height: 43px; padding: .5rem 1rem; border: 1px solid var(--theme-color); background: var(--theme-color); color: var(--theme-contrast, #fff); cursor: pointer; font-size: 16px; font-weight: 600; white-space: nowrap; }
 .play-link:disabled { opacity: .4; cursor: default; }
 .play-link:not(:disabled):hover, .play-link:focus-visible { background: transparent; color: var(--theme-color); }
 .load-status { margin: 1rem 0 0; color: var(--muted); font-size: 13px; }
@@ -105,6 +111,8 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 
 .result-summary { margin: 0; color: var(--muted); font-size: 14px; }
 .result-groups { margin: 2rem 0; }
+.result-test-heading { margin: 2rem 0 .5rem; font-size: 17px; font-weight: 600; line-height: 1.4; }
+.result-test-heading:first-child { margin-top: 0; }
 .empty-results { color: var(--muted); font-size: 14px; }
 .result-group { padding: 1.2rem 0; border-top: 1px solid var(--line); }
 .result-group:last-child { border-bottom: 1px solid var(--line); }
@@ -117,6 +125,21 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 .result-labels { display: flex; justify-content: space-between; margin-top: .5rem; color: var(--muted); font-size: 13px; }
 .privacy-note { color: var(--muted); font-size: 13px; }
 .result-actions { display: flex; gap: .65rem; margin-top: 1.25rem; }
+
+.biasdora-game { width: min(960px, 100%); text-align: center; }
+.biasdora-context { margin: 4rem 0 .7rem; color: var(--theme-color); font-size: 13px; font-weight: 600; }
+.biasdora-sentence { min-height: 1.3em; font-family: var(--display); font-size: clamp(28px, 5.3vw, 58px); font-weight: 600; letter-spacing: -.035em; line-height: 1.2; overflow-wrap: anywhere; }
+.biasdora-stub { color: var(--theme-color); }
+.biasdora-game .prompt { margin: 1.5rem 0 2rem; color: var(--muted); }
+.biasdora-form { width: min(390px, 100%); margin: 0 auto; }
+.biasdora-form input { width: 100%; padding: .6rem .1rem .7rem; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink); font-family: var(--display); font-size: 23px; text-align: center; outline: none; }
+.biasdora-form input::placeholder { color: var(--muted); font-family: var(--body); font-size: 15px; font-weight: 400; }
+.biasdora-form input:focus { border-bottom-color: var(--theme-color); }
+.biasdora-error { min-height: 1.5rem; margin: .6rem 0 0; color: #b33e55; font-size: 13px; }
+.biasdora-navigation { display: flex; justify-content: center; gap: 1.5rem; }
+.biasdora-result-chart { margin: 2rem 0; }
+.biasdora-word-row { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+.biasdora-word-row strong { color: var(--ink); font-family: var(--display); font-size: 17px; overflow-wrap: anywhere; text-align: right; }
 
 @media (max-width: 760px) {
   .site-nav { grid-template-columns: minmax(0, 1fr) 44px; padding: .2rem 1.25rem; }
@@ -131,7 +154,7 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
   .intro { padding-bottom: 3rem; }
   .experiment-row { gap: 1.5rem; }
   .experiment-info { align-items: flex-start; flex-direction: column; gap: .65rem; }
-  .experiment-controls { grid-template-columns: minmax(120px, .8fr) minmax(180px, 1.6fr) auto; }
+  .experiment-controls { grid-template-columns: minmax(120px, 190px) minmax(180px, 540px) 114px; }
   .screen h2 { font-size: 30px; }
   .target-word { margin-top: 4rem; }
 }
@@ -143,12 +166,15 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 @media (max-width: 500px) {
   main { width: min(100% - 2rem, 620px); padding-top: 3.5rem; }
   .experiment-controls { grid-template-columns: 1fr; }
-  .play-link { justify-self: start; }
+  .experiment-controls.biasdora-controls { grid-template-columns: 1fr; }
+  .biasdora-controls .picker { white-space: normal; }
+  .play-link { justify-self: end; }
   .attribute-options { grid-template-columns: 1fr; }
   .attribute-options button { min-height: 68px; }
   .target-word { margin-top: 2.75rem; }
   .result-actions { flex-direction: column; }
   .site-footer-note { flex-wrap: wrap; padding-top: 2rem; }
+  .biasdora-context { margin-top: 2.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

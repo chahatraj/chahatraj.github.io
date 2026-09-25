@@ -2,7 +2,7 @@
 
 const LANGUAGE_NAMES = {ar:"Arabic",bn:"Bengali",ckb:"Sorani Kurdish",da:"Danish",de:"German",el:"Greek",en:"English",es:"Spanish",fa:"Persian",fr:"French",hi:"Hindi",it:"Italian",ja:"Japanese",ko:"Korean",ku:"Kurmanji Kurdish",mr:"Marathi",pa:"Punjabi",ru:"Russian",te:"Telugu",th:"Thai",tl:"Tagalog",tr:"Turkish",ur:"Urdu",vi:"Vietnamese",zh:"Chinese"};
 const SPLIT_NAMES = {original_weat:"Original WEAT",new_human_biases:"New human biases",india_specific_biases:"India-specific biases"};
-const state = {tests:[],test:null,items:[],index:0,choices:[],current:null,accepting:false};
+const state = {tests:[],test:null,items:[],index:0,choices:[],current:null,accepting:false,roundTests:[]};
 const dialog = document.querySelector("#experiment-dialog");
 const languageSelect = document.querySelector("#language-select");
 const testSelect = document.querySelector("#test-select");
@@ -37,6 +37,7 @@ function populateLanguages() {
 function populateTests() {
   testSelect.replaceChildren();
   const tests = state.tests.filter((test) => test.language === languageSelect.value);
+  if (tests.length) testSelect.append(option("all", `All association tests (${tests.length})`));
   Object.entries(SPLIT_NAMES).forEach(([split,label]) => {
     const group = document.createElement("optgroup");
     group.label = label;
@@ -49,7 +50,8 @@ function populateTests() {
 }
 
 function buildItems(test) {
-  return shuffle(test.targets.flatMap((group,targetGroup) => [...new Set(group.terms)].map((word) => ({word,targetGroup}))));
+  const testIndex = state.tests.indexOf(test);
+  return shuffle(test.targets.flatMap((group,targetGroup) => [...new Set(group.terms)].map((word) => ({word,targetGroup,testIndex}))));
 }
 
 function nextAttributePair() {
@@ -68,6 +70,7 @@ function showScreen(name) {
 
 function renderItem() {
   const item = state.items[state.index];
+  state.test = state.tests[item.testIndex];
   state.current = nextAttributePair();
   document.querySelector(".progress-count").textContent = `${state.index + 1} / ${state.items.length}`;
   document.querySelector(".game-progress").style.setProperty("--progress", `${100 * state.index / state.items.length}%`);
@@ -83,8 +86,11 @@ function renderItem() {
 }
 
 function startGame() {
-  state.test = state.tests[Number(testSelect.value)];
-  state.items = buildItems(state.test);
+  const selected = testSelect.value;
+  state.roundTests = selected === "all"
+    ? shuffle(state.tests.filter((test) => test.language === languageSelect.value))
+    : [state.tests[Number(selected)]];
+  state.items = state.roundTests.flatMap(buildItems);
   state.index = 0;
   state.choices = [];
   showScreen("game-screen");
@@ -102,7 +108,7 @@ function closeGame() {
 function choose(group) {
   if (!state.accepting) return;
   state.accepting = false;
-  state.choices.push({targetGroup:state.items[state.index].targetGroup,attributeGroup:group});
+  state.choices.push({testIndex:state.items[state.index].testIndex,targetGroup:state.items[state.index].targetGroup,attributeGroup:group});
   state.index += 1;
   if (state.index === state.items.length) renderResults();
   else renderItem();
@@ -115,28 +121,39 @@ function renderResults() {
   document.querySelector(".result-summary").textContent = answered === 0
     ? "No choices yet. You can start again whenever you like."
     : `${answered} of ${state.items.length} choices answered${answered < state.items.length ? " · partial result" : ""}`;
-  state.test.targets.forEach((target,targetGroup) => {
-    const choices = state.choices.filter((choice) => choice.targetGroup === targetGroup);
-    if (!choices.length) {
-      const empty = document.createElement("p");
-      empty.className = "empty-results";
-      empty.textContent = `${target.label}: no choices yet`;
-      container.append(empty);
-      return;
+  state.roundTests.forEach((test) => {
+    const testIndex = state.tests.indexOf(test);
+    const testChoices = state.choices.filter((choice) => choice.testIndex === testIndex);
+    if (!testChoices.length) return;
+    if (state.roundTests.length > 1) {
+      const heading = document.createElement("h3");
+      heading.className = "result-test-heading";
+      heading.textContent = `${test.weat} · ${test.targets[0].label} / ${test.targets[1].label} · ${test.attributes[0].label} / ${test.attributes[1].label}`;
+      container.append(heading);
     }
-    const aCount = choices.filter((choice) => choice.attributeGroup === 0).length;
-    const aPercent = Math.round(100 * aCount / choices.length);
-    const row = document.createElement("div");
-    row.className = "result-group";
-    row.innerHTML = '<div class="result-heading"><strong></strong><span></span></div><div class="result-bar"><span class="result-bar-a"></span><span class="result-bar-b"></span></div><div class="result-labels"><span></span><span></span></div>';
-    row.querySelector("strong").textContent = target.label;
-    row.querySelector(".result-heading span").textContent = `${choices.length} choices`;
-    row.querySelector(".result-bar-a").style.width = `${aPercent}%`;
-    row.querySelector(".result-bar-b").style.width = `${100-aPercent}%`;
-    const labels = row.querySelectorAll(".result-labels span");
-    labels[0].textContent = `${state.test.attributes[0].label} ${aPercent}%`;
-    labels[1].textContent = `${state.test.attributes[1].label} ${100-aPercent}%`;
-    container.append(row);
+    test.targets.forEach((target,targetGroup) => {
+      const choices = testChoices.filter((choice) => choice.targetGroup === targetGroup);
+      if (!choices.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty-results";
+        empty.textContent = `${target.label}: no choices yet`;
+        container.append(empty);
+        return;
+      }
+      const aCount = choices.filter((choice) => choice.attributeGroup === 0).length;
+      const aPercent = Math.round(100 * aCount / choices.length);
+      const row = document.createElement("div");
+      row.className = "result-group";
+      row.innerHTML = '<div class="result-heading"><strong></strong><span></span></div><div class="result-bar"><span class="result-bar-a"></span><span class="result-bar-b"></span></div><div class="result-labels"><span></span><span></span></div>';
+      row.querySelector("strong").textContent = target.label;
+      row.querySelector(".result-heading span").textContent = `${choices.length} choices`;
+      row.querySelector(".result-bar-a").style.width = `${aPercent}%`;
+      row.querySelector(".result-bar-b").style.width = `${100-aPercent}%`;
+      const labels = row.querySelectorAll(".result-labels span");
+      labels[0].textContent = `${test.attributes[0].label} ${aPercent}%`;
+      labels[1].textContent = `${test.attributes[1].label} ${100-aPercent}%`;
+      container.append(row);
+    });
   });
   showScreen("results-screen");
 }
