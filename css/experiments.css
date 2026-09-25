@@ -173,6 +173,18 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 .biasdora-rank-result-card ol { grid-column: 2; margin: 0; padding-left: 1.3rem; }
 .biasdora-rank-result-card li { padding: .1rem 0; }
 .biasdora-rank-note { margin: 0; color: var(--muted); font-size: 13px; }
+.paired-row { grid-template-columns: minmax(0, 1fr) 114px; gap: 1.1rem 1.2rem; }
+.paired-row .experiment-info, .paired-row .game-mode-switch { grid-column: 1 / -1; }
+.game-mode-switch { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; color: var(--muted); font-size: 14px; }
+.game-mode-switch span { margin-left: .7rem; }
+.game-mode { padding: .3rem .1rem; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--muted); cursor: pointer; font: inherit; font-size: 16px; }
+.game-mode + .game-mode { margin-left: .6rem; }
+.game-mode.is-active { border-color: var(--theme-color); color: var(--ink); font-weight: 600; }
+.game-mode:hover, .game-mode:focus-visible { color: var(--theme-color); }
+.paired-row .experiment-controls { grid-column: 1; grid-row: 3; grid-template-columns: minmax(0, 420px); }
+.paired-row .grouped-play { grid-column: 2; grid-row: 3; align-self: end; }
+.paired-row .biasdora-content-note, .paired-row .biasdora-i2t-note { grid-column: 1 / -1; }
+[hidden] { display: none !important; }
 
 @media (max-width: 760px) {
   .site-nav { grid-template-columns: minmax(0, 1fr) 44px; padding: .2rem 1.25rem; }
@@ -200,6 +212,8 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
   main { width: min(100% - 2rem, 620px); padding-top: 3.5rem; }
   .experiment-controls { grid-template-columns: 1fr; }
   .experiment-controls.biasdora-controls { grid-template-columns: 1fr; }
+  .paired-row { grid-template-columns: minmax(0, 1fr) 114px; }
+  .paired-row .experiment-controls { grid-template-columns: 1fr; }
   .biasdora-controls .picker { white-space: normal; }
   .play-link { justify-self: end; }
   .attribute-options { grid-template-columns: 1fr; }

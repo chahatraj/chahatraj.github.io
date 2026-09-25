@@ -74,13 +74,18 @@
           <button class="play-link" id="play-button" disabled>Play</button>
         </div>
       </article>
-      <article class="experiment-row biasdora-row">
+      <article class="experiment-row biasdora-row paired-row">
         <div class="experiment-info">
           <h2>BiasDora</h2>
           <a class="paper-link" href="https://aclanthology.org/2024.findings-emnlp.611/" target="_blank" rel="noopener noreferrer">Read the paper</a>
         </div>
+        <div class="game-mode-switch" role="group" aria-label="Word completion input">
+          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text-to-text</button>
+          <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image-to-text</button>
+          <span>Complete the word that comes to mind.</span>
+        </div>
         <div class="experiment-controls biasdora-controls">
-          <label class="picker">Text-to-text · complete the word that comes to mind. <select id="biasdora-dimension" aria-label="BiasDora dimension">
+          <label class="picker">Dimension <select id="biasdora-dimension" aria-label="BiasDora text dimension">
             <option value="all">All nine dimensions</option>
             <option value="age">Age</option>
             <option value="disability">Disability</option>
@@ -92,13 +97,11 @@
             <option value="sexual-orientation">Sexual orientation</option>
             <option value="socioeconomic">Socioeconomic status</option>
           </select></label>
-          <button class="play-link" id="biasdora-play" disabled>Play</button>
+          <button class="play-link mode-original-play" id="biasdora-play" disabled hidden>Play</button>
         </div>
         <p class="biasdora-content-note" hidden role="status"></p>
-      </article>
-      <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora image-to-text game">
-        <div class="experiment-controls biasdora-controls">
-          <label class="picker">Image-to-text · complete the word that comes to mind. <select id="biasdora-i2t-dimension" aria-label="BiasDora image dimension">
+        <div class="experiment-controls biasdora-controls mode-alternate" hidden>
+          <label class="picker">Dimension <select id="biasdora-i2t-dimension" aria-label="BiasDora image dimension">
             <option value="all">All available dimensions</option>
             <option value="age">Age</option>
             <option value="disability">Disability</option>
@@ -110,9 +113,10 @@
             <option value="sexual-orientation">Sexual orientation</option>
             <option value="socioeconomic">Socioeconomic status</option>
           </select></label>
-          <button class="play-link" id="biasdora-i2t-play" disabled>Play</button>
+          <button class="play-link mode-original-play" id="biasdora-i2t-play" disabled hidden>Play</button>
         </div>
         <p class="biasdora-i2t-note" hidden role="status"></p>
+        <button class="play-link grouped-play" type="button">Play</button>
       </article>
       <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora visual associations game">
         <div class="experiment-controls biasdora-controls">
@@ -129,32 +133,36 @@
         </div>
         <p class="biasdora-visual-note" hidden role="status"></p>
       </article>
-      <article class="experiment-row biasdora-row" aria-label="Explainable Reranking identity game">
+      <article class="experiment-row biasdora-row paired-row" aria-label="Explainable Reranking games">
         <div class="experiment-info">
           <h2>Explainable Reranking</h2>
         </div>
+        <div class="game-mode-switch" role="group" aria-label="Ranking prompt">
+          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Identity</button>
+          <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image</button>
+          <span>Rank words from most to least associated.</span>
+        </div>
         <div class="experiment-controls biasdora-controls">
-          <label class="picker">Rank words · identity <select id="biasdora-rank-identity-dimension" aria-label="Identity ranking dimension">
+          <label class="picker">Dimension <select id="biasdora-rank-identity-dimension" aria-label="Identity ranking dimension">
             <option value="all">All nine dimensions</option>
             <option value="age">Age</option><option value="disability">Disability</option><option value="gender">Gender</option>
             <option value="nationality">Nationality</option><option value="physical-appearance">Physical appearance</option>
             <option value="race-color">Race / color</option><option value="religion">Religion</option>
             <option value="sexual-orientation">Sexual orientation</option><option value="socioeconomic">Socioeconomic status</option>
           </select></label>
-          <button class="play-link" id="biasdora-rank-identity-play" disabled>Play</button>
+          <button class="play-link mode-original-play" id="biasdora-rank-identity-play" disabled hidden>Play</button>
         </div>
-      </article>
-      <article class="experiment-row biasdora-i2t-row" aria-label="Explainable Reranking image game">
-        <div class="experiment-controls biasdora-controls">
-          <label class="picker">Rank words · image <select id="biasdora-rank-image-dimension" aria-label="Image ranking dimension">
+        <div class="experiment-controls biasdora-controls mode-alternate" hidden>
+          <label class="picker">Dimension <select id="biasdora-rank-image-dimension" aria-label="Image ranking dimension">
             <option value="all">All available dimensions</option>
             <option value="age">Age</option><option value="disability">Disability</option>
             <option value="physical-appearance">Physical appearance</option><option value="race-color">Race / color</option>
             <option value="religion">Religion</option><option value="sexual-orientation">Sexual orientation</option>
             <option value="socioeconomic">Socioeconomic status</option>
           </select></label>
-          <button class="play-link" id="biasdora-rank-image-play" disabled>Play</button>
+          <button class="play-link mode-original-play" id="biasdora-rank-image-play" disabled hidden>Play</button>
         </div>
+        <button class="play-link grouped-play" type="button">Play</button>
       </article>
       <p class="biasdora-rank-note" hidden role="status"></p>
       <p class="load-status" role="status" hidden></p>
@@ -331,6 +339,7 @@
   <script src="js/experiments-biasdora-i2t.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-reranking.js?v=20260925-reranking1" defer></script>
+  <script src="js/experiments-modes.js?v=20260925-mode1" defer></script>
   <script src="js/experiments-theme.js?v=20260925-visual1" defer></script>
 </body>
 </html>
