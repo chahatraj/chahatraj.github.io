@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=20260925-visual1">
+  <link rel="stylesheet" href="css/experiments.css?v=20260925-reranking1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -129,6 +129,34 @@
         </div>
         <p class="biasdora-visual-note" hidden role="status"></p>
       </article>
+      <article class="experiment-row biasdora-row" aria-label="Explainable Reranking identity game">
+        <div class="experiment-info">
+          <h2>Explainable Reranking</h2>
+        </div>
+        <div class="experiment-controls biasdora-controls">
+          <label class="picker">Rank words · identity <select id="biasdora-rank-identity-dimension" aria-label="Identity ranking dimension">
+            <option value="all">All nine dimensions</option>
+            <option value="age">Age</option><option value="disability">Disability</option><option value="gender">Gender</option>
+            <option value="nationality">Nationality</option><option value="physical-appearance">Physical appearance</option>
+            <option value="race-color">Race / color</option><option value="religion">Religion</option>
+            <option value="sexual-orientation">Sexual orientation</option><option value="socioeconomic">Socioeconomic status</option>
+          </select></label>
+          <button class="play-link" id="biasdora-rank-identity-play" disabled>Play</button>
+        </div>
+      </article>
+      <article class="experiment-row biasdora-i2t-row" aria-label="Explainable Reranking image game">
+        <div class="experiment-controls biasdora-controls">
+          <label class="picker">Rank words · image <select id="biasdora-rank-image-dimension" aria-label="Image ranking dimension">
+            <option value="all">All available dimensions</option>
+            <option value="age">Age</option><option value="disability">Disability</option>
+            <option value="physical-appearance">Physical appearance</option><option value="race-color">Race / color</option>
+            <option value="religion">Religion</option><option value="sexual-orientation">Sexual orientation</option>
+            <option value="socioeconomic">Socioeconomic status</option>
+          </select></label>
+          <button class="play-link" id="biasdora-rank-image-play" disabled>Play</button>
+        </div>
+      </article>
+      <p class="biasdora-rank-note" hidden role="status"></p>
       <p class="load-status" role="status" hidden></p>
     </section>
 
@@ -164,6 +192,37 @@
         <div class="result-actions">
           <button class="action-button play-again-button">Play again</button>
           <button class="plain-button finish-button">Back to experiments</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog id="biasdora-rank-dialog" aria-labelledby="biasdora-rank-title">
+    <div class="dialog-page">
+      <button class="close-button biasdora-rank-close" aria-label="Close experiment">×</button>
+      <section class="screen biasdora-game biasdora-rank-game" id="biasdora-rank-title">
+        <div class="game-progress"><span class="biasdora-rank-progress-count"></span><i class="biasdora-rank-progress-bar"></i></div>
+        <img class="biasdora-rank-image" alt="Generated image for this ranking prompt" hidden>
+        <h2 class="biasdora-rank-identity" hidden></h2>
+        <p class="prompt biasdora-rank-instruction">Arrange the words from most to least associated with this.</p>
+        <p class="biasdora-rank-scale" aria-hidden="true">Most associated</p>
+        <ol class="biasdora-rank-list" aria-label="Words ordered from most to least associated"></ol>
+        <p class="biasdora-rank-scale biasdora-rank-scale-end" aria-hidden="true">Least associated</p>
+        <button class="action-button biasdora-rank-next" type="button">Save order</button>
+        <div class="biasdora-navigation">
+          <button class="stop-button biasdora-rank-skip" type="button">Skip</button>
+          <button class="stop-button biasdora-rank-stop" type="button">Stop here · see results</button>
+        </div>
+      </section>
+      <section class="screen biasdora-rank-results" hidden>
+        <p class="step-label">Your associations</p>
+        <h2>The order you chose.</h2>
+        <p class="biasdora-rank-result-summary"></p>
+        <div class="biasdora-rank-result-list"></div>
+        <p class="privacy-note">These are relative associations, not ratings of harm or a bias score. Nothing is saved or sent.</p>
+        <div class="result-actions">
+          <button class="action-button biasdora-rank-again" type="button">Play again</button>
+          <button class="plain-button biasdora-rank-finish" type="button">Back to experiments</button>
         </div>
       </section>
     </div>
@@ -271,6 +330,7 @@
   <script src="js/experiments-biasdora.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-biasdora-i2t.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
+  <script src="js/experiments-reranking.js?v=20260925-reranking1" defer></script>
   <script src="js/experiments-theme.js?v=20260925-visual1" defer></script>
 </body>
 </html>

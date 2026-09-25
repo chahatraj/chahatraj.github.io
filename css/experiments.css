@@ -150,6 +150,29 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 .biasdora-visual-options { margin: 0 auto; max-width: 760px; }
 .biasdora-visual-result-chart .biasdora-word-row { gap: 1rem; }
 .biasdora-visual-result-chart .biasdora-word-row span { margin-left: auto; color: var(--muted); font-size: 13px; text-align: right; }
+.biasdora-rank-game { width: min(660px, 100%); }
+.biasdora-rank-image { display: block; width: min(100%, 360px); max-height: min(32vh, 300px); margin: 1.2rem auto 0; object-fit: contain; }
+.biasdora-rank-image[hidden], .biasdora-rank-identity[hidden] { display: none; }
+.biasdora-rank-identity { margin: 2.2rem 0 .6rem; font-size: clamp(34px, 5vw, 58px); font-weight: 600; letter-spacing: -.035em; }
+.biasdora-rank-instruction { margin: 1rem 0 1.4rem !important; }
+.biasdora-rank-scale { margin: 0 0 .5rem; color: var(--muted); font-size: 12px; text-align: left; }
+.biasdora-rank-scale-end { margin: -.9rem 0 1.1rem; text-align: right; }
+.biasdora-rank-list { display: grid; gap: .45rem; margin: 0 0 1.4rem; padding: 0; list-style: none; counter-reset: rank; text-align: left; }
+.biasdora-rank-item { display: flex; align-items: center; gap: .9rem; min-height: 51px; padding: .3rem .9rem; border: 1px solid var(--line); background: var(--control-paper); font-family: var(--display); font-size: 17px; counter-increment: rank; }
+.biasdora-rank-item::before { content: counter(rank, decimal-leading-zero); width: 2rem; color: var(--muted); font-family: var(--body); font-size: 12px; }
+.biasdora-rank-item.is-dragging { border-color: var(--theme-color); background: color-mix(in srgb, var(--theme-color) 13%, var(--control-paper)); }
+.biasdora-rank-grip { order: 2; margin-left: auto; padding: .25rem .4rem; border: 0; background: none; color: var(--muted); cursor: grab; font-size: 24px; line-height: 1; touch-action: none; }
+.biasdora-rank-grip:active { cursor: grabbing; }
+.biasdora-rank-grip:focus-visible { outline: 2px solid var(--theme-color); }
+.biasdora-rank-next { min-width: 150px; }
+.biasdora-rank-game .biasdora-navigation { margin-top: .3rem; }
+.biasdora-rank-result-list { display: grid; gap: 1.6rem; margin: 2rem 0; }
+.biasdora-rank-result-card { display: grid; grid-template-columns: 78px 1fr; gap: 1rem; align-items: start; text-align: left; }
+.biasdora-rank-result-card img { width: 78px; height: 78px; object-fit: cover; }
+.biasdora-rank-result-card h3 { grid-column: 1; font-size: 17px; font-weight: 600; }
+.biasdora-rank-result-card ol { grid-column: 2; margin: 0; padding-left: 1.3rem; }
+.biasdora-rank-result-card li { padding: .1rem 0; }
+.biasdora-rank-note { margin: 0; color: var(--muted); font-size: 13px; }
 
 @media (max-width: 760px) {
   .site-nav { grid-template-columns: minmax(0, 1fr) 44px; padding: .2rem 1.25rem; }
