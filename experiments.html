@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive experiments from Chahat Raj's research on social associations across languages and cultures.">
+  <link rel="canonical" href="https://chahatraj.github.io/experiments.html">
+  <title>Research Experiments | Chahat Raj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/experiments.css">
+  <script>
+    (function () {
+      const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
+      const color = colors[new Date().getDate() % colors.length];
+      document.documentElement.style.setProperty('--theme-color', color);
+      const channels = [1, 3, 5].map((index) => parseInt(color.slice(index, index + 2), 16) / 255);
+      const luminance = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+      document.documentElement.style.setProperty('--theme-contrast', (0.2126 * luminance[0] + 0.7152 * luminance[1] + 0.0722 * luminance[2]) > 0.38 ? '#302924' : '#fff');
+      try {
+        if (localStorage.getItem('site-theme') === 'dark') document.documentElement.classList.add('dark-theme');
+      } catch (error) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#experiments">Skip to experiments</a>
+
+  <header class="site-nav">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span>Menu</span>
+    </button>
+    <nav id="primary-menu" aria-label="Primary navigation">
+      <a href="https://chahatraj.github.io/">About</a>
+      <a href="https://chahatraj.github.io/#news">News</a>
+      <a href="https://chahatraj.github.io/publications.html">Publications</a>
+      <a href="https://chahatraj.github.io/#mentoring">Mentoring</a>
+      <a href="https://chahatraj.github.io/#teaching">Teaching</a>
+      <a href="https://chahatraj.github.io/#talks">Talks</a>
+      <a href="https://chahatraj.github.io/stills.html">Stills</a>
+      <a class="active" href="experiments.html">Experiments</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon-moon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 4C9 2 3 11 6 20c3 8 14 9 20 2-9 1-16-9-7-18Z"/><path d="M9 16q2 2 4-.5m-1 6q2 1 3-.8M24 4l.5 2.8L27 8l-2.7.6L23 11l-.3-2.7L20 7l2.8-.5Z"/></svg>
+      <svg class="theme-icon theme-icon-sun" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.6 13c2 6-2.2 11-7.4 10.5-5.5-.4-8.2-5.1-6.2-10.1 2-5 10.9-6.2 13.6-.4Z"/><path d="m15 3 .5 3M25 6l-2 2M29 15l-3 .4M25 26l-2-2M15 29l.3-3M5 25l2.3-2M2 15l3 .4M6 5l2 2.5M12 14v1m7-1v1m-6.5 3q3 3 5.5-.2"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <div class="research-margin research-margin-left" aria-hidden="true">
+      <img src="https://chahatraj.github.io/images/research-story-languages.png" alt="">
+    </div>
+    <div class="research-margin research-margin-right" aria-hidden="true">
+      <img src="https://chahatraj.github.io/images/research-story-perspectives.png" alt="">
+    </div>
+    <section class="intro">
+      <div class="intro-copy">
+        <h1>Research Experiments</h1>
+        <p class="subtitle">Explore the associations we make.</p>
+      </div>
+    </section>
+
+    <section class="experiment-section" id="experiments" aria-label="Experiments">
+      <article class="experiment-row">
+        <div class="experiment-info">
+          <h2>Global Voices, Local Biases</h2>
+          <a class="paper-link" href="https://aclanthology.org/2023.emnlp-main.981/" target="_blank" rel="noopener noreferrer">Read the paper</a>
+        </div>
+        <div class="experiment-controls">
+          <label class="picker">Language <select id="language-select" aria-label="Language"></select></label>
+          <label class="picker">Association test <select id="test-select" aria-label="Association test"></select></label>
+          <button class="play-link" id="play-button" disabled>Play</button>
+        </div>
+      </article>
+      <p class="load-status" role="status" hidden></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer-note">
+    <span>Last updated on <span class="site-footer-date">September 24, 2026</span></span>
+    <span class="site-footer-separator">·</span>
+    <span>Made with <svg class="site-footer-heart" viewBox="0 0 32 30" role="img" aria-label="heart"><path d="M16 6C10-2 1 2 1 10C1 18 10 25 14 28Q16 29.5 18 28C22 25 31 18 31 10C31 2 22-2 16 6Z"/></svg></span>
+  </footer>
+
+  <dialog id="experiment-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-page">
+      <button class="close-button" aria-label="Close experiment">×</button>
+
+      <section class="screen game-screen" id="dialog-title">
+        <div class="game-progress"><span class="progress-count">1 / 16</span><i></i></div>
+        <div class="target-word">Arjun</div>
+        <p class="prompt">Which word do you associate more with this?</p>
+        <div class="attribute-options">
+          <button data-attribute="0"><span></span></button>
+          <button data-attribute="1"><span></span></button>
+        </div>
+        <button class="stop-button" type="button">Stop here · see results</button>
+      </section>
+
+      <section class="screen results-screen" hidden>
+        <p class="step-label">Your associations</p>
+        <h2>Here is how you responded.</h2>
+        <p class="result-summary"></p>
+        <div class="result-groups"></div>
+        <p class="privacy-note">Responses are shown only on this screen and are not saved.</p>
+        <div class="result-actions">
+          <button class="action-button play-again-button">Play again</button>
+          <button class="plain-button finish-button">Back to experiments</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="js/experiments.js" defer></script>
+  <script src="js/experiments-theme.js" defer></script>
+</body>
+</html>
