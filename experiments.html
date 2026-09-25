@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=20260924-biasdora1">
+  <link rel="stylesheet" href="css/experiments.css?v=20260925-visual1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -96,6 +96,39 @@
         </div>
         <p class="biasdora-content-note" hidden role="status"></p>
       </article>
+      <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora image-to-text game">
+        <div class="experiment-controls biasdora-controls">
+          <label class="picker">Image-to-text · complete the word that comes to mind. <select id="biasdora-i2t-dimension" aria-label="BiasDora image dimension">
+            <option value="all">All available dimensions</option>
+            <option value="age">Age</option>
+            <option value="disability">Disability</option>
+            <option value="gender">Gender</option>
+            <option value="nationality">Nationality</option>
+            <option value="physical-appearance">Physical appearance</option>
+            <option value="race-color">Race / color</option>
+            <option value="religion">Religion</option>
+            <option value="sexual-orientation">Sexual orientation</option>
+            <option value="socioeconomic">Socioeconomic status</option>
+          </select></label>
+          <button class="play-link" id="biasdora-i2t-play" disabled>Play</button>
+        </div>
+        <p class="biasdora-i2t-note" hidden role="status"></p>
+      </article>
+      <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora visual associations game">
+        <div class="experiment-controls biasdora-controls">
+          <label class="picker">Visual associations · choose the word that comes to mind. <select id="biasdora-visual-dimension" aria-label="BiasDora visual dimension">
+            <option value="all">All available dimensions</option>
+            <option value="age">Age</option>
+            <option value="disability">Disability</option>
+            <option value="nationality">Nationality</option>
+            <option value="race-color">Race / color</option>
+            <option value="religion">Religion</option>
+            <option value="sexual-orientation">Sexual orientation</option>
+          </select></label>
+          <button class="play-link" id="biasdora-visual-play" disabled>Play</button>
+        </div>
+        <p class="biasdora-visual-note" hidden role="status"></p>
+      </article>
       <p class="load-status" role="status" hidden></p>
     </section>
 
@@ -136,6 +169,36 @@
     </div>
   </dialog>
 
+  <dialog id="biasdora-visual-dialog" aria-labelledby="biasdora-visual-title">
+    <div class="dialog-page">
+      <button class="close-button biasdora-visual-close" aria-label="Close experiment">×</button>
+      <section class="screen biasdora-game biasdora-i2t-game biasdora-visual-game" id="biasdora-visual-title">
+        <div class="game-progress"><span class="biasdora-visual-progress-count"></span><i class="biasdora-visual-progress-bar"></i></div>
+        <img class="biasdora-i2t-image biasdora-visual-image" alt="Generated image for this association prompt">
+        <p class="prompt">Which word do you associate more with this image?</p>
+        <div class="attribute-options biasdora-visual-options">
+          <button type="button" data-option="0"></button>
+          <button type="button" data-option="1"></button>
+        </div>
+        <div class="biasdora-navigation">
+          <button class="stop-button biasdora-visual-skip" type="button">Skip</button>
+          <button class="stop-button biasdora-visual-stop" type="button">Stop here · see results</button>
+        </div>
+      </section>
+      <section class="screen biasdora-visual-results" hidden>
+        <p class="step-label">Your associations</p>
+        <h2>The words you chose.</h2>
+        <p class="biasdora-visual-result-summary"></p>
+        <div class="biasdora-result-chart biasdora-visual-result-chart"></div>
+        <p class="privacy-note">A match means the word appears in GPT-4o’s description of that image. This is not an IAT or bias score. Nothing is saved or sent.</p>
+        <div class="result-actions">
+          <button class="action-button biasdora-visual-again" type="button">Play again</button>
+          <button class="plain-button biasdora-visual-finish" type="button">Back to experiments</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
   <dialog id="biasdora-dialog" aria-labelledby="biasdora-title">
     <div class="dialog-page">
       <button class="close-button biasdora-close" aria-label="Close experiment">×</button>
@@ -170,8 +233,44 @@
     </div>
   </dialog>
 
-  <script src="js/experiments.js?v=20260924-biasdora1" defer></script>
-  <script src="js/experiments-biasdora.js?v=20260924-biasdora1" defer></script>
-  <script src="js/experiments-theme.js?v=20260924-biasdora1" defer></script>
+  <dialog id="biasdora-i2t-dialog" aria-labelledby="biasdora-i2t-title">
+    <div class="dialog-page">
+      <button class="close-button biasdora-i2t-close" aria-label="Close experiment">×</button>
+      <section class="screen biasdora-game biasdora-i2t-game" id="biasdora-i2t-title">
+        <div class="game-progress"><span class="biasdora-i2t-progress-count"></span><i class="biasdora-i2t-progress-bar"></i></div>
+        <div class="biasdora-entry-step">
+          <p class="biasdora-context">Image to text</p>
+          <img class="biasdora-i2t-image" alt="Generated image for this word-completion prompt">
+          <p class="prompt biasdora-i2t-instruction"></p>
+          <form class="biasdora-form biasdora-i2t-form" novalidate>
+            <label class="sr-only" for="biasdora-i2t-word">Your one-word completion</label>
+            <input id="biasdora-i2t-word" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" placeholder="Type a word, then press Enter" aria-describedby="biasdora-i2t-error">
+          </form>
+          <p class="biasdora-error biasdora-i2t-error" id="biasdora-i2t-error" role="alert"></p>
+        </div>
+        <div class="biasdora-navigation">
+          <button class="stop-button biasdora-i2t-skip" type="button">Skip</button>
+          <button class="stop-button biasdora-i2t-stop" type="button">Stop here · see results</button>
+        </div>
+      </section>
+      <section class="screen biasdora-i2t-results" hidden>
+        <p class="step-label">Your completions</p>
+        <h2>The words you chose.</h2>
+        <p class="biasdora-i2t-result-summary"></p>
+        <div class="biasdora-result-chart biasdora-i2t-result-chart"></div>
+        <p class="privacy-note">These are your completions, not a bias score. Nothing is saved or sent.</p>
+        <div class="result-actions">
+          <button class="action-button biasdora-i2t-again" type="button">Play again</button>
+          <button class="plain-button biasdora-i2t-finish" type="button">Back to experiments</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="js/experiments.js?v=20260925-visual1" defer></script>
+  <script src="js/experiments-biasdora.js?v=20260925-visual1" defer></script>
+  <script src="js/experiments-biasdora-i2t.js?v=20260925-visual1" defer></script>
+  <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
+  <script src="js/experiments-theme.js?v=20260925-visual1" defer></script>
 </body>
 </html>
