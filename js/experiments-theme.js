@@ -30,3 +30,13 @@ function toggleTheme() {
 themeToggles.forEach((button) => button.addEventListener("click", toggleTheme));
 
 updateThemeToggle();
+
+const footerDate = document.querySelector(".site-footer-date");
+const lastModified = new Date(document.lastModified);
+if (footerDate && !Number.isNaN(lastModified.getTime())) {
+  footerDate.textContent = lastModified.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
