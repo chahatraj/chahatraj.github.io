@@ -21,7 +21,8 @@
   let answers = [];
   let skipped = 0;
   let index = 0;
-  let dragging = null;
+  let words = [];
+  let selectedWords = [];
 
   fetch("data/explainable-reranking-rounds.json?v=20260925-reranking1")
     .then((response) => {
@@ -49,59 +50,48 @@
     return copy;
   }
 
-  function moveRow(row, direction) {
-    const neighbor = direction < 0 ? row.previousElementSibling : row.nextElementSibling;
-    if (!neighbor) return;
-    if (direction < 0) list.insertBefore(row, neighbor);
-    else list.insertBefore(neighbor, row);
-    row.querySelector(".biasdora-rank-grip").focus();
-  }
-
   function makeRow(word) {
     const row = document.createElement("li");
     row.className = "biasdora-rank-item";
     row.dataset.word = word;
-    const grip = document.createElement("button");
-    grip.className = "biasdora-rank-grip";
-    grip.type = "button";
-    grip.textContent = "⠿";
-    grip.setAttribute("aria-label", `Move ${word}; use arrow keys or drag`);
-    const label = document.createElement("span");
-    label.textContent = word;
-    row.append(grip, label);
-
-    grip.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        event.preventDefault();
-        moveRow(row, event.key === "ArrowUp" ? -1 : 1);
-      }
+    const button = document.createElement("button");
+    button.className = "biasdora-rank-choice";
+    button.type = "button";
+    button.textContent = word;
+    button.addEventListener("click", () => {
+      const position = selectedWords.indexOf(word);
+      if (position < 0) selectedWords.push(word);
+      else selectedWords.splice(position, 1);
+      updateOrder();
+      button.focus();
     });
-    grip.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0) return;
-      dragging = {row, startY: event.clientY, moved: false};
-      list.setPointerCapture(event.pointerId);
-    });
+    row.append(button);
     return row;
   }
 
-  list.addEventListener("pointermove", (event) => {
-    if (!dragging) return;
-    if (Math.abs(event.clientY - dragging.startY) > 5) dragging.moved = true;
-    if (!dragging.moved) return;
-    const row = dragging.row;
-    row.classList.add("is-dragging");
-    const target = document.elementFromPoint(event.clientX, event.clientY)?.closest(".biasdora-rank-item");
-    if (!target || target === row || target.parentElement !== list) return;
-    const midpoint = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2;
-    list.insertBefore(row, event.clientY < midpoint ? target : target.nextSibling);
-  });
-  function finishDrag() {
-    if (dragging) dragging.row.classList.remove("is-dragging");
-    dragging = null;
+  function updateOrder() {
+    const rows = [...list.children];
+    rows.sort((a, b) => {
+      const aRank = selectedWords.indexOf(a.dataset.word);
+      const bRank = selectedWords.indexOf(b.dataset.word);
+      if (aRank >= 0 && bRank >= 0) return aRank - bRank;
+      if (aRank >= 0) return -1;
+      if (bRank >= 0) return 1;
+      return words.indexOf(a.dataset.word) - words.indexOf(b.dataset.word);
+    });
+    list.replaceChildren(...rows);
+    rows.forEach((row) => {
+      const rank = selectedWords.indexOf(row.dataset.word);
+      const button = row.querySelector("button");
+      button.dataset.rank = rank < 0 ? "" : String(rank + 1).padStart(2, "0");
+      button.setAttribute("aria-pressed", String(rank >= 0));
+      button.setAttribute("aria-label", rank < 0
+        ? `Choose ${row.dataset.word} as number ${selectedWords.length + 1}`
+        : `Remove ${row.dataset.word} from number ${rank + 1}`);
+      row.classList.toggle("is-selected", rank >= 0);
+    });
+    dialog.querySelector(".biasdora-rank-next").disabled = selectedWords.length !== words.length;
   }
-  list.addEventListener("pointerup", finishDrag);
-  list.addEventListener("pointercancel", finishDrag);
-  list.addEventListener("lostpointercapture", finishDrag);
 
   function renderPrompt() {
     const trial = round[index];
@@ -111,7 +101,10 @@
     identity.hidden = mode !== "identity";
     if (mode === "image") image.src = trial.path;
     else identity.textContent = trial.identity;
-    list.replaceChildren(...shuffle(trial.words).map(makeRow));
+    words = shuffle(trial.words);
+    selectedWords = [];
+    list.replaceChildren(...words.map(makeRow));
+    updateOrder();
     dialog.querySelector(".biasdora-rank-next").textContent = index === round.length - 1 ? "See results" : "Save order";
   }
 
@@ -175,7 +168,8 @@
   playButtons.identity.addEventListener("click", () => start("identity"));
   playButtons.image.addEventListener("click", () => start("image"));
   dialog.querySelector(".biasdora-rank-next").addEventListener("click", () => {
-    answers.push({identity: mode === "identity" ? round[index].identity : null, path: mode === "image" ? round[index].path : null, words: [...list.children].map((row) => row.dataset.word)});
+    if (selectedWords.length !== words.length) return;
+    answers.push({identity: mode === "identity" ? round[index].identity : null, path: mode === "image" ? round[index].path : null, words: [...selectedWords]});
     advance();
   });
   dialog.querySelector(".biasdora-rank-skip").addEventListener("click", () => { skipped += 1; advance(); });

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=20260925-mode2">
+  <link rel="stylesheet" href="css/experiments.css?v=20260925-preview3">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -58,15 +58,25 @@
     <section class="intro">
       <div class="intro-copy">
         <h1>Research Experiments</h1>
-        <p class="subtitle">Explore the associations we make.</p>
       </div>
     </section>
 
     <section class="experiment-section" id="experiments" aria-label="Experiments">
+      <nav class="paper-index" aria-label="Choose an experiment">
+        <button class="paper-choice is-active" type="button" data-paper="global" aria-pressed="true">Global Voices, Local Biases</button>
+        <button class="paper-choice" type="button" data-paper="biasdora" aria-pressed="false">BiasDora</button>
+        <button class="paper-choice" type="button" data-paper="reranking" aria-pressed="false">Explainable Reranking</button>
+      </nav>
+      <div class="paper-stage">
+      <div class="paper-panel" data-paper="global">
       <article class="experiment-row">
         <div class="experiment-info">
           <h2>Global Voices, Local Biases</h2>
           <a class="paper-link" href="https://aclanthology.org/2023.emnlp-main.981/" target="_blank" rel="noopener noreferrer">Read the paper</a>
+        </div>
+        <div class="paper-preview association-preview" data-preview-source="data/weathub-tests.json" role="group" aria-label="Association preview. Choices here are not recorded.">
+          <span class="preview-prompt" data-preview="weat-target">rose</span>
+          <span class="preview-pair"><button class="preview-option" type="button" data-preview="weat-left" aria-pressed="false">love</button><button class="preview-option" type="button" data-preview="weat-right" aria-pressed="false">poison</button></span>
         </div>
         <div class="experiment-controls">
           <label class="picker">Language <select id="language-select" aria-label="Language"></select></label>
@@ -74,21 +84,38 @@
           <button class="play-link" id="play-button" disabled>Play</button>
         </div>
       </article>
+      <p class="load-status" role="status" hidden></p>
+      </div>
+      <div class="paper-panel" data-paper="biasdora" hidden>
       <article class="experiment-row biasdora-row paired-row">
         <div class="experiment-info">
           <h2>BiasDora</h2>
           <a class="paper-link" href="https://aclanthology.org/2024.findings-emnlp.611/" target="_blank" rel="noopener noreferrer">Read the paper</a>
+        </div>
+        <div class="game-kind-switch" role="group" aria-label="BiasDora game">
+          <button class="game-kind is-active" type="button" data-kind="completion" aria-pressed="true">Word completion</button>
+          <button class="game-kind" type="button" data-kind="visual" aria-pressed="false">Visual associations</button>
+        </div>
+        <div class="paper-preview completion-preview" data-preview-kind="completion-text" role="group" aria-label="Word completion preview. Text entered here is not recorded.">
+          <span class="preview-prompt">A child is <input class="preview-completion" type="text" placeholder="[c__]" aria-label="Try a word beginning with C" autocomplete="off" spellcheck="false" maxlength="20"></span>
+        </div>
+        <div class="paper-preview image-preview" data-preview-kind="completion-image" role="group" aria-label="Image word completion preview. Text entered here is not recorded." hidden>
+          <img src="/biasdora-i2t-images/dalle/setting1/id_0_target_child_natural_1.webp" alt="Generated image of a child">
+          <input class="preview-completion" type="text" placeholder="[c__]" aria-label="Try a word beginning with C" autocomplete="off" spellcheck="false" maxlength="20">
+        </div>
+        <div class="paper-preview image-preview visual-preview" data-preview-kind="visual" role="group" aria-label="Visual association preview. Choices here are not recorded." hidden>
+          <img src="/biasdora-i2t-images/dalle/setting1/id_0_target_child_natural_1.webp" alt="Generated image of a child">
+          <span class="preview-pair"><button class="preview-option" type="button" aria-pressed="false">cheerful</button><button class="preview-option" type="button" aria-pressed="false">serene</button></span>
         </div>
         <div class="paired-input">
         <div class="game-mode-switch" role="group" aria-label="Word completion input">
           <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text-to-text</button>
           <span class="mode-separator">/</span>
           <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image-to-text</button>
-          <span class="mode-description">· complete the word that comes to mind.</span>
         </div>
         <div class="experiment-controls biasdora-controls">
           <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-dimension" aria-label="BiasDora text dimension">
-            <option value="all">All nine dimensions</option>
+            <option value="all">All available dimensions (9)</option>
             <option value="age">Age</option>
             <option value="disability">Disability</option>
             <option value="gender">Gender</option>
@@ -103,7 +130,7 @@
         </div>
         <div class="experiment-controls biasdora-controls mode-alternate" hidden>
           <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-i2t-dimension" aria-label="BiasDora image dimension">
-            <option value="all">All available dimensions</option>
+            <option value="all">All available dimensions (8)</option>
             <option value="age">Age</option>
             <option value="disability">Disability</option>
             <option value="gender">Gender</option>
@@ -121,10 +148,11 @@
         <p class="biasdora-i2t-note" hidden role="status"></p>
         <button class="play-link grouped-play" type="button">Play</button>
       </article>
-      <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora visual associations game">
+      <article class="experiment-row biasdora-i2t-row" aria-label="BiasDora visual associations game" hidden>
         <div class="experiment-controls biasdora-controls">
-          <label class="picker">Visual associations · choose the word that comes to mind. <select id="biasdora-visual-dimension" aria-label="BiasDora visual dimension">
-            <option value="all">All available dimensions</option>
+          <span class="game-caption">Choose the word that comes to mind.</span>
+          <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-visual-dimension" aria-label="BiasDora visual dimension">
+            <option value="all">All available dimensions (6)</option>
             <option value="age">Age</option>
             <option value="disability">Disability</option>
             <option value="nationality">Nationality</option>
@@ -136,20 +164,30 @@
         </div>
         <p class="biasdora-visual-note" hidden role="status"></p>
       </article>
+      </div>
+      <div class="paper-panel" data-paper="reranking" hidden>
       <article class="experiment-row biasdora-row paired-row" aria-label="Explainable Reranking games">
         <div class="experiment-info">
           <h2>Explainable Reranking</h2>
         </div>
+        <div class="paper-preview ranking-preview" data-preview-kind="rank-text" role="group" aria-label="Word ranking preview. Click words in order; selections here are not recorded.">
+          <span class="preview-prompt">Italian</span>
+          <span class="preview-ranking"><button type="button" class="preview-option" aria-pressed="false">chef</button><button type="button" class="preview-option" aria-pressed="false">opera</button><button type="button" class="preview-option" aria-pressed="false">artist</button><button type="button" class="preview-option" aria-pressed="false">foreigner</button><button type="button" class="preview-option" aria-pressed="false">brave</button></span>
+        </div>
+        <div class="paper-preview ranking-preview ranking-image-preview" data-preview-kind="rank-image" role="group" aria-label="Image ranking preview. Click words in order; selections here are not recorded." hidden>
+          <img src="/biasdora-i2t-images/dalle/setting1/id_0_target_child_natural_1.webp" alt="Generated image of a child">
+          <span class="preview-ranking"><button type="button" class="preview-option" aria-pressed="false">joyful</button><button type="button" class="preview-option" aria-pressed="false">childhood</button><button type="button" class="preview-option" aria-pressed="false">carefree</button><button type="button" class="preview-option" aria-pressed="false">idealized</button><button type="button" class="preview-option" aria-pressed="false">activity</button></span>
+        </div>
         <div class="paired-input">
         <div class="game-mode-switch" role="group" aria-label="Ranking prompt">
           <span>Rank words ·</span>
-          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Identity</button>
+          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text</button>
           <span class="mode-separator">/</span>
           <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image</button>
         </div>
         <div class="experiment-controls biasdora-controls">
-          <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-rank-identity-dimension" aria-label="Identity ranking dimension">
-            <option value="all">All nine dimensions</option>
+          <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-rank-identity-dimension" aria-label="Text ranking dimension">
+            <option value="all">All available dimensions (9)</option>
             <option value="age">Age</option><option value="disability">Disability</option><option value="gender">Gender</option>
             <option value="nationality">Nationality</option><option value="physical-appearance">Physical appearance</option>
             <option value="race-color">Race / color</option><option value="religion">Religion</option>
@@ -159,7 +197,7 @@
         </div>
         <div class="experiment-controls biasdora-controls mode-alternate" hidden>
           <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-rank-image-dimension" aria-label="Image ranking dimension">
-            <option value="all">All available dimensions</option>
+            <option value="all">All available dimensions (7)</option>
             <option value="age">Age</option><option value="disability">Disability</option>
             <option value="physical-appearance">Physical appearance</option><option value="race-color">Race / color</option>
             <option value="religion">Religion</option><option value="sexual-orientation">Sexual orientation</option>
@@ -171,7 +209,8 @@
         <button class="play-link grouped-play" type="button">Play</button>
       </article>
       <p class="biasdora-rank-note" hidden role="status"></p>
-      <p class="load-status" role="status" hidden></p>
+      </div>
+      </div>
     </section>
 
   </main>
@@ -218,11 +257,9 @@
         <div class="game-progress"><span class="biasdora-rank-progress-count"></span><i class="biasdora-rank-progress-bar"></i></div>
         <img class="biasdora-rank-image" alt="Generated image for this ranking prompt" hidden>
         <h2 class="biasdora-rank-identity" hidden></h2>
-        <p class="prompt biasdora-rank-instruction">Arrange the words from most to least associated with this.</p>
-        <p class="biasdora-rank-scale" aria-hidden="true">Most associated</p>
-        <ol class="biasdora-rank-list" aria-label="Words ordered from most to least associated"></ol>
-        <p class="biasdora-rank-scale biasdora-rank-scale-end" aria-hidden="true">Least associated</p>
-        <button class="action-button biasdora-rank-next" type="button">Save order</button>
+        <p class="prompt biasdora-rank-instruction">Click words from most to least associated. Click one again to undo.</p>
+        <ol class="biasdora-rank-list" aria-label="Choose words from most to least associated"></ol>
+        <button class="action-button biasdora-rank-next" type="button" disabled>Save order</button>
         <div class="biasdora-navigation">
           <button class="stop-button biasdora-rank-skip" type="button">Skip</button>
           <button class="stop-button biasdora-rank-stop" type="button">Stop here · see results</button>
@@ -344,8 +381,9 @@
   <script src="js/experiments-biasdora.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-biasdora-i2t.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
-  <script src="js/experiments-reranking.js?v=20260925-reranking1" defer></script>
+  <script src="js/experiments-reranking.js?v=20260925-reranking2" defer></script>
   <script src="js/experiments-modes.js?v=20260925-mode1" defer></script>
+  <script src="js/experiments-tour.js?v=20260925-preview3" defer></script>
   <script src="js/experiments-theme.js?v=20260925-visual1" defer></script>
 </body>
 </html>
