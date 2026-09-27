@@ -102,15 +102,11 @@ main { position: relative; width: min(980px, calc(100% - 3rem)); min-height: cal
 .ranking-image-preview { flex-direction: row; align-items: center; gap: 1.5rem; }
 .ranking-image-preview img { display: block; flex: none; width: 138px; height: 138px; border-radius: 4px; object-fit: cover; }
 .ranking-image-preview .preview-ranking { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-self: center; }
-.paper-panel[data-paper="biasdora"] .paper-preview { grid-row: 3; }
-.paper-panel[data-paper="biasdora"] .paired-input { grid-row: 4; }
+.paper-panel[data-paper="biasdora"] .paper-preview { grid-row: 2; }
+.paper-panel[data-paper="biasdora"] .paired-input { grid-row: 3; }
 .paper-panel[data-paper="reranking"] .paper-preview { grid-row: 2; }
 .paper-panel[data-paper="reranking"] .paired-input { grid-row: 3; }
 .paper-panel[data-paper="biasdora"] .biasdora-i2t-row { margin-top: .5rem; }
-.game-kind-switch { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1.5rem; margin: .5rem 0 0; }
-.game-kind { padding: .35rem .7rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--muted); cursor: pointer; font-size: 16px; }
-.game-kind.is-active { border-color: transparent; background: color-mix(in srgb, var(--theme-color) 18%, var(--paper)); color: var(--ink); font-weight: 600; }
-.game-kind:hover, .game-kind:focus-visible { color: var(--theme-color); }
 h1, h2, h3 { margin: 0; color: var(--ink); font-family: var(--display); }
 h1 { margin-bottom: .7rem; font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -.03em; }
 .subtitle { margin: 0; color: var(--muted); font-size: 18px; font-weight: 400; line-height: 1.45; }
@@ -238,6 +234,11 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 .game-mode { padding: .25rem .45rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); cursor: pointer; font: inherit; }
 .game-mode.is-active { border-color: transparent; background: color-mix(in srgb, var(--theme-color) 18%, var(--paper)); color: var(--ink); font-weight: 600; }
 .game-mode:hover, .game-mode:focus-visible { border-color: var(--theme-color); }
+.paired-input .game-mode-switch { display: inline-flex; flex-wrap: nowrap; gap: .65rem; width: max-content; }
+.paired-input .game-mode { display: grid; min-width: 100px; min-height: 46px; place-items: center; padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font-size: 16px; font-weight: 500; }
+.paired-input .game-mode.is-active { border-color: var(--theme-color); background: var(--theme-color); color: var(--theme-contrast, #fff); font-weight: 700; }
+.paired-input .game-mode:not(.is-active):hover { background: color-mix(in srgb, var(--theme-color) 16%, var(--paper)); }
+.paired-input .game-mode:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .mode-separator { display: none; }
 .paired-row .experiment-controls.biasdora-controls { grid-column: 2; grid-row: 2; grid-template-columns: minmax(0, 1fr); }
 .paired-row .grouped-play { grid-column: 3; grid-row: 2; align-self: end; }
@@ -296,7 +297,7 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
   .paired-input { grid-column: 1; grid-template-columns: 1fr; gap: .65rem; }
   .paired-row .experiment-controls.biasdora-controls { grid-column: 1; grid-row: 3; }
   .paired-row .grouped-play { grid-column: 1; grid-row: 4; justify-self: end; }
-  .paper-panel[data-paper="biasdora"] .paired-input { grid-row: 4; }
+  .paper-panel[data-paper="biasdora"] .paired-input { grid-row: 3; }
   .paper-panel[data-paper="reranking"] .paired-input { grid-row: 3; }
   .paired-row .experiment-controls.biasdora-controls { grid-template-columns: 1fr; }
   .biasdora-controls .picker { white-space: normal; }

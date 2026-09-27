@@ -15,36 +15,18 @@
 
   choices.forEach((choice) => choice.addEventListener("click", () => showPaper(choice.dataset.paper)));
   const biasdora = document.querySelector('.paper-panel[data-paper="biasdora"]');
-  const gameChoices = [...biasdora.querySelectorAll(".game-kind")];
-  const completion = biasdora.querySelector(".paired-input");
-  const completionPlay = biasdora.querySelector(".grouped-play");
-  const visual = biasdora.querySelector('[aria-label="BiasDora visual associations game"]');
-
-  gameChoices.forEach((choice) => choice.addEventListener("click", () => {
-    const isCompletion = choice.dataset.kind === "completion";
-    gameChoices.forEach((item) => {
-      const active = item === choice;
-      item.classList.toggle("is-active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    completion.hidden = !isCompletion;
-    completionPlay.hidden = !isCompletion;
-    visual.hidden = isCompletion;
-  }));
-
   const previewTypes = [...document.querySelectorAll("[data-preview-kind]")];
   function updatePreviews() {
-    const biasKind = biasdora.querySelector(".game-kind.is-active")?.dataset.kind;
     const biasMode = biasdora.querySelector(".game-mode.is-active")?.dataset.gameMode;
     const rankMode = document.querySelector('[data-paper="reranking"] .game-mode.is-active')?.dataset.gameMode;
     const visible = new Set([
-      biasKind === "visual" ? "visual" : `completion-${biasMode || "text"}`,
+      `completion-${biasMode || "text"}`,
       `rank-${rankMode || "text"}`,
     ]);
     previewTypes.forEach((preview) => { preview.hidden = !visible.has(preview.dataset.previewKind); });
   }
   document.addEventListener("click", (event) => {
-    if (event.target.closest(".game-kind, .game-mode")) updatePreviews();
+    if (event.target.closest(".game-mode")) updatePreviews();
   });
   updatePreviews();
 

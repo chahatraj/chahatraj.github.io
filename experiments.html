@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=20260927-paper-covers6">
+  <link rel="stylesheet" href="css/experiments.css?v=20260927-paired-modes1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -99,10 +99,6 @@
             <a class="paper-link" href="https://aclanthology.org/2024.findings-emnlp.611/" target="_blank" rel="noopener noreferrer">Read the paper</a>
           </div>
         </div>
-        <div class="game-kind-switch" role="group" aria-label="BiasDora game">
-          <button class="game-kind is-active" type="button" data-kind="completion" aria-pressed="true">Word completion</button>
-          <button class="game-kind" type="button" data-kind="visual" aria-pressed="false">Visual associations</button>
-        </div>
         <div class="paper-preview completion-preview" data-preview-kind="completion-text" role="group" aria-label="Word completion preview">
           <span class="preview-prompt">A child is <input class="preview-completion" type="text" placeholder="[c__]" aria-label="Try a word beginning with C" autocomplete="off" spellcheck="false" maxlength="20"></span>
         </div>
@@ -115,10 +111,10 @@
           <span class="preview-pair"><button class="preview-option" type="button" aria-pressed="false">cheerful</button><button class="preview-option" type="button" aria-pressed="false">serene</button></span>
         </div>
         <div class="paired-input">
-        <div class="game-mode-switch" role="group" aria-label="Word completion input">
-          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text-to-text</button>
+        <div class="game-mode-switch" role="group" aria-label="Word completion prompt">
+          <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text</button>
           <span class="mode-separator">/</span>
-          <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image-to-text</button>
+          <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image</button>
         </div>
         <div class="experiment-controls biasdora-controls">
           <label class="picker"><span class="sr-only">Dimension</span><select id="biasdora-dimension" aria-label="BiasDora text dimension">
@@ -187,7 +183,6 @@
         </div>
         <div class="paired-input">
         <div class="game-mode-switch" role="group" aria-label="Ranking prompt">
-          <span>Rank words ·</span>
           <button class="game-mode is-active" type="button" data-game-mode="text" aria-pressed="true">Text</button>
           <span class="mode-separator">/</span>
           <button class="game-mode" type="button" data-game-mode="image" aria-pressed="false">Image</button>
@@ -390,7 +385,7 @@
   <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
   <script src="js/experiments-reranking.js?v=20260925-reranking2" defer></script>
   <script src="js/experiments-modes.js?v=20260925-mode1" defer></script>
-  <script src="js/experiments-tour.js?v=20260925-preview3" defer></script>
+  <script src="js/experiments-tour.js?v=20260927-biasdora-modes1" defer></script>
   <script src="js/experiments-theme.js?v=20260925-visual1" defer></script>
 </body>
 </html>
