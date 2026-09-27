@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     if (closingSize) {
-      var cameraSize = Math.min(110, width * .64);
+      var cameraSize = Math.min(125, width * .78);
       var closingX = (width - cameraSize) / 2;
       var closingY = cameraCenter - cameraSize / 2;
       svg.appendChild(element('path', {
