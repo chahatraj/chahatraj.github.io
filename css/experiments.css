@@ -68,9 +68,14 @@ main { position: relative; width: min(980px, calc(100% - 3rem)); min-height: cal
 .paper-panel .biasdora-row { margin-top: 0; }
 .paper-panel .experiment-info { align-items: flex-start; flex-direction: column; gap: .25rem; }
 .paper-panel .experiment-info h2 { font-size: clamp(27px, 2.5vw, 30px); }
-.paper-panel .experiment-info.has-paper-cover { position: relative; display: block; width: 100%; padding-right: 120px; }
-.paper-cover { position: absolute; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: .4rem; width: 90px; }
-.paper-cover img { display: block; width: 76px; height: auto; border: 1px solid var(--line); background: #fff; }
+.paper-panel .experiment-info.has-paper-cover { position: relative; display: block; width: 100%; padding-right: 305px; }
+.paper-panel .experiment-info.has-paper-cover h2 { transform: translateY(-45px); }
+.paper-cover { position: absolute; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: flex-end; gap: .4rem; width: 280px; }
+.paper-crop { position: relative; display: block; width: 280px; height: 70px; overflow: hidden; background: #fff; }
+.paper-crop::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--ink); opacity: .28; -webkit-mask: url("/images/doodle-photo-frame.svg") center / 100% 100% no-repeat; mask: url("/images/doodle-photo-frame.svg") center / 100% 100% no-repeat; }
+.paper-crop img { position: absolute; top: 0; left: 50%; display: block; width: 116%; max-width: none; height: auto; transform: translate(-50%, -14%); }
+.paper-panel[data-paper="biasdora"] .paper-crop { height: 95px; }
+.paper-panel[data-paper="biasdora"] .paper-crop img { transform: translate(-50%, -9%); }
 .paper-cover .paper-link { font-size: 12px; white-space: nowrap; }
 .paper-preview { position: relative; grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; gap: .55rem; min-height: 125px; margin: 1.1rem 0 0; padding: 2.35rem 1.4rem 1.35rem; border-radius: 6px; background: color-mix(in srgb, var(--theme-color) 78%, var(--paper)); }
 .paper-preview::before { content: 'TRY IT'; position: absolute; top: .9rem; left: 1.4rem; color: var(--ink); font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: .1em; opacity: .8; }
@@ -124,11 +129,13 @@ h1 { margin-bottom: .7rem; font-size: 48px; font-weight: 700; line-height: 1.15;
 .experiment-controls { display: grid; grid-template-columns: minmax(0, 1fr) 300px 114px; gap: 1.2rem; align-items: end; }
 .paper-panel[data-paper="global"] .experiment-controls { margin-top: 0; padding: 1.25rem 1.4rem; border-radius: 6px; background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
 .paper-panel[data-paper="global"] .experiment-controls::before { content: 'CHOOSE A TEST'; grid-column: 1 / -1; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+.paper-panel[data-paper="global"] .experiment-controls > .play-link { grid-column: 1 / -1; grid-row: 3; justify-self: end; margin-top: .35rem; }
 .experiment-row:first-child .experiment-controls { grid-template-columns: 190px minmax(0, 1fr) 114px; }
 .picker { display: grid; gap: .45rem; color: var(--muted); font-size: 14px; font-weight: 400; }
 .picker select { width: 100%; min-height: 44px; padding: .5rem 2rem .5rem .75rem; border: 1px solid var(--line); border-radius: 7px; background: var(--control-paper); color: var(--ink); font-size: 16px; font-weight: 400; }
 .picker select:focus-visible { outline: 2px solid var(--theme-color); outline-offset: 2px; }
 .play-link { display: inline-flex; align-items: center; justify-content: center; width: 114px; min-height: 44px; padding: .5rem 1rem; border: 1px solid var(--theme-color); border-radius: 7px; background: var(--theme-color); color: var(--theme-contrast, #fff); cursor: pointer; font-size: 16px; font-weight: 600; white-space: nowrap; }
+.paper-panel[data-paper="global"] .experiment-controls > .play-link, .paired-row .grouped-play { width: 158px; min-height: 54px; border-color: var(--ink); background: var(--ink); color: var(--paper); font-family: var(--display); }
 .play-link:disabled { opacity: .4; cursor: default; }
 .play-link:not(:disabled):hover, .play-link:focus-visible { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 .load-status { margin: 1rem 0 0; color: var(--muted); font-size: 13px; }
@@ -241,7 +248,7 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 .paired-input .game-mode:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .mode-separator { display: none; }
 .paired-row .experiment-controls.biasdora-controls { grid-column: 2; grid-row: 2; grid-template-columns: minmax(0, 1fr); }
-.paired-row .grouped-play { grid-column: 3; grid-row: 2; align-self: end; }
+.paired-row .grouped-play { grid-column: 1 / -1; grid-row: 3; justify-self: end; align-self: end; margin-top: .35rem; }
 .biasdora-i2t-row .experiment-controls { margin-top: 0; padding: 1.25rem 1.4rem; border-radius: 6px; background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
 .biasdora-i2t-row .experiment-controls::before { content: 'CHOOSE A TEST'; grid-column: 1 / -1; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .1em; }
 .paired-row .biasdora-content-note, .paired-row .biasdora-i2t-note { grid-column: 1 / -1; }
@@ -280,9 +287,12 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
 }
 
 @media (max-width: 500px) {
-  .paper-panel .experiment-info.has-paper-cover { display: grid; grid-template-columns: minmax(0, 1fr) 88px; align-items: start; gap: .75rem; width: 100%; padding-right: 0; }
-  .paper-cover { position: static; width: 88px; }
-  .paper-cover, .paper-cover img { width: 88px; }
+  .paper-panel .experiment-info.has-paper-cover { display: grid; grid-template-columns: minmax(0, 1fr) 150px; align-items: start; gap: .75rem; width: 100%; padding-right: 0; }
+  .paper-panel .experiment-info.has-paper-cover h2 { transform: none; }
+  .paper-cover { position: static; width: 150px; }
+  .paper-cover, .paper-crop { width: 150px; }
+  .paper-crop { height: 55px; }
+  .paper-panel[data-paper="biasdora"] .paper-crop { height: 76px; }
   .paper-cover .paper-link { font-size: 11px; }
   .association-preview { grid-template-columns: 1fr; gap: .45rem; }
   .association-preview .preview-prompt, .association-preview .preview-question, .association-preview .preview-pair { grid-column: 1; grid-row: auto; }
@@ -292,6 +302,7 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
   .experiment-row { gap: 1rem; }
   .experiment-controls { grid-template-columns: 1fr; }
   .experiment-row:first-child .experiment-controls { grid-template-columns: 1fr; }
+  .paper-panel[data-paper="global"] .experiment-controls > .play-link { grid-column: 1; grid-row: 4; }
   .experiment-controls.biasdora-controls { grid-template-columns: 1fr; }
   .paired-row { grid-template-columns: minmax(0, 1fr); }
   .paired-input { grid-column: 1; grid-template-columns: 1fr; gap: .65rem; }
