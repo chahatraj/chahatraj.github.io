@@ -1,5 +1,5 @@
 /* Human narrative marginalia; preserve character proportions while extending
-   the quiet connecting passages through the document to the Stills heading. */
+   the quiet connecting passages through the document, ending before Stills. */
 document.addEventListener('DOMContentLoaded', function () {
   var trails = document.querySelectorAll('.research-margin');
   var ns = 'http://www.w3.org/2000/svg';
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
       'data-research-gap-scene':scene
     }));
   }
-  function build(trail, height, width, side) {
-    var signature = Math.round(height) + ':' + Math.round(width);
+  function build(trail, height, width, side, cameraCenter) {
+    var signature = Math.round(height) + ':' + Math.round(width) + ':' + Math.round(cameraCenter || 0);
     if (trail.dataset.shape === signature) return;
     trail.dataset.shape = signature;
     trail.replaceChildren();
@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var closingSize = side === 1 ? Math.min(100, width * .56) : 0;
     var closingSpace = closingSize ? closingSize + 30 : 0;
     var gap = Math.max(0, (height - artHeight - closingSpace) / (blocks.length - 1));
-    var svg = element('svg', { viewBox: '0 0 '+width+' '+height, width:'100%', height:'100%', 'aria-hidden':'true' });
+    var svg = element('svg', { viewBox: '0 0 '+width+' '+height, width:'100%', height:'100%', overflow:'visible', 'aria-hidden':'true' });
+    svg.style.overflow = 'visible';
     var defs = element('defs', {});
     var ink = element('filter', {id:'translation-ink-'+side, 'color-interpolation-filters':'sRGB'});
     // Refined sources can have a light preview backing. Render only their dark
@@ -123,8 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     if (closingSize) {
-      var closingX = (width - closingSize) / 2;
-      var closingY = height - closingSize;
+      var cameraSize = Math.min(110, width * .64);
+      var closingX = (width - cameraSize) / 2;
+      var closingY = cameraCenter - cameraSize / 2;
       svg.appendChild(element('path', {
         d:'M'+(width*.52)+' '+(y+2)+' Q'+(width*.38)+' '+(y+18)+' '+(width*.5)+' '+closingY,
         fill:'none', stroke:'currentColor', opacity:'.3', 'stroke-width':1.1,
@@ -132,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }));
       svg.appendChild(element('image', {
         href:'images/research-closing-camera.png', x:closingX, y:closingY,
-        width:closingSize, height:closingSize, preserveAspectRatio:'xMidYMid meet',
+        width:cameraSize, height:cameraSize, preserveAspectRatio:'xMidYMid meet',
         opacity:'.75', 'data-research-closing':'true'
       }));
     }
@@ -154,12 +156,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var width = Math.min(180, gutter - 24);
     trails.forEach(function (trail, side) {
       var start = a.top + window.scrollY + a.height * (side ? .9 : .58);
-      var stop = stillsTop;
+      var height = Math.max(0, stillsTop - start);
+      var cameraCenter = height - Math.min(100, width * .56) / 2;
       if (side === 1 && stillsHeading) {
         var headingBox = stillsHeading.getBoundingClientRect();
-        stop = headingBox.top + window.scrollY + headingBox.height / 2 + Math.min(100, width * .56) / 2;
+        cameraCenter = headingBox.top + window.scrollY + headingBox.height / 2 - start;
       }
-      var height = Math.max(0, stop - start);
       trail.hidden = window.innerWidth < 1200 || width < 95 || height < 900;
       if (trail.hidden) return;
       trail.style.top = start+'px';
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
       trail.style.width = width+'px';
       /* Hug the reading margin with a 12px safety gap, not the viewport edge. */
       trail.style.setProperty('--gutter-offset', Math.max(12, gutter-width-12)+'px');
-      build(trail, height, width, side);
+      build(trail, height, width, side, cameraCenter);
     });
   }
   function schedule() { if (!queued) { queued=true; requestAnimationFrame(layout); } }
