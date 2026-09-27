@@ -47,10 +47,15 @@ button, select { font: inherit; }
 .dark-theme .theme-icon-sun { display: block; }
 
 main { position: relative; width: min(980px, calc(100% - 3rem)); min-height: calc(100vh - 100px); margin: 0 auto; padding: clamp(3rem, 6vw, 4rem) 0 2.5rem; }
-.research-margin { display: none; position: absolute; z-index: 0; width: var(--margin-width); pointer-events: none; user-select: none; filter: brightness(0); }
-.research-margin img { display: block; width: 100%; height: auto; }
-.research-margin-left { top: 185px; left: calc(-1 * var(--margin-width) - 12px); opacity: .9; }
-.research-margin-right { top: 95px; right: calc(-1 * var(--margin-width) - 12px); opacity: .42; }
+.research-margin { display: none; position: absolute; z-index: 0; width: var(--margin-width); aspect-ratio: 330 / 1300; pointer-events: none; user-select: none; filter: brightness(0); }
+.research-margin svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.margin-scene { position: absolute; display: block; height: auto; object-fit: contain; }
+.research-margin-left .margin-scene-main { top: 13.85%; left: 0; width: 100%; opacity: .6; }
+.research-margin-left .margin-scene-gap { top: 76.15%; left: 7.58%; width: 84.85%; opacity: .35; filter: url(#papercade-left-ink); }
+.research-margin-right .margin-scene-main { top: 6.15%; left: 0; width: 100%; opacity: .85; filter: url(#papercade-right-ink); }
+.research-margin-right .margin-scene-gap { top: 69.23%; left: 12.12%; width: 75.76%; opacity: .75; filter: url(#papercade-right-ink); }
+.research-margin-left { top: 95px; left: calc(-1 * var(--margin-width) - 92px); opacity: .9; }
+.research-margin-right { top: 95px; right: calc(-1 * var(--margin-width) - 92px); opacity: .42; }
 .dark-theme .research-margin { filter: brightness(0) invert(1); opacity: .38; }
 .dark-theme .research-margin-left { opacity: .8; }
 .intro, .experiment-section { position: relative; z-index: 1; }
@@ -332,6 +337,6 @@ dialog::backdrop { background: rgba(64,56,50,.2); }
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
 
-@media (min-width: 1180px) {
-  .research-margin { --margin-width: clamp(50px, calc((100vw - 1080px) / 2 - 24px), 180px); display: block; }
+@media (min-width: 1380px) {
+  .research-margin { --margin-width: min(180px, calc((100vw - 1140px) / 2 - 24px)); display: block; }
 }

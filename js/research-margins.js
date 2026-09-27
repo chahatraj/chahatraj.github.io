@@ -1,5 +1,5 @@
 /* Human narrative marginalia; preserve character proportions while extending
-   the quiet connecting passages through the document, ending before Stills. */
+   the quiet connecting passages through the document to the Stills heading. */
 document.addEventListener('DOMContentLoaded', function () {
   var trails = document.querySelectorAll('.research-margin');
   var ns = 'http://www.w3.org/2000/svg';
@@ -144,7 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var stills = document.getElementById('stills');
     if (!about || !stills) return;
     var a = about.getBoundingClientRect();
-    var stop = stills.getBoundingClientRect().top + window.scrollY;
+    var stillsTop = stills.getBoundingClientRect().top + window.scrollY;
+    var stillsHeading = stills.querySelector('h1, h2, h3');
     var gutter = window.innerWidth / 2;
     document.querySelectorAll('.hero-wrap > .d-flex, .continuous-section:not(#stills) .container').forEach(function (node) {
       var box = node.getBoundingClientRect();
@@ -153,6 +154,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var width = Math.min(180, gutter - 24);
     trails.forEach(function (trail, side) {
       var start = a.top + window.scrollY + a.height * (side ? .9 : .58);
+      var stop = stillsTop;
+      if (side === 1 && stillsHeading) {
+        var headingBox = stillsHeading.getBoundingClientRect();
+        stop = headingBox.top + window.scrollY + headingBox.height / 2 + Math.min(100, width * .56) / 2;
+      }
       var height = Math.max(0, stop - start);
       trail.hidden = window.innerWidth < 1200 || width < 95 || height < 900;
       if (trail.hidden) return;
