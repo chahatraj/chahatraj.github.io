@@ -81,6 +81,10 @@ main { position: relative; width: min(980px, calc(100% - 3rem)); min-height: cal
 .paper-crop img { position: absolute; top: 0; left: 50%; display: block; width: 116%; max-width: none; height: auto; transform: translate(-50%, -14%); }
 .paper-panel[data-paper="biasdora"] .paper-crop { height: 95px; }
 .paper-panel[data-paper="biasdora"] .paper-crop img { transform: translate(-50%, -9%); }
+.paper-panel[data-paper="purdah"] .paper-crop { height: 90px; }
+.paper-panel[data-paper="talent"] .paper-crop,
+.paper-panel[data-paper="vignette"] .paper-crop,
+.paper-panel[data-paper="breaking"] .paper-crop { height: 80px; }
 .paper-cover .paper-link { font-size: 12px; white-space: nowrap; }
 .paper-preview { position: relative; grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; gap: .55rem; min-height: 125px; margin: 1.1rem 0 0; padding: 2.35rem 1.4rem 1.35rem; border-radius: 6px; background: color-mix(in srgb, var(--theme-color) 78%, var(--paper)); }
 .paper-preview::before { content: 'TRY IT'; position: absolute; top: .9rem; left: 1.4rem; color: var(--ink); font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: .1em; opacity: .8; }
