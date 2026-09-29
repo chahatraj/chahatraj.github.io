@@ -17,7 +17,7 @@
   let skipped = 0;
   let index = 0;
 
-  fetch("data/biasdora-i2t-images.json?v=20260925-visual1")
+  fetch("data/biasdora-i2t-images.json?v=local-1")
     .then((response) => {
       if (!response.ok) throw new Error("Image sample is not available yet.");
       return response.json();

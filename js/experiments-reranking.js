@@ -24,7 +24,7 @@
   let words = [];
   let selectedWords = [];
 
-  fetch("data/explainable-reranking-rounds.json?v=20260925-reranking1")
+  fetch("data/explainable-reranking-rounds.json?v=local-1")
     .then((response) => {
       if (!response.ok) throw new Error("Word rankings are not available yet.");
       return response.json();

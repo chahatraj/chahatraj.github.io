@@ -17,7 +17,7 @@
   let skipped = 0;
   let index = 0;
 
-  fetch("data/biasdora-t2t-prompts.json?v=20260924-biasdora1")
+  fetch("data/biasdora-t2t-prompts.json?v=full-t2t-1")
     .then((response) => {
       if (!response.ok) throw new Error("Could not load BiasDora prompts.");
       return response.json();

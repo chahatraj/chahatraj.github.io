@@ -14,7 +14,7 @@
   let skipped = 0;
   let index = 0;
 
-  fetch("data/biasdora-visual-pairs.json?v=20260925-visual1")
+  fetch("data/biasdora-visual-pairs.json?v=local-1")
     .then((response) => {
       if (!response.ok) throw new Error("Visual associations are not available yet.");
       return response.json();

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive experiments from Chahat Raj's research on social associations across languages and cultures.">
   <link rel="canonical" href="https://chahatraj.github.io/experiments.html">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=maple1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=maple1">
   <title>Papercade | Chahat Raj</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=20260927-home-doodle-scenes1">
+  <link rel="stylesheet" href="css/experiments.css?v=vignette-1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -77,6 +77,9 @@
         <button class="paper-choice is-active" type="button" data-paper="global" aria-pressed="true">Global Voices, Local Biases</button>
         <button class="paper-choice" type="button" data-paper="biasdora" aria-pressed="false">BiasDora</button>
         <button class="paper-choice" type="button" data-paper="reranking" aria-pressed="false">Explainable Reranking</button>
+        <button class="paper-choice" type="button" data-paper="talent" aria-pressed="false">Talent or Luck?</button>
+        <button class="paper-choice" type="button" data-paper="breaking" aria-pressed="false">Breaking Bias, Building Bridges</button>
+        <button class="paper-choice" type="button" data-paper="vignette" aria-pressed="false">Vignette</button>
       </nav>
       <div class="paper-stage">
       <div class="paper-panel" data-paper="global">
@@ -223,6 +226,41 @@
       </article>
       <p class="biasdora-rank-note" hidden role="status"></p>
       </div>
+      <div class="paper-panel" data-paper="vignette" hidden>
+        <article class="experiment-row">
+          <div class="experiment-info"><h2>Vignette</h2><a class="paper-link" href="https://arxiv.org/abs/2505.22897" target="_blank" rel="noopener noreferrer">Read the paper</a></div>
+          <div class="paper-preview vignette-preview" role="group" aria-label="Vignette preview">
+            <span class="preview-prompt">Who seems to enjoy this more?</span>
+            <div class="vignette-pair vignette-preview-pair"></div>
+          </div>
+          <div class="experiment-controls talent-controls"><span>Two people · choose your impression.</span><button class="play-link" id="vignette-play" type="button" disabled>Start playing</button></div>
+          <p class="load-status vignette-load-status" role="status" hidden></p>
+        </article>
+      </div>
+      <div class="paper-panel" data-paper="breaking" hidden>
+        <article class="experiment-row">
+          <div class="experiment-info"><h2>Breaking Bias, Building Bridges</h2><a class="paper-link" href="https://ojs.aaai.org/index.php/AIES/article/view/31715" target="_blank" rel="noopener noreferrer">Read the paper</a></div>
+          <div class="paper-preview talent-preview" role="group" aria-label="Social contact preview">
+            <span class="preview-prompt">Would you collaborate with deaf students on a project?</span>
+            <span class="preview-question">Imagine the situation. What would you do?</span>
+            <span class="preview-pair"><button class="preview-option" type="button" aria-pressed="false">Collaborate</button><button class="preview-option" type="button" aria-pressed="false">Don't collaborate</button></span>
+          </div>
+          <div class="experiment-controls talent-controls"><span>Short scenes · choose what you would do.</span><button class="play-link" id="breaking-play" type="button" disabled>Start playing</button></div>
+          <p class="load-status breaking-load-status" role="status" hidden></p>
+        </article>
+      </div>
+      <div class="paper-panel" data-paper="talent" hidden>
+        <article class="experiment-row talent-row">
+          <div class="experiment-info"><h2>Talent or Luck?</h2><a class="paper-link" href="https://aclanthology.org/2026.findings-acl.534/" target="_blank" rel="noopener noreferrer">Read the paper</a></div>
+          <div class="paper-preview talent-preview" role="group" aria-label="Attribution preview">
+            <span class="preview-prompt">Amina won a math competition.</span>
+            <span class="preview-question">What most likely explains the result?</span>
+            <span class="preview-pair"><button class="preview-option" type="button" aria-pressed="false">She practiced for months.</button><button class="preview-option" type="button" aria-pressed="false">She got lucky with the questions.</button></span>
+          </div>
+          <div class="experiment-controls talent-controls"><span>Single-Actor · choose what you think best explains each result.</span><button class="play-link" id="talent-play" type="button" disabled>Start playing</button></div>
+          <p class="load-status talent-load-status" role="status" hidden></p>
+        </article>
+      </div>
       </div>
     </section>
 
@@ -259,6 +297,68 @@
           <button class="action-button play-again-button">Play again</button>
           <button class="plain-button finish-button">Back to experiments</button>
         </div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog id="vignette-dialog" aria-labelledby="vignette-title">
+    <div class="dialog-page">
+      <button class="close-button vignette-close" type="button" aria-label="Close experiment">×</button>
+      <section class="screen vignette-game">
+        <div class="game-progress"><span class="vignette-progress-count"></span><i class="vignette-progress-bar"></i></div>
+        <h2 id="vignette-title" class="vignette-question"></h2>
+        <div class="vignette-pair vignette-game-pair" role="group" aria-label="Choose a person"></div>
+        <p class="vignette-image-status" role="status" hidden></p>
+        <div class="biasdora-navigation"><button class="stop-button vignette-skip" type="button">Skip</button><button class="stop-button vignette-stop" type="button">Stop here · see results</button></div>
+      </section>
+      <section class="screen vignette-results" hidden>
+        <p class="eyebrow">Your impressions</p>
+        <h2>The choices you made.</h2>
+        <p class="vignette-result-summary"></p>
+        <div class="vignette-result-list"></div>
+        <p class="result-note">These are impressions, not evidence of anyone’s traits or abilities, and not a personal bias score.</p>
+        <div class="result-actions"><button class="action-button vignette-again" type="button">Play again</button><button class="plain-button vignette-finish" type="button">Back to Papercade</button></div>
+      </section>
+    </div>
+  </dialog>
+  <dialog id="breaking-dialog" aria-labelledby="breaking-title">
+    <div class="dialog-page">
+      <button class="close-button breaking-close" type="button" aria-label="Close experiment">×</button>
+      <section class="screen talent-game breaking-game" id="breaking-title">
+        <div class="game-progress"><span class="breaking-progress-count"></span><i class="breaking-progress-bar"></i></div>
+        <p class="breaking-context" hidden></p>
+        <p class="talent-event breaking-event"></p>
+        <p class="prompt">Imagine this situation. What would you do?</p>
+        <div class="talent-options breaking-options" role="group" aria-label="Choose your action"></div>
+        <div class="biasdora-navigation"><button class="stop-button breaking-skip" type="button">Skip</button><button class="stop-button breaking-stop" type="button">Stop here · see results</button></div>
+      </section>
+      <section class="screen breaking-results" hidden>
+        <p class="step-label">Your choices</p><h2>When you chose contact.</h2>
+        <p class="breaking-result-summary"></p>
+        <div class="breaking-result-chart" aria-label="Contact choices by condition"></div>
+        <p class="privacy-note">These are choices in imagined situations, not a personal bias score. Nothing is saved or sent.</p>
+        <div class="result-actions"><button class="action-button breaking-again" type="button">Play again</button><button class="plain-button breaking-finish" type="button">Back to experiments</button></div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog id="talent-dialog" aria-labelledby="talent-title">
+    <div class="dialog-page">
+      <button class="close-button talent-close" type="button" aria-label="Close experiment">×</button>
+      <section class="screen talent-game" id="talent-title">
+        <div class="game-progress"><span class="talent-progress-count"></span><i class="talent-progress-bar"></i></div>
+        <p class="talent-event"></p>
+        <p class="prompt">What most likely explains this result?</p>
+        <div class="talent-options" role="group" aria-label="Choose the most likely reason"></div>
+        <div class="biasdora-navigation"><button class="stop-button talent-skip" type="button">Skip</button><button class="stop-button talent-stop" type="button">Stop here · see results</button></div>
+      </section>
+      <section class="screen talent-results" hidden>
+        <p class="step-label">Your attributions</p>
+        <h2>How you explained the outcomes.</h2>
+        <p class="talent-result-summary"></p>
+        <div class="talent-result-chart"></div>
+        <p class="privacy-note">These choices are descriptive, not a personal bias score. Nothing is saved or sent.</p>
+        <div class="result-actions"><button class="action-button talent-again" type="button">Play again</button><button class="plain-button talent-finish" type="button">Back to experiments</button></div>
       </section>
     </div>
   </dialog>
@@ -390,13 +490,16 @@
     </div>
   </dialog>
 
-  <script src="js/experiments.js?v=20260925-visual1" defer></script>
-  <script src="js/experiments-biasdora.js?v=20260925-visual1" defer></script>
-  <script src="js/experiments-biasdora-i2t.js?v=20260925-visual1" defer></script>
-  <script src="js/experiments-biasdora-visual.js?v=20260925-visual1" defer></script>
-  <script src="js/experiments-reranking.js?v=20260925-reranking2" defer></script>
-  <script src="js/experiments-modes.js?v=20260925-mode1" defer></script>
-  <script src="js/experiments-tour.js?v=20260927-biasdora-modes1" defer></script>
-  <script src="js/experiments-theme.js?v=20260927-footer-date1" defer></script>
+  <script src="js/experiments.js?v=all-tests-1" defer></script>
+  <script src="js/experiments-biasdora.js?v=full-t2t-1" defer></script>
+  <script src="js/experiments-biasdora-i2t.js?v=local-1" defer></script>
+  <script src="js/experiments-biasdora-visual.js?v=local-1" defer></script>
+  <script src="js/experiments-reranking.js?v=local-2" defer></script>
+  <script src="js/experiments-talent.js?v=7" defer></script>
+  <script src="js/experiments-breaking.js?v=2" defer></script>
+  <script src="js/experiments-vignette.js?v=1" defer></script>
+  <script src="js/experiments-modes.js?v=local-1" defer></script>
+  <script src="js/experiments-tour.js?v=biasdora-modes-1" defer></script>
+  <script src="js/experiments-theme.js?v=footer-date-1" defer></script>
 </body>
 </html>
