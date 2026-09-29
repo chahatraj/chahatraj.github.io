@@ -159,7 +159,7 @@
   [".purdah-close", ".purdah-finish"].forEach((selector) => dialog.querySelector(selector).addEventListener("click", () => dialog.close()));
   const preview = document.querySelector(".purdah-preview-input");
   preview.addEventListener("keydown", (event) => { if (event.key === "Enter" && !event.isComposing) { event.preventDefault(); preview.blur(); } });
-  fetch("js/experiments-purdah.json?v=1")
+  fetch("data/purdah.json?v=1")
     .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unavailable")))
     .then((manifest) => {
       data = manifest;

@@ -194,7 +194,7 @@
   dialog.querySelector(".vignette-stop").addEventListener("click", renderResults);
   [".vignette-close", ".vignette-finish"].forEach((selector) => dialog.querySelector(selector).addEventListener("click", () => dialog.close()));
   dialog.addEventListener("close", () => { generation += 1; });
-  fetch("js/experiments-vignette.json?v=1")
+  fetch("data/vignette.json?v=1")
     .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unavailable")))
     .then((manifest) => {
       if (manifest.pairs.length < 18 || manifest.traits.length < 6) throw new Error("Incomplete data");

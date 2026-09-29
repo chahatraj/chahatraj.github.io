@@ -30,7 +30,7 @@
     return copy;
   };
 
-  fetch("js/experiments-breaking.json?v=1")
+  fetch("data/breaking-bias.json?v=1")
     .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unavailable")))
     .then((data) => { rows = data.rows; play.disabled = false; })
     .catch(() => { const status = document.querySelector(".breaking-load-status"); status.textContent = "This game is unavailable right now."; status.hidden = false; });

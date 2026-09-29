@@ -32,7 +32,7 @@
     return label;
   }
 
-  fetch("js/experiments-talent.json?v=2")
+  fetch("data/talent-single.json?v=2")
     .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unavailable")))
     .then((json) => { data = json; play.disabled = false; })
     .catch(() => { status.textContent = "This game is unavailable right now."; status.hidden = false; });
