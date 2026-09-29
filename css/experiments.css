@@ -151,6 +151,29 @@ h1 { margin-bottom: .7rem; font-size: 48px; font-weight: 700; line-height: 1.15;
 dialog { width: 100%; max-width: none; height: 100vh; max-height: none; margin: 0; padding: 0; border: 0; background: var(--paper); color: var(--ink); }
 dialog::backdrop { background: rgba(64,56,50,.2); }
 .dialog-page { position: relative; display: grid; min-height: 100%; place-items: center; padding: 4rem 1.5rem; }
+.purdah-preview { gap: .75rem; }
+.purdah-preview .preview-prompt { font-size: clamp(27px, 3vw, 38px); }
+.purdah-preview-input { width: min(560px, 100%); margin-top: .5rem; padding: .65rem 0; border: 0; border-bottom: 2px solid color-mix(in srgb, var(--ink) 40%, transparent); border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 21px; }
+.purdah-preview-input::placeholder { color: var(--ink); opacity: .65; }
+.purdah-preview-input:focus, .purdah-preview-input:not(:placeholder-shown) { border-bottom-color: var(--ink); }
+.purdah-controls label { display: grid; gap: .4rem; width: min(270px, 100%); color: var(--muted); font-size: 14px; }
+.purdah-controls select { width: 100%; }
+.purdah-game .purdah-task-label { margin: 2rem 0 .75rem; }
+.purdah-game .purdah-identity { font-size: clamp(28px, 3.5vw, 42px); }
+.purdah-game .purdah-question { max-width: none; margin: 1rem 0 2rem; color: var(--muted); font-size: 20px; }
+.purdah-form { margin: 2rem 0; }
+.purdah-written-line, .purdah-writing-line { display: grid; grid-template-columns: 35px minmax(0, 1fr); align-items: baseline; gap: .8rem; padding: .75rem 0; }
+.purdah-written-line > span:first-child, .purdah-entry-number { color: var(--muted); font-size: 13px; }
+.purdah-written-line { color: var(--muted); font-size: 22px; overflow-wrap: anywhere; }
+#purdah-entry { width: 100%; padding: .25rem 0 .6rem; border: 0; border-bottom: 2px solid var(--line); border-radius: 0; outline: none; background: transparent; color: var(--ink); font: inherit; font-size: clamp(22px, 2.5vw, 28px); }
+#purdah-entry:focus { border-bottom-color: var(--theme-color); }
+#purdah-writing-hint { margin: .6rem 0 0 48px; color: var(--muted); font-size: 13px; }
+.purdah-result-list { display: grid; gap: 1rem; margin: 2rem 0; }
+.purdah-result-card { padding: 1.4rem; border-radius: 6px; background: color-mix(in srgb, var(--theme-color) 12%, var(--paper)); }
+.purdah-result-card h3 { margin: 0; font-size: 22px; }
+.purdah-result-task { margin: .7rem 0; color: var(--muted); font-size: 14px; }
+.purdah-result-card ol { margin: 0; padding-inline-start: 1.4rem; }
+.purdah-result-card li { margin: .5rem 0; overflow-wrap: anywhere; }
 .vignette-preview { gap: 1rem; }
 .vignette-preview .preview-prompt { font-size: clamp(22px, 2.3vw, 30px); }
 .vignette-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }

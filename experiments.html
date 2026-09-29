@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/experiments.css?v=vignette-1">
+  <link rel="stylesheet" href="css/experiments.css?v=purdah-1">
   <script>
     (function () {
       const colors = ['#9582c4', '#ce5c5c', '#75c6d9', '#de5d83', '#008080', '#949efb', '#81a55f'];
@@ -80,6 +80,7 @@
         <button class="paper-choice" type="button" data-paper="talent" aria-pressed="false">Talent or Luck?</button>
         <button class="paper-choice" type="button" data-paper="breaking" aria-pressed="false">Breaking Bias, Building Bridges</button>
         <button class="paper-choice" type="button" data-paper="vignette" aria-pressed="false">Vignette</button>
+        <button class="paper-choice" type="button" data-paper="purdah" aria-pressed="false">Purdah and Patriarchy</button>
       </nav>
       <div class="paper-stage">
       <div class="paper-panel" data-paper="global">
@@ -226,6 +227,18 @@
       </article>
       <p class="biasdora-rank-note" hidden role="status"></p>
       </div>
+      <div class="paper-panel" data-paper="purdah" hidden>
+        <article class="experiment-row">
+          <div class="experiment-info"><h2>Purdah and Patriarchy</h2><a class="paper-link" href="https://arxiv.org/abs/2505.18466" target="_blank" rel="noopener noreferrer">Read the paper</a></div>
+          <div class="paper-preview purdah-preview" role="group" aria-label="Imagine a day preview">
+            <span class="preview-prompt">Imagine their day.</span>
+            <span class="preview-question">A single Hindu man with one child</span>
+            <input class="purdah-preview-input" type="text" maxlength="120" aria-label="Try writing an everyday activity" placeholder="One thing on their to-do list…" autocomplete="off">
+          </div>
+          <div class="experiment-controls talent-controls purdah-controls"><label for="purdah-language">Write in<select id="purdah-language" aria-label="Response language"></select></label><button class="play-link" id="purdah-play" type="button" disabled>Start playing</button></div>
+          <p class="load-status purdah-load-status" role="status" hidden></p>
+        </article>
+      </div>
       <div class="paper-panel" data-paper="vignette" hidden>
         <article class="experiment-row">
           <div class="experiment-info"><h2>Vignette</h2><a class="paper-link" href="https://arxiv.org/abs/2505.22897" target="_blank" rel="noopener noreferrer">Read the paper</a></div>
@@ -301,6 +314,30 @@
     </div>
   </dialog>
 
+  <dialog id="purdah-dialog" aria-labelledby="purdah-title">
+    <div class="dialog-page">
+      <button class="close-button purdah-close" type="button" aria-label="Close experiment">×</button>
+      <section class="screen purdah-game">
+        <div class="game-progress"><span class="purdah-progress-count"></span><i class="purdah-progress-bar"></i></div>
+        <p class="step-label purdah-task-label"></p>
+        <h2 id="purdah-title" class="purdah-identity"></h2>
+        <p class="purdah-question"></p>
+        <form class="purdah-form" autocomplete="off">
+          <div class="purdah-written"></div>
+          <div class="purdah-writing-line"><span class="purdah-entry-number" aria-hidden="true"></span><label class="sr-only" for="purdah-entry">Your entry</label><input id="purdah-entry" type="text" maxlength="120" enterkeyhint="next" aria-describedby="purdah-writing-hint"></div>
+          <p id="purdah-writing-hint">Type, then press Enter.</p>
+        </form>
+        <div class="biasdora-navigation"><button class="stop-button purdah-skip" type="button">Skip</button><button class="stop-button purdah-stop" type="button">Stop here · see results</button></div>
+      </section>
+      <section class="screen purdah-results" hidden>
+        <p class="step-label">The lives you imagined</p>
+        <h2>Your everyday stories.</h2>
+        <p class="purdah-result-summary"></p>
+        <div class="purdah-result-list"></div>
+        <div class="result-actions"><button class="action-button purdah-again" type="button">Play again</button><button class="plain-button purdah-finish" type="button">Back to Papercade</button></div>
+      </section>
+    </div>
+  </dialog>
   <dialog id="vignette-dialog" aria-labelledby="vignette-title">
     <div class="dialog-page">
       <button class="close-button vignette-close" type="button" aria-label="Close experiment">×</button>
@@ -498,6 +535,7 @@
   <script src="js/experiments-talent.js?v=7" defer></script>
   <script src="js/experiments-breaking.js?v=2" defer></script>
   <script src="js/experiments-vignette.js?v=1" defer></script>
+  <script src="js/experiments-purdah.js?v=1" defer></script>
   <script src="js/experiments-modes.js?v=local-1" defer></script>
   <script src="js/experiments-tour.js?v=biasdora-modes-1" defer></script>
   <script src="js/experiments-theme.js?v=footer-date-1" defer></script>
