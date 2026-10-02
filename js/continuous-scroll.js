@@ -171,6 +171,7 @@
     var count = root.querySelector('.publication-search-count');
     var empty = root.querySelector('.publication-empty');
     var selectedTitlePrefixes = [
+      'debias it yourself: teaching llms cognitive bias',
       'vignette: socially grounded bias evaluation',
       'talent or luck? evaluating attribution bias',
       'knowing bias, doing better',
