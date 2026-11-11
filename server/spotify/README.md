@@ -33,3 +33,21 @@ The GitHub Pages site remains the website frontend.
 Run checks: `node --test tests/spotify-now-playing.test.mjs`.
 Reauthorize after revoking the app or replacing the Spotify account. Clear the
 private bucket's `spotify-refresh-token` object when replacing credentials.
+
+## Privacy control
+
+Open https://chahat-spotify-now-playing.satinybugle3.chatgpt.site/control and
+sign in with the owner ChatGPT account. `SPOTIFY_OWNER_EMAIL` restricts
+control to that account using Sites gateway identity. The public endpoint
+never accepts client-provided sharing flags.
+
+Sharing defaults OFF and is stored privately in the R2 `spotify-sharing`
+object. “Share for 1 hour” enables it for one hour; “Stop sharing” disables
+it. Every public request checks the setting before and after contacting
+Spotify. Missing/expired settings or storage errors reveal no track data.
+The control API requires owner authentication, same-origin JSON writes,
+and no-cache responses. No track history is stored.
+
+Existing visitor tabs hide the line on their next refresh (normally within
+15 seconds, up to roughly 25 seconds with an in-flight request). Information
+already seen or copied while sharing was on cannot be recalled.
