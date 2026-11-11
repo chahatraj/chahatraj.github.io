@@ -1,2 +1,8 @@
 .DS_Store
 /website-workbench/
+
+/server/spotify/.dev.vars
+/server/spotify/.wrangler/
+/server/spotify/node_modules/
+
+/server/spotify/__pycache__/
