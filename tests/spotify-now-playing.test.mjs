@@ -69,7 +69,7 @@ test('frontend safely displays track text and opens the Spotify track', async ()
   const { link, label } = await frontend({ playing: true, title: '<script>song</script>', artist: 'Artist',
     url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() });
   assert.equal(link.hidden, false);
-  assert.equal(label.textContent, 'listening to <script>song</script> — Artist');
+  assert.equal(label.textContent, 'listening to <script>song</script>');
   assert.equal(link.href, 'https://open.spotify.com/track/abc123');
 });
 test('frontend hides stale, paused, malformed and failed responses', async () => {

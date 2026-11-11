@@ -31,14 +31,13 @@
       if (current !== revision) return;
       const url = new URL(track.url || 'https://invalid.local');
       if (!track.playing || typeof track.title !== 'string' || !track.title.trim() ||
-          typeof track.artist !== 'string' || !track.artist.trim() ||
           url.origin !== 'https://open.spotify.com' || !/^\/track\/[A-Za-z0-9]+$/.test(url.pathname) ||
           !Number.isFinite(track.checkedAt) || Math.abs(Date.now() - track.checkedAt) > 45000) {
         hide();
       } else {
-        label.textContent = `listening to ${track.title} — ${track.artist}`;
+        label.textContent = `listening to ${track.title}`;
         link.href = url.href;
-        link.setAttribute('aria-label', `Listen to ${track.title} by ${track.artist} on Spotify (opens in a new tab)`);
+        link.setAttribute('aria-label', `Listen to ${track.title} on Spotify (opens in a new tab)`);
         link.hidden = false;
         if (Number.isFinite(track.remainingMs)) delay = Math.min(delay, Math.max(2000, track.remainingMs));
       }

@@ -1,23 +1,24 @@
 .home-profile .spotify-now-playing[hidden] { display: none !important; }
 .home-profile .spotify-now-playing {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   width: 100%;
   margin: 2px 0 0;
   padding: 6px 2px;
-  color: #675f56;
-  font-size: 12px;
+  color: #867e74;
+  font-size: 11px;
+  font-weight: 400;
   font-style: italic;
   line-height: 1.5;
-  text-align: left;
+  text-align: center;
   text-decoration: none;
   border-radius: 4px;
 }
-.spotify-now-playing svg { flex: 0 0 20px; width: 20px; height: 20px; margin-top: 1px; fill: currentColor; }
+.spotify-now-playing svg { flex: 0 0 16px; width: 16px; height: 16px; fill: currentColor; }
 .spotify-now-playing [data-spotify-label] { min-width: 0; overflow-wrap: anywhere; }
-.spotify-now-playing .spotify-arrow { flex: 0 0 auto; font-style: normal; }
 .home-profile .spotify-now-playing:hover { color: #267841; }
 .home-profile .spotify-now-playing:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-body.dark-theme .home-profile .spotify-now-playing { color: #bdb5aa; }
+body.dark-theme .home-profile .spotify-now-playing { color: #948e85; }
 body.dark-theme .home-profile .spotify-now-playing:hover { color: #79c993; }
