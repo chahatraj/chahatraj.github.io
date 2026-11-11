@@ -41,10 +41,10 @@ sign in with the owner ChatGPT account. `SPOTIFY_OWNER_EMAIL` restricts
 control to that account using Sites gateway identity. The public endpoint
 never accepts client-provided sharing flags.
 
-Sharing defaults OFF and is stored privately in the R2 `spotify-sharing`
-object. “Share for 1 hour” enables it for one hour; “Stop sharing” disables
-it. Every public request checks the setting before and after contacting
-Spotify. Missing/expired settings or storage errors reveal no track data.
+Sharing defaults ON and is stored privately in the R2 `spotify-sharing`
+object. “Start sharing” enables it until you choose “Stop sharing”. There is no
+automatic expiry; stopping persists until you explicitly start again. Every public request checks the setting before and after contacting
+Spotify. A missing setting uses the ON default; storage errors reveal no track data.
 The control API requires owner authentication, same-origin JSON writes,
 and no-cache responses. No track history is stored.
 

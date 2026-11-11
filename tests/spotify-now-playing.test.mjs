@@ -104,8 +104,8 @@ function privateEnv(initial) {
     put: async (key, value) => { if (key === 'spotify-sharing') setting = JSON.parse(value); }
   } };
 }
-test('sharing defaults off, expired sharing stays off, and no Spotify request is made', async () => {
-  for (const initial of [undefined, {enabled:false,expiresAt:Date.now()+100000}, {enabled:true,expiresAt:Date.now()-1}]) {
+test('explicitly stopped sharing never contacts Spotify', async () => {
+  for (const initial of [{enabled:false}, {enabled:false,expiresAt:Date.now()+100000}]) {
     const handle = createHandler(async () => { assert.fail('Must not contact Spotify while private'); });
     const result = await (await handle(request(), privateEnv(initial))).json();
     assert.equal(result.playing, false);
@@ -122,13 +122,13 @@ test('anonymous and other signed-in users cannot read or change sharing', async 
     assert.ok([401,403].includes(response.status));
   }
 });
-test('owner toggle persists, expires in an hour, and off suppresses a cached track', async () => {
+test('owner toggle persists without expiry and off suppresses a cached track', async () => {
   const environment = privateEnv();
   const handle = createHandler(fakeSpotify(playback));
   const change = enabled => handle(new Request('https://example.com/sharing', {method:'POST',headers:ownerHeaders,body:JSON.stringify({enabled})}), environment);
   const enabled = await (await change(true)).json();
   assert.equal(enabled.enabled, true);
-  assert.ok(enabled.expiresAt-Date.now() <= 3600000);
+  assert.equal(enabled.expiresAt, undefined);
   assert.equal((await (await handle(request(),environment)).json()).playing,true);
   assert.equal((await (await change(false)).json()).enabled,false);
   const hidden = await (await handle(request(),environment)).json();
@@ -145,4 +145,11 @@ test('storage failure fails closed without revealing cached playback', async () 
   const handle=createHandler(fakeSpotify(playback));
   const response=await handle(request(),{...env,BUCKET:{get:async()=>{throw Error('down');}}});
   assert.equal((await response.json()).playing,false);
+});
+
+test('sharing defaults on and remains on regardless of old expiry timestamps', async () => {
+  for (const initial of [undefined, {enabled:true}, {enabled:true,expiresAt:Date.now()-10000000}]) {
+    const response = await createHandler(fakeSpotify(playback))(request(), privateEnv(initial));
+    assert.equal((await response.json()).playing, true);
+  }
 });
