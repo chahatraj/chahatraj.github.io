@@ -1,5 +1,5 @@
-.hero-wrap .text .home-bio-copy p.home-bio.home-music-note {
-  margin-top: 0.35rem;
+.hero-wrap .text .home-bio-copy p.home-bio + p.home-bio.home-music-note {
+  margin-top: 0.25rem;
 }
 .home-music-note .spotify-icon {
   width: 16px;
