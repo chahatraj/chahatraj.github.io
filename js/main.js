@@ -87,7 +87,7 @@ window.initializeDoodles = function(root) {
     svg.innerHTML = '<path d="' + drawings[kind] + '" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>';
     return svg;
   }
-  root.querySelectorAll('.home-personal-note').forEach(function(el) {
+  root.querySelectorAll('.home-poetry-note').forEach(function(el) {
     var old = el.querySelector('.personal-doodle');
     if (old) old.remove();
     el.appendChild(icon('quill'));
