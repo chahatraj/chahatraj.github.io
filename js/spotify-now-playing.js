@@ -35,7 +35,7 @@
           !Number.isFinite(track.checkedAt) || Math.abs(Date.now() - track.checkedAt) > 45000) {
         hide();
       } else {
-        label.textContent = `listening to ${track.title}`;
+        label.textContent = `Listening to ${track.title} right now.`;
         link.href = url.href;
         link.setAttribute('aria-label', `Listen to ${track.title} on Spotify (opens in a new tab)`);
         link.hidden = false;
