@@ -1,8 +1,30 @@
+.hero-wrap .text .home-bio-copy p.home-bio.home-music-note {
+  margin-top: 0.35rem;
+}
+.home-music-note .spotify-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
 .spotify-now-playing[hidden] { display: none !important; }
-.home-bio .spotify-now-playing {
+.home-bio a.spotify-now-playing {
   display: inline;
   overflow-wrap: anywhere;
   text-decoration: none;
 }
-.home-bio .spotify-now-playing:hover { opacity: 0.8; }
+.home-bio a.spotify-now-playing[href] {
+  border-bottom: 0;
+  color: inherit !important;
+  font-weight: inherit;
+}
+.spotify-now-playing [data-spotify-label] {
+  color: #77716b;
+  border-bottom: 1px solid #aaa39c;
+}
+body.dark-theme .spotify-now-playing [data-spotify-label] {
+  color: #b2aba2;
+  border-bottom-color: #77716b;
+}
+.home-bio .spotify-now-playing:hover [data-spotify-label] { opacity: 0.8; }
 .home-bio .spotify-now-playing:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
