@@ -56,26 +56,33 @@ test('honors Spotify rate-limit backoff', async () => {
   assert.equal(calls, 2);
 });
 async function frontend(data, reject = false, reducedMotion = false) {
-  const part = text => ({ textContent: text, replacements: 0, children: [], replaceChildren(...children) {
+  const part = text => ({ _text: text, replacements: 0, children: [],
+    get textContent() { return this._text; },
+    set textContent(value) { this._text = value; this.children = []; },
+    replaceChildren(...children) {
     this.children = children;
-    this.textContent = children.map(child => child.textContent).join('');
+    this._text = children.map(child => child.textContent).join('');
     ++this.replacements;
   } });
   const label = part('');
   const parts = [part('Listening to '), label, part(' right now.')];
   const copy = { querySelectorAll: () => parts };
   const events = {};
+  const timeouts = new Map();
+  let timeoutId = 0;
   const link = { hidden: true, dataset: { endpoint: 'https://example.com/now-playing' },
     querySelector: selector => selector === '[data-spotify-label]' ? label : copy,
     setAttribute(k, v) { this[k] = v; }, removeAttribute(k) { delete this[k]; } };
-  const context = { URL, Date, Number, Math, AbortController, clearTimeout() {}, setTimeout() { return 1; },
+  const context = { URL, Date, Number, Math, AbortController,
+    clearTimeout(id) { timeouts.delete(id); },
+    setTimeout(callback, delay) { timeouts.set(++timeoutId, { callback, delay }); return timeoutId; },
     document: { hidden: false, querySelector: () => link, addEventListener() {},
       createElement: () => ({ style: { setProperty() {} } }) },
     window: { matchMedia: () => ({ matches: reducedMotion }), addEventListener(name, callback) { events[name] = callback; } },
     fetch: async () => { if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
   vm.runInNewContext(readFileSync('js/spotify-now-playing.js', 'utf8'), context);
   await new Promise(resolve => setImmediate(resolve));
-  return { link, label, parts, async refresh(next = data) {
+  return { link, label, parts, timeouts, async refresh(next = data) {
     data = next;
     events.pageshow();
     await new Promise(resolve => setImmediate(resolve));
@@ -93,6 +100,22 @@ test('typing runs once per track, preserves graphemes and respects reduced motio
   const still = await frontend(track, false, true);
   assert.equal(still.label.textContent, track.title);
   assert.equal(still.label.replacements, 0);
+});
+test('typing completion restores the complete plain sentence and hiding cancels cleanup', async () => {
+  const track = { playing: true, title: 'Mere Kol', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
+  const view = await frontend(track);
+  const cleanup = [...view.timeouts.values()].find(timeout => timeout.delay < 8000);
+  assert.ok(cleanup);
+  cleanup.callback();
+  assert.equal(view.parts.map(part => part.textContent).join(''), 'Listening to Mere Kol right now.');
+  assert.equal(view.link['aria-label'], 'Listening to Mere Kol right now. Open on Spotify (opens in a new tab)');
+  assert.ok(view.parts.every(part => part.children.length === 0));
+  await view.refresh({ ...track, title: 'Next song' });
+  assert.ok(view.parts.some(part => part.children.length));
+  await view.refresh({ playing: false });
+  assert.equal(view.link.hidden, true);
+  assert.ok(view.parts.every(part => part.children.length === 0));
+  assert.ok([...view.timeouts.values()].every(timeout => timeout.delay >= 8000));
 });
 test('frontend safely displays track text and opens the Spotify track', async () => {
   const { link, label } = await frontend({ playing: true, title: '<script>song</script>', artist: 'Artist',
