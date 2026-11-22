@@ -28,12 +28,12 @@
     typingTimer = setTimeout(finishTyping, position * 45 + 1200);
   }
 
-  function showSilence() {
+  function resetPlayback(title = 'silence') {
     finishTyping();
     link.hidden = false;
     link.removeAttribute('href');
     link.removeAttribute('aria-label');
-    label.textContent = 'silence';
+    label.textContent = title;
   }
 
   async function update() {
@@ -56,7 +56,7 @@
       if (!track.playing || typeof track.title !== 'string' || !track.title.trim() ||
           url.origin !== 'https://open.spotify.com' || !/^\/track\/[A-Za-z0-9]+$/.test(url.pathname) ||
           !Number.isFinite(track.checkedAt) || Math.abs(Date.now() - track.checkedAt) > 45000) {
-        showSilence();
+        resetPlayback();
       } else {
         const changed = link.hidden || link.href !== url.href || label.textContent !== track.title;
         if (changed) label.textContent = track.title;
@@ -67,7 +67,7 @@
         if (Number.isFinite(track.remainingMs)) delay = Math.min(delay, Math.max(2000, track.remainingMs));
       }
     } catch {
-      if (current === revision) showSilence();
+      if (current === revision) resetPlayback();
     } finally {
       clearTimeout(timeout);
       if (current === revision && !document.hidden) timer = setTimeout(update, delay);
@@ -78,14 +78,14 @@
     ++revision;
     clearTimeout(timer);
     controller?.abort();
-    showSilence();
+    resetPlayback('');
     if (!document.hidden) update();
   });
   window.addEventListener('pagehide', () => {
     ++revision;
     clearTimeout(timer);
     controller?.abort();
-    showSilence();
+    resetPlayback('');
   });
   window.addEventListener('pageshow', update);
   update();

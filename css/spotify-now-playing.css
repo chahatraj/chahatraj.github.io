@@ -23,6 +23,11 @@
   color: #77716b;
   border-bottom: 1px solid #aaa39c;
 }
+.spotify-now-playing [data-spotify-label]:empty::before {
+  content: '\00a0';
+  display: inline-block;
+  width: 6ch;
+}
 body.dark-theme .spotify-now-playing [data-spotify-label] {
   color: #b2aba2;
   border-bottom-color: #77716b;

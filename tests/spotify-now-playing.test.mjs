@@ -55,7 +55,7 @@ test('honors Spotify rate-limit backoff', async () => {
   await handle(request(), env); await handle(request(), env);
   assert.equal(calls, 2);
 });
-async function frontend(data, reject = false, reducedMotion = false) {
+async function frontend(data, reject = false, reducedMotion = false, pending) {
   const part = text => ({ _text: text, replacements: 0, children: [],
     get textContent() { return this._text; },
     set textContent(value) { this._text = value; this.children = []; },
@@ -64,7 +64,7 @@ async function frontend(data, reject = false, reducedMotion = false) {
     this._text = children.map(child => child.textContent).join('');
     ++this.replacements;
   } });
-  const label = part('silence');
+  const label = part('');
   const parts = [part('Listening to '), label, part(' right now.')];
   const copy = { querySelectorAll: () => parts };
   const events = {};
@@ -79,10 +79,10 @@ async function frontend(data, reject = false, reducedMotion = false) {
     document: { hidden: false, querySelector: () => link, addEventListener() {},
       createElement: () => ({ style: { setProperty() {} } }) },
     window: { matchMedia: () => ({ matches: reducedMotion }), addEventListener(name, callback) { events[name] = callback; } },
-    fetch: async () => { if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
+    fetch: async () => { if (pending) await pending; if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
   vm.runInNewContext(readFileSync('js/spotify-now-playing.js', 'utf8'), context);
   await new Promise(resolve => setImmediate(resolve));
-  return { link, label, parts, timeouts, async refresh(next = data) {
+  return { link, label, parts, timeouts, events, async refresh(next = data) {
     data = next;
     events.pageshow();
     await new Promise(resolve => setImmediate(resolve));
@@ -161,13 +161,30 @@ test('frontend shows silence without a stale track link for paused, malformed, s
   assert.equal(failed.label.textContent, 'silence');
   assert.equal(failed.link.href, undefined);
 });
-test('HTML supplies an accessible silence fallback without JavaScript', () => {
+test('HTML supplies an accessible blank before playback is known', () => {
   const html = readFileSync('index.html', 'utf8');
   const link = html.match(/<a class="spotify-now-playing"[^>]*>(.*?)<\/a>/s);
   assert.ok(link);
   assert.doesNotMatch(link[0].split('>')[0], /\bhidden\b|\bhref=/);
-  assert.match(link[1], /data-spotify-label[^>]*>silence<\/span>/);
+  assert.match(link[1], /data-spotify-label[^>]*><\/span>/);
   assert.doesNotMatch(link[1], /data-spotify-copy aria-hidden/);
+});
+test('pending playback stays blank before a song arrives and after leaving the page', async () => {
+  let resolve;
+  const pending = new Promise(done => { resolve = done; });
+  const track = { playing: true, title: 'Mere Kol', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
+  const view = await frontend(track, false, false, pending);
+  assert.equal(view.label.textContent, '');
+  assert.equal(view.link.hidden, false);
+  assert.equal(view.link.href, undefined);
+  resolve();
+  await new Promise(done => setImmediate(done));
+  assert.equal(view.label.textContent, 'Mere Kol');
+  assert.equal(view.link.href, track.url);
+  view.events.pagehide();
+  assert.equal(view.label.textContent, '');
+  assert.equal(view.link.hidden, false);
+  assert.equal(view.link.href, undefined);
 });
 test('PKCE refresh works without a client secret and persists rotated refresh tokens privately', async () => {
   let saved;
