@@ -104,15 +104,28 @@ test('typing runs once per track, preserves graphemes and respects reduced motio
 test('typing completion restores the complete plain sentence and hiding cancels cleanup', async () => {
   const track = { playing: true, title: 'Mere Kol', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
   const view = await frontend(track);
+  const assertSurroundingText = () => {
+    assert.equal(view.parts[0].textContent, 'Listening to ');
+    assert.equal(view.parts[2].textContent, ' right now.');
+    for (const part of [view.parts[0], view.parts[2]]) {
+      assert.equal(part.children.length, 0);
+      assert.equal(part.replacements, 0);
+    }
+  };
+  assertSurroundingText();
+  assert.equal(view.label.children.length, 8);
   const cleanup = [...view.timeouts.values()].find(timeout => timeout.delay < 8000);
   assert.ok(cleanup);
   cleanup.callback();
+  assertSurroundingText();
   assert.equal(view.parts.map(part => part.textContent).join(''), 'Listening to Mere Kol right now.');
   assert.equal(view.link['aria-label'], 'Listening to Mere Kol right now. Open on Spotify (opens in a new tab)');
   assert.ok(view.parts.every(part => part.children.length === 0));
   await view.refresh({ ...track, title: 'Next song' });
+  assertSurroundingText();
   assert.ok(view.parts.some(part => part.children.length));
   await view.refresh({ playing: false });
+  assertSurroundingText();
   assert.equal(view.link.hidden, true);
   assert.ok(view.parts.every(part => part.children.length === 0));
   assert.ok([...view.timeouts.values()].every(timeout => timeout.delay >= 8000));

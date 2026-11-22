@@ -42,7 +42,7 @@ body.dark-theme .spotify-now-playing [data-spotify-label] {
   border-right: 1px solid currentColor;
   animation: spotify-caret 45ms step-end var(--spotify-delay) both;
 }
-[data-spotify-text]:last-child .spotify-character:last-child::after {
+[data-spotify-label] .spotify-character:last-child::after {
   animation-duration: 1200ms;
   animation-name: spotify-caret-finish;
 }

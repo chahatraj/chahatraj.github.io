@@ -2,7 +2,6 @@
   const link = document.querySelector('[data-spotify-now-playing]');
   if (!link || !link.dataset.endpoint) return;
   const label = link.querySelector('[data-spotify-label]');
-  const copy = link.querySelector('[data-spotify-copy]');
   let timer;
   let typingTimer;
   let controller;
@@ -10,27 +9,22 @@
 
   function finishTyping() {
     clearTimeout(typingTimer);
-    if (!copy) return;
-    for (const part of copy.querySelectorAll('[data-spotify-text]')) {
-      part.textContent = part.textContent;
-    }
+    label.textContent = label.textContent;
   }
 
-  function typeLine() {
+  function typeSong() {
     finishTyping();
-    if (!copy || !Intl.Segmenter || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!Intl.Segmenter || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let position = 0;
     const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
-    for (const part of copy.querySelectorAll('[data-spotify-text]')) {
-      const characters = Array.from(segmenter.segment(part.textContent), item => {
-        const character = document.createElement('span');
-        character.className = 'spotify-character';
-        character.textContent = item.segment;
-        character.style.setProperty('--spotify-delay', `${position++ * 45}ms`);
-        return character;
-      });
-      part.replaceChildren(...characters);
-    }
+    const characters = Array.from(segmenter.segment(label.textContent), item => {
+      const character = document.createElement('span');
+      character.className = 'spotify-character';
+      character.textContent = item.segment;
+      character.style.setProperty('--spotify-delay', `${position++ * 45}ms`);
+      return character;
+    });
+    label.replaceChildren(...characters);
     typingTimer = setTimeout(finishTyping, position * 45 + 1200);
   }
 
@@ -69,7 +63,7 @@
         link.href = url.href;
         link.setAttribute('aria-label', `Listening to ${track.title} right now. Open on Spotify (opens in a new tab)`);
         link.hidden = false;
-        if (changed) typeLine();
+        if (changed) typeSong();
         if (Number.isFinite(track.remainingMs)) delay = Math.min(delay, Math.max(2000, track.remainingMs));
       }
     } catch {
