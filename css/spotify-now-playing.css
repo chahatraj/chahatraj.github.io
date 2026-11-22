@@ -28,3 +28,37 @@ body.dark-theme .spotify-now-playing [data-spotify-label] {
 }
 .home-bio .spotify-now-playing:hover [data-spotify-label] { opacity: 0.8; }
 .home-bio .spotify-now-playing:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.spotify-character {
+  position: relative;
+  animation: spotify-type 1ms step-end var(--spotify-delay) both;
+}
+.spotify-character::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 0.1em;
+  height: 1em;
+  border-right: 1px solid currentColor;
+  animation: spotify-caret 45ms step-end var(--spotify-delay) both;
+}
+[data-spotify-text]:last-child .spotify-character:last-child::after {
+  animation-duration: 1200ms;
+  animation-name: spotify-caret-finish;
+}
+@keyframes spotify-type {
+  from { visibility: hidden; }
+  to { visibility: visible; }
+}
+@keyframes spotify-caret {
+  0%, 100% { opacity: 0; }
+  1%, 99% { opacity: 0.5; }
+}
+@keyframes spotify-caret-finish {
+  1%, 40% { opacity: 0.5; }
+  0%, 20%, 60%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spotify-character { animation: none; }
+  .spotify-character::after { display: none; }
+}

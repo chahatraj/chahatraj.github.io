@@ -55,17 +55,45 @@ test('honors Spotify rate-limit backoff', async () => {
   await handle(request(), env); await handle(request(), env);
   assert.equal(calls, 2);
 });
-async function frontend(data, reject = false) {
-  const label = { textContent: '' };
+async function frontend(data, reject = false, reducedMotion = false) {
+  const part = text => ({ textContent: text, replacements: 0, children: [], replaceChildren(...children) {
+    this.children = children;
+    this.textContent = children.map(child => child.textContent).join('');
+    ++this.replacements;
+  } });
+  const label = part('');
+  const parts = [part('Listening to '), label, part(' right now.')];
+  const copy = { querySelectorAll: () => parts };
+  const events = {};
   const link = { hidden: true, dataset: { endpoint: 'https://example.com/now-playing' },
-    querySelector: () => label, setAttribute(k, v) { this[k] = v; }, removeAttribute(k) { delete this[k]; } };
+    querySelector: selector => selector === '[data-spotify-label]' ? label : copy,
+    setAttribute(k, v) { this[k] = v; }, removeAttribute(k) { delete this[k]; } };
   const context = { URL, Date, Number, Math, AbortController, clearTimeout() {}, setTimeout() { return 1; },
-    document: { hidden: false, querySelector: () => link, addEventListener() {} }, window: { addEventListener() {} },
+    document: { hidden: false, querySelector: () => link, addEventListener() {},
+      createElement: () => ({ style: { setProperty() {} } }) },
+    window: { matchMedia: () => ({ matches: reducedMotion }), addEventListener(name, callback) { events[name] = callback; } },
     fetch: async () => { if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
   vm.runInNewContext(readFileSync('js/spotify-now-playing.js', 'utf8'), context);
   await new Promise(resolve => setImmediate(resolve));
-  return { link, label };
+  return { link, label, parts, async refresh(next = data) {
+    data = next;
+    events.pageshow();
+    await new Promise(resolve => setImmediate(resolve));
+  } };
 }
+test('typing runs once per track, preserves graphemes and respects reduced motion', async () => {
+  const track = { playing: true, title: 'Cafe\u0301', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
+  const view = await frontend(track);
+  assert.equal(view.label.children.length, 4);
+  assert.equal(view.label.replacements, 1);
+  await view.refresh();
+  assert.equal(view.label.replacements, 1);
+  await view.refresh({ ...track, title: 'Next song', url: 'https://open.spotify.com/track/def456' });
+  assert.equal(view.label.replacements, 2);
+  const still = await frontend(track, false, true);
+  assert.equal(still.label.textContent, track.title);
+  assert.equal(still.label.replacements, 0);
+});
 test('frontend safely displays track text and opens the Spotify track', async () => {
   const { link, label } = await frontend({ playing: true, title: '<script>song</script>', artist: 'Artist',
     url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() });

@@ -2,9 +2,26 @@
   const link = document.querySelector('[data-spotify-now-playing]');
   if (!link || !link.dataset.endpoint) return;
   const label = link.querySelector('[data-spotify-label]');
+  const copy = link.querySelector('[data-spotify-copy]');
   let timer;
   let controller;
   let revision = 0;
+
+  function typeLine() {
+    if (!copy || !Intl.Segmenter || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let position = 0;
+    const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+    for (const part of copy.querySelectorAll('[data-spotify-text]')) {
+      const characters = Array.from(segmenter.segment(part.textContent), item => {
+        const character = document.createElement('span');
+        character.className = 'spotify-character';
+        character.textContent = item.segment;
+        character.style.setProperty('--spotify-delay', `${position++ * 45}ms`);
+        return character;
+      });
+      part.replaceChildren(...characters);
+    }
+  }
 
   function hide() {
     link.hidden = true;
@@ -35,10 +52,12 @@
           !Number.isFinite(track.checkedAt) || Math.abs(Date.now() - track.checkedAt) > 45000) {
         hide();
       } else {
-        label.textContent = track.title;
+        const changed = link.hidden || link.href !== url.href || label.textContent !== track.title;
+        if (changed) label.textContent = track.title;
         link.href = url.href;
         link.setAttribute('aria-label', `Listen to ${track.title} on Spotify (opens in a new tab)`);
         link.hidden = false;
+        if (changed) typeLine();
         if (Number.isFinite(track.remainingMs)) delay = Math.min(delay, Math.max(2000, track.remainingMs));
       }
     } catch {
