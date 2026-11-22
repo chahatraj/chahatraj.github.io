@@ -64,13 +64,13 @@ async function frontend(data, reject = false, reducedMotion = false) {
     this._text = children.map(child => child.textContent).join('');
     ++this.replacements;
   } });
-  const label = part('');
+  const label = part('silence');
   const parts = [part('Listening to '), label, part(' right now.')];
   const copy = { querySelectorAll: () => parts };
   const events = {};
   const timeouts = new Map();
   let timeoutId = 0;
-  const link = { hidden: true, dataset: { endpoint: 'https://example.com/now-playing' },
+  const link = { hidden: false, dataset: { endpoint: 'https://example.com/now-playing' },
     querySelector: selector => selector === '[data-spotify-label]' ? label : copy,
     setAttribute(k, v) { this[k] = v; }, removeAttribute(k) { delete this[k]; } };
   const context = { URL, Date, Number, Math, AbortController,
@@ -101,7 +101,7 @@ test('typing runs once per track, preserves graphemes and respects reduced motio
   assert.equal(still.label.textContent, track.title);
   assert.equal(still.label.replacements, 0);
 });
-test('typing completion restores the complete plain sentence and hiding cancels cleanup', async () => {
+test('typing completion restores the complete plain sentence and idle playback cancels cleanup', async () => {
   const track = { playing: true, title: 'Mere Kol', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
   const view = await frontend(track);
   const assertSurroundingText = () => {
@@ -126,9 +126,19 @@ test('typing completion restores the complete plain sentence and hiding cancels 
   assert.ok(view.parts.some(part => part.children.length));
   await view.refresh({ playing: false });
   assertSurroundingText();
-  assert.equal(view.link.hidden, true);
+  assert.equal(view.link.hidden, false);
+  assert.equal(view.label.textContent, 'silence');
+  assert.equal(view.link.href, undefined);
+  assert.equal(view.link['aria-label'], undefined);
   assert.ok(view.parts.every(part => part.children.length === 0));
   assert.ok([...view.timeouts.values()].every(timeout => timeout.delay >= 8000));
+  await view.refresh(track);
+  assertSurroundingText();
+  assert.equal(view.label.textContent, 'Mere Kol');
+  assert.equal(view.link.href, track.url);
+  assert.equal(view.label.replacements, 3);
+  await view.refresh(track);
+  assert.equal(view.label.replacements, 3);
 });
 test('frontend safely displays track text and opens the Spotify track', async () => {
   const { link, label } = await frontend({ playing: true, title: '<script>song</script>', artist: 'Artist',
@@ -137,12 +147,27 @@ test('frontend safely displays track text and opens the Spotify track', async ()
   assert.equal(label.textContent, '<script>song</script>');
   assert.equal(link.href, 'https://open.spotify.com/track/abc123');
 });
-test('frontend hides stale, paused, malformed and failed responses', async () => {
+test('frontend shows silence without a stale track link for paused, malformed, stale and failed responses', async () => {
   for (const data of [null, {}, { playing: false }, { playing: true, title: 'Song', artist: 'Artist',
     url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() - 60000 }]) {
-    assert.equal((await frontend(data)).link.hidden, true);
+    const view = await frontend(data);
+    assert.equal(view.link.hidden, false);
+    assert.equal(view.label.textContent, 'silence');
+    assert.equal(view.link.href, undefined);
+    assert.equal(view.link['aria-label'], undefined);
   }
-  assert.equal((await frontend({}, true)).link.hidden, true);
+  const failed = await frontend({}, true);
+  assert.equal(failed.link.hidden, false);
+  assert.equal(failed.label.textContent, 'silence');
+  assert.equal(failed.link.href, undefined);
+});
+test('HTML supplies an accessible silence fallback without JavaScript', () => {
+  const html = readFileSync('index.html', 'utf8');
+  const link = html.match(/<a class="spotify-now-playing"[^>]*>(.*?)<\/a>/s);
+  assert.ok(link);
+  assert.doesNotMatch(link[0].split('>')[0], /\bhidden\b|\bhref=/);
+  assert.match(link[1], /data-spotify-label[^>]*>silence<\/span>/);
+  assert.doesNotMatch(link[1], /data-spotify-copy aria-hidden/);
 });
 test('PKCE refresh works without a client secret and persists rotated refresh tokens privately', async () => {
   let saved;

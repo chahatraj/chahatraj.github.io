@@ -13,11 +13,12 @@
   overflow-wrap: anywhere;
   text-decoration: none;
 }
-.home-bio a.spotify-now-playing[href] {
+.home-bio a.spotify-now-playing {
   border-bottom: 0;
   color: inherit !important;
   font-weight: inherit;
 }
+.home-bio a.spotify-now-playing:not([href]) { cursor: default; }
 .spotify-now-playing [data-spotify-label] {
   color: #77716b;
   border-bottom: 1px solid #aaa39c;
@@ -26,7 +27,7 @@ body.dark-theme .spotify-now-playing [data-spotify-label] {
   color: #b2aba2;
   border-bottom-color: #77716b;
 }
-.home-bio .spotify-now-playing:hover [data-spotify-label] { opacity: 0.8; }
+.home-bio .spotify-now-playing[href]:hover [data-spotify-label] { opacity: 0.8; }
 .home-bio .spotify-now-playing:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
 .spotify-character {
