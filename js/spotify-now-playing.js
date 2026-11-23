@@ -87,6 +87,8 @@
     controller?.abort();
     resetPlayback('');
   });
-  window.addEventListener('pageshow', update);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) update();
+  });
   update();
 })();

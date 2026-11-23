@@ -69,7 +69,7 @@ export function createHandler(fetchSpotify = fetch) {
         body: new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refreshToken, client_id: env.SPOTIFY_CLIENT_ID }),
         signal: AbortSignal.timeout(5000)
       });
-      if (!response.ok) throw new Error('Authorization unavailable');
+      if (!response.ok) throw new Error(`Authorization unavailable (${response.status})`);
       const token = await response.json();
       if (!token.access_token) throw new Error('Missing access token');
       if (token.refresh_token && env.BUCKET) await env.BUCKET.put('spotify-refresh-token', token.refresh_token);
@@ -85,7 +85,7 @@ export function createHandler(fetchSpotify = fetch) {
       cacheUntil = Date.now() + Math.max(15, Number(response.headers.get('Retry-After')) || 60) * 1000;
       return summary;
     }
-    if (response.status !== 204 && !response.ok) throw new Error('Playback unavailable');
+    if (response.status !== 204 && !response.ok) throw new Error(`Playback unavailable (${response.status})`);
     const data = response.status === 204 ? null : await response.json();
     summary = { playing: false, checkedAt: Date.now() };
     const item = data?.item;
@@ -102,7 +102,7 @@ export function createHandler(fetchSpotify = fetch) {
     return summary;
   }
 
-  return async function handle(request, env) {
+  return async function handle(request, env, executionContext) {
     const headers = {
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Origin': 'https://chahatraj.github.io',
@@ -119,12 +119,18 @@ export function createHandler(fetchSpotify = fetch) {
         summary = undefined; cacheUntil = 0;
         return Response.json({ playing: false, checkedAt: Date.now() }, { headers });
       }
-      if (!pending) pending = currentTrack(env).finally(() => { pending = undefined; });
+      if (!pending) {
+        pending = currentTrack(env).finally(() => { pending = undefined; });
+        executionContext?.waitUntil(pending);
+      }
       const result = await pending;
       // Recheck after Spotify responds so a concurrent stop does not disclose a track.
       if (!(await sharingState(env)).enabled) return Response.json({ playing: false, checkedAt: Date.now() }, { headers });
       return Response.json(result, { headers });
-    } catch {
+    } catch (error) {
+      const reason = error instanceof Error && /^(Authorization unavailable \(\d{3}\)|Playback unavailable \(\d{3}\)|Missing access token|Storage unavailable)$/.test(error.message)
+        ? error.message : 'Upstream or storage request failed';
+      console.error('Spotify update failed', reason);
       summary = { playing: false, checkedAt: Date.now() };
       cacheUntil = Date.now() + 10000;
       return Response.json(summary, { status: 503, headers });

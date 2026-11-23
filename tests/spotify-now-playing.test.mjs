@@ -73,18 +73,19 @@ async function frontend(data, reject = false, reducedMotion = false, pending) {
   const link = { hidden: false, dataset: { endpoint: 'https://example.com/now-playing' },
     querySelector: selector => selector === '[data-spotify-label]' ? label : copy,
     setAttribute(k, v) { this[k] = v; }, removeAttribute(k) { delete this[k]; } };
+  const requests = [];
   const context = { URL, Date, Number, Math, AbortController,
     clearTimeout(id) { timeouts.delete(id); },
     setTimeout(callback, delay) { timeouts.set(++timeoutId, { callback, delay }); return timeoutId; },
     document: { hidden: false, querySelector: () => link, addEventListener() {},
       createElement: () => ({ style: { setProperty() {} } }) },
     window: { matchMedia: () => ({ matches: reducedMotion }), addEventListener(name, callback) { events[name] = callback; } },
-    fetch: async () => { if (pending) await pending; if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
+    fetch: async (url, options) => { requests.push(options.signal); if (pending) await pending; if (reject) throw new Error(); return { ok: true, json: async () => data }; } };
   vm.runInNewContext(readFileSync('js/spotify-now-playing.js', 'utf8'), context);
   await new Promise(resolve => setImmediate(resolve));
-  return { link, label, parts, timeouts, events, async refresh(next = data) {
+  return { link, label, parts, timeouts, events, requests, async refresh(next = data) {
     data = next;
-    events.pageshow();
+    events.pageshow({ persisted: true });
     await new Promise(resolve => setImmediate(resolve));
   } };
 }
@@ -258,4 +259,52 @@ test('sharing defaults on and remains on regardless of old expiry timestamps', a
     const response = await createHandler(fakeSpotify(playback))(request(), privateEnv(initial));
     assert.equal((await response.json()).playing, true);
   }
+});
+
+test('retains a shared Spotify refresh beyond its initiating request lifetime', async () => {
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
+  let calls = 0;
+  const retained = [];
+  const handle = createHandler(async (...args) => {
+    ++calls;
+    await gate;
+    return fakeSpotify(playback)(...args);
+  });
+  const controller = new AbortController();
+  const first = handle(new Request('https://example.com/now-playing', { signal: controller.signal }), env,
+    { waitUntil: promise => retained.push(promise) });
+  const second = handle(request(), env, { waitUntil: promise => retained.push(promise) });
+  await new Promise(resolve => setImmediate(resolve));
+  controller.abort();
+  try {
+    assert.equal(retained.length, 1);
+    assert.equal(calls, 1);
+  } finally {
+    release();
+  }
+  await Promise.all(retained);
+  const replies = await Promise.all([first, second]);
+  assert.equal(calls, 2);
+  for (const response of replies) {
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).title, '<Song>');
+  }
+});
+
+test('initial pageshow preserves the first song request and restored pages refresh', async () => {
+  let resolve;
+  const pending = new Promise(done => { resolve = done; });
+  const track = { playing: true, title: 'First song', url: 'https://open.spotify.com/track/abc123', checkedAt: Date.now() };
+  const view = await frontend(track, false, false, pending);
+  view.events.pageshow({ persisted: false });
+  assert.equal(view.requests.length, 1);
+  assert.equal(view.requests[0].aborted, false);
+  resolve();
+  await new Promise(done => setImmediate(done));
+  assert.equal(view.label.textContent, track.title);
+  view.events.pagehide();
+  await view.refresh({ ...track, title: 'Restored song' });
+  assert.equal(view.requests.length, 2);
+  assert.equal(view.label.textContent, 'Restored song');
 });
